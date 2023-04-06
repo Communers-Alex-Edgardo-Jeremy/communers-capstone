@@ -9,7 +9,7 @@ We have integrated two APIs in our project:
 # Pages
 Our website consists of the following pages:
 
-For You: This page features blog-style content that is personalized to the user based on their interests and browsing history.
+For You: This page features blog-style content that is personalized to the users based interests and browsing history.
 Discover: This page features all of our blog-style content and allows users to filter content based on their interests.
 Profile: This page features the user's information, including their posts, saved content, and chat history.
 Contributing
