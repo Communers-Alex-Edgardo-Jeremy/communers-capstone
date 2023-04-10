@@ -12,25 +12,27 @@
 </head>
 <body>
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<form class="d-flex flex-column" th:action="@{/login}" method="POST" th:object="${login}">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" th:field="*{password}">
-    </div>
+<div class="container d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="card shadow login-card" style="">
+        <div class="card-body d-flex flex-column">
+            <h1>Log In</h1>
+            <div th:if="${param.error}">
+                Invalid Username and Password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
 
-<!--  Do we want to add remember me check box?-->
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <form class="d-flex flex-column" th:action="@{/login}" method="post">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" value="jerma"/>
+                <label class="pt-3" for="password">Password</label>
+                <input id="password" name="password" type="password" value="p@ssw0rd"/>
+                <input class="mt-3 btn btn-outline-secondary me-auto" type="submit" value="Log In" />
+            </form>
+        </div>
     </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+</div>
 <footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
