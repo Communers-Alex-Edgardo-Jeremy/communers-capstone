@@ -31,6 +31,8 @@ public class User {
     public User(User copy) {
         id = copy.id;
         email = copy.email;
+        first_name = copy.first_name;
+        last_name = copy.last_name;
         username = copy.username;
         password = copy.password;
     }

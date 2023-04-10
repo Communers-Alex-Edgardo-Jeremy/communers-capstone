@@ -8,12 +8,16 @@
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 
 <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
-    <div class="card shadow sign-up-card" style="">
+    <div class="card sha
+    dow sign-up-card" style="">
         <div class="card-body d-flex flex-column">
             <h1>Create an account</h1>
-            <form class="d-flex flex-column" th:action="@{/sign-up}" method="POST" th:object="${user}">
+            <form class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
                 <label for="username">Username</label>
                 <input id="username" th:field="*{username}" />
+
+                <label for="first_name">Username</label>
+                <input id="first_name" th:field="*{first_name}" />
 
                 <label class="pt-3" for="email">Email</label>
                 <input id="email" th:field="*{email}" />
