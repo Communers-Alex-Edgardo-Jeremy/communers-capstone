@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/partials/partials :: head}" >
+    <title>Sign up</title>
+</head>
+<body class="d-flex flex-column">
+<!--<header th:replace="/partials/partials :: header"></header>-->
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+
+<div class="container d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="card shadow sign-up-card" style="">
+        <div class="card-body d-flex flex-column">
+            <h1>Create an account</h1>
+            <form class="d-flex flex-column" th:action="@{/sign-up}" method="POST" th:object="${user}">
+                <label for="username">Username</label>
+                <input id="username" th:field="*{username}" />
+
+                <label class="pt-3" for="email">Email</label>
+                <input id="email" th:field="*{email}" />
+
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}" />
+
+                <input class="mt-3 btn btn-outline-secondary me-auto" value="Sign me up!" type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="" th:replace="~{/partials/partials :: footer}"></footer>
+</body>
+</html>
