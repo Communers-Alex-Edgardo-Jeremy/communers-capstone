@@ -1,4 +1,5 @@
-# Mental Health and Well-Being Social Networking Website
+# Community
+## Well-Being Social Website
 Welcome to our social networking website! Our project is designed to create a platform where individuals can come together and focus on their mental health and well-being.
 
 # APIs Used
