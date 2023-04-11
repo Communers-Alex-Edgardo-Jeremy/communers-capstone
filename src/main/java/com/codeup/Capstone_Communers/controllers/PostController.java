@@ -30,7 +30,7 @@ public class PostController {
     @GetMapping("/forYou")
     public String showForYou(Model model){
         model.addAttribute("postList", postDao.findAll());
-        return "post/forYou";
+        return "posts/forYou";
     }
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
