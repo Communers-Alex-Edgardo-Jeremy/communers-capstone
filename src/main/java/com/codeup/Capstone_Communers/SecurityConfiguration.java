@@ -37,27 +37,31 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/posts", true) // user's home page, it can be any URL
+                .defaultSuccessUrl("/profile", true) // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
 
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/") // append a query string value
+                .logoutSuccessUrl("/login") // append a query string value
 
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
+
                         "/posts/create", // only authenticated users can create posts
-                        "/posts/{id}/edit" // only authenticated users can edit posts
+                        "/posts/{id}/edit", // only authenticated users can edit posts
+                        "/posts/discover",// only authenticated users can view all posts
+                        "/profile"// only authenticated users can view their profile
                 )
                 .authenticated()
 
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/posts/{id}", "/communities","/register", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
+
+                .requestMatchers("/", "/posts", "/communities", "/posts/discover", "/posts/{id}", "/register", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
                 .permitAll();
         return http.build();
     }

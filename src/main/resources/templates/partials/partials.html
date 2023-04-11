@@ -26,7 +26,7 @@
                 <li><a href="/chat">Chat</a></li>
                 <li><a href="/posts/create">Create Post</a></li>
                 <li><a href="/posts/journal">My Journal</a></li>
-                <li><a href="/settings">My Journal</a></li>
+                <li><a href="/settings">Settings</a></li>
             </ul>
             <div class="greeting" sec:authorize="isAuthenticated()">
                 Hello, <span th:text="${#authentication.principal.username}"/>

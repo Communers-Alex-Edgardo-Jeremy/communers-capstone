@@ -36,4 +36,5 @@ public class User {
         username = copy.username;
         password = copy.password;
     }
+
 }
