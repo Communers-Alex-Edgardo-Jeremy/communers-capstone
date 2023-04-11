@@ -10,6 +10,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
     List<Post> findByTitle(String title);
+    Post findById(long id);
 
     @Query("from Post p where p.title like %:name%")
     List<Post> findLikeName(@Param("name") String name);

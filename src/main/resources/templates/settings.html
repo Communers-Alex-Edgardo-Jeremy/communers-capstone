@@ -3,9 +3,9 @@
 <head th:replace="~{/partials/partials :: head}">
     <title>Settings</title>
 </head>
-<body>
+<body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div>
+<div class="container d-flex flex-column flex-grow-1">
     <h1>Settings</h1>
     <div class="settings" sec:authorize="isAuthenticated()">
         <div class="form-check form-switch">

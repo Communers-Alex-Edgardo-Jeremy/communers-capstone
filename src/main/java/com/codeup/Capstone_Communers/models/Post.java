@@ -30,8 +30,13 @@ public class Post {
     @Column(nullable = false)
     private String time;
 
-    @Column(nullable = false)
-    private long user_id;
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn (name = "comment_id")
+    private Comment comment;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
 //    List<Comment> tasks = new ArrayList<>();

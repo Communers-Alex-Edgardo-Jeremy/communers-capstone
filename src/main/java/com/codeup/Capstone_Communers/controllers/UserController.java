@@ -56,4 +56,12 @@ public class UserController {
     public String viewSettings() {
         return "/settings";
 }
+    @GetMapping("/about")
+    public String viewAbout() {
+        return "/about";
+}
+    @GetMapping("/resources")
+    public String viewResources() {
+        return "/resources";
+}
 }
