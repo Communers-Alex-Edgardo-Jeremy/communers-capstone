@@ -27,6 +27,12 @@ public class PostController {
         model.addAttribute("postList", postDao.findAll());
         return "posts/discover";
     }
+
+    @GetMapping("/forYou")
+    public String showForYou(Model model){
+        model.addAttribute("postList", postDao.findAll());
+        return "posts/forYou";
+    }
     @GetMapping("/posts/create")
     public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());

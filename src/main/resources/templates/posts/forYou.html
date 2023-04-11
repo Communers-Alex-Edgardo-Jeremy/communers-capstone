@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{/partials/partials :: head}">
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>For You</title>
 </head>
 <body>
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
@@ -11,7 +11,7 @@
             Hello, <span th:text="${#authentication.principal.username}"/>
         </div>
         <!--  append community bio into p element   -->
-        <h1>Profile Page</h1>
+        <h1>For You Page</h1>
         <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fugit harum magnam minima modi molestias quo
             rerum sed! Neque, quisquam?</p>
         <!--  append community followers into div element   -->
