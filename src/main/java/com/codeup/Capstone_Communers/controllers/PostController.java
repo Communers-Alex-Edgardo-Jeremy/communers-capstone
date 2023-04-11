@@ -27,7 +27,12 @@ public class PostController {
         model.addAttribute("postList", postDao.findAll());
         return "posts/discover";
     }
-    @GetMapping("/posts/create")
+    @GetMapping("/forYou")
+    public String showForYou(Model model){
+        model.addAttribute("postList", postDao.findAll());
+        return "posts/forYou";
+    }
+    @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());
         return "/posts/create";
@@ -35,7 +40,7 @@ public class PostController {
     @GetMapping("/post/{postId}/edit")
     public String editPost(Model model, @PathVariable long postId){
         model.addAttribute("post", postDao.getReferenceById(postId));
-        return "/posts/edit";
+        return "/post/edit";
     }
 
     @PostMapping("/post/{postId}/edit")
