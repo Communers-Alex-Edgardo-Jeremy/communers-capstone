@@ -22,17 +22,37 @@ public class PostController {
 
     private final PostRepository postDao;
 
-
-    @GetMapping("/post/create")
-    public String returnCreateView(Model model) {
+    @GetMapping("/discover")
+    public String showPosts(Model model){
+        model.addAttribute("postList", postDao.findAll());
+        return "posts/discover";
+    }
+    @GetMapping("/posts/create")
+    public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());
-        return "posts/create";
+        return "/posts/create";
+    }
+    @GetMapping("/post/{postId}/edit")
+    public String editPost(Model model, @PathVariable long postId){
+        model.addAttribute("post", postDao.getReferenceById(postId));
+        return "/posts/edit";
     }
 
-    @GetMapping("/post/edit")
-    public String returnEditView(@ModelAttribute Post post) {
-        postDao.save(post);
-        return "posts/edit";
+    @PostMapping("/post/{postId}/edit")
+    public String editPost(@ModelAttribute Post post){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        post.setUser(user);
+//        postDao.save(post);
+        return "redirect:/users/profile";
+    }
+
+    @PostMapping("/posts/create")
+    public String postCreatePost(@ModelAttribute Post post) {
+//        List<Post> postList = new ArrayList<>();
+//        post.setUser(userDao.findById(1));
+//        emailService.prepareAndSend(post, post.getTitle(), post.getBody());
+//        postDao.save(post);
+        return "redirect:/users/profile";
     }
 
 }
