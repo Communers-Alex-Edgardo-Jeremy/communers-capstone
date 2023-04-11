@@ -15,9 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -42,5 +40,14 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/profile")
+    public String viewProfile(@PathVariable long id, Model model) {
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+
+        return "/users/profile";
+
     }
 }
