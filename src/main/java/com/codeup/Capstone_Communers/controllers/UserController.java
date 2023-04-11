@@ -43,4 +43,13 @@ public class UserController {
         userDao.save(user);
         return "redirect:/login";
     }
+
+//    @GetMapping("/login")
+//    public String showLoginForm(){
+//        return "users/login";
+//    }
+//    @PostMapping("/login")
+//    public String checkLoginForm(){
+//        return "posts"
+//    }
 }
