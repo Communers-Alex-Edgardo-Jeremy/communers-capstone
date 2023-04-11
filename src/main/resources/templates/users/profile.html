@@ -6,8 +6,7 @@
 </head>
 <body>
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <div class="container-fluid">
-        <!--  append community name into h1 element   -->
+    <div class="container-fluid" th:object="${user}">
         <div class="greeting" sec:authorize="isAuthenticated()">
             Hello, <span th:text="${#authentication.principal.username}"/>
         </div>
