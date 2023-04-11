@@ -57,7 +57,7 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/posts/{id}", "/register", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
+                .requestMatchers("/", "/posts", "/posts/{id}", "/communities","/register", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
                 .permitAll();
         return http.build();
     }
