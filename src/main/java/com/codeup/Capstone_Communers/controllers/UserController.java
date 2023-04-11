@@ -42,12 +42,12 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @GetMapping("${id}/profile")
-//    public String viewProfile(@PathVariable long id, Model model) {
-//        User user = userDao.findById(id);
-//        model.addAttribute("user", user);
-//
-//        return "/users/profile";
-//
-//    }
+    @GetMapping("${id}/profile")
+    public String viewProfile(@PathVariable long id, Model model) {
+        User user = userDao.findById(id);
+        model.addAttribute("user", user);
+
+        return "/users/profile";
+
+    }
 }
