@@ -43,11 +43,16 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String viewProfile(@PathVariable long id, Model model) {
-        User user = userDao.findById(id);
+    public String viewProfile(Model model) {
+//        User user = userDao.getReferenceById(id);
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
 
+        System.out.println(user.getId());
         return "/users/profile";
 
-    }
+
+
+}
 }
