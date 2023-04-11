@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/{id}/profile", true) // user's home page, it can be any URL
+                .defaultSuccessUrl("/profile", true) // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
 
                 /* Logout configuration */
@@ -52,7 +52,7 @@ public class SecurityConfiguration {
                         "/posts/create", // only authenticated users can create posts
                         "/posts/{id}/edit", // only authenticated users can edit posts
                         "/posts/discover", // only authenticated users can view all posts
-                        "/{id}/profile" // only authenticated users can view all posts
+                        "/profile" // only authenticated users can view all posts
                 )
                 .authenticated()
 
