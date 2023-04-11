@@ -22,7 +22,7 @@ public class PostController {
 
     private final PostRepository postDao;
 
-    @GetMapping("/post/discover")
+    @GetMapping("/discover")
     public String showPosts(Model model){
         model.addAttribute("postList", postDao.findAll());
         return "posts/discover";
