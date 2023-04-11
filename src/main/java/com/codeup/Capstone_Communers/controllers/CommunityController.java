@@ -1,20 +1,23 @@
 package com.codeup.Capstone_Communers.controllers;
 
-import com.codeup.Capstone_Communers.models.Community;
+import ch.qos.logback.core.model.Model;
+import com.codeup.Capstone_Communers.repositories.CommunityRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
 public class CommunityController {
 
-    @RequestMapping("/communities")
-    public Community getCommunity(@RequestParam(name = "communities", required = false, defaultValue = "Unknown") String name , String bio) {
-        Community community = new Community();
-        community.setName(name);
-        community.setBio(bio);
-        return community;
+    private CommunityRepository communityDAO;
+
+    public CommunityController(CommunityRepository communityDAO) {
+        this.communityDAO = communityDAO;
+    }
+
+    @GetMapping("/communities")
+    public String showCommunities(Model model){
+        model.addText("communities");
+        return "users/communities";
     }
 }
