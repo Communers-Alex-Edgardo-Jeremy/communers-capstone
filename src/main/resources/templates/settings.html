@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{/partials/partials :: head}">
+    <title>Settings</title>
+</head>
+<body>
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div>
+    <h1>Settings</h1>
+    <div class="settings" sec:authorize="isAuthenticated()">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+            <label class="form-check-label" for="flexSwitchCheckDefault">Custom greetings</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Push Notifications</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled">
+            <label class="form-check-label" for="flexSwitchCheckDisabled">Privacy</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled">
+            <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Targeted ads</label>
+        </div>
+    </div>
+</div>
+<footer class="" th:replace="~{/partials/partials :: footer}"></footer>
+</body>
+</html>

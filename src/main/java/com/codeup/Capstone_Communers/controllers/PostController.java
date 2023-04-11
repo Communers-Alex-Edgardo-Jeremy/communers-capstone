@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 public class PostController {
@@ -23,14 +25,25 @@ public class PostController {
     private final PostRepository postDao;
 
     @GetMapping("/discover")
-    public String showPosts(Model model){
-        model.addAttribute("postList", postDao.findAll());
+
+    public String all(Model model) {
+        List<Post> posts = postDao.findAll();
+        model.addAttribute("posts", posts);
+//        List<Post> somePosts = postDao.findLikeName("a");
         return "posts/discover";
     }
+
+//    @GetMapping("/discover")
+//    public String showPosts(Model model){
+//        model.addAttribute("postList", postDao.findAll());
+//        return "posts/discover";
+//    }
     @GetMapping("/forYou")
     public String showForYou(Model model){
-        model.addAttribute("postList", postDao.findAll());
+        List<Post> posts = postDao.findAll();
+        model.addAttribute("posts", posts);
         return "posts/forYou";
+
     }
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
