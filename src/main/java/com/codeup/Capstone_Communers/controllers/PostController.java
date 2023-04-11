@@ -25,14 +25,11 @@ public class PostController {
     private final PostRepository postDao;
 
     @GetMapping("/discover")
+
     public String all(Model model) {
-
         List<Post> posts = postDao.findAll();
-
         model.addAttribute("posts", posts);
-
 //        List<Post> somePosts = postDao.findLikeName("a");
-
         return "posts/discover";
     }
 
