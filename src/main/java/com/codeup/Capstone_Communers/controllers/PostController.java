@@ -1,6 +1,8 @@
 package com.codeup.Capstone_Communers.controllers;
 
+import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.models.Post;
+import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
+    private final CommentRepository commentDao;
+    private final UserRepository userDao;
 
     @GetMapping("/discover")
 
@@ -43,6 +47,15 @@ public class PostController {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/forYou";
+
+    }
+    @GetMapping("/posts/{id}/comments}")
+    public String showComments(@PathVariable long id, Model model){
+        List <Comment> comments = commentDao.findAllById(id);
+        Post post = postDao.findById(id);
+        model.addAttribute("post", post);
+        model.addAttribute("comments", comments);
+        return "posts/comments";
 
     }
     @GetMapping("/post/create")

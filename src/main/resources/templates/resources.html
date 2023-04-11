@@ -3,9 +3,9 @@
 <head th:replace="~{/partials/partials :: head}">
     <title>Resources</title>
 </head>
-<body>
+<body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<section>
+<div class="container d-flex flex-column flex-grow-1">
     <h1>Resources</h1>
     <div>
         <a href="#"><span>Resource 1</span></a>
@@ -22,7 +22,7 @@
     <div>
         <a href="#"><span>Emergency Resource</span></a>
     </div>
-</section>
+</div>
 <footer class="" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>

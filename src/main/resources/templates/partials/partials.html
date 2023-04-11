@@ -20,14 +20,14 @@
 <nav class="navbar navbar-expand navbar-light bg-dark" th:fragment="navbar">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="my-auto">
-                <li><a href="/discover">Discover</a></li>
-                <li><a href="/forYou">For You</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/chat">Chat</a></li>
-                <li><a href="/post/create">Create Post</a></li>
-                <li><a href="/posts/journal">My Journal</a></li>
-                <li><a href="/settings">Settings</a></li>
+            <ul class="my-auto d-flex">
+                <li class="px-2" ><a href="/discover">Discover</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/forYou">For You</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/chat">Chat</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/post/create">Create Post</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/posts/journal">My Journal</a></li>
+                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/settings">Settings</a></li>
             </ul>
             <div class="greeting" sec:authorize="isAuthenticated()">
                 Hello, <span th:text="${#authentication.principal.username}"/>
