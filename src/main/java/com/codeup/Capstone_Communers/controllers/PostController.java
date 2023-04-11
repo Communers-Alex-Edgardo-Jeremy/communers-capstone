@@ -22,18 +22,17 @@ public class PostController {
 
     private final PostRepository postDao;
 
-    @GetMapping("/discover")
+    @GetMapping("/post/discover")
     public String showPosts(Model model){
         model.addAttribute("postList", postDao.findAll());
         return "posts/discover";
     }
-
     @GetMapping("/forYou")
     public String showForYou(Model model){
         model.addAttribute("postList", postDao.findAll());
-        return "posts/forYou";
+        return "post/forYou";
     }
-    @GetMapping("/posts/create")
+    @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());
         return "/posts/create";
@@ -41,7 +40,7 @@ public class PostController {
     @GetMapping("/post/{postId}/edit")
     public String editPost(Model model, @PathVariable long postId){
         model.addAttribute("post", postDao.getReferenceById(postId));
-        return "/posts/edit";
+        return "/post/edit";
     }
 
     @PostMapping("/post/{postId}/edit")
