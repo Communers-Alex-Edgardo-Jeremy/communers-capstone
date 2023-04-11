@@ -14,6 +14,10 @@
         <h1>Profile Page</h1>
         <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fugit harum magnam minima modi molestias quo
             rerum sed! Neque, quisquam?</p>
+        <p class="">Username: <span th:text="${user.username}"/></p>
+        <p class="">Name: <span th:text="${user.first_name}"/> <span th:text="${user.last_name}"/></p>
+        <p class="">Email: <span th:text="${user.email}"/></p>
+
         <!--  append community followers into div element   -->
         <div class="followers">followers</div>
     </div>

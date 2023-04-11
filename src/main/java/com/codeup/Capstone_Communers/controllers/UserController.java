@@ -49,10 +49,11 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
 
-        System.out.println(user.getId());
         return "/users/profile";
 
-
-
+}
+    @GetMapping("/settings")
+    public String viewSettings() {
+        return "/settings";
 }
 }
