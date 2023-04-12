@@ -25,22 +25,23 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
-//    private final CommentRepository commentDao;
+    private final CommentRepository commentDao;
     private final UserRepository userDao;
 
-    public PostController(UserRepository userDao,  PostRepository postDao) {
+    public PostController(UserRepository userDao,  PostRepository postDao, CommentRepository commentDao) {
         this.userDao = userDao;
         this.postDao = postDao;
+        this.commentDao = commentDao;
     }
 
     @GetMapping("/discover")
-
     public String all(Model model) {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
 //        List<Post> somePosts = postDao.findLikeName("a");
         return "posts/discover";
     }
+
 
 //    @GetMapping("/discover")
 //    public String showPosts(Model model){
@@ -80,6 +81,12 @@ public class PostController {
         User user = userDao.findById(postId);
         editedpost.setUser(user);
         postDao.save(editedpost);
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/post/delete/{postId}")
+    public String deletePost(@PathVariable long postId){
+        postDao.delete(postDao.findById(postId));
         return "redirect:/profile";
     }
 

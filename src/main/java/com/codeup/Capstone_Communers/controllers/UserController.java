@@ -60,16 +60,12 @@ public class UserController {
         return "/users/profile";
 
 }
+    @GetMapping("/journal")
+    public String viewJournal() {
+        return "/users/journal";
+    }
     @GetMapping("/settings")
     public String viewSettings() {
         return "/settings";
-}
-    @GetMapping("/about")
-    public String viewAbout() {
-        return "/about";
-}
-    @GetMapping("/resources")
-    public String viewResources() {
-        return "/resources";
 }
 }

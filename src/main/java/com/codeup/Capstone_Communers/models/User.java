@@ -1,6 +1,9 @@
 package com.codeup.Capstone_Communers.models;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -28,6 +31,9 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
     public User(User copy) {
         id = copy.id;
         email = copy.email;
