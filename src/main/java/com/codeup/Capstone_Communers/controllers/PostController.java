@@ -129,9 +129,15 @@ public class PostController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/post/delete/{postId}")
+    @GetMapping("/post/{postId}/delete")
     public String deletePost(@PathVariable long postId){
-        postDao.delete(postDao.findById(postId));
+        postDao.delete(postDao.getReferenceById(postId));
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/post/comment/{commentId}/delete")
+    public String deleteComment(@PathVariable long commentId){
+        commentDao.delete(commentDao.getReferenceById(commentId));
         return "redirect:/profile";
     }
 
