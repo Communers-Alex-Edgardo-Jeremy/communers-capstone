@@ -1,6 +1,7 @@
 package com.codeup.Capstone_Communers.controllers;
 
 import com.codeup.Capstone_Communers.models.Comment;
+import com.codeup.Capstone_Communers.models.Entry;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
@@ -41,12 +42,6 @@ public class PostController {
         return "posts/discover";
     }
 
-
-//    @GetMapping("/discover")
-//    public String showPosts(Model model){
-//        model.addAttribute("postList", postDao.findAll());
-//        return "posts/discover";
-//    }
     @GetMapping("/forYou")
     public String showForYou(Model model){
         List<Post> posts = postDao.findAll();
@@ -76,7 +71,6 @@ public class PostController {
         comment.setPost(post);
         comment.setUser(user);
         comment.setDate(date.toString());
-        System.out.println(user);
         commentDao.save(comment);
         model.addAttribute("post", post);
         List<Comment> comments = commentDao.findAllByPost(post);
@@ -86,29 +80,6 @@ public class PostController {
 
         return "/posts/comments";
     }
-
-//edit comment
-//    @PostMapping("/post/{id}/comments")
-//    public String addComment(@PathVariable long id, Model model, Comment comment) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        comment.setUser(user);
-//
-//        Post post = postDao.findById(id);
-//        System.out.println("post object");
-//
-//        System.out.println(comment.getBody());
-//        comment.setUser(user);
-//        System.out.println(user.getUsername());
-//
-//        model.addAttribute(user);
-//
-//        System.out.println(user);
-//        comment.setPost(post);
-//        System.out.println(post);
-//        commentDao.save(comment);
-//
-//        return "redirect:/posts/{id}/comments";
-//    }
 
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {

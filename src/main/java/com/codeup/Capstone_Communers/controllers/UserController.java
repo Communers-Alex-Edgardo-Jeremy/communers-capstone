@@ -9,8 +9,10 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
+import com.codeup.Capstone_Communers.models.Entry;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.models.User;
+import com.codeup.Capstone_Communers.repositories.EntryRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,19 +21,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class UserController {
     private UserRepository userDao;
-
     private PostRepository postDao;
     private PasswordEncoder passwordEncoder;
+    private final EntryRepository entryDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao) {
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, EntryRepository entryDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.postDao = postDao;
+        this.entryDao = entryDao;
     }
 
     @GetMapping("/register")
@@ -61,7 +66,24 @@ public class UserController {
 
 }
     @GetMapping("/journal")
-    public String viewJournal() {
+    public String viewJournal(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("entry", new Entry());
+        List <Entry> entries = entryDao.findAllByUser(user);
+        model.addAttribute("entries", entries);
+        return "/users/journal";
+    }
+
+    @PostMapping("/journal")
+    public String postJournal(@ModelAttribute Entry entry, Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loggedInUser.getId());
+        model.addAttribute("journal", new Entry());
+        entry.setUser(user);
+        Date date = new Date();
+        String stringDate = date.toString();
+        entry.setDate(stringDate);
+        entryDao.save(entry);
         return "/users/journal";
     }
     @GetMapping("/settings")
