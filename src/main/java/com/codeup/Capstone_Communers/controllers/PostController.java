@@ -4,16 +4,12 @@ import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.codeup.Capstone_Communers.models.User;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,12 +21,13 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
-//    private final CommentRepository commentDao;
+    private final CommentRepository commentDao;
     private final UserRepository userDao;
 
-    public PostController(UserRepository userDao,  PostRepository postDao) {
+    public PostController(UserRepository userDao, PostRepository postDao, CommentRepository commentDao) {
         this.userDao = userDao;
         this.postDao = postDao;
+        this.commentDao = commentDao;
     }
 
     @GetMapping("/discover")
