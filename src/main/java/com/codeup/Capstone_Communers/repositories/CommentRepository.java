@@ -10,9 +10,14 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
+
     List <Comment> findAllByPost(Post post);
 
-    @Query("from Comment c where c.body like %:name%")
-    List<Comment> findLikeName(@Param("name") String name);
+//    Comment findById(long id);
+
+
+
+//    @Query("from Comment c where c.body like %:name%")
+//    List<Comment> findLikeName(@Param("name") String name);
 
 }
