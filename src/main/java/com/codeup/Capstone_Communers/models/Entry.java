@@ -3,7 +3,6 @@ package com.codeup.Capstone_Communers.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -11,8 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="posts")
-public class Post {
+@Table(name="entries")
+public class Entry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +24,14 @@ public class Post {
     private String body;
 
     @Column(nullable = false)
-    private String time;
+    private String date;
 
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
 
-    @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "post")
-    private List<Comment> comments;
+//    @ToString.Exclude
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "entry")
+//    private List<Comment> entries;
 }
 
