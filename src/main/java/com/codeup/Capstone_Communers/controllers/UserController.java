@@ -77,7 +77,21 @@ public class UserController {
         return "/users/journal";
     }
     @GetMapping("/settings")
-    public String viewSettings() {
+    public String viewSettings(Model model) {
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "/settings";
-}
+    }
+    @PostMapping("/user/edit")
+    public String editUser(Model model, @ModelAttribute User user) {
+        User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User wholeUser = userDao.findById(oldUserDetails.getId());
+        wholeUser.setFirst_name(user.getFirst_name());
+        wholeUser.setLast_name(user.getLast_name());
+        wholeUser.setEmail(user.getEmail());
+        wholeUser.setUsername(user.getUsername());
+        userDao.save(wholeUser);
+        model.addAttribute("user", wholeUser);
+        return "/settings";
+    }
+
 }
