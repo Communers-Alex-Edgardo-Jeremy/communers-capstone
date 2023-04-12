@@ -1,10 +1,7 @@
 package com.codeup.Capstone_Communers.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +30,10 @@ public class Post {
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
+
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "post")
+    private List<Comment> comments;
 
 //    @ManyToOne
 //    @JoinColumn (name = "comment_id")
