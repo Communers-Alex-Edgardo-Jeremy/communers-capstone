@@ -6,10 +6,11 @@
 </head>
 <body>
 <h2>Edit</h2>
-<form th:action="@{/post/${post.user.getId()}/edit}" th:object="${post}" method="post">
+<form th:action="@{|/post/${post.user.getId()}/edit|}" th:object="${post}" method="post">
     <p>Title: <input type="text" th:field="*{title}" /></p>
     <p>Body: <input type="text" th:field="*{body}" /></p>
     <input type="hidden" th:field="*{time}" />
+    <input type="hidden" th:field="*{id}" />
     <p><input type="submit" value="Submit" /></p>
 </form>
 </body>

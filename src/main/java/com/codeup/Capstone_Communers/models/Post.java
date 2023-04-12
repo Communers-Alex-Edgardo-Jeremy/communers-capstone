@@ -34,9 +34,9 @@ public class Post {
     @JoinColumn (name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn (name = "comment_id")
-    private Comment comment;
+//    @ManyToOne
+//    @JoinColumn (name = "comment_id")
+//    private Comment comment;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
 //    List<Comment> tasks = new ArrayList<>();

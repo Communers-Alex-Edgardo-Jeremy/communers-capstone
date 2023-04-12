@@ -75,10 +75,10 @@ public class PostController {
     }
 
     @PostMapping("/post/{postId}/edit")
-    public String editPost(@ModelAttribute Post post){
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        post.setUser(user);
-//        postDao.save(post);
+    public String editPost(@PathVariable long postId, @ModelAttribute Post editedpost){
+        User user = userDao.findById(postId);
+        editedpost.setUser(user);
+        postDao.save(editedpost);
         return "redirect:/profile";
     }
 
