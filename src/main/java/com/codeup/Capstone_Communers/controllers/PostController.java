@@ -49,10 +49,10 @@ public class PostController {
         return "posts/forYou";
 
     }
-    @GetMapping("/posts/{id}/comments}")
+    @GetMapping("/post/{id}/comments")
     public String showComments(@PathVariable long id, Model model){
-        List <Comment> comments = commentDao.findAllById(id);
         Post post = postDao.findById(id);
+        Comment comments = commentDao.findById(id);
         model.addAttribute("post", post);
         model.addAttribute("comments", comments);
         return "posts/comments";
