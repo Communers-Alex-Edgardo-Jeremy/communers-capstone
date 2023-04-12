@@ -12,12 +12,12 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 //    Comment findById(long id);
 
-    List<Comment> findAllById(long post_id);
+//    List<Comment> findAllById(long post_id);
 //    List <Comment> findAllByPost(long post_id);
 
 
 
-    @Query("from Comment c where c.body like %:name%")
-    List<Comment> findLikeName(@Param("name") String name);
+//    @Query("from Comment c where c.body like %:name%")
+//    List<Comment> findLikeName(@Param("name") String name);
 
 }
