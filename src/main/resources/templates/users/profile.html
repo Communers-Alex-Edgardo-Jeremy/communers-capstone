@@ -36,6 +36,31 @@
                         <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/post/${post.id}/edit|}">Edit</a>
                         <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/posts/${post.id}/comments|}">Read more...</a>
                     </div>
+                    <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/post/${post.id}/edit|}">Edit</a>
+                    <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
+                    <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/posts/${post.id}/comments|}">Read more...</a>
+                    <div th:each="comment : ${allComments}">
+                        <div class="comments" th:if="${comment.post == post}">
+                            <div class="" th:text="${comment.date}">(insert post body)</div>
+                            <div class="" th:text="${comment.body}">(insert post body)</div>
+                            <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/post/comment/${comment.id}/delete|}">Delete</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="">Add a comment:</h6>
+                    <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
+
+                        <label for="body-ip">Body:</label>
+                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
+
+                        <label class="pt-3" for="date-ip" hidden>Date:</label>
+                        <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                        <input type="hidden" th:field="*{id}">
+
+                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Add Comment</button>
+                    </form>
                 </div>
             </div>
         </div>

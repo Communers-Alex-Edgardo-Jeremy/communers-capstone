@@ -13,6 +13,8 @@ import com.codeup.Capstone_Communers.models.Entry;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.models.User;
 import com.codeup.Capstone_Communers.repositories.EntryRepository;
+import com.codeup.Capstone_Communers.models.Comment;
+import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,11 +34,13 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private final EntryRepository entryDao;
 
+    private CommentRepository commentDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, EntryRepository entryDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.postDao = postDao;
+        this.commentDao = commentDao;
         this.entryDao = entryDao;
     }
 
@@ -58,6 +63,12 @@ public class UserController {
     public String viewProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Post> userPosts = postDao.findAllByUser(user);
+        List<Comment> allPostsComments = new ArrayList<>();
+        for (Post userPost : userPosts) {
+            allPostsComments.addAll(commentDao.findAllByPost(userPost));
+        }
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("allComments", allPostsComments);
         model.addAttribute("user", user);
         model.addAttribute("posts", userPosts);
         return "/users/profile";
