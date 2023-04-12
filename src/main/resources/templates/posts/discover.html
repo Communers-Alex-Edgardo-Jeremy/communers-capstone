@@ -3,13 +3,35 @@
 <head th:replace="~{/partials/partials :: head}">
     <title>Discover page</title>
 </head>
-<body>
+<body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <div class="container-fluid">
+    <div class="container d-flex flex-column flex-grow-1">
+        <div class="alert alert-danger" th:if="${errMsg}">
+            Something bad happened!
+        </div>
         <h1>Welcome to our Discover page</h1>
         <p class="lead">
             Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
         </p>
+        <div class="row h-100 align-content-center my-auto pb-3" >
+            <div class="col-sm-12 col-md-6 g-3"  th:each="post : ${posts}">
+                <div class="card shadow h-100" style="">
+                    <!--            <img src="..." class="card-img-top" alt="...">-->
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title" th:text="${post.title}">(insert post title)</h5>
+                        <div class="blog-menu small-title date" th:text="${post.time}"></div>
+                        <div class="blog-menu small-title date" th:text="${post.user.username}"></div>
+        <!--                <div class="blog-detail">-->
+        <!--                    (<span th:text="${post.user.username}"></span>)-->
+        <!--                </div>-->
+                        <div class="blog-article">
+                            <p class="" th:text="${post.body}">(insert post body)</p>
+                        </div>
+                        <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/posts/discover|}">Read more...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
