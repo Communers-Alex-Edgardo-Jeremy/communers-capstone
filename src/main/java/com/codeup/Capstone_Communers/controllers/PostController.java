@@ -54,15 +54,16 @@ public class PostController {
         return "posts/forYou";
 
     }
-//    @GetMapping("/posts/{id}/comments}")
-//    public String showComments(@PathVariable long id, Model model){
-//        List <Comment> comments = commentDao.findAllById(id);
-//        Post post = postDao.findById(id);
-//        model.addAttribute("post", post);
-//        model.addAttribute("comments", comments);
-//        return "posts/comments";
-//        return
-//    }
+    @GetMapping("/post/{id}/comments")
+    public String showComments(@PathVariable long id, Model model){
+        Post post = postDao.findById(id);
+        List<Comment> comments = commentDao.findAllByPost(post);
+        model.addAttribute("post", post);
+        model.addAttribute("comments", comments);
+        return "posts/comments";
+
+    }
+
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());
