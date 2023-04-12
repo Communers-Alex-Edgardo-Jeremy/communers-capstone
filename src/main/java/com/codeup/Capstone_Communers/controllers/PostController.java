@@ -66,12 +66,10 @@ public class PostController {
     }
 
     @PostMapping("/post/{id}/comments")
-    public String addComment(@PathVariable long id, Model model, Comment comment) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        comment.setUser(user);
-
+    public String addComment(@PathVariable long id, Model model, @ModelAttribute Comment comment) {
         Post post = postDao.findById(id);
-        System.out.println("post object");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 
         System.out.println(comment.getBody());
         System.out.println(user.getUsername());

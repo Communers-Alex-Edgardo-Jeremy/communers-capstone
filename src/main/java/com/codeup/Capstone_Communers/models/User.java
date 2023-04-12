@@ -34,6 +34,10 @@ public class User {
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
+
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comment> comments;
     public User(User copy) {
         id = copy.id;
         email = copy.email;
