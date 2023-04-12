@@ -12,6 +12,7 @@
     <input type="hidden" th:field="*{time}" />
     <input type="hidden" th:field="*{id}" />
     <p><input type="submit" value="Submit" /></p>
+    <p><a th:href="@{/post/delete/{id}(id=${postId})}">Delete</a></p>
 </form>
 </body>
 </html>
