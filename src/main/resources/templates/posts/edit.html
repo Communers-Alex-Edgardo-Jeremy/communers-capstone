@@ -6,8 +6,11 @@
 </head>
 <body>
 <h2>Edit</h2>
-<!--<main class="container">-->
-<!--    <th:block th:insert="partials/dept-form :: form(${post}, '/post/' + ${department.id}, 'Edit Post')" />-->
-<!--</main>-->
+<form th:action="@{/post/${post.user.getId()}/edit}" th:object="${post}" method="post">
+    <p>Title: <input type="text" th:field="*{title}" /></p>
+    <p>Body: <input type="text" th:field="*{body}" /></p>
+    <input type="hidden" th:field="*{time}" />
+    <p><input type="submit" value="Submit" /></p>
+</form>
 </body>
 </html>
