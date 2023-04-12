@@ -36,7 +36,7 @@ public class User {
     private List<Post> posts;
 
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private List<Comment> comments;
     public User(User copy) {
         id = copy.id;

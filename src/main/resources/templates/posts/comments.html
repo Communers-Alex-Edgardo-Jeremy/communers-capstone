@@ -37,13 +37,14 @@
                     </div>
                     <div>
                         <h6 class="">Add a comment:</h6>
-                        <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" th:method="post" th:object="${comment}" th:fragment="form">
+                        <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
 
                             <label for="body-ip">Body:</label>
                             <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
 
                             <label class="pt-3" for="date-ip" hidden>Date:</label>
                             <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                            <input type="hidden" th:field="*{id}">
 
                             <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Add Comment</button>
                         </form>

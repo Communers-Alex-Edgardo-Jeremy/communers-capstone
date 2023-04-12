@@ -68,23 +68,23 @@ public class PostController {
     @PostMapping("/post/{id}/comments")
     public String addComment(@PathVariable long id, Model model, @ModelAttribute Comment comment) {
         Post post = postDao.findById(id);
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-
-        System.out.println(comment.getBody());
-        System.out.println(user.getUsername());
-
-        model.addAttribute(user);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loggedInUser.getId());
+        model.addAttribute("user", user);
 
         Date date = new Date();
-
-        System.out.println(user);
         comment.setPost(post);
+        comment.setUser(user);
         comment.setDate(date.toString());
-        System.out.println(post);
+        System.out.println(user);
         commentDao.save(comment);
+        model.addAttribute("post", post);
+        List<Comment> comments = commentDao.findAllByPost(post);
 
-        return "redirect:/post/{id}/comments";
+        model.addAttribute("comments", comments);
+        model.addAttribute("comment", new Comment());
+
+        return "/posts/comments";
     }
 
 //edit comment

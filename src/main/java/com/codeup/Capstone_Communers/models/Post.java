@@ -32,7 +32,7 @@ public class Post {
     private User user;
 
     @ToString.Exclude
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "post")
     private List<Comment> comments;
 
 //    @ManyToOne
