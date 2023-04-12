@@ -3,6 +3,8 @@ package com.codeup.Capstone_Communers.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,5 +30,8 @@ public class Entry {
     @JoinColumn (name = "user_id")
     private User user;
 
+//    @ToString.Exclude
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "entry")
+//    private List<Comment> entries;
 }
 

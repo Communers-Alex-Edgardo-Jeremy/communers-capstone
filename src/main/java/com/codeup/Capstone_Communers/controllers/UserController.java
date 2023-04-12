@@ -56,35 +56,38 @@ public class UserController {
 
     @GetMapping("/profile")
     public String viewProfile(Model model) {
-//        User user = userDao.getReferenceById(id);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Post> userPosts = postDao.findAllByUser(user);
         model.addAttribute("user", user);
         model.addAttribute("posts", userPosts);
-
         return "/users/profile";
-
 }
     @GetMapping("/journal")
     public String viewJournal(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("entry", new Entry());
         List <Entry> entries = entryDao.findAllByUser(user);
+        model.addAttribute("user", user);
         model.addAttribute("entries", entries);
         return "/users/journal";
     }
 
-    @PostMapping("/journal")
-    public String postJournal(@ModelAttribute Entry entry, Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findById(loggedInUser.getId());
-        model.addAttribute("journal", new Entry());
-        entry.setUser(user);
+    @GetMapping("/journal/addEntry")
+    public String getCreateEntry(Model model) {
+        model.addAttribute("entry", new Entry());
+        return "users/addEntry";
+    }
+    @PostMapping("/journal/addEntry")
+    public String postEntry(@ModelAttribute Entry entry, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("entry", new Entry());
         Date date = new Date();
         String stringDate = date.toString();
+        entry.setUser(user);
         entry.setDate(stringDate);
+        System.out.println(entry);
         entryDao.save(entry);
-        return "/users/journal";
+        return "redirect:/journal";
     }
     @GetMapping("/settings")
     public String viewSettings() {

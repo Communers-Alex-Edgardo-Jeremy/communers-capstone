@@ -59,6 +59,7 @@ public class SecurityConfiguration {
                         "/profile",// only authenticated users can view their profile
                         "/settings"// only authenticated users can view their settings
                         ,"/journal"//only authenticated users can view their journal
+                        ,"/journal/addEntry"//only authenticated users can edit their journal
                         , "/post/delete/{postId}"// only users can delete posts
                 )
                 .authenticated()
