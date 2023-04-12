@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -57,9 +58,57 @@ public class PostController {
         List<Comment> comments = commentDao.findAllByPost(post);
         model.addAttribute("post", post);
         model.addAttribute("comments", comments);
-        return "posts/comments";
+        model.addAttribute("comment", new Comment());
+        return "/posts/comments";
 
     }
+
+    @PostMapping("/post/{id}/comments")
+    public String addComment(@PathVariable long id, Model model, Comment comment) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        comment.setUser(user);
+
+        Post post = postDao.findById(id);
+        System.out.println("post object");
+
+        System.out.println(comment.getBody());
+        System.out.println(user.getUsername());
+
+        model.addAttribute(user);
+
+        Date date = new Date();
+
+        System.out.println(user);
+        comment.setPost(post);
+        comment.setDate(date.toString());
+        System.out.println(post);
+        commentDao.save(comment);
+
+        return "redirect:/post/{id}/comments";
+    }
+
+//edit comment
+//    @PostMapping("/post/{id}/comments")
+//    public String addComment(@PathVariable long id, Model model, Comment comment) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        comment.setUser(user);
+//
+//        Post post = postDao.findById(id);
+//        System.out.println("post object");
+//
+//        System.out.println(comment.getBody());
+//        comment.setUser(user);
+//        System.out.println(user.getUsername());
+//
+//        model.addAttribute(user);
+//
+//        System.out.println(user);
+//        comment.setPost(post);
+//        System.out.println(post);
+//        commentDao.save(comment);
+//
+//        return "redirect:/posts/{id}/comments";
+//    }
 
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
