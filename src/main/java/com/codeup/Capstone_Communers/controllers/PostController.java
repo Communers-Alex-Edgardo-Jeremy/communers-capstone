@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -74,16 +75,18 @@ public class PostController {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        post.setUser(user);
 //        postDao.save(post);
-        return "redirect:/users/profile";
+        return "redirect:/profile";
     }
 
-    @PostMapping("/posts/create")
+    @PostMapping("/post/create")
     public String postCreatePost(@ModelAttribute Post post) {
-//        List<Post> postList = new ArrayList<>();
-//        post.setUser(userDao.findById(1));
-//        emailService.prepareAndSend(post, post.getTitle(), post.getBody());
-//        postDao.save(post);
-        return "redirect:/users/profile";
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Date date = new Date();
+        String stringDate = date.toString();
+        post.setUser(user);
+        post.setTime(stringDate);
+        postDao.save(post);
+        return "redirect:/profile";
     }
 
 }
