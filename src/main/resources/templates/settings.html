@@ -33,6 +33,10 @@
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled">
             <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Targeted ads</label>
         </div>
+        <form th:action="@{/user/delete}" method="post">
+            <button class="btn btn-danger" type="submit">Delete Account</button>
+
+        </form>
     </div>
 </div>
 <footer class="" th:replace="~{/partials/partials :: footer}"></footer>
