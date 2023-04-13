@@ -22,8 +22,8 @@ class HomeController {
 //    public String viewAbout() {
 //        return "/about";
 //    }
-    @GetMapping("/resources")
-    public String viewResources() {
-        return "/resources";
-    }
+//    @GetMapping("/resources")
+//    public String viewResources() {
+//        return "/resources";
+//    }
 }
