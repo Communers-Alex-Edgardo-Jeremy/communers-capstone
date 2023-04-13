@@ -9,6 +9,8 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
+import com.codeup.Capstone_Communers.SecurityConfiguration;
+import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.models.Entry;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.models.User;
@@ -17,6 +19,9 @@ import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -155,6 +160,16 @@ public class UserController {
         model.addAttribute("user", wholeUser);
         return "/settings";
     }
-
-
+    
+    @PostMapping("/user/delete")
+    public String deleteUser(HttpServletRequest request){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDao.delete(userDao.getReferenceById(user.getId()));
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/login";
+    }
 }
