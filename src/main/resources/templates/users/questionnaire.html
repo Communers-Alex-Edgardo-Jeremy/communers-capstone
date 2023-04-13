@@ -14,22 +14,19 @@
                 <div class="card-body d-flex flex-column">
                     <h2>Questionnaire</h2>
                     <br>
-
-                    <!--                    <form class="d-flex flex-column" th:action="@{/questionnaire}" th:object="${question}"  method="post">-->
-                    <form class="d-flex flex-column" method="post">
-
+                        <form class="d-flex flex-column" th:action="@{|/questionnaire|}" method="post" th:object="${questionnaire}">
                         <div class="form-check d-flex flex-column">
                             <h5>
                                 Does rainy weather make you sad?
                             </h5>
                             <div>
-                                <input class="form-check-input" type="radio" name="weather" id="weatherY">
+                                <input class="form-check-input" value="Y" type="radio" name="weather" id="weatherY" th:field="*{answer_1}">
                                 <label class="form-check-label" for="weatherY">
                                     Yes
                                 </label>
                             </div>
                             <div>
-                                <input class="form-check-input" type="radio" name="weather" id="weatherN">
+                                <input class="form-check-input" value="N" type="radio" name="weather" id="weatherN" th:field="*{answer_1}">
                                 <label class="form-check-label" for="weatherN">
                                     No
                                 </label>
@@ -43,13 +40,13 @@
                                 Do you get seasonal depression?
                             </h5>
                             <div>
-                                <input class="form-check-input" type="radio" name="seasonalDepression" id="seasonalDepressionY">
+                                <input class="form-check-input" value="Y" type="radio" name="seasonalDepression" id="seasonalDepressionY" th:field="*{answer_2}">
                                 <label class="form-check-label" for="weatherY">
                                     Yes
                                 </label>
                             </div>
                             <div>
-                                <input class="form-check-input" type="radio" name="seasonalDepression" id="seasonalDepressionN">
+                                <input class="form-check-input" value="N" type="radio" name="seasonalDepression" id="seasonalDepressionN" th:field="*{answer_2}">
                                 <label class="form-check-label" for="weatherN">
                                     No
                                 </label>
@@ -63,13 +60,13 @@
                                 Does depression run in your family?
                             </h5>
                             <div>
-                                <input class="form-check-input" type="radio" name="familialDepression" id="familialDepressionY">
+                                <input class="form-check-input" value="Y" type="radio" name="familialDepression" id="familialDepressionY" th:field="*{answer_3}">
                                 <label class="form-check-label" for="weatherY">
                                     Yes
                                 </label>
                             </div>
                             <div>
-                                <input class="form-check-input" type="radio" name="familialDepression" id="familialDepressionN">
+                                <input class="form-check-input" value="N" type="radio" name="familialDepression" id="familialDepressionN" th:field="*{answer_3}">
                                 <label class="form-check-label" for="weatherN">
                                     No
                                 </label>
