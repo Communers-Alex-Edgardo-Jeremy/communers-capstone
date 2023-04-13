@@ -100,6 +100,25 @@ public class UserController {
         entryDao.save(entry);
         return "redirect:/journal";
     }
+
+    @GetMapping("/journal/{entryId}/edit")
+    public String editEntry(Model model, @PathVariable long entryId){
+        model.addAttribute("entry", entryDao.getReferenceById(entryId));
+        return "/users/editEntry";
+    }
+
+    @PostMapping("/journal/{entryId}/edit")
+    public String editEntry(@PathVariable long entryId, @ModelAttribute Entry editedEntry){
+        User user = userDao.findById(entryId);
+        editedEntry.setUser(user);
+        entryDao.save(editedEntry);
+        return "redirect:/journal";
+    }
+    @GetMapping("/journal/{entryId}/delete")
+    public String deleteComment(@PathVariable long entryId){
+        entryDao.delete(entryDao.getReferenceById(entryId));
+        return "redirect:/journal";
+    }
     @GetMapping("/settings")
     public String viewSettings() {
         return "/settings";
