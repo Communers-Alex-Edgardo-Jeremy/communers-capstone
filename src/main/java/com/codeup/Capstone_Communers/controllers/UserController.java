@@ -129,6 +129,15 @@ public class UserController {
         model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "/settings";
     }
+
+
+    @GetMapping("/about")
+    public String viewAboutUs(Model model) {
+        List<User> users = userDao.findAll();
+        model.addAttribute("users", users);
+        return "/about";
+    }
+
     @PostMapping("/user/edit")
     public String editUser(Model model, @ModelAttribute User user) {
         User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -146,5 +155,6 @@ public class UserController {
         model.addAttribute("user", wholeUser);
         return "/settings";
     }
+
 
 }

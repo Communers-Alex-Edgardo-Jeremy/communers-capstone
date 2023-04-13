@@ -17,10 +17,10 @@ class HomeController {
         return "/posts/discover";
     }
 
-    @GetMapping("/about")
-    public String viewAbout() {
-        return "/about";
-    }
+//    @GetMapping("/about")
+//    public String viewAbout() {
+//        return "/about";
+//    }
     @GetMapping("/resources")
     public String viewResources() {
         return "/resources";
