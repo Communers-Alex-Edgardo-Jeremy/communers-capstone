@@ -58,6 +58,8 @@ public class SecurityConfiguration {
                         "/forYou",// only authenticated users can view all posts
                         "/profile",// only authenticated users can view their profile
                         "/settings",// only authenticated users can view their settings
+                        "/chats",// only authenticated users can view their chats
+                        "/loggedInChatUser",
                         "/journal",//only authenticated users can view their journal
                         "/journal/addEntry",//only authenticated users can edit their journal
                         "/journal/{entryId}/edit",// only users can edit entries

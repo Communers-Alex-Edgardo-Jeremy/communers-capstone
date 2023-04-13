@@ -19,6 +19,7 @@ import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.context.SecurityContext;
@@ -141,6 +142,28 @@ public class UserController {
         List<User> users = userDao.findAll();
         model.addAttribute("users", users);
         return "/about";
+    }
+    
+    @GetMapping("/resources")
+    public String viewResources() {
+        return "/resources";
+    }
+    
+    @GetMapping("/chats")
+    public String viewChats() {
+        return "/users/chats";
+    }
+
+
+//    TalkJS mapping
+    @GetMapping(value = "/loggedInChatUser", produces = "application/json")
+    @ResponseBody
+    public String loggedInChatUser() {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Gson gson = new Gson();
+        User chatUser = userDao.findById(loggedInUser.getId());
+        System.out.println(gson.toJson(chatUser));
+        return gson.toJson(chatUser);
     }
 
     @PostMapping("/user/edit")
