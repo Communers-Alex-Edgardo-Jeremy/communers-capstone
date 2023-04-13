@@ -9,22 +9,30 @@
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
-    <h1>Welcome to your Edit Entry page</h1>
+    <h1>Edit Entries</h1>
     <p class="lead">
         Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
     </p>
-    <div class="row h-100 align-content-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-12 g-3">
+    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
+        <div class="col-sm-12 col-md-6 g-3">
             <div class="card shadow h-100" style="">
                 <div class="card-body d-flex flex-column">
                     <h2>Edit Journal Entry</h2>
-                    <form th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
-                        <p>Title: <input type="text" th:field="*{title}" /></p>
-                        <p>Body: <input type="text" th:field="*{body}" /></p>
+                    <form class="d-flex flex-column" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
+
+                        <label for="entryTitle">Title</label>
+                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+
+                        <label for="body-ip">Body:</label>
+                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+
                         <input type="hidden" th:field="*{date}" />
-                        <input type="hidden" th:field="*{id}" />
-                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Save Changes</button>
-                        <a class="btn btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                        <input type="hidden" th:field="*{id}">
+
+                        <div>
+                            <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Save Changes</button>
+                            <a class="btn btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                        </div>
                     </form>
                 </div>
                 </div>
