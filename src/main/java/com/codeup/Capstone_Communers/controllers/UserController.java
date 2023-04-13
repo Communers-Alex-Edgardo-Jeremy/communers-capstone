@@ -125,6 +125,7 @@ public class UserController {
 //        entryDao.save(editedEntry);
         return "redirect:/journal";
     }
+
     @GetMapping("/journal/{entryId}/delete")
     public String deleteComment(@PathVariable long entryId){
         entryDao.delete(entryDao.getReferenceById(entryId));
@@ -164,6 +165,22 @@ public class UserController {
         User chatUser = userDao.findById(loggedInUser.getId());
         System.out.println(gson.toJson(chatUser));
         return gson.toJson(chatUser);
+    }
+
+    @PostMapping("/follow/{postId}")
+    public String followUser(@PathVariable long postId, Model model){
+        User followee = postDao.findById(postId).getUser();
+        List <User> followers;
+        try{
+            followers = followee.getFollowers();
+        } catch (NullPointerException e){
+            followers = new ArrayList<>();
+        }
+        followers.add((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        followee.setFollowers(followers);
+        userDao.save(followee);
+        model.addAttribute("user", new User());
+        return "redirect:/forYou";
     }
 
     @PostMapping("/user/edit")

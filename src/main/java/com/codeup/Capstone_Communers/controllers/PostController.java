@@ -41,6 +41,7 @@ public class PostController {
     public String showForYou(Model model){
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
+        model.addAttribute("user", new User());
         return "posts/forYou";
 
     }
