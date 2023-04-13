@@ -125,9 +125,11 @@ public class UserController {
         return "redirect:/journal";
     }
     @GetMapping("/settings")
-    public String viewSettings() {
+    public String viewSettings(Model model) {
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "/settings";
     }
+
 
     @GetMapping("/about")
     public String viewAboutUs(Model model) {
@@ -135,4 +137,24 @@ public class UserController {
         model.addAttribute("users", users);
         return "/about";
     }
+
+    @PostMapping("/user/edit")
+    public String editUser(Model model, @ModelAttribute User user) {
+        User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User wholeUser = userDao.findById(oldUserDetails.getId());
+        try{
+            wholeUser.setFirst_name(user.getFirst_name());
+            wholeUser.setLast_name(user.getLast_name());
+            wholeUser.setEmail(user.getEmail());
+            wholeUser.setUsername(user.getUsername());
+            wholeUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        userDao.save(wholeUser);
+        model.addAttribute("user", wholeUser);
+        return "/settings";
+    }
+
+
 }

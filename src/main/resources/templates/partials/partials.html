@@ -45,7 +45,14 @@
         </div>
     </div>
 </nav>
-
+<script th:fragment="script">
+    "use strict";
+    document.getElementById("delete-button").addEventListener("click", function(e) {
+        if(!confirm("Confirm Deletion?")){
+            e.preventDefault();
+        }
+    })
+</script>
 <footer class="footer-dark 100vw" th:fragment="footer">
     <div class="row py-3 m-0 w-100">
         <div class="col-sm-6 col-md-3 item">
