@@ -9,10 +9,11 @@
     <h1>Settings</h1>
     <div class="settings" sec:authorize="isAuthenticated()">
         <form th:action="@{/user/edit}" th:object="${user}" method="post">
-            <p>Username: <input type="text" th:field="*{username}" th:value="*{username}" /></p>
-            <p>First Name: <input type="text" th:field="*{first_name}" th:value="*{first_name}" /></p>
-            <p>Last Name: <input type="text" th:field="*{last_name}" th:value="*{last_name}" /></p>
-            <p>Email: <input type="text" th:field="*{email}" th:value="*{email}" /></p>
+            <p>Username: <input type="text" th:field="*{username}"  /></p>
+            <p>First Name: <input type="text" th:field="*{first_name}" /></p>
+            <p>Last Name: <input type="text" th:field="*{last_name}"  /></p>
+            <p>Email: <input type="text" th:field="*{email}"  /></p>
+            <p>New Password: <input type="password" th:field="*{password}" th:value="*{null}" /></p>
             <input type="hidden" th:field="*{id}" th:value="*{id}">
             <p><input type="submit" value="Submit" /></p>
         </form>

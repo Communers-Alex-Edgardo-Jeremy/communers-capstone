@@ -85,10 +85,15 @@ public class UserController {
     public String editUser(Model model, @ModelAttribute User user) {
         User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User wholeUser = userDao.findById(oldUserDetails.getId());
-        wholeUser.setFirst_name(user.getFirst_name());
-        wholeUser.setLast_name(user.getLast_name());
-        wholeUser.setEmail(user.getEmail());
-        wholeUser.setUsername(user.getUsername());
+        try{
+            wholeUser.setFirst_name(user.getFirst_name());
+            wholeUser.setLast_name(user.getLast_name());
+            wholeUser.setEmail(user.getEmail());
+            wholeUser.setUsername(user.getUsername());
+            wholeUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
         userDao.save(wholeUser);
         model.addAttribute("user", wholeUser);
         return "/settings";
