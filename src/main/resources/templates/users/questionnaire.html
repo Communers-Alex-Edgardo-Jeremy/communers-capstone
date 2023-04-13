@@ -1,60 +1,91 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html xmlns:th="http://www.thymeleaf.org" lang="" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{/partials/partials :: head}">
     <meta charset="UTF-8">
     <title>Questionnaire</title>
 </head>
-<body>
+<body class="d-flex flex-column">
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div class="container d-flex flex-column flex-grow-1" th:object="${user}">
+    <!--  append community bio into p element   -->
+    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
+        <div class="col-sm-12 col-md-6 g-3">
+            <div class="card shadow h-100" style="">
+                <div class="card-body d-flex flex-column">
+                    <h2>Questionnaire</h2>
+                    <br>
 
-<h1>Questionnaire I</h1>
+                    <!--                    <form class="d-flex flex-column" th:action="@{/questionnaire}" th:object="${question}"  method="post">-->
+                    <form class="d-flex flex-column" method="post">
 
-    <p>Question 1 Y or N</p>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                        <div class="form-check d-flex flex-column">
+                            <h5>
+                                Does rainy weather make you sad?
+                            </h5>
+                            <div>
+                                <input class="form-check-input" type="radio" name="weather" id="weatherY">
+                                <label class="form-check-label" for="weatherY">
+                                    Yes
+                                </label>
+                            </div>
+                            <div>
+                                <input class="form-check-input" type="radio" name="weather" id="weatherN">
+                                <label class="form-check-label" for="weatherN">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="form-check d-flex flex-column">
+                            <h5>
+                                Do you get seasonal depression?
+                            </h5>
+                            <div>
+                                <input class="form-check-input" type="radio" name="seasonalDepression" id="seasonalDepressionY">
+                                <label class="form-check-label" for="weatherY">
+                                    Yes
+                                </label>
+                            </div>
+                            <div>
+                                <input class="form-check-input" type="radio" name="seasonalDepression" id="seasonalDepressionN">
+                                <label class="form-check-label" for="weatherN">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="form-check d-flex flex-column">
+                            <h5>
+                                Does depression run in your family?
+                            </h5>
+                            <div>
+                                <input class="form-check-input" type="radio" name="familialDepression" id="familialDepressionY">
+                                <label class="form-check-label" for="weatherY">
+                                    Yes
+                                </label>
+                            </div>
+                            <div>
+                                <input class="form-check-input" type="radio" name="familialDepression" id="familialDepressionN">
+                                <label class="form-check-label" for="weatherN">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!--                        <input type="hidden" th:field="*{time}" />-->
+<!--                        <input type="hidden" th:field="*{id}">-->
+                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Submit Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-    </div>
-
-    <br>
-    <hr>
-    <br>
-
-<h1>Questionnaire II</h1>
-<p>Question 2 Y or N</p>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-    </div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch">
-        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-    </div>
-
-    <br>
-    <hr>
-    <br>
-
-<h1>Questionnaire III</h1>
-<p>Question 3 Y or N</p>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-    </div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch">
-        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-    </div>
-
-    <br>
-    <hr>
-    <br>
-
-<input class="mt-3 btn btn-outline-secondary me-auto" type="submit" value="Submit"/>
-<input class="mt-3 btn btn-outline-secondary me-auto" type="submit" value="Cancel"/>
-
-<footer class="" th:replace="~{/partials/partials :: footer}"></footer>
+</div>
+<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
