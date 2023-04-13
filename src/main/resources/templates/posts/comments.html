@@ -9,32 +9,41 @@
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
-    <h1>Welcome to your Comments page</h1>
+    <h1>Comments page</h1>
     <p class="lead">
         Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
     </p>
-    <div class="row h-100 align-content-center my-auto pb-3" sec:authorize="isAuthenticated()">
+    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-md-6 g-3">
             <div class="card shadow h-100" style="">
-                <!--            <img src="..." class="card-img-top" alt="...">-->
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title" th:text="${post.title}">(insert post title)</h5>
+                    <p class="card-title" th:text="${post.user.email}">(insert post title)</p>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
-                    <!--                <div class="blog-detail">-->
-                    <!--                    (<span th:text="${post.user.username}"></span>)-->
-                    <!--                </div>-->
                     <div class="blog-article">
                         <p class="" th:text="${post.body}">(insert post body)</p>
                     </div>
                 </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title" th:text="${post.user.email}">(insert post title)</h5>
-<!--                    <div class="blog-menu small-title date" th:text="${post.commment.body}"></div>-->
-                    <!--                <div class="blog-detail">-->
-                    <!--                    (<span th:text="${post.user.username}"></span>)-->
-                    <!--                </div>-->
-                    <div class="blog-article" th:each="comment : ${comments}">
-                        <p class="" th:text="${comment.body}">(insert post body)</p>
+                <div class="card-body d-flex flex-column ms-3">
+                    <h6 class="">Comments</h6>
+                    <div class="comments" th:each="comment : ${comments}">
+                        <div class="" th:text="${comment.date}">(insert post body)</div>
+                        <div class="" th:text="${comment.body}">(insert post body)</div>
+                        <br>
+                    </div>
+                    <div>
+                        <h6 class="">Add a comment:</h6>
+                        <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
+
+                            <label for="body-ip">Body:</label>
+                            <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
+
+                            <label class="pt-3" for="date-ip" hidden>Date:</label>
+                            <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                            <input type="hidden" th:field="*{id}">
+
+                            <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Add Comment</button>
+                        </form>
                     </div>
                 </div>
             </div>
