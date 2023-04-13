@@ -29,9 +29,5 @@ public class Entry {
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
-
-//    @ToString.Exclude
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "entry")
-//    private List<Comment> entries;
 }
 

@@ -56,6 +56,7 @@ public class SecurityConfiguration {
                         "/post/{id}/edit", // only authenticated users can edit posts
                         "/post/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
+                        "/questionnaire",// only authenticated users can submit a questionnaire
                         "/profile",// only authenticated users can view their profile
                         "/settings",// only authenticated users can view their settings
                         "/chats",// only authenticated users can view their chats
@@ -75,7 +76,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
 
-                .requestMatchers("/", "/posts",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
+                .requestMatchers("/", "/posts",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
 
                 .permitAll();
         return http.build();

@@ -109,8 +109,6 @@ public class UserController {
     public String editEntry(Model model, @PathVariable long entryId){
         Entry entry = entryDao.findById(entryId);
         model.addAttribute("entry", entry);
-
-//        model.addAttribute("entry", entryDao.getReferenceById(entryId));
         return "/users/editEntry";
     }
     @PostMapping("/journal/{entryId}/edit")
@@ -119,10 +117,6 @@ public class UserController {
         entry.setId(entry.getId());
         entry.setUser(ogEntry.getUser());
         entryDao.save(entry);
-//
-//        User user = userDao.findById(entryId);
-//        editedEntry.setUser(user);
-//        entryDao.save(editedEntry);
         return "redirect:/journal";
     }
     @GetMapping("/journal/{entryId}/delete")
@@ -136,19 +130,6 @@ public class UserController {
         return "/settings";
     }
 
-
-    @GetMapping("/about")
-    public String viewAboutUs(Model model) {
-        List<User> users = userDao.findAll();
-        model.addAttribute("users", users);
-        return "/about";
-    }
-    
-    @GetMapping("/resources")
-    public String viewResources() {
-        return "/resources";
-    }
-    
     @GetMapping("/chats")
     public String viewChats() {
         return "/users/chats";
@@ -194,5 +175,23 @@ public class UserController {
             throw new RuntimeException(e);
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/questionnaire")
+    public String viewQuestionnaire(Model model) {
+        model.addAttribute("entry", new Entry());
+        return "users/questionnaire";
+    }
+    @PostMapping("/questionnaire")
+    public String postQuestionnaire(@ModelAttribute Entry entry, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("entry", new Entry());
+        Date date = new Date();
+        String stringDate = date.toString();
+        entry.setUser(user);
+        entry.setDate(stringDate);
+        System.out.println(entry);
+        entryDao.save(entry);
+        return "redirect:/discover";
     }
 }

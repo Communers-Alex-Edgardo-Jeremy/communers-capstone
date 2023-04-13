@@ -81,14 +81,16 @@ public class PostController {
     }
     @GetMapping("/post/{postId}/edit")
     public String editPost(Model model, @PathVariable long postId){
-        model.addAttribute("post", postDao.getReferenceById(postId));
+        Post post = postDao.findById(postId);
+        model.addAttribute("post", post);
         return "/posts/edit";
     }
     @PostMapping("/post/{postId}/edit")
-    public String editPost(@PathVariable long postId, @ModelAttribute Post editedpost){
-        User user = userDao.findById(postId);
-        editedpost.setUser(user);
-        postDao.save(editedpost);
+    public String editPost(@PathVariable long postId, @ModelAttribute Post post){
+        Post ogPost = postDao.findById(postId);
+        post.setId(post.getId());
+        post.setUser(ogPost.getUser());
+        postDao.save(post);
         return "redirect:/profile";
     }
     @GetMapping("/post/{postId}/delete")
