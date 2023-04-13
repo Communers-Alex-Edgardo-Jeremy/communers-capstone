@@ -57,12 +57,15 @@ public class SecurityConfiguration {
                         "/post/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
                         "/profile",// only authenticated users can view their profile
-                        "/settings"// only authenticated users can view their settings
-                        ,"/journal"//only authenticated users can view their journal
-                        , "/post/{postId}/delete"// only users can delete posts
-                        , "/post/comment/{commentId}/delete" // only users can delete comments from their own posts
-                        , "/user/edit" // only users can edit their profiles
-                        , "/user/delete" //only users can delete their account
+                        "/settings",// only authenticated users can view their settings
+                        "/journal",//only authenticated users can view their journal
+                        "/journal/addEntry",//only authenticated users can edit their journal
+                        "/journal/{entryId}/edit",// only users can edit entries
+                        "/journal/{entryId}/delete",// only users can delete entries
+                        "/post/{postId}/delete",// only users can delete posts
+                        "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
+                        "/user/edit", // only users can edit their profiles
+                        "/user/delete" //only users can delete their account
                 )
                 .authenticated()
 

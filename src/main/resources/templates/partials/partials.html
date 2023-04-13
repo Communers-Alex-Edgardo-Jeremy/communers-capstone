@@ -29,9 +29,6 @@
                 <li class="px-2" sec:authorize="isAuthenticated()"><a href="/journal">My Journal</a></li>
                 <li class="px-2" sec:authorize="isAuthenticated()"><a href="/settings">Settings</a></li>
             </ul>
-            <div class="greeting" sec:authorize="isAuthenticated()">
-                Hello, <span th:text="${#authentication.principal.username}"/>
-            </div>
             <form class="d-flex ms-auto">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>

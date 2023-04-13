@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{/partials/partials :: head}">
     <title>Discover page</title>
 </head>
@@ -9,7 +9,10 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <h1>Welcome to our Discover page</h1>
+        <div class="" >
+
+        </div>
+        <h1 sec:authorize="isAuthenticated()">Hello <span th:text="${#authentication.principal.username}"/>, welcome to our Discover page</h1>
         <p class="lead">
             Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
         </p>
