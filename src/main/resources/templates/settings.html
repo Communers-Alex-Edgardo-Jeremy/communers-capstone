@@ -8,6 +8,14 @@
 <div class="container d-flex flex-column flex-grow-1">
     <h1>Settings</h1>
     <div class="settings" sec:authorize="isAuthenticated()">
+        <form th:action="@{/user/edit}" th:object="${user}" method="post">
+            <p>Username: <input type="text" th:field="*{username}" th:value="*{username}" /></p>
+            <p>First Name: <input type="text" th:field="*{first_name}" th:value="*{first_name}" /></p>
+            <p>Last Name: <input type="text" th:field="*{last_name}" th:value="*{last_name}" /></p>
+            <p>Email: <input type="text" th:field="*{email}" th:value="*{email}" /></p>
+            <input type="hidden" th:field="*{id}" th:value="*{id}">
+            <p><input type="submit" value="Submit" /></p>
+        </form>
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
             <label class="form-check-label" for="flexSwitchCheckDefault">Custom greetings</label>
