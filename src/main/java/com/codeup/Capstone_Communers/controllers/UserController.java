@@ -82,7 +82,6 @@ public class UserController {
         model.addAttribute("entries", entries);
         return "/users/journal";
     }
-
     @GetMapping("/journal/addEntry")
     public String getCreateEntry(Model model) {
         model.addAttribute("entry", new Entry());
@@ -98,6 +97,31 @@ public class UserController {
         entry.setDate(stringDate);
         System.out.println(entry);
         entryDao.save(entry);
+        return "redirect:/journal";
+    }
+    @GetMapping("/journal/{entryId}/edit")
+    public String editEntry(Model model, @PathVariable long entryId){
+        Entry entry = entryDao.findById(entryId);
+        model.addAttribute("entry", entry);
+
+//        model.addAttribute("entry", entryDao.getReferenceById(entryId));
+        return "/users/editEntry";
+    }
+    @PostMapping("/journal/{entryId}/edit")
+    public String editEntry(@PathVariable long entryId, @ModelAttribute Entry entry){
+        Entry ogEntry = entryDao.findById(entryId);
+        entry.setId(entry.getId());
+        entry.setUser(ogEntry.getUser());
+        entryDao.save(entry);
+//
+//        User user = userDao.findById(entryId);
+//        editedEntry.setUser(user);
+//        entryDao.save(editedEntry);
+        return "redirect:/journal";
+    }
+    @GetMapping("/journal/{entryId}/delete")
+    public String deleteComment(@PathVariable long entryId){
+        entryDao.delete(entryDao.getReferenceById(entryId));
         return "redirect:/journal";
     }
     @GetMapping("/settings")

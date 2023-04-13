@@ -5,7 +5,7 @@
     <title>Edit</title>
 </head>
 <body>
-<h2>Edit</h2>
+<h2>Edit Post</h2>
 <form th:action="@{|/post/${post.user.getId()}/edit|}" th:object="${post}" method="post">
     <p>Title: <input type="text" th:field="*{title}" /></p>
     <p>Body: <input type="text" th:field="*{body}" /></p>
