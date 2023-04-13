@@ -127,5 +127,12 @@ public class UserController {
     @GetMapping("/settings")
     public String viewSettings() {
         return "/settings";
-}
+    }
+
+    @GetMapping("/about")
+    public String viewAboutUs(Model model) {
+        List<User> users = userDao.findAll();
+        model.addAttribute("users", users);
+        return "/about";
+    }
 }

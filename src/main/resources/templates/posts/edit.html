@@ -9,15 +9,12 @@
 
 <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
     <!--  append community bio into p element   -->
-    <h1>Journal Entries</h1>
-    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fugit harum magnam minima modi molestias quo
-        rerum sed! Neque, quisquam?</p>
     <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-md-6 g-3"  >
             <div class="card shadow h-100" style="">
                 <div class="card-body d-flex flex-column">
                     <h2>Edit Post</h2>
-                    <form class="d-flex flex-column" th:action="@{|/post/${post.user.getId()}/edit|}" th:object="${post}"  method="post">
+                    <form class="d-flex flex-column" th:action="@{|/post/${post.getId()}/edit|}" th:object="${post}"  method="post">
                         <label for="entryTitle">Title</label>
                         <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
@@ -26,13 +23,17 @@
 
                         <input type="hidden" th:field="*{time}" />
                         <input type="hidden" th:field="*{id}">
-                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Save Changes</button>
-                        <a class="btn btn-outline-danger me-auto mt-auto" th:href="@{/post/delete/{id}(id=${postId})}">Delete</a>
+
+                        <div>
+                            <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Save Changes</button>
+                            <a class="btn btn-outline-danger me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
