@@ -82,7 +82,6 @@ public class UserController {
         model.addAttribute("entries", entries);
         return "/users/journal";
     }
-
     @GetMapping("/journal/addEntry")
     public String getCreateEntry(Model model) {
         model.addAttribute("entry", new Entry());
@@ -100,18 +99,24 @@ public class UserController {
         entryDao.save(entry);
         return "redirect:/journal";
     }
-
     @GetMapping("/journal/{entryId}/edit")
     public String editEntry(Model model, @PathVariable long entryId){
-        model.addAttribute("entry", entryDao.getReferenceById(entryId));
+        Entry entry = entryDao.findById(entryId);
+        model.addAttribute("entry", entry);
+
+//        model.addAttribute("entry", entryDao.getReferenceById(entryId));
         return "/users/editEntry";
     }
-
     @PostMapping("/journal/{entryId}/edit")
-    public String editEntry(@PathVariable long entryId, @ModelAttribute Entry editedEntry){
-        User user = userDao.findById(entryId);
-        editedEntry.setUser(user);
-        entryDao.save(editedEntry);
+    public String editEntry(@PathVariable long entryId, @ModelAttribute Entry entry){
+        Entry ogEntry = entryDao.findById(entryId);
+        entry.setId(entry.getId());
+        entry.setUser(ogEntry.getUser());
+        entryDao.save(entry);
+//
+//        User user = userDao.findById(entryId);
+//        editedEntry.setUser(user);
+//        entryDao.save(editedEntry);
         return "redirect:/journal";
     }
     @GetMapping("/journal/{entryId}/delete")

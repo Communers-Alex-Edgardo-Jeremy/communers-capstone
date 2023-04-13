@@ -26,22 +26,17 @@ public class PostController {
     private final CommentRepository commentDao;
     private final UserRepository userDao;
 
-
     public PostController(UserRepository userDao,  PostRepository postDao, CommentRepository commentDao) {
-
         this.userDao = userDao;
         this.postDao = postDao;
         this.commentDao = commentDao;
     }
-
     @GetMapping("/discover")
     public String all(Model model) {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
-//        List<Post> somePosts = postDao.findLikeName("a");
         return "posts/discover";
     }
-
     @GetMapping("/forYou")
     public String showForYou(Model model){
         List<Post> posts = postDao.findAll();
@@ -59,7 +54,6 @@ public class PostController {
         return "/posts/comments";
 
     }
-
     @PostMapping("/post/{id}/comments")
     public String addComment(@PathVariable long id, Model model, @ModelAttribute Comment comment) {
         Post post = postDao.findById(id);
@@ -80,7 +74,6 @@ public class PostController {
 
         return "/posts/comments";
     }
-
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         model.addAttribute("post", new Post());
@@ -91,7 +84,6 @@ public class PostController {
         model.addAttribute("post", postDao.getReferenceById(postId));
         return "/posts/edit";
     }
-
     @PostMapping("/post/{postId}/edit")
     public String editPost(@PathVariable long postId, @ModelAttribute Post editedpost){
         User user = userDao.findById(postId);
@@ -99,19 +91,16 @@ public class PostController {
         postDao.save(editedpost);
         return "redirect:/profile";
     }
-
     @GetMapping("/post/{postId}/delete")
     public String deletePost(@PathVariable long postId){
         postDao.delete(postDao.getReferenceById(postId));
         return "redirect:/profile";
     }
-
     @GetMapping("/post/comment/{commentId}/delete")
     public String deleteComment(@PathVariable long commentId){
         commentDao.delete(commentDao.getReferenceById(commentId));
         return "redirect:/profile";
     }
-
     @PostMapping("/post/create")
     public String postCreatePost(@ModelAttribute Post post) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -122,5 +111,4 @@ public class PostController {
         postDao.save(post);
         return "redirect:/profile";
     }
-
 }
