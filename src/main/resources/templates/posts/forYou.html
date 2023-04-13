@@ -17,6 +17,10 @@
         <div class="col-sm-12 col-md-6 g-3"  th:each="post : ${posts}">
             <div class="card shadow h-100" style="">
                 <div class="card-body d-flex flex-column">
+                    <form class="d-inline" th:action="@{|/follow/${post.getId()}|}" method="post">
+                        <button class="btn btn-secondary" type="submit">Follow</button>
+                    </form>
+                    <p th:text></p>
                     <h5 class="card-title" th:text="${post.title}">(insert post title)</h5>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
                     <div class="blog-article">
