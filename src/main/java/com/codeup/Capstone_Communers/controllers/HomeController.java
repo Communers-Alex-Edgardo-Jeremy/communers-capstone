@@ -16,4 +16,5 @@ class HomeController {
     public String loginSuccess() {
         return "/posts/discover";
     }
+
 }

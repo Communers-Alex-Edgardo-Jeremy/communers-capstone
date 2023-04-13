@@ -57,7 +57,9 @@ public class SecurityConfiguration {
                         "/posts/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
                         "/profile",// only authenticated users can view their profile
-                        "/settings"// only authenticated users can view their settings
+                        "/settings",// only authenticated users can view their settings
+                        "/chats",// only authenticated users can view their chats
+                        "/loggedInChatUser"
                 )
                 .authenticated()
 

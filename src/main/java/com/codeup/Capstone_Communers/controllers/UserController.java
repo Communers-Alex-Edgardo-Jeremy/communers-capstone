@@ -13,6 +13,8 @@ import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.models.User;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
+import com.google.gson.Gson;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -72,4 +74,21 @@ public class UserController {
     public String viewResources() {
         return "/resources";
 }
+    @GetMapping("/chats")
+    public String viewChats() {
+        return "/users/chats";
+    }
+
+
+//    TalkJS mapping
+    @GetMapping(value = "/loggedInChatUser", produces = "application/json")
+    @ResponseBody
+    public String loggedInChatUser() {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Gson gson = new Gson();
+        User chatUser = userDao.findById(loggedInUser.getId());
+        System.out.println(gson.toJson(chatUser));
+        return gson.toJson(chatUser);
+    }
+
 }
