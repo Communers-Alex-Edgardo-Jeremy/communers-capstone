@@ -42,6 +42,15 @@ public class User {
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
+            name="user_community",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="community_id")}
+    )
+    private List <Community> communities;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
             name="follows",
             joinColumns={@JoinColumn(name="followee")},
             inverseJoinColumns={@JoinColumn(name="follower")}
