@@ -17,7 +17,6 @@ class HomeController {
     public String loginSuccess() {
         return "/posts/discover";
     }
-
     @GetMapping("/about")
     public String viewAbout() {
         return "/about";
@@ -26,4 +25,5 @@ class HomeController {
     public String viewResources() {
         return "/resources";
     }
+
 }

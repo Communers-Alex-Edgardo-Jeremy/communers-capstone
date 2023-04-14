@@ -41,6 +41,34 @@ public class User {
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private List<Comment> comments;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="user_community",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="community_id")}
+    )
+    private List <Community> communities;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="follows",
+            joinColumns={@JoinColumn(name="followee")},
+            inverseJoinColumns={@JoinColumn(name="follower")}
+    )
+    private List <User> followers;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="follows",
+            joinColumns={@JoinColumn(name="follower")},
+            inverseJoinColumns={@JoinColumn(name="followee")}
+    )
+    private List <User> followee;
+
     public User(User copy) {
         id = copy.id;
         email = copy.email;

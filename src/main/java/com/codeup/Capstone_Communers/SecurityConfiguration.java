@@ -70,15 +70,19 @@ public class SecurityConfiguration {
                         "/post/{postId}/delete",// only users can delete posts
                         "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
                         "/user/edit", // only users can edit their profiles
-                        "/user/delete" //only users can delete their account
+                        "/user/delete", //only users can delete their account
+                        "/follow/{postId}", //only users can follow other users
+                        "/communities", // only users can browse communities
+                        "/community/{communityId}" // only users can view specific communities
                 )
                 .authenticated()
 
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
+                
+                .requestMatchers("/", "/posts", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
 
-                .requestMatchers("/", "/posts",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
 
                 .permitAll();
         return http.build();
