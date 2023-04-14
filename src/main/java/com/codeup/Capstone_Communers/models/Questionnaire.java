@@ -26,8 +26,7 @@ public class Questionnaire {
     @Column(nullable = false)
     private String answer_3;
 
-    @ManyToOne
-    @JoinColumn (name = "user_id")
+    @OneToOne
     private User user;
 }
 

@@ -40,7 +40,7 @@ public class SecurityConfiguration {
 
                 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-                .defaultSuccessUrl("/discover", true) // user's home page, it can be any URL
+                .defaultSuccessUrl("/questionnaire", true) // user's home page, it can be any URL
 
                 .permitAll() // Anyone can go to the login page
 

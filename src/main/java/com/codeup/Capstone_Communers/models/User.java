@@ -31,6 +31,9 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
+    @OneToOne
+    private Questionnaire questionnaire;
+
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;

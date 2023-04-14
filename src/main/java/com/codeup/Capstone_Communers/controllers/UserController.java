@@ -176,33 +176,38 @@ public class UserController {
 
     @GetMapping("/questionnaire")
     public String viewQuestionnaire(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fullUser = userDao.findById(user.getId());
 
         //for login questionaire redirect
-        //        Questionnaire userQuestionnaire = questionnaireDao.findById(user.getId());
+//                Questionnaire userQuestionnaire = questionnaireDao.findById(user.getId());
 //        System.out.println(userQuestionnaire);
 
-//        if (userQuestionnaire == null) {
-//            model.addAttribute("questionnaire", new Questionnaire());
-//            return "/users/questionnaire";
-//        } else {
-//            return "redirect:/discover";
-//        }
+        if (fullUser.getQuestionnaire() == null) {
+            model.addAttribute("questionnaire", new Questionnaire());
+            System.out.println(fullUser);
+            return "/users/questionnaire";
+        } else {
+            return "redirect:/discover";
+        }
 
 
-        model.addAttribute("questionnaire", new Questionnaire());
-        return "/users/questionnaire";
+//        model.addAttribute("questionnaire", new Questionnaire());
+//        return "/users/questionnaire";
     }
     @PostMapping("/questionnaire")
-    public String postQuestionnaire(@ModelAttribute Questionnaire questionnaire, Model model) {
+    public String postQuestionnaire(@ModelAttribute Questionnaire questionnaire) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("questionnaire", new Questionnaire());
+        User fullUser = userDao.findById(user.getId());
+//        model.addAttribute("questionnaire", new Questionnaire());
+//        questionnaire.setAnswer_1(questionnaire.getAnswer_1());
+//        questionnaire.setAnswer_2(questionnaire.getAnswer_2());
+//        questionnaire.setAnswer_3(questionnaire.getAnswer_3());
 
-        questionnaire.setAnswer_1(questionnaire.getAnswer_1());
-        questionnaire.setAnswer_2(questionnaire.getAnswer_2());
-        questionnaire.setAnswer_3(questionnaire.getAnswer_3());
-
-        questionnaire.setUser(user);
+        questionnaire.setUser(fullUser);
         questionnaireDao.save(questionnaire);
+        fullUser.setQuestionnaire(questionnaire);
+        userDao.save(fullUser);
         return "redirect:/discover";
     }
 }
