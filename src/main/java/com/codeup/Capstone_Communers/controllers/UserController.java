@@ -14,6 +14,7 @@ import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
 import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
+import com.mysql.cj.PreparedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.context.SecurityContext;
@@ -50,7 +51,7 @@ public class UserController {
     public String showSignupForm(Model model){
 
         model.addAttribute("user", new com.codeup.Capstone_Communers.models.User());
-        return "users/register";
+        return "/users/register";
     }
 
     @PostMapping("/register")
@@ -58,7 +59,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/questionnaire";
     }
 
     @GetMapping("/profile")
@@ -175,23 +176,30 @@ public class UserController {
 
     @GetMapping("/questionnaire")
     public String viewQuestionnaire(Model model) {
+
+        //for login questionaire redirect
+        //        Questionnaire userQuestionnaire = questionnaireDao.findById(user.getId());
+//        System.out.println(userQuestionnaire);
+
+//        if (userQuestionnaire == null) {
+//            model.addAttribute("questionnaire", new Questionnaire());
+//            return "/users/questionnaire";
+//        } else {
+//            return "redirect:/discover";
+//        }
+
+
         model.addAttribute("questionnaire", new Questionnaire());
         return "/users/questionnaire";
     }
     @PostMapping("/questionnaire")
     public String postQuestionnaire(@ModelAttribute Questionnaire questionnaire, Model model) {
-        System.out.println("test01");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("test02");
         model.addAttribute("questionnaire", new Questionnaire());
-        System.out.println("test03");
 
         questionnaire.setAnswer_1(questionnaire.getAnswer_1());
-        System.out.println(questionnaire.getAnswer_1());
         questionnaire.setAnswer_2(questionnaire.getAnswer_2());
-        System.out.println(questionnaire.getAnswer_2());
         questionnaire.setAnswer_3(questionnaire.getAnswer_3());
-        System.out.println(questionnaire.getAnswer_3());
 
         questionnaire.setUser(user);
         questionnaireDao.save(questionnaire);
