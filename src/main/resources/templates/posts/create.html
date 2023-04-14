@@ -8,9 +8,6 @@
 
 <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
     <!--  append community bio into p element   -->
-    <h1>Journal Entries</h1>
-    <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fugit harum magnam minima modi molestias quo
-        rerum sed! Neque, quisquam?</p>
     <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-md-6 g-3"  >
             <div class="card shadow h-100" style="">

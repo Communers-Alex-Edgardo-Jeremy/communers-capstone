@@ -38,7 +38,9 @@ public class SecurityConfiguration {
                 .formLogin()
                 .loginPage("/login")
 
-                .defaultSuccessUrl("/discover", true) // user's home page, it can be any URL
+                //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+                .defaultSuccessUrl("/questionnaire", true) // user's home page, it can be any URL
 
                 .permitAll() // Anyone can go to the login page
 
@@ -56,6 +58,7 @@ public class SecurityConfiguration {
                         "/post/{id}/edit", // only authenticated users can edit posts
                         "/post/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
+                        "/questionnaire",// only authenticated users can submit a questionnaire
                         "/profile",// only authenticated users can view their profile
                         "/settings",// only authenticated users can view their settings
                         "/chats",// only authenticated users can view their chats
@@ -68,15 +71,18 @@ public class SecurityConfiguration {
                         "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
                         "/user/edit", // only users can edit their profiles
                         "/user/delete", //only users can delete their account
-                        "/follow/{postId}" //only users can follow other users
+                        "/follow/{postId}", //only users can follow other users
+                        "/communities", // only users can browse communities
+                        "/community/{communityId}" // only users can view specific communities
                 )
                 .authenticated()
 
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
+                
+                .requestMatchers("/", "/posts", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
 
-                .requestMatchers("/", "/posts",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
 
                 .permitAll();
         return http.build();

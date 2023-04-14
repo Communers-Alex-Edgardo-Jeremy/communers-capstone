@@ -31,6 +31,9 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
+    @OneToOne
+    private Questionnaire questionnaire;
+
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
@@ -38,6 +41,15 @@ public class User {
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private List<Comment> comments;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="user_community",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="community_id")}
+    )
+    private List <Community> communities;
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)

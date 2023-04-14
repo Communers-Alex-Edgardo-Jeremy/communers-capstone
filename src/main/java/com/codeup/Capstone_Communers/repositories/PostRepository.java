@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.repositories;
 
+import com.codeup.Capstone_Communers.models.Community;
 import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
     List<Post> findByTitle(String title);
+
     Post findById(long id);
     List<Post> findAllByUser(User user);
 
