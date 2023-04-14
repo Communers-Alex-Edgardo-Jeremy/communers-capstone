@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
-<head th:replace="~{/partials/partials :: head}">
+<head>
+    <head th:include="~{/partials/partials :: head}"></head>
     <title>Sign up</title>
+    <link rel="stylesheet" href="/css/password.css">
 </head>
 <body class="d-flex flex-column">
 <!--<header th:replace="/partials/partials :: header"></header>-->
@@ -14,26 +16,33 @@
             <h1>Create an account</h1>
             <form class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
                 <label for="username">Username</label>
-                <input id="username" th:field="*{username}" />
+                <input id="username" th:field="*{username}" required/>
 
                 <label for="first_name">First Name</label>
-                <input id="first_name" th:field="*{first_name}" />
+                <input id="first_name" th:field="*{first_name}" required/>
 
                 <label for="last_name">Last Name</label>
-                <input id="last_name" th:field="*{last_name}" />
+                <input id="last_name" th:field="*{last_name}" required/>
 
                 <label class="pt-3" for="email">Email</label>
-                <input id="email" th:field="*{email}" />
+                <input id="email" th:field="*{email}" required/>
 
-                <label for="password">Password</label>
-                <input id="password" type="password" th:field="*{password}" />
+                <label for="psw">Password</label>
+                <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" required>
 
                 <input class="mt-3 btn btn-outline-secondary me-auto" value="Sign me up!" type="submit" />
             </form>
         </div>
     </div>
+    <div class="sign-up-card" id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
 </div>
-
 <footer class="" th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/password.js"></script>
 </body>
 </html>
