@@ -23,6 +23,13 @@
 
                         <input type="hidden" th:field="*{time}" />
                         <input type="hidden" th:field="*{id}">
+                        <span>Tags:</span><br>
+                        <div th:each="community : ${communities}">
+                            <label>
+                                <input th:name="${community.name}" type="checkbox" th:field="*{communities}" th:value="${community.id}"/>
+                                <label th:for="${community.name}" th:text="${community.name}">(Community name)</label>
+                            </label><br>
+                        </div>
                         <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Submit Post</button>
                     </form>
                 </div>
