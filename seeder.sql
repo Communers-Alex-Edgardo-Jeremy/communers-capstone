@@ -110,7 +110,6 @@ INSERT INTO `post_community` (`post_id`, `community_id`) VALUES
 DROP TABLE IF EXISTS `questionnaires`;
 CREATE TABLE `questionnaires` (
                                   `id` int(11) NOT NULL AUTO_INCREMENT,
-                                  `question` varchar(100) NOT NULL,
                                   `answer` int(1) NOT NULL,
                                   `user_id` int(20) NOT NULL,
                                   PRIMARY KEY (`id`),

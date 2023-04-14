@@ -10,16 +10,11 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.PostMapping;
 
 import com.codeup.Capstone_Communers.SecurityConfiguration;
+import com.codeup.Capstone_Communers.models.*;
+import com.codeup.Capstone_Communers.repositories.*;
 import com.codeup.Capstone_Communers.models.Comment;
-import com.codeup.Capstone_Communers.models.Entry;
-import com.codeup.Capstone_Communers.models.Post;
-import com.codeup.Capstone_Communers.models.User;
-import com.codeup.Capstone_Communers.repositories.EntryRepository;
-import com.codeup.Capstone_Communers.models.Comment;
-import com.codeup.Capstone_Communers.repositories.CommentRepository;
-import com.codeup.Capstone_Communers.repositories.PostRepository;
-import com.codeup.Capstone_Communers.repositories.UserRepository;
 import com.google.gson.Gson;
+import com.mysql.cj.PreparedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.context.SecurityContext;
@@ -39,22 +34,24 @@ public class UserController {
     private PostRepository postDao;
     private PasswordEncoder passwordEncoder;
     private final EntryRepository entryDao;
-
     private CommentRepository commentDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao) {
+    private QuestionnaireRepository questionnaireDao;
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao, QuestionnaireRepository questionnaireDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.postDao = postDao;
         this.commentDao = commentDao;
         this.entryDao = entryDao;
+        this.questionnaireDao = questionnaireDao;
     }
 
     @GetMapping("/register")
     public String showSignupForm(Model model){
 
         model.addAttribute("user", new com.codeup.Capstone_Communers.models.User());
-        return "users/register";
+        return "/users/register";
     }
 
     @PostMapping("/register")
@@ -62,7 +59,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:/questionnaire";
     }
 
     @GetMapping("/profile")
@@ -109,8 +106,6 @@ public class UserController {
     public String editEntry(Model model, @PathVariable long entryId){
         Entry entry = entryDao.findById(entryId);
         model.addAttribute("entry", entry);
-
-//        model.addAttribute("entry", entryDao.getReferenceById(entryId));
         return "/users/editEntry";
     }
     @PostMapping("/journal/{entryId}/edit")
@@ -119,10 +114,6 @@ public class UserController {
         entry.setId(entry.getId());
         entry.setUser(ogEntry.getUser());
         entryDao.save(entry);
-//
-//        User user = userDao.findById(entryId);
-//        editedEntry.setUser(user);
-//        entryDao.save(editedEntry);
         return "redirect:/journal";
     }
 
@@ -137,19 +128,6 @@ public class UserController {
         return "/settings";
     }
 
-
-    @GetMapping("/about")
-    public String viewAboutUs(Model model) {
-        List<User> users = userDao.findAll();
-        model.addAttribute("users", users);
-        return "/about";
-    }
-    
-    @GetMapping("/resources")
-    public String viewResources() {
-        return "/resources";
-    }
-    
     @GetMapping("/chats")
     public String viewChats() {
         return "/users/chats";
@@ -211,5 +189,42 @@ public class UserController {
             throw new RuntimeException(e);
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/questionnaire")
+    public String viewQuestionnaire(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fullUser = userDao.findById(user.getId());
+
+        //for login questionaire redirect
+//                Questionnaire userQuestionnaire = questionnaireDao.findById(user.getId());
+//        System.out.println(userQuestionnaire);
+
+        if (fullUser.getQuestionnaire() == null) {
+            model.addAttribute("questionnaire", new Questionnaire());
+            System.out.println(fullUser);
+            return "/users/questionnaire";
+        } else {
+            return "redirect:/discover";
+        }
+
+
+//        model.addAttribute("questionnaire", new Questionnaire());
+//        return "/users/questionnaire";
+    }
+    @PostMapping("/questionnaire")
+    public String postQuestionnaire(@ModelAttribute Questionnaire questionnaire) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fullUser = userDao.findById(user.getId());
+//        model.addAttribute("questionnaire", new Questionnaire());
+//        questionnaire.setAnswer_1(questionnaire.getAnswer_1());
+//        questionnaire.setAnswer_2(questionnaire.getAnswer_2());
+//        questionnaire.setAnswer_3(questionnaire.getAnswer_3());
+
+        questionnaire.setUser(fullUser);
+        questionnaireDao.save(questionnaire);
+        fullUser.setQuestionnaire(questionnaire);
+        userDao.save(fullUser);
+        return "redirect:/discover";
     }
 }

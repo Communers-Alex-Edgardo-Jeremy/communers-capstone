@@ -10,24 +10,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="entries")
-public class Entry {
+@Table(name="questionnaires")
+public class Questionnaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String title;
+    private String answer_1;
 
     @Column(nullable = false)
-    private String body;
+    private String answer_2;
 
     @Column(nullable = false)
-    private String date;
+    private String answer_3;
 
-    @ManyToOne
-    @JoinColumn (name = "user_id")
+    @OneToOne
     private User user;
 }
 
