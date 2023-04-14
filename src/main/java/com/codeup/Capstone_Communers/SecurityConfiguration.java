@@ -68,7 +68,9 @@ public class SecurityConfiguration {
                         "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
                         "/user/edit", // only users can edit their profiles
                         "/user/delete", //only users can delete their account
-                        "/follow/{postId}" //only users can follow other users
+                        "/follow/{postId}", //only users can follow other users
+                        "/communities", // only users can browse communities
+                        "/community/{communityId}" // only users can view specific communities
                 )
                 .authenticated()
 
@@ -76,7 +78,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
 
-                .requestMatchers("/", "/posts",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
+                .requestMatchers("/", "/posts", "/communities",  "/communities", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**") // anyone can see home, the posts pages, and sign up
 
                 .permitAll();
         return http.build();

@@ -3,6 +3,8 @@ package com.codeup.Capstone_Communers.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -22,10 +24,28 @@ public class Community {
     @Column(length=255, nullable = false)
     private String bio;
 
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="post_community",
+            joinColumns={@JoinColumn(name="community_id")},
+            inverseJoinColumns={@JoinColumn(name="post_id")}
+    )
+    private List <Post> posts;
+
+    @ToString.Exclude
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name="user_community",
+            joinColumns={@JoinColumn(name="community_id")},
+            inverseJoinColumns={@JoinColumn(name="user_id")}
+    )
+    private List <User> users;
+
+
     public Community(Community copy) {
         id = copy.id;
         name = copy.name;
         bio = copy.bio;
-
     }
 }
