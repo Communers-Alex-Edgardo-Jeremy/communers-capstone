@@ -55,7 +55,7 @@ public class SecurityConfiguration {
                 .requestMatchers(
 
                         "/post/create", // only authenticated users can create posts
-                        "/post/{id}/edit", // only authenticated users can edit posts
+                        "/post/{postId}/edit", // only authenticated users can edit posts
                         "/post/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
                         "/questionnaire",// only authenticated users can submit a questionnaire

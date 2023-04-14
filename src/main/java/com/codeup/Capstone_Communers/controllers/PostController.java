@@ -89,9 +89,9 @@ public class PostController {
     @PostMapping("/post/{postId}/edit")
     public String editPost(@PathVariable long postId, @ModelAttribute Post post){
         Post ogPost = postDao.findById(postId);
-        post.setId(post.getId());
-        post.setUser(ogPost.getUser());
-        postDao.save(post);
+        ogPost.setTitle(post.getTitle());
+        ogPost.setBody(post.getBody());
+        postDao.save(ogPost);
         return "redirect:/profile";
     }
     @GetMapping("/post/{postId}/delete")
