@@ -16,7 +16,7 @@
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <div class="container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
-    <div class="card shadow login-card" style="">
+    <div class="card login-card" style="">
         <div class="card-body d-flex flex-column">
             <h1>Log In</h1>
             <div th:if="${param.error}">
@@ -26,7 +26,7 @@
                 You have been logged out.
             </div>
 
-            <form class="d-flex flex-column" th:action="@{/login}" method="post">
+            <form class="login d-flex flex-column" th:action="@{/login}" method="post">
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text" value="jeremy"/>
                 <label class="pt-3" for="password">Password</label>
@@ -36,6 +36,6 @@
         </div>
     </div>
 </div>
-<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
+<footer class="100vw" th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
