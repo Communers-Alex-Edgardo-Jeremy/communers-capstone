@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
-    <head th:include="~{/partials/partials :: head}"></head>
-    <title>Sign up</title>
+    <th:block th:insert="partials/partials :: head"></th:block>
+    <title>Login</title>
     <link rel="stylesheet" href="/css/password.css">
 </head>
 <body class="d-flex flex-column">
-<!--<header th:replace="/partials/partials :: header"></header>-->
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 
 <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
@@ -42,7 +41,7 @@
         <p id="length" class="invalid">Minimum <b>8 characters</b></p>
     </div>
 </div>
-<footer class="" th:replace="~{/partials/partials :: footer}"></footer>
+<footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/password.js"></script>
 </body>
 </html>
