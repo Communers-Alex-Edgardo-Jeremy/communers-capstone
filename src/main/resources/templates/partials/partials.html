@@ -38,7 +38,7 @@
 <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
 <!--                <button class="btn btn-outline-light" type="submit">Search</button>-->
 <!--            </form>-->
-            <ul class="my-auto">
+            <ul class="my-auto d-flex">
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
                         <button class="btn-link btn logout my-auto" style="margin-top: 8px">Logout</button>

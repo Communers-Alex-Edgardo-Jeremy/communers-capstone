@@ -44,7 +44,7 @@ nav a, nav .logout {
     text-decoration: none;
 }
 nav a:hover, nav .logout:hover {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: var(--dark-green);
     text-shadow: .125rem .125rem var(--pink);
     text-decoration: none;
@@ -103,14 +103,13 @@ nav,footer {
     width: 300px;
     height: 400px;
 
-    box-shadow: var(--light-green) 0 0 1rem 1rem;
-    -webkit-box-shadow: 14px 22px 27px -2px var(--pink);
-    -moz-box-shadow: 14px 22px 27px -2px var(--pink);
-    box-shadow: 14px 22px 27px -2px var(--pink);
+    box-shadow: .25rem .25rem var(--pink);
+    -webkit-box-shadow: .25rem .25rem var(--pink);
+    -moz-box-shadow: .25rem .25rem var(--pink);
 
     border: var(--dark-green) solid .125rem !important;
-    background-image: linear-gradient(to bottom right, var(--light-green), var(--bg-white)) !important;
-    /*background-color: var(--bg-white) !important;*/
+    /*background-image: linear-gradient(to bottom right, var(--light-green), var(--bg-white)) !important;*/
+    background-color: var(--bg-white) !important;
 
 }
 footer h3 {
@@ -131,7 +130,7 @@ footer li a{
     text-transform: uppercase;
 }
 footer li:hover, footer li a:hover {
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: var(--dark-green);
     text-shadow: .125rem .125rem var(--pink);
     text-decoration: none;
