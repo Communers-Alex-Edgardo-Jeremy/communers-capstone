@@ -7,7 +7,11 @@
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div id="notification" th:text="${message}"  class="notification hidden"></div>
+<div th:choose>
+    <div th:when="${message != null}">
+        <div id="notification" th:text="${message}"  class="notification hidden"></div>
+    </div>
+</div>
     <div class="container d-flex flex-column flex-grow-1">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!

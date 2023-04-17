@@ -26,6 +26,9 @@ public class Questionnaire {
     @Column(nullable = false)
     private String answer_3;
 
+    @Column(nullable = false)
+    private String notifications;
+
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
