@@ -129,8 +129,9 @@ public class UserController {
         return "/settings";
     }
 
-    @GetMapping("/chats")
-    public String viewChats() {
+    @GetMapping("/chat/{userId}")
+    public String viewChats(Model model, @PathVariable long userId) {
+        model.addAttribute("user", userDao.getReferenceById(userId));
         return "/users/chats";
     }
 
@@ -140,10 +141,11 @@ public class UserController {
     @ResponseBody
     public String loggedInChatUser() {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(loggedInUser);
         Gson gson = new Gson();
         User chatUser = userDao.findById(loggedInUser.getId());
-        System.out.println(gson.toJson(chatUser));
-        return gson.toJson(chatUser);
+        System.out.println("chat user " + chatUser);
+        return gson.toJson(loggedInUser);
     }
 
     @PostMapping("/follow/{postId}")

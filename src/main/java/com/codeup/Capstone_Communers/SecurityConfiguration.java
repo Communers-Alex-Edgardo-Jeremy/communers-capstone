@@ -62,6 +62,7 @@ public class SecurityConfiguration {
                         "/profile",// only authenticated users can view their profile
                         "/settings",// only authenticated users can view their settings
                         "/chats",// only authenticated users can view their chats
+                        "/chat/{userId}", // only authenticated users can view their chat
                         "/loggedInChatUser",
                         "/journal",//only authenticated users can view their journal
                         "/journal/addEntry",//only authenticated users can edit their journal
