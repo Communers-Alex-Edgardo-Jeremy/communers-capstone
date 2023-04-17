@@ -10,17 +10,19 @@
 
 * {
     font-family: 'Raleway', sans-serif;
-    color: var(--dark-green);
 }
-.community-title{
+.community-title a{
     color: var(--dark-green);
     font-family: 'Chivo Mono', monospace;
     font-weight: bold;
     font-size: 3rem;
-    text-shadow: .25rem .25rem var(--pink);
+    /*text-shadow: .25rem .25rem var(--pink);*/
 
 }
-
+.community-title a:hover{
+    color: var(--dark-green);
+    text-shadow: .25rem .25rem var(--pink);
+}
 body,html {
     margin: 0;
     font: bold 14px/1.4 'Open Sans', arial, sans-serif;
@@ -28,11 +30,13 @@ body,html {
 }
 body {
     height: 100vh;
+    color: var(--black);
     position: relative;
     background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
 }
-nav {
+nav, footer {
     /*border-bottom: var(--grey) solid .125rem;*/
+    color: var(--dark-green);
 }
 footer {
     border-top: var(--grey) solid .125rem;
@@ -67,7 +71,7 @@ nav a:hover, nav .logout:hover {
 .navbar-collapse a, .logout, .greeting, .greeting span {
     color: var(--dark-green);
     /*text-shadow: .25rem .25rem var(--pink);*/
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     text-decoration: none;
     letter-spacing: 0.15em;
     padding: 0 1rem;
@@ -100,7 +104,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card, .about-card {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);

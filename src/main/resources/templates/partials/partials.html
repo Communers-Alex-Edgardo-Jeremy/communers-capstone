@@ -24,9 +24,9 @@
 <nav class="navbar navbar-expand navbar-light" th:fragment="navbar">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <p class="px-2 my-auto me-auto community-title">commUNITY</p>
+            <p class="px-2 my-auto me-auto community-title"><a href="/profile">commUNITY</a></p>
             <ul class="my-auto d-flex">
-                <li class="px-2 my-auto" ><a href="/discover">Discover</a></li>
+                <li class="px-2 my-auto"><a href="/discover">Discover</a></li>
                 <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/forYou">For You</a></li>
                 <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
                 <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/communities">Communities</a></li>
@@ -80,9 +80,9 @@
         </div>
         <div class="col-sm-12 col-md-2 item social">
 
-            <a href="#"><i class="icon ion-social-facebook"></i></a>
-            <a href="#"><i class="icon ion-social-twitter"></i></a>
-            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone"><i class="icon ion-social-github"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></i></a>
+            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone"><i class="fa-brands fa-github"></i></i></a>
             <a href="#"><i class="fa-brands fa-linkedin"></i></a>
             <p class="copyright pt-4">Communers, Inc. © 2023</p>
         </div>
