@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -189,6 +190,18 @@ public class UserController {
             throw new RuntimeException(e);
         }
         return "redirect:/login";
+    }
+
+    @PostMapping("/updateCheckbox")
+    public String updateCheckboxStatus(@RequestBody Map<String, Object> payload) {
+        boolean isChecked = (boolean) payload.get("isChecked");
+        Questionnaire questionnaire = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()).getQuestionnaire();
+        if(isChecked){
+            questionnaire.setNotifications("Y");
+        } else{
+            questionnaire.setNotifications("N");
+        }
+        return "settings";
     }
 
     @GetMapping("/questionnaire")
