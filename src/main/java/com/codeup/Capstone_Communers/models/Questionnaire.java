@@ -27,6 +27,7 @@ public class Questionnaire {
     private String answer_3;
 
     @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 }
 
