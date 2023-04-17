@@ -10,10 +10,6 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="greeting" sec:authorize="isAuthenticated()">
-            Hello, <span th:text="${#authentication.principal.username}"/>
-        </div>
-        <!--  append community bio into p element   -->
         <h1>Profile</h1>
         <p class="">Username: <span th:text="${user.username}"/></p>
         <p class="">Name: <span th:text="${user.first_name}"/> <span th:text="${user.last_name}"/></p>
