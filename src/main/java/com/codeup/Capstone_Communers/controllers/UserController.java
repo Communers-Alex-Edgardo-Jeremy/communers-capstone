@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -128,8 +129,9 @@ public class UserController {
         return "/settings";
     }
 
-    @GetMapping("/chats")
-    public String viewChats() {
+    @GetMapping("/chat/{userId}")
+    public String viewChats(Model model, @PathVariable long userId) {
+        model.addAttribute("user", userDao.getReferenceById(userId));
         return "/users/chats";
     }
 
@@ -139,10 +141,11 @@ public class UserController {
     @ResponseBody
     public String loggedInChatUser() {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(loggedInUser);
         Gson gson = new Gson();
         User chatUser = userDao.findById(loggedInUser.getId());
-        System.out.println(gson.toJson(chatUser));
-        return gson.toJson(chatUser);
+        System.out.println("chat user " + chatUser);
+        return gson.toJson(loggedInUser);
     }
 
     @PostMapping("/follow/{postId}")
@@ -189,6 +192,18 @@ public class UserController {
             throw new RuntimeException(e);
         }
         return "redirect:/login";
+    }
+
+    @PostMapping("/updateCheckbox")
+    public String updateCheckboxStatus(@RequestBody Map<String, Object> payload) {
+        boolean isChecked = (boolean) payload.get("isChecked");
+        Questionnaire questionnaire = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()).getQuestionnaire();
+        if(isChecked){
+            questionnaire.setNotifications("Y");
+        } else{
+            questionnaire.setNotifications("N");
+        }
+        return "settings";
     }
 
     @GetMapping("/questionnaire")

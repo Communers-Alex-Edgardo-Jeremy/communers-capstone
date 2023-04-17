@@ -34,9 +34,10 @@ public class PostController {
     @GetMapping("/discover")
     public String all(Model model) {
         List<Post> posts = postDao.findAll();
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        model.addAttribute("message", Utility.getQuote(userDao.getReferenceById(loggedInUser.getId()).getQuestionnaire()));
+        Questionnaire questionnaire = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()).getQuestionnaire();
+        if(questionnaire.getNotifications().equals("Y")){
+            model.addAttribute("message", Utility.getQuote(questionnaire));
+        }
         model.addAttribute("posts", posts);
         return "posts/discover";
     }
