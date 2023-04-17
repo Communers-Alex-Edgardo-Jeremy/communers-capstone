@@ -29,9 +29,7 @@ body,html {
 body {
     height: 100vh;
     position: relative;
-    background-image: linear-gradient(to bottom right, var(--purple), var(--bg-white));
-    background-repeat: no-repeat;
-    /*background-color: var(--bg-white);*/
+    background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
 }
 nav {
     /*border-bottom: var(--grey) solid .125rem;*/
@@ -116,12 +114,12 @@ nav a:hover, nav .logout:hover {
     width: 300px;
     height: 400px;
 }
-.about-card a {
+.about-card a, .resource-link {
     /*font-size: 1.25rem;*/
     color: var(--dark-green);
     text-decoration: none;
 }
-.about-card a:hover {
+.about-card a:hover, .resource-link:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
     text-shadow: .125rem .125rem var(--pink);
@@ -254,11 +252,5 @@ input.btn:hover {
 }
 
 .fa-solid, .fa-brands {
-    /*font-size:20px;*/
-    /*width:36px;*/
-    /*height:36px;*/
-    /*line-height:36px;*/
-    /*display:inline-block;*/
     color: var(--dark-green);
-    /*aspect-ratio: auto;*/
 }
