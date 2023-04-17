@@ -30,6 +30,7 @@ body {
     height: 100vh;
     position: relative;
     background-image: linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    background-repeat: no-repeat;
     /*background-color: var(--bg-white);*/
 }
 nav {
@@ -101,10 +102,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card {
-    width: 300px;
-    height: 400px;
-
+.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card, .about-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -113,6 +111,21 @@ nav a:hover, nav .logout:hover {
     /*background-image: linear-gradient(to bottom right, var(--light-green), var(--bg-white)) !important;*/
     background-color: var(--bg-white) !important;
 
+}
+.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card {
+    width: 300px;
+    height: 400px;
+}
+.about-card a {
+    /*font-size: 1.25rem;*/
+    color: var(--dark-green);
+    text-decoration: none;
+}
+.about-card a:hover {
+    /*font-weight: bold;*/
+    color: var(--dark-green);
+    text-shadow: .125rem .125rem var(--pink);
+    text-decoration: none;
 }
 footer h3 {
     font-size: 1.25rem;
@@ -238,4 +251,14 @@ input.btn:hover {
 .invalid:before {
     /*position: relative;*/
     content: "\00d7";
+}
+
+.fa-solid, .fa-brands {
+    /*font-size:20px;*/
+    /*width:36px;*/
+    /*height:36px;*/
+    /*line-height:36px;*/
+    /*display:inline-block;*/
+    color: var(--dark-green);
+    /*aspect-ratio: auto;*/
 }
