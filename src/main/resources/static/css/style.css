@@ -1,3 +1,26 @@
+:root {
+    --pink: #F2B3D6;
+    --purple: #B7AEF2;
+    --dark-green: #238C6E;
+    --light-green: #2BD999;
+    --bg-white: #F2EEEB;
+    --grey: #848282;
+    --black: #000000;
+}
+
+* {
+    font-family: 'Raleway', sans-serif;
+    color: var(--dark-green);
+}
+.community-title{
+    color: var(--dark-green);
+    font-family: 'Chivo Mono', monospace;
+    font-weight: bold;
+    font-size: 3rem;
+    text-shadow: .25rem .25rem var(--pink);
+
+}
+
 body,html {
     margin: 0;
     font: bold 14px/1.4 'Open Sans', arial, sans-serif;
@@ -6,24 +29,45 @@ body,html {
 body {
     height: 100vh;
     position: relative;
+    background-image: linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    /*background-color: var(--bg-white);*/
+}
+nav {
+    /*border-bottom: var(--grey) solid .125rem;*/
+}
+footer {
+    border-top: var(--grey) solid .125rem;
+    background-color: var(--bg-white);
+
+}
+nav a, nav .logout {
+    font-size: 1.25rem;
+    color: var(--dark-green);
+    text-decoration: none;
+}
+nav a:hover, nav .logout:hover {
+    /*font-weight: bold;*/
+    color: var(--dark-green);
+    text-shadow: .125rem .125rem var(--pink);
+    text-decoration: none;
 }
 
+/*nav,footer {*/
+/*    background-color: var(--bg-white);*/
+/*}*/
 .navbar-collapse ul, .logout {
-    /*margin: 150px auto 0;*/
     padding: 0;
     list-style: none;
-    display: table;
-    /*width: 600px;*/
     text-align: center;
+    text-decoration: none;
 }
 .navbar-collapse li, .logout {
-    display: table-cell;
-    position: relative;
-    /*padding: 15px 0;*/
+    /*position: relative;*/
 }
 
 .navbar-collapse a, .logout, .greeting, .greeting span {
-    color: #ffffff;
+    color: var(--dark-green);
+    /*text-shadow: .25rem .25rem var(--pink);*/
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.15em;
@@ -46,6 +90,9 @@ body {
 }
 .navbar-collapse a:hover:after, .logout:hover:after {
     text-decoration: none;
+    font-family: 'Raleway', sans-serif, bold;
+    /*color: var(--pink);*/
+    text-shadow: .25rem .25rem var(--pink);
     width: 100%;
     left: 0;
 }
@@ -55,101 +102,140 @@ body {
     }
 }
 .login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card {
-    width: 400px;
-    height: 500px;
-}
+    width: 300px;
+    height: 400px;
 
-.footer-dark {
-    /*top: auto;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*margin-top: auto;*/
-    /*position: relative;*/
-    /*padding:50px 0;*/
-    color:#f0f9ff;
-    background-color:#282d32;
-}
+    box-shadow: .25rem .25rem var(--pink);
+    -webkit-box-shadow: .25rem .25rem var(--pink);
+    -moz-box-shadow: .25rem .25rem var(--pink);
 
-.footer-dark h3 {
-    margin-top:0;
-    margin-bottom:12px;
+    border: var(--dark-green) solid .125rem !important;
+    /*background-image: linear-gradient(to bottom right, var(--light-green), var(--bg-white)) !important;*/
+    background-color: var(--bg-white) !important;
+
+}
+footer h3 {
+    font-size: 1.25rem;
+    color: var(--dark-green);
     font-weight:bold;
-    font-size:16px;
 }
 
-.footer-dark ul {
-    padding:0;
+footer li{
     list-style:none;
-    line-height:1.6;
-    font-size:14px;
-    margin-bottom:0;
+    text-decoration: none;
 }
 
-.footer-dark ul a {
-    color:inherit;
-    text-decoration:none;
-    opacity:0.6;
+footer li a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--dark-green);
+    text-transform: uppercase;
 }
-
-.footer-dark ul a:hover {
-    opacity:0.8;
+footer li:hover, footer li a:hover {
+    /*font-weight: bold;*/
+    color: var(--dark-green);
+    text-shadow: .125rem .125rem var(--pink);
+    text-decoration: none;
 }
-
 @media (max-width:767px) {
-    .footer-dark .item:not(.social) {
+    footer .item:not(.social) {
         text-align:center;
         padding-bottom:20px;
     }
 }
 
-.footer-dark .item.text {
+footer .item.text {
     /*margin-bottom:36px;*/
 }
 
 @media (max-width:767px) {
-    .footer-dark .item.text {
+    footer .item.text {
         margin-bottom:0;
     }
 }
 
-.footer-dark .item.text p {
+footer .item.text p {
     opacity:0.6;
     margin-bottom:0;
 }
 
-.footer-dark .item.social {
+footer .item.social {
     text-align:center;
 }
 
 @media (max-width:991px) {
-    .footer-dark .item.social {
+    footer .item.social {
         text-align:center;
         margin-top:20px;
     }
 }
 
-.footer-dark .item.social > a {
+footer .item.social > a {
     font-size:20px;
     width:36px;
     height:36px;
     line-height:36px;
     display:inline-block;
     text-align:center;
-    border-radius:50%;
-    box-shadow:0 0 0 1px rgba(255,255,255,0.4);
-    margin:0 8px;
-    color:#fff;
-    opacity:0.75;
+    /*border-radius:50%;*/
+    /*box-shadow:0 0 0 1px rgba(255,255,255,0.4);*/
+    /*margin:0 8px;*/
+    color: var(--dark-green);
 }
 
-.footer-dark .item.social > a:hover {
-    opacity:0.9;
+footer .item.social > a:hover {
+    text-shadow: .125rem .125rem var(--pink);
 }
 
-.footer-dark .copyright {
+footer .copyright {
     text-align:center;
-    padding-top:24px;
-    opacity:0.3;
+    /*padding-top:24px;*/
+    /*opacity:0.3;*/
     font-size:13px;
     margin-bottom:0;
+}
+input.btn {
+    border: var(--dark-green) solid .125rem;
+    color: var(--dark-green);
+    background-color: var(--bg-white);
+}
+input.btn:hover {
+    color: var(--dark-green);
+    box-shadow: .25rem .25rem var(--pink);
+
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    position: relative;
+    /*display:none;*/
+    /*background: #f1f1f1;*/
+    /*color: #000;*/
+    /*padding: 20px;*/
+    /*margin-top: 10px;*/
+}
+
+#message p {
+    /*padding: 10px 35px;*/
+    /*font-size: 18px;*/
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: var(--dark-green);
+}
+
+.valid:before {
+    /*position: relative;*/
+    content: "\2713";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    /*position: relative;*/
+    content: "\00d7";
 }

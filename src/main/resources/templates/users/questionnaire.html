@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{/partials/partials :: head}">
-    <meta charset="UTF-8">
+<head>
+    <th:block th:insert="partials/partials :: head"></th:block>
     <title>Questionnaire</title>
 </head>
 <body class="d-flex flex-column">
@@ -83,6 +83,6 @@
         </div>
     </div>
 </div>
-<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
+<footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
