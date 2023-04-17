@@ -7,7 +7,7 @@
 <body class="d-flex flex-column" th:object="${user}">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-        Welcome back <span class="p-0" th:text="${#authentication.principal.username}"/>.
+        Welcome back <span class="p-0" th:text="${#authentication.principal.username}"/>
     </h2>
     <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
         Discover more from our community.

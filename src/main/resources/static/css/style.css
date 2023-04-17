@@ -29,6 +29,8 @@ body {
     color: var(--black);
     position: relative;
     background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    overflow-x: hidden;
+
 }
 nav, footer {
     /*border-bottom: var(--grey) solid .125rem;*/

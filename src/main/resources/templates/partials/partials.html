@@ -22,7 +22,7 @@
 </th:block>
 <body class="d-flex flex-column">
 
-<nav class="navbar navbar-light bg-light fixed-top">
+<nav class="navbar navbar-light navbar-expand-md bg-light fixed-top" th:fragment="navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Offcanvas navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -55,37 +55,42 @@
                         </ul>
                     </li>
                 </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </div>
 </nav>
 
-<nav class="navbar navbar-expand" th:fragment="navbar">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <p class="my-auto me-auto community-title"><a class="p-0" href="/profile">commUNITY</a></p>
-            <ul class="my-auto d-flex">
-                <li class="px-2 my-auto"><a href="/discover">Discover</a></li>
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/forYou">For You</a></li>
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/communities">Communities</a></li>
-                <!--                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/chats">Chat</a></li>-->
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/post/create">Create Post</a></li>
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/journal">My Journal</a></li>
-                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/settings">Settings</a></li>
-            </ul>
-            <ul class="my-auto d-flex">
-                <li sec:authorize="isAuthenticated()">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn logout my-auto" style="margin-top: 8px">Logout</button>
-                    </form>
-                </li>
-                <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
-                <li sec:authorize="!isAuthenticated()"><a href="/register">Sign-up!</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+<!--<nav class="navbar navbar-expand" th:fragment="navbar">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <p class="my-auto me-auto community-title"><a class="p-0" href="/profile">commUNITY</a></p>-->
+<!--            <ul class="my-auto d-flex">-->
+<!--                <li class="px-2 my-auto"><a href="/discover">Discover</a></li>-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/forYou">For You</a></li>-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/communities">Communities</a></li>-->
+<!--                &lt;!&ndash;                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/chats">Chat</a></li>&ndash;&gt;-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/post/create">Create Post</a></li>-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/journal">My Journal</a></li>-->
+<!--                <li class="px-2 my-auto" sec:authorize="isAuthenticated()"><a href="/settings">Settings</a></li>-->
+<!--            </ul>-->
+<!--            <ul class="my-auto d-flex">-->
+<!--                <li sec:authorize="isAuthenticated()">-->
+<!--                    <form th:action="@{/logout}" th:method="post">-->
+<!--                        <button class="btn-link btn logout my-auto" style="margin-top: 8px">Logout</button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--                <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>-->
+<!--                <li sec:authorize="!isAuthenticated()"><a href="/register">Sign-up!</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
 <th:block th:fragment="posts">
     <div class="row align-content-center my-auto px-3 pb-3 g-3">
