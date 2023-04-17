@@ -26,11 +26,13 @@ public class Questionnaire {
     @Column(nullable = false)
     private String answer_3;
 
+
     @Column(nullable = false)
     private String notifications;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+  
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 }
 
