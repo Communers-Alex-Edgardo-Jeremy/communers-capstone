@@ -33,10 +33,12 @@ body {
     /*background-color: var(--bg-white);*/
 }
 nav {
-    border-bottom: var(--grey) solid .125rem;
+    /*border-bottom: var(--grey) solid .125rem;*/
 }
 footer {
     border-top: var(--grey) solid .125rem;
+    background-color: var(--bg-white);
+
 }
 nav a, nav .logout {
     font-size: 1.25rem;
@@ -50,9 +52,9 @@ nav a:hover, nav .logout:hover {
     text-decoration: none;
 }
 
-nav,footer {
-    background-color: var(--bg-white);
-}
+/*nav,footer {*/
+/*    background-color: var(--bg-white);*/
+/*}*/
 .navbar-collapse ul, .logout {
     padding: 0;
     list-style: none;
@@ -201,4 +203,39 @@ input.btn:hover {
     color: var(--dark-green);
     box-shadow: .25rem .25rem var(--pink);
 
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    position: relative;
+    /*display:none;*/
+    /*background: #f1f1f1;*/
+    /*color: #000;*/
+    /*padding: 20px;*/
+    /*margin-top: 10px;*/
+}
+
+#message p {
+    /*padding: 10px 35px;*/
+    /*font-size: 18px;*/
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: var(--dark-green);
+}
+
+.valid:before {
+    /*position: relative;*/
+    content: "\2713";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    /*position: relative;*/
+    content: "\00d7";
 }
