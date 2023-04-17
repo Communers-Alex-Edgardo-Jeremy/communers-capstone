@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.controllers;
 
+import com.codeup.Capstone_Communers.Services.Utility;
 import com.codeup.Capstone_Communers.models.Comment;
 import com.codeup.Capstone_Communers.models.Entry;
 import com.codeup.Capstone_Communers.models.Post;
@@ -34,6 +35,9 @@ public class PostController {
     @GetMapping("/discover")
     public String all(Model model) {
         List<Post> posts = postDao.findAll();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("message", Utility.getQuote(userDao.getReferenceById(loggedInUser.getId()).getQuestionnaire()));
         model.addAttribute("posts", posts);
         return "posts/discover";
     }

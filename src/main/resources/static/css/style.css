@@ -32,6 +32,30 @@ body {
     background-image: linear-gradient(to bottom right, var(--purple), var(--bg-white));
     /*background-color: var(--bg-white);*/
 }
+
+.notification {
+    position: fixed;
+    top: 50px;
+    right: 300px;
+    width: 200px;
+    padding: 10px;
+    background-color: #ffc0be;
+    color: #3d3232;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 9999;
+    transition: top 2s;
+}
+
+.notification.show {
+    top: 100px;
+}
+
+.notification.hidden {
+    display: none;
+}
+
 nav {
     /*border-bottom: var(--grey) solid .125rem;*/
 }
