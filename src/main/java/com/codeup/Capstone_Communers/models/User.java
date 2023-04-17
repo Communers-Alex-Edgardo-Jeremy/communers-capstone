@@ -32,7 +32,7 @@ public class User {
     private String password;
 
 //    reset password
-    @Column(name = "reset_password_token")
+    @Column(name = "password_reset")
     private String resetPasswordToken;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)

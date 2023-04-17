@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 @Controller
 public class ForgotPasswordController {
@@ -24,7 +25,7 @@ public class ForgotPasswordController {
     private JavaMailSender mailSender;
 
     @Autowired
-    private UserService customerService;
+    private UserService userService;
 
     @GetMapping("/forgot/password")
     public String showForgotPasswordForm() {
@@ -35,15 +36,24 @@ public class ForgotPasswordController {
     public String processForgotPassword(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
         String token = PasswordGenerator.generateRandomPassword(30);
-
         try {
-            customerService.updateResetPasswordToken(token, email);
-            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+            System.out.println("ready to updateResetPasswordToken");
+            userService.updateResetPasswordToken(token, email);
+            System.out.println("ready to getSiteURL");
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset/password?token=" + token;
+            System.out.println("ready to send");
             sendEmail(email, resetPasswordLink);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 
-        } catch (Exception ex) {
+        } catch (MessagingException ex) {
+            System.out.println("Messaging Exception occured");
             model.addAttribute("error", ex.getMessage());
+        } catch (UnsupportedEncodingException ex){
+            System.out.println("UnsupportedEncodingException occured");
+            model.addAttribute("error", ex.getMessage());
+        } catch (Exception e) {
+            System.out.println("runtime exception occured");
+            System.out.println((e.getMessage()));
         }
 
         return "/users/forgotPasswordForm";
@@ -77,16 +87,13 @@ public class ForgotPasswordController {
 
     @GetMapping("/reset/password")
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
-        User user = UserService.getByResetPasswordToken(token);
+        String user = String.valueOf(UserService.getByResetPasswordToken(token));
         model.addAttribute("token", token);
 
-        if (user == null) {
-            model.addAttribute("error", true);
-            model.addAttribute("message", "Invalid Token");
-            return "/users/forgotPasswordForm";
-        }
+        model.addAttribute("error", true);
+        model.addAttribute("message", "Invalid Token");
+        return "/users/forgotPasswordForm";
 
-        return "/users/resetPasswordForm";
     }
 
     @PostMapping("/reset/password")
@@ -101,7 +108,7 @@ public class ForgotPasswordController {
             model.addAttribute("message", "Invalid Token");
             return "/users/forgotPasswordForm";
         } else {
-            customerService.updatePassword(user, password);
+            userService.updatePassword(user, password);
 
             model.addAttribute("message", "You have successfully changed your password.");
         }
