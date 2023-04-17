@@ -26,8 +26,8 @@ public class Questionnaire {
     @Column(nullable = false)
     private String answer_3;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 }
 

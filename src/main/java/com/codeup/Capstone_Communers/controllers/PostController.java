@@ -1,21 +1,17 @@
 package com.codeup.Capstone_Communers.controllers;
 
+import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.Services.Utility;
-import com.codeup.Capstone_Communers.models.Comment;
-import com.codeup.Capstone_Communers.models.Entry;
-import com.codeup.Capstone_Communers.models.Post;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
+import com.codeup.Capstone_Communers.repositories.CommunityRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.codeup.Capstone_Communers.models.User;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,14 +19,17 @@ import java.util.Optional;
 @Controller
 public class PostController {
 
+
+    private final CommunityRepository communityDao;
     private final PostRepository postDao;
     private final CommentRepository commentDao;
     private final UserRepository userDao;
 
-    public PostController(UserRepository userDao,  PostRepository postDao, CommentRepository commentDao) {
+    public PostController(UserRepository userDao,  PostRepository postDao, CommentRepository commentDao, CommunityRepository communityDao) {
         this.userDao = userDao;
         this.postDao = postDao;
         this.commentDao = commentDao;
+        this.communityDao = communityDao;
     }
     @GetMapping("/discover")
     public String all(Model model) {
@@ -81,6 +80,8 @@ public class PostController {
     }
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
+        User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        model.addAttribute("communities", user.getCommunities());
         model.addAttribute("post", new Post());
         return "/posts/create";
     }
@@ -110,11 +111,16 @@ public class PostController {
     }
     @PostMapping("/post/create")
     public String postCreatePost(@ModelAttribute Post post) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Date date = new Date();
-        String stringDate = date.toString();
+        List<Community> communities = new ArrayList<>();
+        for (Community community : post.getCommunities()) {
+            communities.add(communityDao.getReferenceById(community.getId()));
+        }
+
+        post.setCommunities(communities);
         post.setUser(user);
-        post.setTime(stringDate);
+        post.setTime(date.toString());
         postDao.save(post);
         return "redirect:/profile";
     }
