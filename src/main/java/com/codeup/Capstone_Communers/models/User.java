@@ -31,6 +31,7 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Questionnaire questionnaire;
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{/partials/partials :: head}">
-    <meta charset="UTF-8">
-    <title>Profile</title>
+<head>
+    <th:block th:insert="partials/partials :: head"></th:block>
+    <title>Journal</title>
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
@@ -33,6 +33,6 @@
     </div>
         <a class="btn btn-outline-secondary me-auto mt-auto mb-2" th:href="@{|/journal/addEntry|}">Add Entry</a>
 </div>
-<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
+<footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>

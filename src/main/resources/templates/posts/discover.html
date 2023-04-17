@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{/partials/partials :: head}">
-    <title>Discover page</title>
+<head>
+    <th:block th:insert="partials/partials :: head"></th:block>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Discover</title>
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div id="notification" th:text="${message}"  class="notification hidden"></div>
     <div class="container d-flex flex-column flex-grow-1">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
@@ -40,6 +43,7 @@
             </div>
         </div>
     </div>
-<footer class="footer-dark 100vw" th:replace="~{/partials/partials :: footer}"></footer>
+<footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/script.js"></script>
 </body>
 </html>

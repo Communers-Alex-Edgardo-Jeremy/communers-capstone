@@ -1,6 +1,7 @@
 package com.codeup.Capstone_Communers.controllers;
 
 import com.codeup.Capstone_Communers.models.*;
+import com.codeup.Capstone_Communers.Services.Utility;
 import com.codeup.Capstone_Communers.repositories.CommentRepository;
 import com.codeup.Capstone_Communers.repositories.CommunityRepository;
 import com.codeup.Capstone_Communers.repositories.PostRepository;
@@ -9,9 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +34,9 @@ public class PostController {
     @GetMapping("/discover")
     public String all(Model model) {
         List<Post> posts = postDao.findAll();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("message", Utility.getQuote(userDao.getReferenceById(loggedInUser.getId()).getQuestionnaire()));
         model.addAttribute("posts", posts);
         return "posts/discover";
     }
@@ -93,9 +94,9 @@ public class PostController {
     @PostMapping("/post/{postId}/edit")
     public String editPost(@PathVariable long postId, @ModelAttribute Post post){
         Post ogPost = postDao.findById(postId);
-        post.setId(post.getId());
-        post.setUser(ogPost.getUser());
-        postDao.save(post);
+        ogPost.setTitle(post.getTitle());
+        ogPost.setBody(post.getBody());
+        postDao.save(ogPost);
         return "redirect:/profile";
     }
     @GetMapping("/post/{postId}/delete")
