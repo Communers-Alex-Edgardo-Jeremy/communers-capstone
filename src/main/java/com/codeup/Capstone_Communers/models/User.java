@@ -31,6 +31,10 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
+//    reset password
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Questionnaire questionnaire;
 
