@@ -102,12 +102,12 @@
 
 <script th:fragment="chat_mod_script">
     "use strict";
+
     document.addEventListener("DOMContentLoaded", function() {
 
         let checkButton = document.getElementById("submit-button");
         checkButton.addEventListener('click', async function (e) {
             e.preventDefault()
-
             let title = document.getElementById("entryTitle").value;
             let body = document.getElementById("body-ip").value
             let content = title + " " + body
@@ -127,16 +127,19 @@
                 .then(function (data) {
                     console.log(data)
                     if (data.link.matches.length > 0) {
-                        e.preventDefault()
                         returnMsg += "URL Link\n"
                     }
                     if (data.personal.matches.length > 0) {
-                        e.preventDefault()
                         returnMsg += "Personal Information\n"
                     }
                     if (data.profanity.matches.length > 0) {
-                        e.preventDefault()
                         returnMsg += "Profanity\n"
+                    }
+                    if(returnMsg === "") {
+                        document.getElementById("form").submit();
+                    } else{
+                        returnMsg = "Please remove:\n" + returnMsg
+                        document.getElementById("mod-msg").innerText = returnMsg
                     }
                     console.log(returnMsg)
                 })
