@@ -15,6 +15,7 @@
         Discover more from our community.
     </h2>
     <th:block th:insert="~{/partials/partials :: posts}"></th:block>
+    <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 </body>

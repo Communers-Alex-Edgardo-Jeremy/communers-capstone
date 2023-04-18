@@ -1,10 +1,13 @@
 package com.codeup.Capstone_Communers.Services;
 import com.codeup.Capstone_Communers.models.Questionnaire;
+import com.codeup.Capstone_Communers.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utility {
 
@@ -51,6 +54,19 @@ public class Utility {
             default:
                 return quote = "Seize the day!";
         }
+    }
+
+    public static List<User> getFriends(User user){
+        List<User> friendList = new ArrayList<>();
+        for (User follower : user.getFollowers()) {
+            for (User followerFollower : follower.getFollowers()) {
+                if(followerFollower == user){
+                    friendList.add(follower);
+                    System.out.println(follower.getFirst_name());
+                }
+            }
+        }
+        return friendList;
     }
 
 }

@@ -25,9 +25,6 @@
 let username = document.getElementById("username").getAttribute("value")
 let id = document.getElementById("id").getAttribute("value")
 const getOtherUser = async () => {
-    // const response = await fetch('/loggedInChatUser');
-    // const data = await response.json();
-    // console.log(data)
     let otherUser = new Talk.User({
         id: id,
         name: username
@@ -53,27 +50,16 @@ const getUser = async () => {
         let user = await getUser();
         console.log("user")
         window.talkSession = new Talk.Session({
-            appId: "tU1uK9B8",
+            appId: TEST_APPID,
             me: user
         });
         let otherUser = await getOtherUser();
         console.log("other user")
 
         const conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(user, otherUser));
-
-        // conversation.setAttributes({
-        //     welcomeMessages: ["You can start typing your message here and one of our agents will be with you shortly.", "Please do not divulge any of your personal information."]
-        // })
-
         conversation.setParticipant(otherUser);
         conversation.setParticipant(user);
 
-        // send a message to the conversation
-        // conversation.sendMessage({
-        //     text: "Hello, how are you?",
-        //     sender: user,
-        //     // add any other properties that you want to the message object
-        // });
         let inbox = talkSession.createInbox(conversation);
         inbox.select(conversation);
         inbox.mount(document.getElementById("talkjs-container"));
