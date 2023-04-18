@@ -83,7 +83,7 @@ nav, footer, .btn-close {
 
 /* nav {
 *    /*border-bottom: var(--grey) solid .125rem;*/
-/*}*/
+/**}*/
 
 footer {
     border-top: var(--grey) solid .125rem;

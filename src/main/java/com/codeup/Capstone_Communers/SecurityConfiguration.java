@@ -75,7 +75,8 @@ public class SecurityConfiguration {
                         "/follow/{postId}", //only users can follow other users
                         "/communities", // only users can browse communities
                         "/community/{communityId}", // only users can view specific communities
-                        "/updateCheckbox" // only users can update their notification settings
+                        "/updateCheckbox", // only users can update their notification settings
+                        "/discover"
                 )
                 .authenticated()
 
@@ -83,7 +84,9 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 
-                .requestMatchers("/", "/posts", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
+
+                .requestMatchers("/", "/landing", "/posts","/forgot_password","/reset_password", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
+
 
 
                 .permitAll();

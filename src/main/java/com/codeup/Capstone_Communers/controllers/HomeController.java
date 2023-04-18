@@ -13,6 +13,11 @@ class HomeController {
         return "redirect:/login";
     }
 
+    @GetMapping("/landing")
+    public String landingPage(){
+        return "/users/landing";
+    }
+
     @GetMapping("/post")
     public String loginSuccess() {
         return "/posts/discover";
