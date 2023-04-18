@@ -2,45 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="partials/partials :: head"></th:block>
+    <link rel="stylesheet" href="/css/style.css">
     <title>Discover</title>
 </head>
-<body class="d-flex flex-column">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <div class="container d-flex flex-column flex-grow-1">
-        <div class="alert alert-danger" th:if="${errMsg}">
-            Something bad happened!
-        </div>
-        <div class="" >
 
-        </div>
-        <h1 sec:authorize="isAuthenticated()">Hello <span th:text="${#authentication.principal.username}"/>, welcome to our Discover page</h1>
-        <p class="lead">
-            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
-        </p>
-        <div class="row h-100 align-content-center my-auto pb-3" >
-            <div class="col-sm-12 col-md-6 g-3"  th:each="post : ${posts}">
-                <div class="card shadow h-100" style="">
-                    <!--            <img src="..." class="card-img-top" alt="...">-->
-                    <div class="card-body d-flex flex-column">
-                        <form class="d-inline" th:action="@{|/follow/${post.getId()}|}" method="post">
-                            <span th:text="${post.user.username}">(Users name here)</span>
-                            <button class="btn btn-secondary" type="submit">Follow</button>
-                        </form>
-                        <h5 class="card-title" th:text="${post.title}">(insert post title)</h5>
-                        <div class="blog-menu small-title date" th:text="${post.time}"></div>
-                        <div class="blog-menu small-title date" th:text="${post.user.username}"></div>
-        <!--                <div class="blog-detail">-->
-        <!--                    (<span th:text="${post.user.username}"></span>)-->
-        <!--                </div>-->
-                        <div class="blog-article">
-                            <p class="" th:text="${post.body}">(insert post body)</p>
-                        </div>
-                        <a class="btn btn-outline-secondary me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body class="d-flex flex-column" th:object="${user}">
+    <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
+    <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
+        Welcome back <span class="p-0" th:text="${#authentication.principal.username}"/>
+    </h2>
+    <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
+        Discover more from our community.
+    </h2>
+    <th:block th:insert="~{/partials/partials :: posts}"></th:block>
+    <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/script.js"></script>
 </body>
 </html>

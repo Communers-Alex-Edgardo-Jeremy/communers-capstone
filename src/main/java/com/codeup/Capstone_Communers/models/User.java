@@ -36,6 +36,8 @@ public class User {
     private String resetPasswordToken;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Questionnaire questionnaire;
 
     @ToString.Exclude

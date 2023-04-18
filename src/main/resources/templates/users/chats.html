@@ -6,6 +6,8 @@
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div id="id" th:value="${user.id}" hidden></div>
+<div id="username" th:value="${user.username}" hidden></div>
 
 <!-- minified snippet to load TalkJS without delaying your page -->
 <script>
@@ -19,6 +21,7 @@
 <div id="talkjs-container" style="border: solid #000000 2px ;width: 90%; margin: 30px; height: 500px">
     <i>Loading chat...</i>
 </div>
+<script src="/js/keys.js"></script>
 <script src="/js/talkJS.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>

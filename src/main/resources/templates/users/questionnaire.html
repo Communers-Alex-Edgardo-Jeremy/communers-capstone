@@ -17,7 +17,7 @@
                         <form class="d-flex flex-column" th:action="@{|/questionnaire|}" method="post" th:object="${questionnaire}">
                         <div class="form-check d-flex flex-column">
                             <h5>
-                                Does rainy weather make you sad?
+                                Would you say that the weather has an impact on your mood?
                             </h5>
                             <div>
                                 <input class="form-check-input" value="Y" type="radio" name="weather" id="weatherY" th:field="*{answer_1}">
@@ -57,7 +57,7 @@
                         <br>
                         <div class="form-check d-flex flex-column">
                             <h5>
-                                Does depression run in your family?
+                                Would you say you are open to change?
                             </h5>
                             <div>
                                 <input class="form-check-input" value="Y" type="radio" name="familialDepression" id="familialDepressionY" th:field="*{answer_3}">
@@ -73,6 +73,23 @@
                             </div>
                         </div>
                         <br>
+                            <div class="form-check d-flex flex-column">
+                                <h5>
+                                    Would you like to receive morale boosting notifications?
+                                </h5>
+                                <div>
+                                    <input class="form-check-input" value="Y" type="radio" name="notifications" id="notificationsY" th:field="*{notifications}">
+                                    <label class="form-check-label" for="weatherY">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" value="N" type="radio" name="notifications" id="notificationsN" th:field="*{notifications}">
+                                    <label class="form-check-label" for="weatherN">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
 
                         <!--                        <input type="hidden" th:field="*{time}" />-->
 <!--                        <input type="hidden" th:field="*{id}">-->
