@@ -58,24 +58,41 @@
 </nav>
 
 <th:block th:fragment="greeting" th:object="${user}">
-    <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
-        Welcome back <span class="p-0" th:text="${#authentication.principal.username}"/>
-    </h2>
-    <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-        Discover more from our community.
-    </h2>
+    <div class="d-flex flex-column">
+        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+            Welcome back,<span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
+        </h2>
+        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
+            Discover more from our community.
+        </h2>
+    </div>
 </th:block>
 
-<div th:fragment="chat" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center;" sec:authorize="isAuthenticated()">
-    <h2 style="margin-bottom:20px;">Chat Users:</h2>
-    <ul style="list-style:none; padding:0;">
-        <li th:each="user : ${friendList}">
-            <a th:href="@{/chat/{userId}(userId=${user.id})}" style="text-decoration:none; color:#000;">
-                <span th:text="${user.username}"></span>
-            </a>
-        </li>
-    </ul>
-</div>
+<th:block th:fragment="chat-bubble">
+    <div class="chat-popout">
+        <p class="ms-auto">
+            <button class="btn chat-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
+            </button>
+        </p>
+        <div class="ms-auto" style="min-height: 120px;">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card card-body" style="width: 300px;">
+                    <div sec:authorize="isAuthenticated()">
+                        <h2 style="margin-bottom:20px;">Chat Users:</h2>
+                        <ul style="list-style:none; padding:0;">
+                            <li th:each="user : ${friendList}">
+                                <a th:href="@{/chat/{userId}(userId=${user.id})}" style="text-decoration:none; color:#000;">
+                                    <span th:text="${user.username}"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+<!--                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.-->
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
 
 <th:block th:fragment="posts">
     <div class="row align-content-center my-auto px-3 pb-3 g-3">

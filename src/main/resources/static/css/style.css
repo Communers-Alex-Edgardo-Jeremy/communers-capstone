@@ -22,7 +22,7 @@
 }
 body,html {
     margin: 0;
-    font: bold 14px/1.4 'Open Sans', arial, sans-serif;
+    /*font: bold 14px/1.4 'Open Sans', arial, sans-serif;*/
 }
 body {
     height: 100vh;
@@ -39,7 +39,7 @@ nav, footer, .btn-close {
     background-color: var(--bg-white) !important;
 }
 
-.hamburger, .btn-close {
+.hamburger, .btn-close, .chat-btn {
     font-size: 2rem  !important;
 }
 .navbar-toggler,
@@ -49,16 +49,18 @@ nav, footer, .btn-close {
 .btn-close,
 .btn-close:focus,
 .btn-close:active,
-.btn-close:focus {
+.btn-close:focus,
+.chat-btn,
+.chat-btn:focus,
+.chat-btn:active,
+.chat-btn:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
-.navbar-toggler:hover, .btn-close:hover {
+.navbar-toggler:hover, .btn-close:hover, .chat-btn:hover {
     text-shadow: .25rem .25rem var(--pink) !important;
 }
-
-
 .notification {
     position: fixed;
     top: 50px;
@@ -113,7 +115,6 @@ nav a:hover, nav .logout:hover {
 }
 
 .navbar-collapse a, .logout, .greeting, .greeting span {
-    color: var(--dark-green);
     text-decoration: none;
     letter-spacing: 0.15em;
     padding: 0 1rem;
@@ -168,10 +169,10 @@ nav a:hover, nav .logout:hover {
     text-shadow: .125rem .125rem var(--pink);
     text-decoration: none;
 }
-.page-title {
-    color: var(--dark-green);
-    font-weight:bold;
-}
+/*.page-title {*/
+/*    color: var(--dark-green);*/
+/*    font-weight:bold;*/
+/*}*/
 footer h3 {
     font-size: 1.25rem;
     color: var(--dark-green);
@@ -228,7 +229,12 @@ footer .item.social {
         margin-top:20px;
     }
 }
-
+.chat-popout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
 footer .item.social > a {
     font-size:20px;
     width:36px;
