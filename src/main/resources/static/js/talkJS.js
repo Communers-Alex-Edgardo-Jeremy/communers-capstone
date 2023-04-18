@@ -2,20 +2,14 @@
 //     let me = new Talk.User({
 //         id: '123456',
 //         name: 'Alice',
-//         email: 'alice@example.com',
-//         photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
-//         welcomeMessage: 'Hey there! How are you? :-)',
 //     });
 //     window.talkSession = new Talk.Session({
 //         appId: 'tU1uK9B8',
 //         me: me,
 //     });
 //     let other = new Talk.User({
-//         id: '654321',
+//         id: '654322',
 //         name: 'Sebastian',
-//         email: 'Sebastian@example.com',
-//         photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
-//         welcomeMessage: 'Hey, how can I help?',
 //     });
 //
 //     let conversation = talkSession.getOrCreateConversation(
@@ -27,53 +21,63 @@
 //     let inbox = talkSession.createInbox({ selected: conversation });
 //     inbox.mount(document.getElementById('talkjs-container'));
 // });
-
+// Talk.ready.then(function () {
+let username = document.getElementById("username").getAttribute("value")
+let id = document.getElementById("id").getAttribute("value")
 const getOtherUser = async () => {
-    const response = await fetch('/loggedInChatUser');
-    const data = await response.json();
-    console.log(data)
+    // const response = await fetch('/loggedInChatUser');
+    // const data = await response.json();
+    // console.log(data)
     let otherUser = new Talk.User({
-        id: data.id,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        email: data.email,
+        id: id,
+        name: username
     });
     return otherUser;
 }
 const getUser = async () => {
     const response = await fetch('/loggedInChatUser');
     const data = await response.json();
-    console.log(data)
+    console.log("dataset" + data)
     let user = new Talk.User({
         id: data.id,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        email: data.email,
+        name: data.username
     });
     return user;
 }
 
 (
     async function() {
-        await Talk.ready;
-        let otherUser = await getOtherUser();
+        console.log("in async");
+        Talk.ready;
+        console.log("talk ready");
         let user = await getUser();
-
-        const session = new Talk.Session({
-            appId: 'tU1uK9B8',
-            me: user,
+        console.log("user")
+        window.talkSession = new Talk.Session({
+            appId: "tU1uK9B8",
+            me: user
         });
-        let conversation = session.getOrCreateConversation(Talk.oneOnOneId(user, otherUser));
+        let otherUser = await getOtherUser();
+        console.log("other user")
 
-        conversation.setAttributes({
-            welcomeMessages: ["You can start typing your message here and one of our agents will be with you shortly.", "Please do not divulge any of your personal information."]
-        })
-        conversation.setParticipant(user);
+        const conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(user, otherUser));
+
+        // conversation.setAttributes({
+        //     welcomeMessages: ["You can start typing your message here and one of our agents will be with you shortly.", "Please do not divulge any of your personal information."]
+        // })
+
         conversation.setParticipant(otherUser);
+        conversation.setParticipant(user);
 
-        let inbox = session.createInbox(conversation);
+        // send a message to the conversation
+        // conversation.sendMessage({
+        //     text: "Hello, how are you?",
+        //     sender: user,
+        //     // add any other properties that you want to the message object
+        // });
+        let inbox = talkSession.createInbox(conversation);
+        inbox.select(conversation);
         inbox.mount(document.getElementById("talkjs-container"));
     }());
-
+// });
 // map a user in your own database one-to-one to a TalkJS user.
 //403 Forbidden response status

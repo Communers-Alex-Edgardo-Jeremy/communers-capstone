@@ -55,13 +55,14 @@ public class SecurityConfiguration {
                 .requestMatchers(
 
                         "/post/create", // only authenticated users can create posts
-                        "/post/{id}/edit", // only authenticated users can edit posts
+                        "/post/{postId}/edit", // only authenticated users can edit posts
                         "/post/{id}/comments", // only authenticated users can view comments
                         "/forYou",// only authenticated users can view all posts
                         "/questionnaire",// only authenticated users can submit a questionnaire
                         "/profile",// only authenticated users can view their profile
                         "/settings",// only authenticated users can view their settings
                         "/chats",// only authenticated users can view their chats
+                        "/chat/{userId}", // only authenticated users can view their chat
                         "/loggedInChatUser",
                         "/journal",//only authenticated users can view their journal
                         "/journal/addEntry",//only authenticated users can edit their journal
@@ -73,7 +74,8 @@ public class SecurityConfiguration {
                         "/user/delete", //only users can delete their account
                         "/follow/{postId}", //only users can follow other users
                         "/communities", // only users can browse communities
-                        "/community/{communityId}" // only users can view specific communities
+                        "/community/{communityId}", // only users can view specific communities
+                        "/updateCheckbox" // only users can update their notification settings
                 )
                 .authenticated()
 
