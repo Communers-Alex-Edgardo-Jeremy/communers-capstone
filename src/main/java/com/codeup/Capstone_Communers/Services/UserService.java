@@ -17,7 +17,7 @@ public class UserService {
     }
 
 
-    public void updateResetPasswordToken(String token, String email) throws Exception {
+    public String updateResetPasswordToken(String token, String email) throws Exception {
         System.out.println("before email");
         User user = userRepo.findByEmail(email);
         System.out.println("after email");
@@ -26,6 +26,7 @@ public class UserService {
         if (user != null) {
             user.setResetPasswordToken(token);
             userRepo.save(user);
+            return "Reset email password sent to" + email;
         } else {
             throw new Exception("Could not find any user with the email " + email);
         }
