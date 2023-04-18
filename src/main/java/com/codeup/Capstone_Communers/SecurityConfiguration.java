@@ -83,7 +83,9 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 
-                .requestMatchers("/", "/posts","/forgot/password","/reset/password", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
+
+                .requestMatchers("/", "/landing", "/posts","/forgot/password","/reset/password", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
+
 
 
                 .permitAll();
