@@ -46,6 +46,7 @@
                 </div>
             </div>
         </div>
+        <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>

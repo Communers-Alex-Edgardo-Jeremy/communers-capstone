@@ -46,6 +46,18 @@
         </div>
     </div>
 </nav>
+<div th:fragment="chat" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center;">
+    <h2 style="margin-bottom:20px;">Chat Users:</h2>
+    <ul style="list-style:none; padding:0;">
+        <li th:each="user : ${friendList}">
+            <a th:href="@{/chat/{userId}(userId=${user.id})}" style="text-decoration:none; color:#000;">
+                <span th:text="${user.username}"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
 <script th:fragment="script">
     "use strict";
     document.getElementById("delete-button").addEventListener("click", function(e) {
