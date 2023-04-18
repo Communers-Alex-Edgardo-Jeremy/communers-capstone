@@ -32,19 +32,29 @@ body {
     overflow-x: hidden;
 
 }
-nav, footer {
+nav, footer, .btn-close {
     color: var(--dark-green) !important;
 }
-/*.hamburger:after {*/
-/*    border: none;*/
-/*}*/
+.offcanvas-end.show {
+    background-color: var(--bg-white) !important;
+}
+.hamburger, .btn-close {
+    font-size: 2rem  !important;
+}
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
-.navbar-toggler-icon:focus {
+.navbar-toggler-icon:focus,
+.btn-close,
+.btn-close:focus,
+.btn-close:active,
+.btn-close:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+}
+.navbar-toggler:hover, .btn-close:hover {
+    text-shadow: .25rem .25rem var(--pink) !important;
 }
 footer {
     border-top: var(--grey) solid .125rem;
