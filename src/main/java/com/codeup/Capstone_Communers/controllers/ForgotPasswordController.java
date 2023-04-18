@@ -1,51 +1,52 @@
 package com.codeup.Capstone_Communers.controllers;
 
-import com.codeup.Capstone_Communers.Services.EmailService;
-import com.codeup.Capstone_Communers.Services.PasswordGenerator;
 import com.codeup.Capstone_Communers.Services.UserService;
 import com.codeup.Capstone_Communers.Services.Utility;
 import com.codeup.Capstone_Communers.models.User;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.modelmapper.internal.bytebuddy.utility.RandomString;
+
+import java.io.UnsupportedEncodingException;
+
 
 @Controller
 public class ForgotPasswordController {
-//    @Autowired
-//    private JavaMailSender mailSender;
 
     @Autowired
-    private final EmailService emailService;
+    private JavaMailSender mailSender;
+
 
     @Autowired
     private UserService userService;
 
-    public ForgotPasswordController(EmailService emailService) {
-        this.emailService = emailService;
-    }
 
-
-    @GetMapping("/forgot/password")
+    @GetMapping("/forgot_password")
     public String showForgotPasswordForm() {
         return "users/forgotPasswordForm";
     }
 
-    @PostMapping("/forgot/password")
+    @PostMapping("/forgot_password")
     public String processForgotPassword(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
-        String token = PasswordGenerator.generateRandomPassword(30);
+        String token = RandomString.make(30);
         try {
-            System.out.println("ready to updateResetPasswordToken");
-            String response = userService.updateResetPasswordToken(token, email);
-            System.out.println("ready to getSiteURL");
-            String resetPasswordLink = Utility.getSiteURL(request) + "/reset/password?token=" + token;
-            System.out.println("ready to send");
-            emailService.prepareAndSend(email, resetPasswordLink);
+
+            userService.updateResetPasswordToken(token, email);
+
+            String resetPasswordLink = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+            sendEmail(email, resetPasswordLink);
+
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 
         }  catch (Exception e) {
@@ -55,49 +56,49 @@ public class ForgotPasswordController {
         return "/users/forgotPasswordForm";
     }
 
-//    public void sendEmail(String recipientEmail, String link)
-//            throws MessagingException, UnsupportedEncodingException, jakarta.mail.MessagingException {
-////        jakarta.mail.internet.MimeMessage message = emailService.createMimeMessage();
-////        MimeMessageHelper helper = new MimeMessageHelper(message);
-//
-//        helper.setFrom("ucommuners39@gmail.com", "commUnity");
-//        helper.setTo(recipientEmail);
-//
-//        String subject = "";
-//
-//        String content = "<p>Hello,</p>"
-//                + "<p>You have requested to reset your password.</p>"
-//                + "<p>Click the link below to change your password:</p>"
-//                + "<p><a href=\"" + link + "\">Change my password</a></p>"
-//                + "<br>"
-//                + "<p>Ignore this email if you do remember your password, "
-//                + "or you have not made the request.</p>";
-//
-//        helper.setSubject(subject);
-//
-//        helper.setText(content, true);
-//
-//        mailSender.send(message);
-//    }
+    public void sendEmail(String recipientEmail, String link)
+            throws UnsupportedEncodingException, MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setFrom("ucommuners39@gmail.com", "commUnity");
+        helper.setTo(recipientEmail);
+
+        String subject = "Here's the link to your reset password";
+
+        String content = "<p>Hello,</p>"
+                + "<p>You have requested to reset your password.</p>"
+                + "<p>Click the link below to change your password:</p>"
+                + "<p><a href=\"" + link + "\">Change my password</a></p>"
+                + "<br>"
+                + "<p>Ignore this email if you do remember your password, "
+                + "or you have not made the request.</p>";
+
+        helper.setSubject(subject);
+
+        helper.setText(content, true);
+
+        mailSender.send(message);
+    }
 
 
-    @GetMapping("/reset/password")
+    @GetMapping("/reset_password")
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
-        String user = String.valueOf(UserService.getByResetPasswordToken(token));
+        User user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
         model.addAttribute("error", true);
         model.addAttribute("message", "Invalid Token");
-        return "/users/forgotPasswordForm";
+        return "/users/resetPasswordForm";
 
     }
 
-    @PostMapping("/reset/password")
+    @PostMapping("/reset_password")
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
 
-        User user = UserService.getByResetPasswordToken(token);
+        User user = userService.getByResetPasswordToken(token);
         model.addAttribute("title", "Reset your password");
 
         if (user == null) {
@@ -109,6 +110,6 @@ public class ForgotPasswordController {
             model.addAttribute("message", "You have successfully changed your password.");
         }
 
-        return "/users/forgotPasswordForm";
+        return "/users/login";
     }
 }
