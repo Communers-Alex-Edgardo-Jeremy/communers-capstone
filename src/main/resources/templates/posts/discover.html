@@ -9,7 +9,7 @@
 <body class="d-flex flex-column">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
 
-<!--    <th:block th:insert="~{/partials/partials :: greeting}" sec:authorize="isAuthenticated()"></th:block>-->
+    <th:block th:insert="~{/partials/partials :: greeting}" sec:authorize="isAuthenticated()"></th:block>
     <th:block th:insert="~{/partials/partials :: posts}"></th:block>
     <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
