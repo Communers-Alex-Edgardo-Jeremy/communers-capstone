@@ -31,8 +31,11 @@ public class User {
     @Column(length=255, nullable = false)
     private String password;
 
-//    reset password
-    @Column(name = "password_reset")
+////    reset password
+//    @Column(name = "password_reset")
+//    private String resetPasswordToken;
+
+    @Column(name = "reset_password_token")
     private String resetPasswordToken;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

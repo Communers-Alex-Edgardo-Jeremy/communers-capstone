@@ -2,6 +2,7 @@ package com.codeup.Capstone_Communers.Services;
 
 import com.codeup.Capstone_Communers.models.User;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,30 +11,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserService {
 
-    private final UserRepository userRepo;
-
-    public UserService(UserRepository userRepo) {
-        this.userRepo = userRepo;
-    }
+    @Autowired
+    private UserRepository userRepo;
 
 
-    public String updateResetPasswordToken(String token, String email) throws Exception {
-        System.out.println("before email");
+
+    public void updateResetPasswordToken(String token, String email) throws Exception {
+
         User user = userRepo.findByEmail(email);
-        System.out.println("after email");
-        System.out.println(email);
-        System.out.println(user);
         if (user != null) {
             user.setResetPasswordToken(token);
             userRepo.save(user);
-            return "Reset email password sent to" + email;
         } else {
             throw new Exception("Could not find any user with the email " + email);
         }
     }
 
-    public static User getByResetPasswordToken(String token) {
-        return UserRepository.findByResetPasswordToken(token);
+    public User getByResetPasswordToken(String token) {
+        return userRepo.findByResetPasswordToken(token);
     }
 
     public void updatePassword(User user, String newPassword) {
