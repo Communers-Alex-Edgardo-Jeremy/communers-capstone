@@ -33,8 +33,18 @@ body {
 
 }
 nav, footer {
-    /*border-bottom: var(--grey) solid .125rem;*/
-    color: var(--dark-green);
+    color: var(--dark-green) !important;
+}
+/*.hamburger:after {*/
+/*    border: none;*/
+/*}*/
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 footer {
     border-top: var(--grey) solid .125rem;
