@@ -72,10 +72,11 @@ public class SecurityConfiguration {
                         "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
                         "/user/edit", // only users can edit their profiles
                         "/user/delete", //only users can delete their account
-                        "/follow/{postId}", //only users can follow other users
+                        "/follow/{userId}", //only users can follow other users
                         "/communities", // only users can browse their communities
                         "/community/{communityId}", // only users can view specific communities
                         "/communities/discover", //only users can browse communities
+                        "/find/user", // only users can find other users
                         "/updateCheckbox" // only users can update their notification settings
                 )
                 .authenticated()

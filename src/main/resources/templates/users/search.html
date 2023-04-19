@@ -7,13 +7,13 @@
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <h2 class="page-title ps-3">
-    Explore our communities.
+    Find User
 </h2>
 <!--<label for="community-search">search</label>-->
-<input id="search-input" type="text" placeholder="Search communities...">
+<input id="search-input" type="text" placeholder="Search user...">
 <div id="suggestions"></div>
 <button type="button" id="search-btn">Search</button>
-<th:block th:insert="~{/partials/partials :: communities}"></th:block>
+<th:block th:insert="~{/partials/partials :: users}"></th:block>
 <script src="/js/communities.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
