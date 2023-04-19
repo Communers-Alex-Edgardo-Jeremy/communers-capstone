@@ -34,7 +34,6 @@
             </div>
             <div class="offcanvas-body ms-auto">
                 <ul class="my-auto d-flex navbar-nav">
-
                     <li class="px-2 my-auto nav-item"><a href="/discover">Discover</a></li>
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()"><a href="/forYou">For You</a></li>
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
@@ -58,16 +57,42 @@
     </div>
 </nav>
 
-<div th:fragment="chat" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center;">
-    <h2 style="margin-bottom:20px;">Chat Users:</h2>
-    <ul style="list-style:none; padding:0;">
-        <li th:each="user : ${friendList}">
-            <a th:href="@{/chat/{userId}(userId=${user.id})}" style="text-decoration:none; color:#000;">
-                <span th:text="${user.username}"></span>
-            </a>
-        </li>
-    </ul>
-</div>
+<th:block th:fragment="greeting" th:object="${user}">
+    <div class="d-flex flex-column">
+        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+            Welcome back,<span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
+        </h2>
+        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
+            Discover more from our community.
+        </h2>
+    </div>
+</th:block>
+
+<th:block th:fragment="chat-bubble">
+    <div class="chat-popout">
+        <p class="d-flex">
+            <button class="btn chat-btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
+            </button>
+        </p>
+        <div class="ms-auto me-2" style="min-height: 120px;">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card chat-card card-body d-flex flex-column">
+                    <div sec:authorize="isAuthenticated()">
+                        <h2 class="ms-auto mb-2">Friends:</h2>
+                        <ul style="list-style:none; padding:0;">
+                            <li class="fs-5" th:each="user : ${friendList}">
+                                <a class="ms-auto" th:href="@{/chat/{userId}(userId=${user.id})}">
+                                    <span th:text="${user.username}"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+<!--                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.-->
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
 
 <th:block th:fragment="posts">
     <div class="row align-content-center my-auto px-3 pb-3 g-3">
@@ -84,7 +109,7 @@
                     </form>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
                     <div class="blog-article py-1" th:text="${post.body}">(insert post body)</div>
-                    <a class="btn me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
                 </div>
             </div>
         </div>
@@ -99,6 +124,55 @@
         }
     })
 </script>
+
+<script th:fragment="chat_mod_script">
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        let checkButton = document.getElementById("submit-button");
+        checkButton.addEventListener('click', async function (e) {
+            e.preventDefault()
+            let title = document.getElementById("entryTitle").value;
+            let body = document.getElementById("body-ip").value
+            let content = title + " " + body
+            const data = new FormData();
+            data.append('text', content);
+            data.append('lang', 'en');
+            data.append('opt_countries', 'us');
+            data.append('mode', 'standard');
+            data.append('api_user', '202054065');
+            data.append('api_secret', SIGHT_ENGINE_KEY);
+            let returnMsg = ""
+            await fetch('https://api.sightengine.com/1.0/text/check.json', {
+                method: 'POST',
+                body: data
+            })
+                .then(response => response.json())
+                .then(function (data) {
+                    console.log(data)
+                    if (data.link.matches.length > 0) {
+                        returnMsg += "URL Link\n"
+                    }
+                    if (data.personal.matches.length > 0) {
+                        returnMsg += "Personal Information\n"
+                    }
+                    if (data.profanity.matches.length > 0) {
+                        returnMsg += "Profanity\n"
+                    }
+                    if(returnMsg === "") {
+                        document.getElementById("form").submit();
+                    } else{
+                        returnMsg = "Please remove:\n" + returnMsg
+                        document.getElementById("mod-msg").innerText = returnMsg
+                    }
+                    console.log(returnMsg)
+                })
+                .catch(error => console.error(error));
+        });
+    });
+</script>
+
 <footer class="100vw" th:fragment="footer">
     <div class="row py-3 m-0 w-100">
         <div class="col-sm-6 col-md-2 item">
