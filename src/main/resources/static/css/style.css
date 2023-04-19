@@ -22,7 +22,7 @@
 }
 body,html {
     margin: 0;
-    font: bold 14px/1.4 'Open Sans', arial, sans-serif;
+    /*font: bold 14px/1.4 'Open Sans', arial, sans-serif;*/
 }
 body {
     height: 100vh;
@@ -39,7 +39,7 @@ nav, footer, .btn-close {
     background-color: var(--bg-white) !important;
 }
 
-.hamburger, .btn-close {
+.hamburger, .btn-close, .chat-btn {
     font-size: 2rem  !important;
 }
 .navbar-toggler,
@@ -49,12 +49,16 @@ nav, footer, .btn-close {
 .btn-close,
 .btn-close:focus,
 .btn-close:active,
-.btn-close:focus {
+.btn-close:focus,
+.chat-btn,
+.chat-btn:focus,
+.chat-btn:active,
+.chat-btn:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
-.navbar-toggler:hover, .btn-close:hover {
+.navbar-toggler:hover, .btn-close:hover, .chat-btn:hover {
     text-shadow: .25rem .25rem var(--pink) !important;
 }
 
@@ -81,9 +85,13 @@ nav, footer, .btn-close {
     display: none;
 }
 
-/* nav {
-*    /*border-bottom: var(--grey) solid .125rem;*/
-/**}*/
+
+nav {
+    border-bottom: var(--grey) solid .125rem;
+    background-color: var(--bg-white);
+
+}
+
 
 footer {
     border-top: var(--grey) solid .125rem;
@@ -100,23 +108,16 @@ nav a:hover, nav .logout:hover {
     text-shadow: .125rem .125rem var(--pink);
     text-decoration: none;
 }
-
-/*nav,footer {*/
-/*    background-color: var(--bg-white);*/
-/*}*/
 .navbar-collapse ul {
     padding: 0;
     list-style: none;
     text-align: center;
     text-decoration: none;
 }
-.navbar-collapse li {
-}
 
 .navbar-collapse a, .logout, .greeting, .greeting span {
-    color: var(--dark-green);
     text-decoration: none;
-    letter-spacing: 0.15em;
+    /*letter-spacing: 0.15em;*/
     padding: 0 1rem;
     display: inline-block;
     position: relative;
@@ -146,7 +147,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card, .journal-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -154,7 +155,7 @@ nav a:hover, nav .logout:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: var(--bg-white) !important;
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card {
+.login-card, .sign-up-card, #message {
     width: 300px;
     height: 400px;
 }
@@ -163,15 +164,15 @@ nav a:hover, nav .logout:hover {
     color: var(--dark-green);
     text-decoration: none;
 }
-.about-card a:hover, .resource-link:hover {
-    /*font-weight: bold;*/
-    color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+.chat-card a {
+    color: var(--black);
     text-decoration: none;
 }
-.page-title {
-    color: var(--dark-green);
-    font-weight:bold;
+.about-card a:hover, .resource-link:hover, .chat-card a:hover {
+    /*font-weight: bold;*/
+    color: var(--dark-green) !important;
+    text-shadow: .125rem .125rem var(--pink) !important;
+    text-decoration: none !important;
 }
 footer h3 {
     font-size: 1.25rem;
@@ -179,7 +180,8 @@ footer h3 {
     font-weight:bold;
 }
 
-footer li{
+footer li, footer p{
+    color: var(--black);
     list-style:none;
     text-decoration: none;
 }
@@ -187,7 +189,7 @@ footer li{
 footer li a{
     text-decoration: none;
     font-size: 1rem;
-    color: var(--dark-green);
+    color: var(--black);
     text-transform: uppercase;
 }
 footer li:hover, footer li a:hover {
@@ -228,7 +230,12 @@ footer .item.social {
         margin-top:20px;
     }
 }
-
+.chat-popout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
 footer .item.social > a {
     font-size:20px;
     width:36px;
@@ -263,15 +270,33 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
     box-shadow: .25rem .25rem var(--pink);
 
 }
+.add-commend-btn, .submit-btn {
+    border: var(--dark-green) solid .125rem !important;
+    color: var(--dark-green) !important;
+    background-color: var(--bg-white) !important;
+}
+.add-commend-btn:hover, .submit-btn:hover {
+    color: var(--dark-green) !important;
+    box-shadow: .25rem .25rem var(--pink) !important;
+
+}
+.btn-outline-danger {
+    border: red solid .125rem !important;
+    color: red !important;
+    background-color: var(--bg-white) !important;
+}
+.btn-outline-danger:hover {
+    color: red !important;
+    background-color: var(--bg-white) !important;
+    box-shadow: .25rem .25rem red !important;
+
+}
 
 /* The message box is shown when the user clicks on the password field */
 #message {
-    position: relative;
-    /*display:none;*/
-    /*background: #f1f1f1;*/
-    /*color: #000;*/
-    /*padding: 20px;*/
-    /*margin-top: 10px;*/
+    position: absolute;
+    translate: 300px;
+    border: none !important;
 }
 
 #message p {
