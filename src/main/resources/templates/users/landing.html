@@ -13,10 +13,10 @@
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
 
 <section id="intro" class="pink text-center">
-  <h1>Nice Curves</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequatur, cum dignissimos distinctio
-    earum eligendi enim explicabo ipsum iure magni nihil nostrum quaerat quia quibusdam sed similique tenetur
-    voluptate. Tempore!</p>
+  <h1>CommUnity</h1>
+  <p id="paragraphI">Most people today begin their search for a therapist or community online. Are they finding you?
+
+    At CommUnity, we are passionate about connecting groups and friends with you. We strive to provide the tools  for you to have a successful procreative life, and how to build an online presence that is personalized for you. We bundle all the necessary features and services into an all-inclusive bundle with stress-free intuitive features.</p>
 
   <div class="custom-shape-divider-top-1681840061">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -37,10 +37,31 @@
 </section>
 
 <section id="reviews" class="purple bubble text-center">
-  <h1>Nice Curves</h1>
-  <p>A asperiores consequatur dolorem doloribus error explicabo iste libero, magni minima minus natus
-    necessitatibus nobis officia, officiis perferendis quas quibusdam quidem quis quo recusandae rem sapiente
-    sequi, sit ullam unde.</p>
+  <h1>Why our members are thrilled</h1>
+    <div class="scrolling-wrapper-container">
+      <div class="scrolling-wrapper">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+      <div class="scrolling-wrapper scrolling-wrapperII">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+    </div>
 
   <div class="custom-shape-divider-top-1681841113">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -53,8 +74,6 @@
       <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
     </svg>
   </div>
-
-  <div id=" " class=" "></div>
 
 </section>
 
@@ -241,8 +260,57 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 400px;
+    min-height: 500px;
     padding: 100px 20vw;
+  }
+  .scrolling-wrapper-container {
+    height: 100%;
+    overflow: hidden;
+    line-height: 30%;
+  }
+  /*Section 2 horizontal scroll*/
+  .scrolling-wrapper {
+
+    top: 0;
+    left: 100%;
+    width: 100%;
+    /*position: absolute;*/
+    white-space: nowrap;
+    /*width: auto;*/
+    margin: auto;
+    position: inherit;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 100%;
+    animation: floatText 45s linear infinite ;
+  }
+  /*Section 2 horizontal scroll*/
+  .card {
+    display: inline-block;
+    height: 100%;
+    width: 20em;
+  }
+  /*Section 2 horizontal scroll*/
+  @keyframes scrolling-wrapper {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+  /*Section 2 horizontal scroll*/
+  @keyframes floatText {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .scrolling-wrapperII {
+    animation-delay: 15s;
+  }
+  /*Section 2 horizontal scroll*/
+  .scrolling-wrapper:hover, .card:hover  {
+    animation-play-state: paused;
   }
   .pink {
     background-color: #F2B3D6;
@@ -252,6 +320,11 @@
   }
   .green {
     background-color: #2BD999;
+  }
+  #paragraphI {
+    font-family: 'Gamja Flower', cursive;
+    font-size: large;
+    border: black solid;
   }
   #intro {
     font-family: 'Gamja Flower', cursive;
