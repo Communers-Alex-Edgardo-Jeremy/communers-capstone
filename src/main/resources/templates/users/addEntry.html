@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="partials/partials :: head"></th:block>
+    <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Add Entry</title>
 </head>
 <body class="d-flex flex-column">
@@ -10,16 +10,11 @@
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
-    <!--  append community bio into p element   -->
-    <h1>Journal Entries</h1>
-    <p class="bio">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </p>
     <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 g-3"  >
-            <div class="card shadow h-100" style="">
+        <div class="col-sm-12 col-md-6 g-3">
+            <div class="card edit-card h-100">
                 <div class="card-body d-flex flex-column">
-                    <h2>Create Entry</h2>
+                    <h5>Create Entry</h5>
                     <form class="d-flex flex-column" th:action="@{/journal/addEntry}" th:object="${entry}" method="post">
 
                         <label for="entryTitle">Title</label>
@@ -31,7 +26,7 @@
                         <input type="hidden" th:field="*{date}" />
                         <input type="hidden" th:field="*{id}">
 
-                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Submit Entry</button>
+                        <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Entry</button>
                     </form>
                 </div>
             </div>

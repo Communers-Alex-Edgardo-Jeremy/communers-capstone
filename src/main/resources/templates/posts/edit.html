@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="partials/partials :: head"></th:block>
+    <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Edit Post</title>
 </head>
 
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+    <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
+        <div class="alert alert-danger" th:if="${errMsg}">
+            Something bad happened!
+        </div>
+        <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
+            <div class="col-sm-12 col-md-6 g-3">
+                <div class="card edit-card h-100" style="">
+                    <div class="card-body d-flex flex-column">
+                        <h5>Edit Post</h5>
+                        <form class="d-flex flex-column" th:action="@{|/post/${post.id}/edit|}" th:object="${post}"  method="post">
+                            <label for="entryTitle">Title</label>
+                            <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
-<div class="container d-flex flex-column flex-grow-1" th:object="${user}">
-    <div class="alert alert-danger" th:if="${errMsg}">
-        Something bad happened!
-    </div>
-    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 g-3"  >
-            <div class="card edit-card h-100" style="">
-                <div class="card-body d-flex flex-column">
-                    <h5>Edit Post</h5>
-                    <form class="d-flex flex-column" th:action="@{|/post/${post.id}/edit|}" th:object="${post}"  method="post">
-                        <label for="entryTitle">Title</label>
-                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+                            <label for="body-ip">Body:</label>
+                            <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
 
-                        <label for="body-ip">Body:</label>
-                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+                            <input type="hidden" th:field="*{time}" />
+                            <input type="hidden" th:field="*{id}">
 
-                        <input type="hidden" th:field="*{time}" />
-                        <input type="hidden" th:field="*{id}">
-
-                        <div>
-                            <button class="btn me-auto mt-auto" type="submit">Save Changes</button>
-                            <a class="btn btn-outline-danger me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
-                        </div>
-                    </form>
+                            <div>
+                                <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
+                                <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>

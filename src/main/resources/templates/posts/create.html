@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="partials/partials :: head"></th:block>
+    <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>New Post</title>
 </head>
 <body class="d-flex flex-column">
@@ -44,8 +44,8 @@
         </div>
     </div>
 
-<script src="/js/keys.js"></script>
-<th:block th:insert="~{/partials/partials :: chat_mod_script}"></th:block>
+<!--<script src="/js/keys.js"></script>-->
+<!--<th:block th:insert="~{/partials/partials :: chat_mod_script}"></th:block>-->
 
 
 <footer th:replace="~{/partials/partials :: footer}"></footer>
