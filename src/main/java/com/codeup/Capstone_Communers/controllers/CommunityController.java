@@ -54,7 +54,16 @@ public class CommunityController {
 
     @GetMapping("/communities")
     public String showCommunities(Model model){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fullUser = userDao.getReferenceById(loggedInUser.getId());
+        model.addAttribute("communities", fullUser.getCommunities());
+        return "/communities/communities";
+    }
+
+    @GetMapping("/communities/discover")
+    public String allCommunities(Model model){
         model.addAttribute("communities", communityDao.findAll());
         return "/communities/discover";
     }
+
 }

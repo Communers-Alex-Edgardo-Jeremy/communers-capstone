@@ -50,8 +50,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String showSignupForm(Model model){
-
-        model.addAttribute("user", new com.codeup.Capstone_Communers.models.User());
+        model.addAttribute("user", new User());
         return "/users/register";
     }
 

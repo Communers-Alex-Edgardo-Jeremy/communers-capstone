@@ -6,15 +6,11 @@
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<h2 class="page-title ps-3">
-    Explore our communities.
-</h2>
-<!--<label for="community-search">search</label>-->
-<input id="community-search" type="text" placeholder="Search communities...">
-<div id="suggestions"></div>
-<button type="button" id="search-btn">Search</button>
+<!--<h2 class="page-title ps-3">-->
+<!--    Your communities-->
+<!--</h2>-->
+<a class="btn btn-secondary" th:href="@{|/communities/discover|}">Explore Communities</a>
 <th:block th:insert="~{/partials/partials :: communities}"></th:block>
-<script src="/js/communities.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
