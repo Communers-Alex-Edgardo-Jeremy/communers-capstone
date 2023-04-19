@@ -5,6 +5,7 @@
     <title>New Post</title>
 </head>
 <body class="d-flex flex-column">
+
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">
@@ -19,8 +20,10 @@
                             <label for="entryTitle">Title</label>
                             <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
+
                             <label for="body-ip">Body:</label>
                             <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+
 
                             <input type="hidden" th:field="*{time}" />
                             <input type="hidden" th:field="*{id}">
@@ -34,10 +37,17 @@
                             <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
                         </form>
                     </div>
+
                 </div>
+                <div id="mod-msg" class="text-center text-danger"></div>
             </div>
         </div>
     </div>
+
+<script src="/js/keys.js"></script>
+<th:block th:insert="~{/partials/partials :: chat_mod_script}"></th:block>
+
+
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
