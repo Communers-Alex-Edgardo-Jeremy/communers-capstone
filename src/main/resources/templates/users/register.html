@@ -10,7 +10,7 @@
 <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
     <div class="card sign-up-card mt-3 mb-5">
         <div class="card-body d-flex flex-column">
-            <h1>Create an account</h1>
+            <h3>Create an account</h3>
             <form class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
                 <label for="username">Username</label>
                 <input id="username" th:field="*{username}" required/>
@@ -21,7 +21,7 @@
                 <label for="last_name">Last Name</label>
                 <input id="last_name" th:field="*{last_name}" required/>
 
-                <label class="pt-3" for="email">Email</label>
+                <label for="email">Email</label>
                 <input id="email" th:field="*{email}" required/>
 
                 <label for="psw">Password</label>
@@ -31,13 +31,13 @@
             </form>
         </div>
     </div>
-    <div class="card sign-up-card password-validation mt-3 mb-5" id="message">
-        <div class="card-body d-flex flex-column">
-            <h3>Password must contain the following:</h3>
-            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-            <p id="number" class="invalid">A <b>number</b></p>
-            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    <div class="password-validation mt-3 mb-5 p-3" id="message">
+        <div class="d-flex flex-column">
+            <h4>Password must contain the following:</h4>
+            <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid fs-5">A <b>number</b></p>
+            <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
         </div>
     </div>
 </div>

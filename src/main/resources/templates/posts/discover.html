@@ -6,16 +6,16 @@
     <title>Discover</title>
 </head>
 
-<body class="d-flex flex-column" th:object="${user}">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-<h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-    Welcome back <span class="p-0" th:text="${#authentication.principal.username}"/>
-</h2>
-<h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-    Discover more from our community.
-</h2>
-<th:block th:insert="~{/partials/partials :: posts}"></th:block>
-<div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
+
+<body class="d-flex flex-column">
+    <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
+    <div style="position: relative;">
+        <th:block th:insert="~{/partials/partials :: greeting}" sec:authorize="isAuthenticated()"></th:block>
+        <th:block th:insert="~{/partials/partials :: chat-bubble}" sec:authorize="isAuthenticated()"></th:block>
+    </div>
+    <th:block th:insert="~{/partials/partials :: posts}"></th:block>
+<!--    <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>-->
+
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 </body>
