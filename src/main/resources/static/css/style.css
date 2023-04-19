@@ -152,7 +152,7 @@ nav a:hover, nav .logout:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: var(--bg-white) !important;
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .individual-post-card, #message {
+.login-card, .sign-up-card, .edit-card, .individual-post-card, #message {
     width: 300px;
     height: 400px;
 }
@@ -268,12 +268,12 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
     box-shadow: .25rem .25rem var(--pink);
 
 }
-.add-commend-btn {
+.add-commend-btn, .submit-btn {
     border: var(--dark-green) solid .125rem !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }
-.add-commend-btn:hover {
+.add-commend-btn:hover, .submit-btn:hover {
     color: var(--dark-green) !important;
     box-shadow: .25rem .25rem var(--pink) !important;
 
