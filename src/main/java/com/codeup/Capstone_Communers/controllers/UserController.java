@@ -31,13 +31,13 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-    private UserRepository userDao;
-    private PostRepository postDao;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userDao;
+    private final PostRepository postDao;
+    private final PasswordEncoder passwordEncoder;
     private final EntryRepository entryDao;
-    private CommentRepository commentDao;
+    private final CommentRepository commentDao;
 
-    private QuestionnaireRepository questionnaireDao;
+    private final QuestionnaireRepository questionnaireDao;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao, QuestionnaireRepository questionnaireDao) {
         this.userDao = userDao;
