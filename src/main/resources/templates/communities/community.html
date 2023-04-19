@@ -6,10 +6,13 @@
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<form class="d-inline" th:action="@{|/community/${community.id}|}" method="post">
-    <h2 class="page-title ps-3" th:text="${community.name}">(insert community name)</h2>
-    <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>
+<form class="d-flex flex-column ps-3" th:action="@{|/community/${community.id}|}" method="post">
+    <div class="d-flex">
+        <h2 class="page-title" th:text="${community.name}">(insert community name)</h2>
+        <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>
+    </div>
     <div class="blog-menu small-title" th:text="${community.bio}"></div>
+
 </form>
 <div class="row align-content-center my-auto px-3 pb-3 g-3">
     <div class="alert alert-danger" th:if="${errMsg}">

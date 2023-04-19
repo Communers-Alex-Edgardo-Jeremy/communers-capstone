@@ -80,7 +80,7 @@
                     <div sec:authorize="isAuthenticated()">
                         <h2 class="ms-auto mb-2">Friends:</h2>
                         <ul style="list-style:none; padding:0;">
-                            <li th:each="user : ${friendList}">
+                            <li class="fs-5" th:each="user : ${friendList}">
                                 <a class="ms-auto" th:href="@{/chat/{userId}(userId=${user.id})}">
                                     <span th:text="${user.username}"></span>
                                 </a>
