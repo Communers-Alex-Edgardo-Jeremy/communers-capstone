@@ -12,7 +12,7 @@
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
 
-<section id="intro" class="pink bubble">
+<section id="intro" class="pink text-center">
   <h1>Nice Curves</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequatur, cum dignissimos distinctio
     earum eligendi enim explicabo ipsum iure magni nihil nostrum quaerat quia quibusdam sed similique tenetur
@@ -36,7 +36,7 @@
 
 </section>
 
-<section id="reviews" class="purple bubble">
+<section id="reviews" class="purple bubble text-center">
   <h1>Nice Curves</h1>
   <p>A asperiores consequatur dolorem doloribus error explicabo iste libero, magni minima minus natus
     necessitatibus nobis officia, officiis perferendis quas quibusdam quidem quis quo recusandae rem sapiente
@@ -54,11 +54,11 @@
     </svg>
   </div>
 
-  <div id="curveReview" class="curve bubble"></div>
+  <div id=" " class=" "></div>
 
 </section>
 
-<section id="signUp" class="green">
+<section id="signUp" class="green text-center container-fluid">
   <h1>Nice Curves</h1>
   <p>Accusantium atque, beatae consectetur ducimus eaque ipsam laudantium omnis soluta totam. Aspernatur
     consequuntur error ex laborum molestias neque obcaecati quisquam, reiciendis sunt totam. Aspernatur dolorum
@@ -67,7 +67,7 @@
   <h2>Sign up! Its Free</h2>
   <a class="btn btn" type="button" th:href="@{/register}">Registration</a>
 
-  <div class="custom-shape-divider-bottom-1681841401">
+  <div class="custom-shape-divider-bottom-1681920773">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
       <path d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z" class="shape-fill"></path>
     </svg>
@@ -209,9 +209,7 @@
   .custom-shape-divider-top-1681841818 .shape-fill {
     fill: #FFFFFF;
   }
-  /*Section 3*/
-  /*Shape divider app*/
-  .custom-shape-divider-bottom-1681841401 {
+  .custom-shape-divider-bottom-1681920773 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -219,19 +217,27 @@
     overflow: hidden;
     line-height: 0;
   }
-  /*Section 3*/
-  /*Shape divider app*/
-  .custom-shape-divider-bottom-1681841401 svg {
+
+  .custom-shape-divider-bottom-1681920773 svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 94px;
+    height: 80px;
   }
-  /*Section 3*/
-  /*Shape divider app*/
-  .custom-shape-divider-bottom-1681841401 .shape-fill {
+
+  .custom-shape-divider-bottom-1681920773 .shape-fill {
     fill: #FFFFFF;
   }
+
+  /** For mobile devices **/
+  @media (max-width: 767px) {
+    .custom-shape-divider-bottom-1681920773 svg {
+      width: calc(100% + 1.3px);
+      height: 28px;
+    }
+  }
+
+
 
   section {
     position: relative;
