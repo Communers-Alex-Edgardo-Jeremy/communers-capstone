@@ -144,7 +144,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card, .journal-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -162,7 +162,6 @@ nav a:hover, nav .logout:hover {
     text-decoration: none;
 }
 .chat-card a {
-    /*font-size: 1.25rem;*/
     color: var(--black);
     text-decoration: none;
 }
