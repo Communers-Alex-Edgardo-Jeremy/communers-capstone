@@ -62,6 +62,12 @@ public class UserController {
         return "redirect:/questionnaire";
     }
 
+    @GetMapping("/find/user")
+    public String searchUser(Model model){
+        model.addAttribute("users", userDao.findAll());
+        return "/users/search";
+    }
+
     @GetMapping("/profile")
     public String viewProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -147,9 +153,9 @@ public class UserController {
         return gson.toJson(loggedInUser);
     }
 
-    @PostMapping("/follow/{postId}")
-    public String followUser(@PathVariable long postId, Model model){
-        User followee = postDao.findById(postId).getUser();
+    @PostMapping("/follow/{userId}")
+    public String followUser(@PathVariable long userId, Model model){
+        User followee = userDao.getReferenceById(userId);
         List <User> followers;
         try{
             followers = followee.getFollowers();
