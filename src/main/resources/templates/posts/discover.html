@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="partials/partials :: head"></th:block>
+    <th:block th:insert="~{partials/partials :: head}"></th:block>
     <link rel="stylesheet" href="/css/style.css">
     <title>Discover</title>
 </head>
@@ -12,7 +12,6 @@
         <th:block th:insert="~{/partials/partials :: chat-bubble}" sec:authorize="isAuthenticated()"></th:block>
     </div>
     <th:block th:insert="~{/partials/partials :: posts}"></th:block>
-    <div sec:authorize="isAuthenticated()" th:replace="~{/partials/partials :: chat}">(User chat box here)</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 <script src="/js/discover.js"></script>

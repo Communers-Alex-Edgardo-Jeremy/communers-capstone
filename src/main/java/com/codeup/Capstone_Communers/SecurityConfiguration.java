@@ -75,8 +75,8 @@ public class SecurityConfiguration {
                         "/follow/{postId}", //only users can follow other users
                         "/communities", // only users can browse communities
                         "/community/{communityId}", // only users can view specific communities
-                        "/updateCheckbox", // only users can update their notification settings
-                        "/discover"
+                        "/updateCheckbox" // only users can update their notification settings
+
                 )
                 .authenticated()
 
