@@ -152,7 +152,7 @@ nav a:hover, nav .logout:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: var(--bg-white) !important;
 }
-.login-card, .sign-up-card, .edit-card, .individual-post-card, #message {
+.login-card, .sign-up-card, #message {
     width: 300px;
     height: 400px;
 }
