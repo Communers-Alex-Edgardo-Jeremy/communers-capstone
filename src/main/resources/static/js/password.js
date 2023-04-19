@@ -7,16 +7,17 @@ let capital = document.getElementById("capital");
 let number = document.getElementById("number");
 let length = document.getElementById("length");
 
-// document.getElementById("message").style.display = "none";
-// // When the user clicks on the password field, show the message box
-// myInput.onfocus = function () {
-//     document.getElementById("message").style.display = "block";
-// }
+document.getElementById("message").style.visibility = "hidden";
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function () {
+    document.getElementById("message").style.visibility = "visible";
+}
 
 // When the user clicks outside of the password field, hide the message box
-// myInput.onblur = function () {
-//     document.getElementById("message").style.display = "none";
-// }
+myInput.onblur = function () {
+    document.getElementById("message").style.visibility = "hidden";
+}
 
 // When the user starts to type something inside the password field
 myInput.onkeyup = function () {

@@ -305,8 +305,8 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
 
 /* The message box is shown when the user clicks on the password field */
 #message {
-    /*position: absolute;*/
-    /*translate: 300px;*/
+    position: absolute;
+    translate: 300px;
     border: none !important;
 }
 
@@ -319,7 +319,6 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
 .valid {
     color: var(--dark-green);
 }
-
 .valid:before {
     /*position: relative;*/
     content: "\2713";
