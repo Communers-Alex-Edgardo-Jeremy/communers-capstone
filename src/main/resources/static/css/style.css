@@ -111,12 +111,10 @@ nav a:hover, nav .logout:hover {
     text-align: center;
     text-decoration: none;
 }
-.navbar-collapse li {
-}
 
 .navbar-collapse a, .logout, .greeting, .greeting span {
     text-decoration: none;
-    letter-spacing: 0.15em;
+    /*letter-spacing: 0.15em;*/
     padding: 0 1rem;
     display: inline-block;
     position: relative;
@@ -146,7 +144,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -163,16 +161,17 @@ nav a:hover, nav .logout:hover {
     color: var(--dark-green);
     text-decoration: none;
 }
-.about-card a:hover, .resource-link:hover {
-    /*font-weight: bold;*/
-    color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+.chat-card a {
+    /*font-size: 1.25rem;*/
+    color: var(--black);
     text-decoration: none;
 }
-/*.page-title {*/
-/*    color: var(--dark-green);*/
-/*    font-weight:bold;*/
-/*}*/
+.about-card a:hover, .resource-link:hover, .chat-card a:hover {
+    /*font-weight: bold;*/
+    color: var(--dark-green) !important;
+    text-shadow: .125rem .125rem var(--pink) !important;
+    text-decoration: none !important;
+}
 footer h3 {
     font-size: 1.25rem;
     color: var(--dark-green);
