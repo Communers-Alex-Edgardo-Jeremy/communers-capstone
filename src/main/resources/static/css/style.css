@@ -144,7 +144,7 @@ nav a:hover, nav .logout:hover {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -266,6 +266,16 @@ input.btn, a.btn, form .follow-btn {
 input.btn:hover, a.btn:hover, form .follow-btn:hover {
     color: var(--dark-green);
     box-shadow: .25rem .25rem var(--pink);
+
+}
+.add-commend-btn {
+    border: var(--dark-green) solid .125rem !important;
+    color: var(--dark-green) !important;
+    background-color: var(--bg-white) !important;
+}
+.add-commend-btn:hover {
+    color: var(--dark-green) !important;
+    box-shadow: .25rem .25rem var(--pink) !important;
 
 }
 .btn-outline-danger {

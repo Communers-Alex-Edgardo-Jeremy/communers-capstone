@@ -109,7 +109,7 @@
                     </form>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
                     <div class="blog-article py-1" th:text="${post.body}">(insert post body)</div>
-                    <a class="btn me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
                 </div>
             </div>
         </div>
