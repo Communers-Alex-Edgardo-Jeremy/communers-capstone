@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.models;
 
+import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,8 +34,4 @@ public class UserWithRoles extends User implements UserDetails {
         return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

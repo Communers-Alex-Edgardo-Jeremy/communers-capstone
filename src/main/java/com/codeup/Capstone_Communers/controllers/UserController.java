@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.controllers;
 
+
 //import com.codeup.Capstone_Communers.repositories.UserRepository;
 //import org.apache.catalina.User;
 //import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,23 +10,22 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
-import com.codeup.Capstone_Communers.SecurityConfiguration;
+
+import com.codeup.Capstone_Communers.Services.UserService;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
-import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
-import com.mysql.cj.PreparedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.context.SecurityContext;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +36,6 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final EntryRepository entryDao;
     private final CommentRepository commentDao;
-
     private final QuestionnaireRepository questionnaireDao;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao, QuestionnaireRepository questionnaireDao) {
@@ -60,6 +59,16 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/questionnaire";
+    }
+
+//    email send verification
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code) {
+        if (UserService.verify(code)) {
+            return "verify_success";
+        } else {
+            return "verify_fail";
+        }
     }
 
     @GetMapping("/find/user")
@@ -247,4 +256,5 @@ public class UserController {
         userDao.save(fullUser);
         return "redirect:/discover";
     }
+
 }

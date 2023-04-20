@@ -1,4 +1,6 @@
 package com.codeup.Capstone_Communers.models;
+
+import com.codeup.Capstone_Communers.repositories.UserRepository;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +35,14 @@ public class User {
 
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
+
+    //    The field verificationCode stores a random, unique String which is generated in the registration process and will be used in the verification process. Once registered, the enabled status of a user is false (disabled) so the user can’t login if he has not activated account by checking email and click on the verification link embedded in the email.
+    //email send verification
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+
+    //email send verification
+    private boolean enabled;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Questionnaire questionnaire;
@@ -79,6 +89,11 @@ public class User {
         last_name = copy.last_name;
         username = copy.username;
         password = copy.password;
+    }
+
+    //    method that needs to be placed inside of class that wraps a User object
+    public boolean isEnabled() {
+        return UserRepository.isEnabled();
     }
 
 }
