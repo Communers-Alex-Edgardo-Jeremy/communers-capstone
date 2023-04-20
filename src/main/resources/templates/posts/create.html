@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>New Post</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
@@ -48,5 +48,7 @@
 
 
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<!--<script th:replace="chat_mod_script"></script>-->
+<script src="/js/background.js"></script>
 </body>
 </html>

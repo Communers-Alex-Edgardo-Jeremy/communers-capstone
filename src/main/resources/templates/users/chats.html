@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Chat</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <div id="id" th:value="${user.id}" hidden></div>
 <div id="username" th:value="${user.username}" hidden></div>
@@ -24,5 +24,6 @@
 <script src="/js/keys.js"></script>
 <script src="/js/talkJS.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/background.js"></script>
 </body>
 </html>

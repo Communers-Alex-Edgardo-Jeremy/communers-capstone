@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Settings</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
         <div class="alert alert-danger" th:if="${errMsg}">
@@ -97,5 +97,6 @@
 <footer class="" th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/password.js"></script>
 
+<script src="/js/background.js"></script>
 </body>
 </html>

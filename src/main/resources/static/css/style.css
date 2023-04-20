@@ -20,6 +20,12 @@
     color: var(--dark-green);
     text-shadow: .25rem .25rem var(--pink);
 }
+/*#gradient {*/
+/*    width: 100%;*/
+/*    height: 800px;*/
+/*    padding: 0px;*/
+/*    margin: 0px;*/
+/*}*/
 body,html {
     margin: 0;
     /*font: bold 14px/1.4 'Open Sans', arial, sans-serif;*/
@@ -28,11 +34,11 @@ body {
     height: 100vh;
     color: var(--black);
     position: relative;
-    background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    /*background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));*/
     overflow-x: hidden;
 
 }
-nav, footer, .btn-close {
+nav, footer {
     color: var(--dark-green) !important;
 }
 .offcanvas-end.show {
@@ -43,32 +49,40 @@ nav, footer, .btn-close {
     font-size: 2rem  !important;
 }
 
-.btn-close {
-    width: 2rem;
-    height: 2rem;
+.closeButton {
+    color: var(--black) ;
+    font-size: 2rem;
 }
-.follow-btn:active, .follow-btn:focus {
-    /*outline: none !important;*/
-    /*border: none !important;*/
-    box-shadow: none !important;
-}
+/*button:focus, button:active, .btn:hover, .btn:active {*/
+/*    outline: none !important;*/
+/*    !*border: none !important;*!*/
+/*    box-shadow: none !important;*/
+/*    -webkit-box-shadow: none !important;*/
+/*    -moz-box-shadow: none !important;*/
+/*}*/
 
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus,
-.btn-close,
-.btn-close:focus,
-.btn-close:active,
 .chat-btn,
 .chat-btn:active,
 .chat-btn:focus {
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
 }
-.navbar-toggler:hover, .btn-close:hover, .chat-btn:hover {
+.navbar-toggler:hover, .chat-btn:hover {
     text-shadow: .25rem .25rem var(--pink) !important;
+}
+.closeButton:hover {
+    color: red;
+    text-shadow: .25rem .25rem var(--pink);
+}
+.closeButton:active {
+    color: red;
 }
 .notification {
     position: fixed;
@@ -108,7 +122,7 @@ nav a, nav .logout {
     color: var(--dark-green);
     text-decoration: none;
 }
-nav a:hover, nav .logout:hover, .forgot-pw:hover {
+nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
     text-shadow: .125rem .125rem var(--pink);
@@ -175,7 +189,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover {
     color: var(--dark-green);
     text-decoration: none;
 }
-.chat-card a, .forgot-pw {
+.chat-card a, .forgot-pw, .post-link {
     color: var(--black);
     text-decoration: none;
 }
@@ -279,7 +293,14 @@ input.btn, a.btn, form .follow-btn {
 input.btn:hover, a.btn:hover, form .follow-btn:hover {
     color: var(--dark-green);
     box-shadow: .25rem .25rem var(--pink);
-
+    -webkit-box-shadow: .25rem .25rem var(--pink);
+    -moz-box-shadow: .25rem .25rem var(--pink);
+}
+input.btn:active, a.btn:active, form .follow-btn:active {
+    background-color: var(--light-green);
+    box-shadow: .25rem .25rem var(--purple);
+    -webkit-box-shadow: .25rem .25rem var(--purple);
+    -moz-box-shadow: .25rem .25rem var(--purple);
 }
 .add-commend-btn, .submit-btn {
     border: var(--dark-green) solid .125rem !important;
@@ -289,7 +310,15 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
 .add-commend-btn:hover, .submit-btn:hover {
     color: var(--dark-green) !important;
     box-shadow: .25rem .25rem var(--pink) !important;
+    -webkit-box-shadow: .25rem .25rem var(--pink);
+    -moz-box-shadow: .25rem .25rem var(--pink);
 
+}
+.add-commend-btn:active, .submit-btn:active {
+    background-color: var(--light-green) !important;
+    box-shadow: .25rem .25rem var(--purple);
+    -webkit-box-shadow: .25rem .25rem var(--purple);
+    -moz-box-shadow: .25rem .25rem var(--purple);
 }
 .btn-outline-danger {
     border: red solid .125rem !important;
@@ -300,7 +329,11 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
     color: red !important;
     background-color: var(--bg-white) !important;
     box-shadow: .25rem .25rem red !important;
-
+    -webkit-box-shadow: .25rem .25rem red;
+    -moz-box-shadow: .25rem .25rem red;
+}
+.btn-outline-danger:active {
+    background-color: var(--pink) !important;
 }
 
 /* The message box is shown when the user clicks on the password field */
@@ -334,6 +367,6 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
     content: "\00d7";
 }
 
-.fa-solid, .fa-brands {
+.fa-brands, .chat-btn {
     color: var(--dark-green);
 }
