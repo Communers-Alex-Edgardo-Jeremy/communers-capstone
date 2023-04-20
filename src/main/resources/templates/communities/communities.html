@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="~{partials/partials :: head}"></th:block>
+    <th:block th:insert="partials/partials :: head"></th:block>
     <title>Communities</title>
 </head>
 <body class="d-flex flex-column">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<h2 class="page-title ps-3">
-    Explore our communities.
-</h2>
-<!--<label for="community-search">search</label>-->
-<input id="search-input" type="text" placeholder="Search communities...">
-<div id="suggestions"></div>
-<button type="button" id="search-btn">Search</button>
+<!--<h2 class="page-title ps-3">-->
+<!--    Your communities-->
+<!--</h2>-->
+<a class="btn btn-secondary" th:href="@{|/communities/discover|}">Explore Communities</a>
 <th:block th:insert="~{/partials/partials :: communities}"></th:block>
-<script src="/js/communities.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>

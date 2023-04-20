@@ -50,8 +50,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String showSignupForm(Model model){
-
-        model.addAttribute("user", new com.codeup.Capstone_Communers.models.User());
+        model.addAttribute("user", new User());
         return "/users/register";
     }
 
@@ -61,6 +60,12 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/questionnaire";
+    }
+
+    @GetMapping("/find/user")
+    public String searchUser(Model model){
+        model.addAttribute("users", userDao.findAll());
+        return "/users/search";
     }
 
     @GetMapping("/profile")
@@ -148,9 +153,9 @@ public class UserController {
         return gson.toJson(loggedInUser);
     }
 
-    @PostMapping("/follow/{postId}")
-    public String followUser(@PathVariable long postId, Model model){
-        User followee = postDao.findById(postId).getUser();
+    @PostMapping("/follow/{userId}")
+    public String followUser(@PathVariable long userId, Model model){
+        User followee = userDao.getReferenceById(userId);
         List <User> followers;
         try{
             followers = followee.getFollowers();

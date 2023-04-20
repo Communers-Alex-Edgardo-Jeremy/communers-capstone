@@ -39,9 +39,20 @@ nav, footer, .btn-close {
     background-color: var(--bg-white) !important;
 }
 
-.hamburger, .btn-close, .chat-btn {
+.hamburger, .chat-btn {
     font-size: 2rem  !important;
 }
+
+.btn-close {
+    width: 2rem;
+    height: 2rem;
+}
+.follow-btn:active, .follow-btn:focus {
+    /*outline: none !important;*/
+    /*border: none !important;*/
+    box-shadow: none !important;
+}
+
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
@@ -49,9 +60,7 @@ nav, footer, .btn-close {
 .btn-close,
 .btn-close:focus,
 .btn-close:active,
-.btn-close:focus,
 .chat-btn,
-.chat-btn:focus,
 .chat-btn:active,
 .chat-btn:focus {
     outline: none !important;
@@ -61,7 +70,6 @@ nav, footer, .btn-close {
 .navbar-toggler:hover, .btn-close:hover, .chat-btn:hover {
     text-shadow: .25rem .25rem var(--pink) !important;
 }
-
 .notification {
     position: fixed;
     top: 50px;
@@ -91,8 +99,6 @@ nav {
     background-color: var(--bg-white);
 
 }
-
-
 footer {
     border-top: var(--grey) solid .125rem;
     background-color: var(--bg-white);
@@ -102,7 +108,7 @@ nav a, nav .logout {
     color: var(--dark-green);
     text-decoration: none;
 }
-nav a:hover, nav .logout:hover {
+nav a:hover, nav .logout:hover, .forgot-pw:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
     text-shadow: .125rem .125rem var(--pink);
@@ -142,12 +148,17 @@ nav a:hover, nav .logout:hover {
     width: 100%;
     left: 0;
 }
+.offcanvas {
+    width: auto !important;
+    height: auto !important;
+    background-color: var(--bg-white) !important;
+}
 @media screen and (max-height: 300px) {
     ul {
         margin-top: 40px;
     }
 }
-.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card, .journal-card {
+.login-card, .create-card, .sign-up-card, .edit-card, .post-card, .individual-post-card, .about-card, .profile-card, .card-community, .chat-card, .comment-card, .journal-card, .settings-card {
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
@@ -155,16 +166,16 @@ nav a:hover, nav .logout:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: var(--bg-white) !important;
 }
-.login-card, .sign-up-card, #message {
+.login-card, .sign-up-card, #message, .settings-card {
     width: 300px;
-    height: 400px;
+    min-height: 400px;
 }
 .about-card a, .resource-link {
     /*font-size: 1.25rem;*/
     color: var(--dark-green);
     text-decoration: none;
 }
-.chat-card a {
+.chat-card a, .forgot-pw {
     color: var(--black);
     text-decoration: none;
 }
@@ -308,7 +319,6 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
 .valid {
     color: var(--dark-green);
 }
-
 .valid:before {
     /*position: relative;*/
     content: "\2713";

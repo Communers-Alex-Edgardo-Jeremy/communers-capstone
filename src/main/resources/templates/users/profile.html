@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <th:block th:insert="partials/partials :: head"></th:block>
+    <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Profile</title>
 </head>
 <body class="d-flex flex-column">
@@ -21,11 +21,10 @@
                     <div>
                         <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/edit|}">Edit</a>
                         <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
-                        <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
                     </div>
                     <br>
                     <h5 class="mt-auto">Comments</h5>
-                    <div th:each="comment : ${allComments}">
+                    <div th:each="comment : ${post.comments}">
                         <div class="comments" th:if="${comment.post == post}">
                             <div class="" th:text="${comment.date}">(insert post body)</div>
                             <div class="" th:text="${comment.body}">(insert post body)</div>
