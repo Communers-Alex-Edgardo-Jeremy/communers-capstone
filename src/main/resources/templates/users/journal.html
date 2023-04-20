@@ -10,29 +10,19 @@
         <h2 class="my-auto">Journal Entries</h2>
     </div>
     <div class="row align-content-center my-auto px-3 pb-3 g-3" sec:authorize="isAuthenticated()">
-<!--        <div class="col-sm-12 col-md-6 col-lg-4"  th:each="entry : ${entries}">-->
-<!--            <div class="card journal-card h-100" style="">-->
-<!--                <div class="card-body d-flex flex-column">-->
-<!--                    <h5 class="card-title pt-1" th:text="${entry.title}">(insert post title)</h5>-->
-<!--                    <div class="blog-menu small-title date" th:text="${entry.date}"></div>-->
-<!--                    <div class="blog-article">-->
-<!--                        <p class="" th:text="${entry.body}">(insert post body)</p>-->
-<!--                    </div>-->
-<!--                    <a class="btn btn-sm me-auto mt-auto" th:href="@{|/journal/${entry.id}/edit|}">Read more...</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
         <div class="col-sm-12 col-lg-4 offset-lg-2">
             <div class="card journal-card h-100" style="">
                 <div class="card-body d-flex flex-column">
+                    <h5>Your Entries</h5>
                     <div th:each="entry : ${entries}">
-                        <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}"><h3 class="pt-1" th:text="${entry.title}">(insert post title)</h3></a>
+                        <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}">
+                            <div class="d-flex">
+                                <h3 class="pt-1" th:text="${entry.title}">(insert post title)</h3>
+
+                                <a th:href="@{|/journal/${entry.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                            </div>
+                        </a>
                         <div class="blog-menu small-title date" th:text="${entry.date}"></div>
-    <!--                    <div class="blog-article">-->
-    <!--                        <p class="" th:text="${entry.body}">(insert post body)</p>-->
-    <!--                    </div>-->
-                        <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
                         <hr>
                     </div>
                 </div>

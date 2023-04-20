@@ -38,7 +38,7 @@ body {
     overflow-x: hidden;
 
 }
-nav, footer, .btn-close {
+nav, footer {
     color: var(--dark-green) !important;
 }
 .offcanvas-end.show {
@@ -49,9 +49,9 @@ nav, footer, .btn-close {
     font-size: 2rem  !important;
 }
 
-.btn-close {
-    width: 2rem;
-    height: 2rem;
+.closeButton {
+    color: var(--black) ;
+    font-size: 2rem;
 }
 /*button:focus, button:active, .btn:hover, .btn:active {*/
 /*    outline: none !important;*/
@@ -65,9 +65,6 @@ nav, footer, .btn-close {
 .navbar-toggler:focus,
 .navbar-toggler:active,
 .navbar-toggler-icon:focus,
-.btn-close,
-.btn-close:focus,
-.btn-close:active,
 .chat-btn,
 .chat-btn:active,
 .chat-btn:focus {
@@ -77,8 +74,15 @@ nav, footer, .btn-close {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
 }
-.navbar-toggler:hover, .btn-close:hover, .chat-btn:hover {
+.navbar-toggler:hover, .chat-btn:hover {
     text-shadow: .25rem .25rem var(--pink) !important;
+}
+.closeButton:hover {
+    color: red;
+    text-shadow: .25rem .25rem var(--pink);
+}
+.closeButton:active {
+    color: red;
 }
 .notification {
     position: fixed;
@@ -364,6 +368,6 @@ input.btn:active, a.btn:active, form .follow-btn:active {
     content: "\00d7";
 }
 
-.fa-solid, .fa-brands {
+.fa-brands, .chat-btn {
     color: var(--dark-green);
 }
