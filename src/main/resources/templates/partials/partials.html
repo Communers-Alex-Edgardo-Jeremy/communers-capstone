@@ -66,6 +66,11 @@
         <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
             Discover more from our community.
         </h2>
+        <div th:choose>
+            <div th:when="${message != null}">
+                <div id="notification" th:text="${message}"  class="notification hidden"></div>
+            </div>
+        </div>
     </div>
 </th:block>
 
