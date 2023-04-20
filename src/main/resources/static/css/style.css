@@ -6,6 +6,9 @@
     --bg-white: #F2EEEB;
     --grey: #848282;
     --black: #000000;
+
+    --margin-line-color: #ec7063;
+    --ruling-line-color: #85c1e9;
 }
 * {
     font-family: 'Raleway', sans-serif;
@@ -377,4 +380,59 @@ input.btn:active, a.btn:active, form .follow-btn:active {
 
 .fa-brands, .chat-btn {
     color: var(--dark-green);
+}
+.ruled-paper {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    background-color: var(--bg-white) !important;
+    /*display: flex;*/
+    flex-direction: column !important;
+}
+
+.ruled-paper .ruled-paper-header {
+    background-image: linear-gradient(90deg, transparent 79px, var(--margin-line-color) 79px, var(--margin-line-color) 81px, transparent 81px);
+    background-size: 100% 1.2em;
+    flex-grow: 1;
+}
+
+.ruled-paper-header {
+    background-image: linear-gradient(90deg, transparent 79px, var(--margin-line-color) 79px, var(--margin-line-color) 81px, transparent 81px), linear-gradient(var(--ruling-line-color) .1em, transparent .1em) !important;
+    background-size: 100% 1.2em;
+    flex-grow: 8;
+    /*padding-top: 1rem;*/
+    padding-left: 5rem;
+    line-height: 1.2;
+    font-size: 2rem;
+}
+
+.ruled-paper .ruled-paper-body {
+    background-image: linear-gradient(90deg, transparent 79px, var(--margin-line-color) 79px, var(--margin-line-color) 81px, transparent 81px), linear-gradient(var(--ruling-line-color) .1em, transparent .1em);
+    background-size: 100% 1.2em;
+    flex-grow: 8;
+    padding-top: .2rem;
+    padding-left: 2rem;
+    line-height: 1.2;
+}
+.entry-body-title {
+    line-height: 1.2;
+}
+
+.ruled-paper input {
+    padding-left: 1.4rem;
+}
+.ruled-paper .ruled-paper-body textarea {
+    padding-left: 1rem;
+}
+.ruled-paper .ruled-paper-body textarea:active,
+.ruled-paper .ruled-paper-body textarea:hover,
+.ruled-paper .ruled-paper-body textarea:focus,
+.ruled-paper input:active,
+.ruled-paper input:hover,
+.ruled-paper input:focus {
+    outline: none !important;
+    border: none !important;
+}
+
+.journal-btn-container {
+    padding-left: 6rem;
 }

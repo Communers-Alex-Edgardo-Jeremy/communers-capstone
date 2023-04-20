@@ -109,7 +109,7 @@ public class UserController {
     public String editEntry(Model model, @PathVariable long entryId){
         Entry entry = entryDao.findById(entryId);
         model.addAttribute("entry", entry);
-        return "editEntryOld";
+        return "/users/editEntry";
     }
     @PostMapping("/journal/{entryId}/edit")
     public String editEntry(@PathVariable long entryId, @ModelAttribute Entry entry){
