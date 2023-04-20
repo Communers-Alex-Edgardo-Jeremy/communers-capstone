@@ -2,26 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
-    <title>Edit Entry</title>
+    <title>Journal</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="container d-flex flex-column flex-grow-1">
-    <div class="alert alert-danger" th:if="${errMsg}">
-        Something bad happened!
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
+    <div class="d-flex ps-3">
+        <h2 class="my-auto">Journal Entries</h2>
     </div>
-    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 g-3">
-            <div class="card edit-card h-100">
-                <div class="card-body d-flex flex-column">
-                    <h5>Edit Journal Entry</h5>
+    <div class="row align-content-center my-auto px-3 pb-3 g-3" sec:authorize="isAuthenticated()">
+        <div class="col-sm-12 col-lg-4 offset-lg-2">
+            <div class="card journal-card h-100" style="">
+
+<!--                <div class="card-body d-flex flex-column" id="your-entries">-->
+<!--                    <h5>Your Entries</h5>-->
+<!--                    <div th:each="entry : ${entries}">-->
+<!--                        <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}">-->
+<!--                            <div class="d-flex">-->
+<!--                                <h3 class="pt-1" th:text="${entry.title}">(insert post title)</h3>-->
+<!--                                <a th:href="@{|/journal/${entry.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        <div class="blog-menu small-title date" th:text="${entry.date}"></div>-->
+<!--                        <hr>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="card-body d-flex flex-column" id="edit-entry">
+                    <div class="d-flex">
+                        <h5>Edit Journal Entry</h5>
+                        <a th:href="@{|/journal|}" class="ms-auto mb-auto"><i class="backButton fa-solid fa-arrow-left"></i></a>
+                    </div>
                     <form class="d-flex flex-column" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
 
-                        <label for="entryTitle">Title</label>
-                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+                        <label for="entryTitleEdited">Title</label>
+                        <input id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
 
                         <label for="body-ip">Body:</label>
-                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+                        <textarea type="text" th:field="*{body}" id="body-ip-edited" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
 
                         <input type="hidden" th:field="*{date}" />
                         <input type="hidden" th:field="*{id}">
@@ -32,11 +49,31 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-4">
+            <div class="card edit-card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5>Create Entry</h5>
+                    <form class="d-flex flex-column h-100" th:action="@{/journal/addEntry}" th:object="${entry}" method="post">
+
+                        <label for="entryTitle">Title</label>
+                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+
+                        <label for="body-ip">Body:</label>
+                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+
+                        <input type="hidden" th:field="*{date}" />
+                        <input type="hidden" th:field="*{id}">
+
+                        <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Entry</button>
+                    </form>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>
 </body>

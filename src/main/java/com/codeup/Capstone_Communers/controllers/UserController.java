@@ -9,15 +9,12 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
-import com.codeup.Capstone_Communers.SecurityConfiguration;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
 import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
-import com.mysql.cj.PreparedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -112,7 +109,7 @@ public class UserController {
     public String editEntry(Model model, @PathVariable long entryId){
         Entry entry = entryDao.findById(entryId);
         model.addAttribute("entry", entry);
-        return "/users/editEntry";
+        return "editEntryOld";
     }
     @PostMapping("/journal/{entryId}/edit")
     public String editEntry(@PathVariable long entryId, @ModelAttribute Entry entry){
