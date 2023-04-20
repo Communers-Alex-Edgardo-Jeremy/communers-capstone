@@ -5,7 +5,7 @@
     <title>Login</title>
 <!--    <link rel="stylesheet" href="/css/password.css">-->
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
     <div class="alert alert-danger" th:if="${errMsg}">
@@ -46,5 +46,6 @@
 </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/password.js"></script>
+<script src="/js/background.js"></script>
 </body>
 </html>

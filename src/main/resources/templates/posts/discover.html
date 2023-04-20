@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Discover</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div style="position: relative;">
         <th:block th:insert="~{/partials/partials :: greeting}" sec:authorize="isAuthenticated()"></th:block>
@@ -15,5 +15,6 @@
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 <script src="/js/discover.js"></script>
+<script src="/js/background.js"></script>
 </body>
 </html>

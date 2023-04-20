@@ -4,10 +4,11 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>For You</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <h2 class="page-title ps-3">For You</h2>
     <th:block th:insert="~{/partials/partials :: posts}"></th:block>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/background.js"></script>
 </body>
 </html>
