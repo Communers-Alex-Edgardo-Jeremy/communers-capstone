@@ -34,14 +34,15 @@
 
                 <div class="card-body ruled-paper d-flex flex-column align-content-center" id="create-entry">
 
-                    <div role="main">
+                    <div class="d-flex flex-column h-100" role="main">
                         <div class="ruled-paper-header">
                             <div class="d-flex">
                                 <h5 class="my-auto ps-2">Create Entry</h5>
+                                <br>
                             </div>
                         </div>
 
-                        <form class="d-flex flex-column ruled-paper-body" th:action="@{|/journal/addEntry|}" th:object="${entry}" method="post">
+                        <form class="d-flex flex-column ruled-paper-body h-100" th:action="@{|/journal/addEntry|}" th:object="${entry}" method="post">
 
                             <div class="d-flex">
                                 <label class="my-auto" for="entryTitle">Title:</label>
@@ -49,9 +50,9 @@
                                 <br>
                             </div>
 
-                            <div class="d-flex">
+                            <div class="d-flex flex-grow-1">
                                 <label class="entry-body-title" for="body-ip">Body:</label>
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0" rows="6" placeholder="what's on your mind?">
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
                             </textarea>
                             </div>
                             <input type="hidden" th:field="*{date}" />
