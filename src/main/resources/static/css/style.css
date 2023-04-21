@@ -8,7 +8,8 @@
     --black: #000000;
 
     --margin-line-color: #ec7063;
-    --ruling-line-color: #85c1e9;
+    /*--ruling-line-color: #85c1e9;*/
+    --ruling-line-color: #969494;
 }
 * {
     font-family: 'Raleway', sans-serif;
@@ -434,5 +435,5 @@ input.btn:active, a.btn:active, form .follow-btn:active {
 }
 
 .journal-btn-container {
-    padding-left: 6rem;
+    padding-left: 3.75rem;
 }
