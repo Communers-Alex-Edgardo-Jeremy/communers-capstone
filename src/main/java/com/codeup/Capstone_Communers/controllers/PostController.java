@@ -10,7 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.codeup.Capstone_Communers.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +31,13 @@ public class PostController {
     private final PostRepository postDao;
     private final CommentRepository commentDao;
     private final UserRepository userDao;
+
+    private ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.addDialect(new Java8TimeDialect());
+        engine.setTemplateResolver(templateResolver);
+        return engine;
+    }
 
     public PostController(UserRepository userDao,  PostRepository postDao, CommentRepository commentDao, CommunityRepository communityDao) {
         this.userDao = userDao;
@@ -73,6 +87,10 @@ public class PostController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(loggedInUser.getId());
         model.addAttribute("user", user);
+        model.addAttribute("standardDate", new Date());
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("timestamp", Instant.now());
 
         Date date = new Date();
         comment.setPost(post);

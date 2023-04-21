@@ -55,7 +55,7 @@ nav, footer {
 
 .closeButton, .backButton {
     color: var(--ruling-line-color) ;
-    font-size: 2rem;
+    /*font-size: 2rem;*/
 }
 /*button:focus, button:active, .btn:hover, .btn:active {*/
 /*    outline: none !important;*/
