@@ -27,33 +27,28 @@
                             </div>
                         </div>
 
-<!--                        <div class="ruled-paper-body" contenteditable="true">-->
+                        <form class="d-flex flex-column ruled-paper-body" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
 
-                            <form class="d-flex flex-column ruled-paper-body" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
+                            <div class="d-flex">
+                                <label class="my-auto" for="entryTitleEdited">Title:</label>
+                                <input class="border border-0 bg-transparent" id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
+                                <br>
+                            </div>
 
-                                <div class="d-flex">
-                                    <label class="my-auto" for="entryTitleEdited">Title:</label>
-                                    <input class="border border-0 bg-transparent" id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
-                                    <br>
-                                </div>
+                            <div class="d-flex">
+                                <label class="entry-body-title" for="body-ip">Body:</label>
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0" rows="6" placeholder="what's on your mind?">
+                            </textarea>
+                            </div>
+                            <input type="hidden" th:field="*{date}" />
+                            <input type="hidden" th:field="*{id}">
 
-                                <div class="d-flex">
-                                    <label class="entry-body-title" for="body-ip">Body:</label>
-                                    <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0" rows="6" placeholder="what's on your mind?">
-                                </textarea>
-                                </div>
-                                <input type="hidden" th:field="*{date}" />
-                                <input type="hidden" th:field="*{id}">
-
-                                <div class="journal-btn-container">
-                                    <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
-                                    <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
-                                </div>
-                            </form>
-
-<!--                        </div>-->
+                            <div class="journal-btn-container">
+                                <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
+                                <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                            </div>
+                        </form>
                     </div>
-
                 </div>
             </div>
         </div>
