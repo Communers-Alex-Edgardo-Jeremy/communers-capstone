@@ -15,8 +15,10 @@ import com.codeup.Capstone_Communers.Services.UserService;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
 import com.google.gson.Gson;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +37,9 @@ public class UserController {
     private final UserRepository userDao;
     private final PostRepository postDao;
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserService service;
     private final EntryRepository entryDao;
     private final CommentRepository commentDao;
     private final QuestionnaireRepository questionnaireDao;
@@ -54,21 +60,28 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) throws MessagingException, UnsupportedEncodingException {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/questionnaire";
+
+        // send email to the new user
+        service.sendVerificationEmail(user, "localhost:8080/");
+
+        // redirect to an "email sent" page
+        return "redirect:/verify";
     }
 
-//    email send verification
+
+    //    email send verification
     @GetMapping("/verify")
-    public String verifyUser(@Param("code") String code) {
-        if (UserService.verify(code)) {
-            return "verify_success";
+    public String verifyUser(@Param("code") String code, Model model) {
+        if(service.verify(code)) {
+            model.addAttribute("verify_success", true);
         } else {
-            return "verify_fail";
+            model.addAttribute("verify_fail", true);
         }
+        return "users/successfulSignUp";
     }
 
     @GetMapping("/find/user")

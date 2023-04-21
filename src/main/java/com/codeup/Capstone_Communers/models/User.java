@@ -42,6 +42,7 @@ public class User {
     private String verificationCode;
 
     //email send verification
+    @Column(nullable = false)
     private boolean enabled;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

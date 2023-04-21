@@ -1,7 +1,6 @@
 package com.codeup.Capstone_Communers.controllers;
 
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,6 +11,11 @@ class HomeController {
     public String defaultPage() {
         return "redirect:/landing";
     }
+
+//    @GetMapping("/verify")
+//    public String verify() {
+//        return "/users/process_register";
+//    }
 
     @GetMapping("/landing")
     public String landingPage(){

@@ -78,7 +78,10 @@ public class SecurityConfiguration {
                         "/communities/discover", //only users can browse communities
                         "/find/user", // only users can find other users
                         "/updateCheckbox", // only users can update their notification settings
-                        "/process_register "
+
+//                        verify redirects and authentications for email
+                        "/login" , // users needs to have verified authentication through email link
+                        "verify_success" // users has verified authentication through email link
 
                 )
                 .authenticated()
