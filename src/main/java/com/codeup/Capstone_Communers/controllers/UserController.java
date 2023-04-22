@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.controllers;
 
+
 //import com.codeup.Capstone_Communers.repositories.UserRepository;
 //import org.apache.catalina.User;
 //import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,23 +10,25 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
-import com.codeup.Capstone_Communers.SecurityConfiguration;
+
+import com.codeup.Capstone_Communers.Services.UserService;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
-import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
-import com.mysql.cj.PreparedQuery;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.context.SecurityContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -34,9 +37,11 @@ public class UserController {
     private final UserRepository userDao;
     private final PostRepository postDao;
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserService service;
     private final EntryRepository entryDao;
     private final CommentRepository commentDao;
-
     private final QuestionnaireRepository questionnaireDao;
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao, QuestionnaireRepository questionnaireDao) {
@@ -55,11 +60,28 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) throws MessagingException, UnsupportedEncodingException {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/questionnaire";
+
+        // send email to the new user
+        service.sendVerificationEmail(user, "localhost:8080/");
+
+        // redirect to an "email sent" page
+        return "redirect:/verify";
+    }
+
+
+    //    email send verification
+    @GetMapping("/verify")
+    public String verifyUser(@Param("code") String code, Model model) {
+        if(service.verify(code)) {
+            model.addAttribute("verify_success", true);
+        } else {
+            model.addAttribute("verify_fail", true);
+        }
+        return "users/successfulSignUp";
     }
 
     @GetMapping("/find/user")
@@ -247,4 +269,5 @@ public class UserController {
         userDao.save(fullUser);
         return "redirect:/discover";
     }
+
 }
