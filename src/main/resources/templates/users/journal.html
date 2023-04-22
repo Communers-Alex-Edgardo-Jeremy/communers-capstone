@@ -28,10 +28,9 @@
                         <div class="d-flex flex-column ruled-paper-body h-100">
                             <div th:each="entry : ${entries}">
                                     <div class="d-flex">
-<!--                                        <div class="ps-5 blog-menu small-title date" th:text="${entry.date}"></div>-->
-                                        <div class="ps-5 blog-menu small-title date">date</div>
+                                        <div class="ps-5 blog-menu small-title date" th:text="${entry.date}"></div>
                                         <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}">
-                                            <p class="pt-1" th:text="${entry.title}">(insert post title)</p>
+                                            <p class="pt-0" th:text="${entry.title}">(insert post title)</p>
                                         </a>
                                         <a th:href="@{|/journal/${entry.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
                                     </div>
@@ -42,27 +41,6 @@
 <!--                                <p th:text="${#temporals.formatISO(timestamp)}"></p>-->
                             </div>
                         </div>
-
-<!--                        <form class="d-flex flex-column ruled-paper-body h-100" th:action="@{|/journal/addEntry|}" th:object="${entry}" method="post">-->
-
-<!--                            <div class="d-flex">-->
-<!--                                <label class="my-auto" for="entryTitle">Title:</label>-->
-<!--                                <input class="border border-0 bg-transparent" id="entryTitle" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}" placeholder="Title goes here"/>-->
-<!--                                <br>-->
-<!--                            </div>-->
-
-<!--                            <div class="d-flex flex-grow-1">-->
-<!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
-<!--                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">-->
-<!--                            </textarea>-->
-<!--                            </div>-->
-<!--                            <input type="hidden" th:field="*{date}" />-->
-<!--                            <input type="hidden" th:field="*{id}">-->
-
-<!--                            <div class="journal-btn-container">-->
-<!--                                <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Entry</button>-->
-<!--                            </div>-->
-<!--                        </form>-->
                     </div>
                 </div>
             </div>

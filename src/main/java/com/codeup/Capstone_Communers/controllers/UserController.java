@@ -25,13 +25,13 @@ import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.*;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -111,15 +111,17 @@ public class UserController {
     public String postEntry(@ModelAttribute Entry entry, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("entry", new Entry());
-        model.addAttribute("standardDate", new Date());
-        model.addAttribute("localDateTime", LocalDateTime.now());
-        model.addAttribute("localDate", LocalDate.now());
-        model.addAttribute("timestamp", Instant.now());
 
         Date date = new Date();
         String stringDate = date.toString();
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+        String strDate = dateFormat.format(date);
+        System.out.println("Converted String: " + strDate);
+
+
         entry.setUser(user);
-        entry.setDate(stringDate);
+        entry.setDate(strDate);
         System.out.println(entry);
         entryDao.save(entry);
         return "redirect:/journal";
