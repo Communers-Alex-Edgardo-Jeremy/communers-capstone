@@ -9,9 +9,9 @@
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
-    <div class="d-flex ps-3">
-        <h2 class="my-auto">Journal Entries</h2>
-    </div>
+<!--    <div class="d-flex ps-3">-->
+<!--        <h2 class="my-auto">Journal Entries</h2>-->
+<!--    </div>-->
     <div class="row align-content-center h-100 px-3 pb-3 g-3 my-2" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-lg-4 offset-lg-2 h-100">
             <div class="card journal-card h-100" style="">
@@ -29,15 +29,17 @@
 
                         <form class="d-flex flex-column ruled-paper-body h-100" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
 
-                            <div class="d-flex">
-                                <label class="my-auto" for="entryTitleEdited">Title:</label>
+                            <div class="d-flex single-entry">
+<!--                                <label class="my-auto" for="entryTitleEdited">Title:</label>-->
+                                <div class="pe-3 blog-menu small-title date" th:text="${entry.date}"></div>
+
                                 <input class="border border-0 bg-transparent" id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
                                 <br>
                             </div>
 
-                            <div class="d-flex flex-grow-1">
-                                <label class="entry-body-title" for="body-ip">Body:</label>
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3 border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
+                            <div class="d-flex edit-entry-line flex-grow-1">
+<!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="field border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
                             </textarea>
                             </div>
                             <input type="hidden" th:field="*{date}" />

@@ -314,6 +314,7 @@ input.btn:active, a.btn:active, form .follow-btn:active {
     -webkit-box-shadow: .25rem .25rem var(--purple);
     -moz-box-shadow: .25rem .25rem var(--purple);
 }
+
 .add-commend-btn, .submit-btn {
     border: var(--dark-green) solid .125rem !important;
     color: var(--dark-green) !important;
@@ -422,11 +423,8 @@ input.btn:active, a.btn:active, form .follow-btn:active {
     line-height: 1.2;
 }
 
-.ruled-paper input {
-    padding-left: 1.4rem;
-}
-.ruled-paper .ruled-paper-body textarea {
-    padding-left: 1rem;
+.ruled-paper input, .ruled-paper textarea {
+    padding-left: 0;
 }
 .ruled-paper .ruled-paper-body textarea:active,
 .ruled-paper .ruled-paper-body textarea:hover,
@@ -438,6 +436,6 @@ input.btn:active, a.btn:active, form .follow-btn:active {
     border: none !important;
 }
 
-.journal-btn-container {
-    padding-left: 3.75rem;
+.journal-btn-container, .add-entry, .edit-entry-line {
+    padding-left: 5.5rem;
 }
