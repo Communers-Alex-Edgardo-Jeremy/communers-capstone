@@ -410,9 +410,13 @@ input.btn:active, a.btn:active, form .follow-btn:active {
     background-image: linear-gradient(90deg, transparent 79px, var(--margin-line-color) 79px, var(--margin-line-color) 81px, transparent 81px), linear-gradient(var(--ruling-line-color) .1em, transparent .1em);
     background-size: 100% 1.2em;
     flex-grow: 8;
-    padding-top: .2rem;
-    padding-left: 2rem;
+    /*padding-top: .2rem;*/
+    /*padding-left: 2rem;*/
     line-height: 1.2;
+}
+.single-entry {
+    padding-top: .2rem;
+
 }
 .entry-body-title {
     line-height: 1.2;

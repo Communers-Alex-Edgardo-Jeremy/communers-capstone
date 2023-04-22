@@ -27,18 +27,13 @@
 
                         <div class="d-flex flex-column ruled-paper-body h-100">
                             <div th:each="entry : ${entries}">
-                                    <div class="d-flex">
-                                        <div class="ps-5 blog-menu small-title date" th:text="${entry.date}"></div>
+                                    <div class="d-flex single-entry">
+                                        <div class="pe-3 blog-menu small-title date" th:text="${entry.date}"></div>
                                         <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}">
                                             <p class="pt-0" th:text="${entry.title}">(insert post title)</p>
                                         </a>
                                         <a th:href="@{|/journal/${entry.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
                                     </div>
-<!--                                <h1>Format ISO</h1>-->
-<!--                                <p th:text="${#dates.formatISO(standardDate)}"></p>-->
-<!--                                <p th:text="${#temporals.formatISO(localDateTime)}"></p>-->
-<!--                                <p th:text="${#temporals.formatISO(localDate)}"></p>-->
-<!--                                <p th:text="${#temporals.formatISO(timestamp)}"></p>-->
                             </div>
                         </div>
                     </div>
