@@ -97,22 +97,22 @@ nav, footer {
     text-shadow: .25rem .25rem var(--purple);
 }
 .notification {
-    position: fixed;
-    top: 50px;
-    right: 300px;
-    width: 200px;
-    padding: 10px;
-    background-color: #ffc0be;
-    color: #3d3232;
-    font-size: 18px;
+    font-size: 3rem;
     font-weight: bold;
-    text-align: center;
-    z-index: 9999;
-    transition: top 2s;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+    z-index: 10;
+    opacity: 1;
+    animation: fade 15s ease-in-out;
+}
+
+@keyframes fade {
+    0%,100% { opacity: 0 }
+    40%,60% {opacity: 1}
 }
 
 .notification.show {
-    top: 100px;
+    /*top: 100px;*/
 }
 
 .notification.hidden {
@@ -150,9 +150,9 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
 .navbar-collapse a, .logout, .greeting, .greeting span {
     text-decoration: none;
     /*letter-spacing: 0.15em;*/
-    padding: 0 1rem;
-    display: inline-block;
-    position: relative;
+    /*padding: 0 1rem;*/
+    /*display: inline-block;*/
+    /*position: relative;*/
 }
 .navbar-collapse a:after, .logout:after {
     background: none repeat scroll 0 0 transparent;

@@ -59,13 +59,16 @@
 </nav>
 
 <th:block th:fragment="greeting" th:object="${user}">
-    <div class="d-flex flex-column">
-        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
-            Welcome back,<span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
-        </h2>
-        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-            Discover more from our community.
-        </h2>
+    <div class="d-flex">
+
+        <div class="d-flex flex-column">
+            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+                Welcome back, <span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
+            </h2>
+            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
+                Discover more from our community.
+            </h2>
+        </div>
         <div th:choose>
             <div th:when="${message != null}">
                 <div id="notification" th:text="${message}"  class="notification hidden greeting page-title ps-3"></div>
