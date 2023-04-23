@@ -98,6 +98,8 @@ nav, footer {
 }
 .notification {
     font-size: 3rem;
+    width: 100%;
+    /*color: white;*/
     font-weight: bold;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: white;
@@ -111,13 +113,13 @@ nav, footer {
     40%,60% {opacity: 1}
 }
 
-.notification.show {
-    /*top: 100px;*/
-}
+/*.notification.show {*/
+/*    !*top: 100px;*!*/
+/*}*/
 
-.notification.hidden {
-    display: none;
-}
+/*.notification.hidden {*/
+/*    display: none;*/
+/*}*/
 
 
 nav {

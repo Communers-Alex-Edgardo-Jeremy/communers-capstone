@@ -10,7 +10,7 @@
     <div sec:authorize="isAuthenticated()" style="position: relative;">
         <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
         <th:block th:insert="~{/partials/partials :: chat-bubble}" ></th:block>
-        <a type="button" class="btn btn-primary" id="search-btn" th:href="@{|/find/user|}">Find People</a>
+<!--        <a type="button" class="btn btn-primary" id="search-btn" th:href="@{|/find/user|}">Find People</a>-->
     </div>
 
     <th:block th:insert="~{/partials/partials :: posts}"></th:block>
