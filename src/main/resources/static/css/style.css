@@ -337,3 +337,250 @@ input.btn:hover, a.btn:hover, form .follow-btn:hover {
 .fa-solid, .fa-brands {
     color: var(--dark-green);
 }
+
+
+body {
+    margin: 0;
+    color: white;
+    background-color: #202731;
+    overflow-x: hidden;
+}
+/*Section 1*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681840061 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+/*Section 1*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681840061 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 94px;
+}
+/*Section 1*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681840061 .shape-fill {
+    fill: #FFFFFF;
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681840988 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681840988 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 94px;
+    transform: rotateY(180deg);
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681840988 .shape-fill {
+    fill: #FFFFFF;
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841113 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841113 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 94px;
+    transform: rotateY(180deg);
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841113 .shape-fill {
+    fill: #FFFFFF;
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681841691 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681841691 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 59px;
+    transform: rotateY(180deg);
+}
+/*Section 2*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1681841691 .shape-fill {
+    fill: #FFFFFF;
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841818 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841818 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 40px;
+    transform: rotateY(180deg);
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-top-1681841818 .shape-fill {
+    fill: #FFFFFF;
+}
+.custom-shape-divider-bottom-1681920773 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1681920773 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+}
+
+.custom-shape-divider-bottom-1681920773 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1681920773 svg {
+        width: calc(100% + 1.3px);
+        height: 28px;
+    }
+}
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+    padding: 100px 20vw;
+}
+.scrolling-wrapper-container {
+    position: relative;
+    height: 20rem;
+    overflow-x: hidden;
+}
+.scrolling-wrapper {
+    top: 0%;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position: inherit;
+    animation: primary 60s linear infinite;
+}
+.text {
+    flex: auto;
+}
+.scrolling-wrapperII {
+    top: 0%;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position: absolute;
+    animation: secondary 60s linear infinite;
+    animation-delay: 86ms;
+}
+.card {
+    display: inline-block;
+    height: 100%;
+    width: 20em;
+}
+.primary {
+    /*animation: primary 60s linear infinite;*/
+    left: -20%
+}
+@keyframes primary {
+    from {
+        left: 0%;
+    }
+    to {
+        left: -100%;
+    }
+}
+@keyframes secondary {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0%;
+    }
+}
+.scrolling-wrapper-container:hover, .card:hover  {
+    animation-play-state: paused;
+}
+.pink {
+    background-color: #F2B3D6;
+}
+.purple {
+    background-color: #B7AEF2;
+}
+.green {
+    background-color: #2BD999;
+}
+#paragraphI {
+    font-family: 'Gamja Flower', cursive;
+    font-size: large;
+    border: black solid;
+}
+#intro {
+    font-family: 'Gamja Flower', cursive;
+}
+#reviews{
+    font-family: 'Hachi Maru Pop', cursive;
+}
+#signUp {
+    font-family: 'Kranky', cursive;
+}
+/*<!-- Landing page  -->*/
