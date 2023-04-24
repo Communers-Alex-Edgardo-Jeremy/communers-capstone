@@ -97,6 +97,11 @@ public class PostController {
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        if(user.getCommunities() == null){
+            model.addAttribute("communities", new ArrayList<Community>());
+            model.addAttribute("post", new Post());
+            return "/posts/create";
+        }
         model.addAttribute("communities", user.getCommunities());
         model.addAttribute("post", new Post());
         return "/posts/create";
@@ -130,9 +135,12 @@ public class PostController {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Date date = new Date();
         List<Community> communities = new ArrayList<>();
-        for (Community community : post.getCommunities()) {
-            communities.add(communityDao.getReferenceById(community.getId()));
+        if(post.getCommunities() != null){
+            for (Community community : post.getCommunities()) {
+                communities.add(communityDao.getReferenceById(community.getId()));
+            }
         }
+
 
         post.setCommunities(communities);
         post.setUser(user);
