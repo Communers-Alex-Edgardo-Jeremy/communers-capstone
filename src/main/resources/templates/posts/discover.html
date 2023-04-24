@@ -7,13 +7,17 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <div sec:authorize="isAuthenticated()" style="position: relative;">
-        <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
-        <th:block th:insert="~{/partials/partials :: chat-bubble}" ></th:block>
-<!--        <a type="button" class="btn btn-primary" id="search-btn" th:href="@{|/find/user|}">Find People</a>-->
+    <div class="row">
+        <div class="col-sm-12 col-lg-4" sec:authorize="isAuthenticated()">
+            <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
+        </div>
+        <th:block th:insert="~{/partials/partials :: posts}"></th:block>
+        <div class="col-sm-12 offset-lg-8 col-lg-4" sec:authorize="isAuthenticated()">
+            <th:block th:insert="~{/partials/partials :: chat-bubble}" ></th:block>
+        </div>
+
     </div>
 
-    <th:block th:insert="~{/partials/partials :: posts}"></th:block>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 <script src="/js/discover.js"></script>
