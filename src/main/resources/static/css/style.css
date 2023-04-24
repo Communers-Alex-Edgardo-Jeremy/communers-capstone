@@ -97,12 +97,12 @@ nav, footer {
     text-shadow: .25rem .25rem var(--purple);
 }
 .notification {
-    font-size: 3rem;
+    font-size: 1.8rem;
     width: 100%;
-    /*color: white;*/
+    color: var(--black);
     font-weight: bold;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: white;
+    /*-webkit-text-stroke-width: 2px;*/
+    /*-webkit-text-stroke-color: white;*/
     z-index: 10;
     opacity: 1;
     animation: fade 15s ease-in-out;

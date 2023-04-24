@@ -2,19 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
-    <title>Communities</title>
+    <title>Find Users</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<h2 class="page-title ps-3">
-    Find User
-</h2>
-<!--<label for="community-search">search</label>-->
-<input id="search-input" type="text" placeholder="Search user...">
-<div id="suggestions"></div>
-<button type="button" id="search-btn">Search</button>
-<th:block th:insert="~{/partials/partials :: users}"></th:block>
+    <h2 class="page-title ps-3">
+        Find User
+    </h2>
+    <!--<label for="community-search">search</label>-->
+    <input id="search-input" type="text" placeholder="Search user...">
+    <div id="suggestions"></div>
+    <button type="button" id="search-btn">Search</button>
+    <th:block th:insert="~{/partials/partials :: users}"></th:block>
 <script src="/js/communities.js"></script>
+<script src="/js/background.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 </body>
 </html>
