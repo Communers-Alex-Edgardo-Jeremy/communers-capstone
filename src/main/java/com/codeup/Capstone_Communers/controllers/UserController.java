@@ -66,7 +66,7 @@ public class UserController {
         userDao.save(user);
 
         // send email to the new user
-        service.sendVerificationEmail(user, "localhost:8080/");
+//        service.sendVerificationEmail(user, "localhost:8080/");
 
         // redirect to an "email sent" page
         return "redirect:/verify";
