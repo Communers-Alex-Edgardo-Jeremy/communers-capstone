@@ -25,7 +25,6 @@ body,html {
     /*font: bold 14px/1.4 'Open Sans', arial, sans-serif;*/
 }
 body {
-    height: 100vh;
     color: var(--black);
     position: relative;
     background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
@@ -347,7 +346,7 @@ body {
 }
 /*Section 1*/
 /*Shape divider app*/
-.custom-shape-divider-top-1681840061 {
+.custom-shape-divider-top-1682300104 {
     position: absolute;
     top: 0;
     left: 0;
@@ -355,19 +354,76 @@ body {
     overflow: hidden;
     line-height: 0;
 }
-/*Section 1*/
-/*Shape divider app*/
-.custom-shape-divider-top-1681840061 svg {
+
+.custom-shape-divider-top-1682300104 svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 94px;
+    height: 52px;
 }
+
+.custom-shape-divider-top-1682300104 .shape-fill {
+    fill: #C5ACF2;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1682300104 svg {
+        width: calc(100% + 1.3px);
+        height: 28px;
+    }
+}
+
 /*Section 1*/
 /*Shape divider app*/
-.custom-shape-divider-top-1681840061 .shape-fill {
-    fill: #FFFFFF;
+.custom-shape-divider-bottom-1682306172 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
 }
+
+.custom-shape-divider-bottom-1682306172 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 52px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1682306172 .shape-fill {
+    fill: #cbc5f5;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682306172 svg {
+        width: calc(142% + 1.3px);
+        height: 46px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682306172 svg {
+        width: calc(100% + 1.3px);
+        height: 28px;
+    }
+}
+/*.custom-shape-divider-top-1681840061 svg {*/
+/*    position: relative;*/
+/*    display: block;*/
+/*    width: calc(100% + 1.3px);*/
+/*    height: 94px;*/
+/*}*/
+/*!*Section 1*!*/
+/*!*Shape divider app*!*/
+/*.custom-shape-divider-top-1681840061 .shape-fill {*/
+/*    fill: #FFFFFF;*/
+/*}*/
 /*Section 2*/
 /*Shape divider app*/
 .custom-shape-divider-bottom-1681840988 {
@@ -419,7 +475,38 @@ body {
 }
 /*Section 2*/
 /*Shape divider app*/
-.custom-shape-divider-bottom-1681841691 {
+.custom-shape-divider-top-1682300614 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.custom-shape-divider-top-1682300614 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 52px;
+}
+.custom-shape-divider-top-1682300614 .shape-fill {
+    fill: #b7aaf3;
+}
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-top-1682300614 svg {
+        width: calc(193% + 1.3px);
+        height: 39px;
+    }
+}
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1682300614 svg {
+        width: calc(100% + 1.3px);
+        height: 28px;
+    }
+}
+.custom-shape-divider-bottom-1682315080 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -428,19 +515,71 @@ body {
     line-height: 0;
     transform: rotate(180deg);
 }
-/*Section 2*/
-/*Shape divider app*/
-.custom-shape-divider-bottom-1681841691 svg {
+
+.custom-shape-divider-bottom-1682315080 svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
-    height: 59px;
+    width: calc(102% + 1.3px);
+    height: 83px;
     transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1682315080 .shape-fill {
+    fill: #F6E3EE;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682315080 svg {
+        width: calc(102% + 1.3px);
+        height: 69px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682315080 svg {
+        width: calc(112% + 1.3px);
+        height: 23px;
+    }
 }
 /*Section 2*/
 /*Shape divider app*/
-.custom-shape-divider-bottom-1681841691 .shape-fill {
-    fill: #FFFFFF;
+.custom-shape-divider-bottom-1682315395 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1682315395 svg {
+    position: relative;
+    display: block;
+    width: calc(107% + 1.3px);
+    height: 63px;
+}
+
+.custom-shape-divider-bottom-1682315395 .shape-fill {
+    fill: #DEC0D1;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682315395 svg {
+        width: calc(107% + 1.3px);
+        height: 69px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682315395 svg {
+        width: calc(112% + 1.3px);
+        height: 23px;
+    }
 }
 /*Section 3*/
 /*Shape divider app*/
@@ -474,24 +613,199 @@ body {
     overflow: hidden;
     line-height: 0;
 }
-
 .custom-shape-divider-bottom-1681920773 svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 80px;
 }
-
 .custom-shape-divider-bottom-1681920773 .shape-fill {
     fill: #FFFFFF;
 }
-
 /** For mobile devices **/
 @media (max-width: 767px) {
     .custom-shape-divider-bottom-1681920773 svg {
         width: calc(100% + 1.3px);
         height: 28px;
     }
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1682316226 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1682316226 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 11px;
+}
+
+.custom-shape-divider-bottom-1682316226 .shape-fill {
+    fill: #DEC0D1;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682316226 svg {
+        width: calc(100% + 1.3px);
+        height: 11px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682316226 svg {
+        width: calc(112% + 1.3px);
+        height: 11px;
+    }
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1682316358 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1682316358 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 22px;
+}
+
+.custom-shape-divider-bottom-1682316358 .shape-fill {
+    fill: #DDB9CD;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682316358 svg {
+        width: calc(100% + 1.3px);
+        height: 22px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682316358 svg {
+        width: calc(112% + 1.3px);
+        height: 17px;
+    }
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1682316581 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1682316581 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 32px;
+}
+
+.custom-shape-divider-bottom-1682316581 .shape-fill {
+    fill: #E6B9D2;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682316581 svg {
+        width: calc(100% + 1.3px);
+        height: 32px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682316581 svg {
+        width: calc(100% + 1.3px);
+        height: 26px;
+    }
+}
+/*Section 3*/
+/*Shape divider app*/
+.custom-shape-divider-bottom-1682316857 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1682316857 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 42px;
+}
+
+.custom-shape-divider-bottom-1682316857 .shape-fill {
+    fill: #EBBED857;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682316857 svg {
+        width: calc(100% + 1.3px);
+        height: 42px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682316857 svg {
+        width: calc(100% + 1.3px);
+        height: 37px;
+    }
+}
+
+.text {
+    flex: auto;
+    font: inherit;
+    font-family: 'Hachi Maru Pop', cursive;
+    color: #000000;
+}
+#intro {
+    display: flex;
+    height: 15em;
+    color: var(--black);
+    position: relative;
+    background-image: url(/static/img/hands.svg), linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    overflow-x: hidden;
+    padding: 0;
+    justify-content: center;
+    font-family: 'Gamja Flower', cursive;
+}
+#reviews {
+    color: var(--black);
+    position: relative;
+    background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--bg-white), var(--purple));
+    overflow-x: hidden;
+}
+#signUp {
+    color: var(--black);
+    position: relative;
+    background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    overflow-x: hidden;
 }
 section {
     position: relative;
@@ -503,7 +817,7 @@ section {
 }
 .scrolling-wrapper-container {
     position: relative;
-    height: 20rem;
+    height: 15rem;
     overflow-x: hidden;
     transition: all 0.2s;
     transform: scale(0.98);
@@ -525,12 +839,6 @@ section {
     white-space: nowrap;
     position: inherit;
     animation: primary 60s linear infinite;
-}
-.text {
-    flex: auto;
-    font: inherit;
-    font-family: 'Hachi Maru Pop', cursive;
-    color: #000000;
 }
 .scrolling-wrapperII {
     top: 0%;
@@ -581,10 +889,6 @@ section {
 #paragraphI {
     font-family: 'Gamja Flower', cursive;
     font-size: large;
-    border: black solid;
-}
-#intro {
-    font-family: 'Gamja Flower', cursive;
 }
 #reviews{
     font-family: 'Hachi Maru Pop', cursive;
