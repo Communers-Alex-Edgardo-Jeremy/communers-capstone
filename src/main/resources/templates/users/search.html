@@ -6,13 +6,17 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div class="d-flex">
     <h2 class="page-title ps-3">
         Find User
     </h2>
     <!--<label for="community-search">search</label>-->
-    <input id="search-input" type="text" placeholder="Search user...">
-    <div id="suggestions"></div>
-    <button type="button" id="search-btn">Search</button>
+    <div class="d-flex flex-column ms-auto">
+        <input class="my-auto" id="search-input" type="text" placeholder="Search user...">
+        <div class="pt-2 bg-transparent" id="suggestions"></div>
+    </div>
+    <button class="btn btn-sm mx-3 my-auto" type="button" id="search-btn">Search</button>
+</div>
     <th:block th:insert="~{/partials/partials :: users}"></th:block>
 <script src="/js/communities.js"></script>
 <script src="/js/background.js"></script>
