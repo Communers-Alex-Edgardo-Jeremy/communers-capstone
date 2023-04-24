@@ -3,7 +3,7 @@
 <head>
   <th:block th:insert="~{partials/partials :: head}"></th:block>
   <link rel="stylesheet" href="/css/style.css">
-<!--  <link rel="stylesheet" href="/css/landingPageHorizontalScroll.css">-->
+  <link rel="stylesheet" href="/css/landingPageHorizontalScroll.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Hachi+Maru+Pop&family=Kranky&display=swap" rel="stylesheet">
@@ -38,7 +38,8 @@
 </section>
 
 <section id="reviews" class="purple bubble text-center">
-  <h1>Why our members are thrilled</h1>
+  <h1 id="reviewsTitle">Why our members are thrilled</h1>
+  <div class="reviewsSidePanel">HELLO</div>
     <div class="scrolling-wrapper-container">
       <div class="scrolling-wrapper primary">
         <div class="card"><p class="text">Hello 1</p></div>
@@ -63,6 +64,7 @@
         <div class="card"><p class="text">Hello 2.9</p></div>
       </div>
     </div>
+  <div class="reviewsSidePanel">HELLO</div>
 
   <div class="custom-shape-divider-top-1681841113">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -102,6 +104,6 @@
 </section>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <!--<script src="/js/script.js"></script>-->
-<!--<script src="/js/landingPageHorizontalScroll.js"></script>-->
+<script src="/js/landingPageHorizontalScroll.js"></script>
 </body>
 </html>

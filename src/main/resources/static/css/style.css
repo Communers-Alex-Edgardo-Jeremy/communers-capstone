@@ -505,7 +505,16 @@ section {
     position: relative;
     height: 20rem;
     overflow-x: hidden;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
 }
+.scrolling-wrapper-container:hover div {
+    animation-play-state: paused;
+    transition-delay:4s;
+ }
 .scrolling-wrapper {
     top: 0%;
     left: 100%;
@@ -519,6 +528,9 @@ section {
 }
 .text {
     flex: auto;
+    font: inherit;
+    font-family: 'Hachi Maru Pop', cursive;
+    color: #000000;
 }
 .scrolling-wrapperII {
     top: 0%;
@@ -556,9 +568,6 @@ section {
     to {
         left: 0%;
     }
-}
-.scrolling-wrapper-container:hover, .card:hover  {
-    animation-play-state: paused;
 }
 .pink {
     background-color: #F2B3D6;
