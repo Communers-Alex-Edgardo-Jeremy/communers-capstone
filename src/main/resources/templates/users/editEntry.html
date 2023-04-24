@@ -5,38 +5,56 @@
     <title>Edit Entry</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="container d-flex flex-column flex-grow-1">
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
-    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 g-3">
-            <div class="card edit-card h-100">
-                <div class="card-body d-flex flex-column">
-                    <h5>Edit Journal Entry</h5>
-                    <form class="d-flex flex-column" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
+<!--    <div class="d-flex ps-3">-->
+<!--        <h2 class="my-auto">Journal Entries</h2>-->
+<!--    </div>-->
+    <div class="row align-content-center h-100 px-3 pb-3 g-3 my-2" sec:authorize="isAuthenticated()">
+        <div class="col-sm-12 col-lg-4 offset-lg-2 h-100">
+            <div class="card journal-card h-100" style="">
 
-                        <label for="entryTitle">Title</label>
-                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+                <div class="card-body ruled-paper d-flex flex-column align-content-center" id="edit-entry">
 
-                        <label for="body-ip">Body:</label>
-                        <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
-
-                        <input type="hidden" th:field="*{date}" />
-                        <input type="hidden" th:field="*{id}">
-
-                        <div>
-                            <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
-                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                    <div class="d-flex flex-column h-100" role="main">
+                        <div class="ruled-paper-header">
+                            <div class="d-flex">
+                                <h5 class="my-auto ps-2">Edit Journal Entry</h5>
+                                <a th:href="@{|/journal|}" class="ms-auto mb-auto"><i class="backButton fa-solid fa-arrow-left"></i></a>
+                                <br>
+                            </div>
                         </div>
-                    </form>
-                </div>
+
+                        <form class="d-flex flex-column ruled-paper-body h-100" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
+
+                            <div class="d-flex single-entry">
+<!--                                <label class="my-auto" for="entryTitleEdited">Title:</label>-->
+                                <div class="pe-3 blog-menu small-title date" th:text="${entry.date}"></div>
+
+                                <input class="border border-0 bg-transparent" id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
+                                <br>
+                            </div>
+
+                            <div class="d-flex edit-entry-line flex-grow-1">
+<!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="field border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
+                            </textarea>
+                            </div>
+                            <input type="hidden" th:field="*{date}" />
+                            <input type="hidden" th:field="*{id}">
+
+                            <div class="journal-btn-container">
+                                <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
+                                <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>
 </body>

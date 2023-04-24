@@ -59,17 +59,23 @@
 </nav>
 
 <th:block th:fragment="greeting" th:object="${user}">
-    <div class="d-flex flex-column">
-        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
-            Welcome back,<span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
-        </h2>
-        <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">
-            Discover more from our community.
-        </h2>
-        <div th:choose>
-            <div th:when="${message != null}">
-                <div id="notification" th:text="${message}"  class="notification hidden"></div>
+    <div class="d-flex">
+
+        <div class="d-flex flex-column">
+            <div class="d-flex">
+                <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+                    Welcome back, <span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
+                </h2>
+                <a type="button" class="btn btn-sm px-1 py-0 ms-4 my-auto flex-shrink-1" id="search-btn" th:href="@{|/find/user|}">Find People</a>
             </div>
+            <div th:choose>
+                <div th:when="${message != null}">
+                    <div id="notification" th:text="${message}"  class="notification greeting page-title ps-3 me-5"></div>
+                </div>
+            </div>
+<!--            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">-->
+<!--                Discover more from our community.-->
+<!--            </h2>-->
         </div>
     </div>
 </th:block>
@@ -105,14 +111,17 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div id="posts-container" class="col-sm-12 col-md-6 col-lg-4" th:each="post : ${posts}">
+        <div id="posts-container" class="col-sm-12 offset-lg-4 col-lg-4" th:each="post : ${posts}">
             <div class="card post-card h-100">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
-                    <form class="d-inline" th:action="@{|/follow/${post.user.id}|}" method="post">
-                        <span th:text="${post.user.username}">(Users name here)</span>
-                        <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>
-                    </form>
+                    <div class="card-bg opacity-25"></div>
+                    <div class="d-flex">
+                        <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
+                        <form class="ms-auto" th:action="@{|/follow/${post.user.id}|}" method="post">
+                            <span th:text="${post.user.username}">(Users name here)</span>
+                            <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>
+                        </form>
+                    </div>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
                     <div class="blog-article py-1" th:text="${post.body}">(insert post body)</div>
                     <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
@@ -142,16 +151,16 @@
 </th:block>
 
 <th:block th:fragment="users">
-    <div class="row align-content-center my-auto px-3 pb-3 g-3">
+    <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4"  th:each="user : ${users}">
+        <div class="d-flex p-2"  th:each="user : ${users}">
             <div class="card card-community h-100" style="">
-                <div class="card-body d-flex flex-column">
-                    <form class="d-inline" th:action="@{|/follow/${user.id}|}" method="post">
-                        <h5 class="card-title" th:text="${user.username}">(Users name here)</h5>
-                        <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>
+                <div class="card-body p-2">
+                    <form class="d-flex" th:action="@{|/follow/${user.id}|}" method="post">
+                        <h5 class="card-title my-auto" th:text="${user.username}">(Users name here)</h5>
+                        <button class="btn btn-sm follow-btn px-1 py-0 my-auto ms-2" type="submit">Follow</button>
                     </form>
                 </div>
             </div>
@@ -248,6 +257,7 @@
             <p class="copyright pt-4">Communers, Inc. © 2023</p>
         </div>
     </div>
+<!--    comment-->
 </footer>
 <script src="/js/background.js"></script>
 </body>

@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
-    <title>Add Entry</title>
+    <title>Edit Entry</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="container d-flex flex-column flex-grow-1" th:object="${user}">
+<div class="container d-flex flex-column flex-grow-1">
     <div class="alert alert-danger" th:if="${errMsg}">
         Something bad happened!
     </div>
@@ -14,22 +14,27 @@
         <div class="col-sm-12 col-md-6 g-3">
             <div class="card edit-card h-100">
                 <div class="card-body d-flex flex-column">
-                    <h5>Create Entry</h5>
-                    <form class="d-flex flex-column" th:action="@{/journal/addEntry}" th:object="${entry}" method="post">
+                    <div class="d-flex">
+                        <h5>Edit Journal Entry</h5>
+                        <a th:href="@{|/journal|}" class="ms-auto mb-auto"><i class="backButton fa-solid fa-arrow-left"></i></a>
+                    </div>
+                    <form class="d-flex flex-column" th:action="@{|/journal/${entry.id}/edit|}" th:object="${entry}" method="post">
 
-<!--                        <label for="entryTitle">Title</label>-->
-                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}" placeholder="title here"/>
+                        <label for="entryTitle">Title</label>
+                        <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
                         <label for="body-ip">Body:</label>
                         <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
 
                         <input type="hidden" th:field="*{date}" />
-<!--                        th test check date-->
-
                         <input type="hidden" th:field="*{id}">
 
-                        <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Entry</button>
+                        <div>
+                            <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Save Changes</button>
+                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/journal/${entry.id}/delete|}">Delete</a>
+                        </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>

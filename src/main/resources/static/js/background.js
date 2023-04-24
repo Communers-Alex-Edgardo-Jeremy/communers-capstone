@@ -3,8 +3,7 @@ let colors = new Array(
     [242, 179, 214],
     [183, 174, 242],
     [35, 140, 110],
-    [43, 217, 153],
-    [242, 238, 235]);
+    [43, 217, 153]);
 
 let step = 0;
 //color table indices for:
@@ -13,10 +12,10 @@ let step = 0;
 // current color right
 // next color right
 let colorIndices = [0,1,2,3];
-let opacity = 0.5;
+let opacity = 0.4;
 
 //transition speed
-let gradientSpeed = 0.0015;
+let gradientSpeed = 0.005;
 
 function updateGradient()
 {
@@ -43,7 +42,11 @@ function updateGradient()
         background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"}).css({
         background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
 
-    step += gradientSpeed;
+    // $('.notification').css({
+    //     background: "-webkit-gradient(linear, left top, right top, from("+color2+"), to("+color1+"))"}).css({
+    //     background: "-moz-linear-gradient(left, "+color2+" 0%, "+color1+" 100%)"}).css({"-webkit-background-clip" : "text"}).css({"-webkit-text-fill-color" : "transparent"});
+
+            step += gradientSpeed;
     if ( step >= 1 )
     {
         step %= 1;
@@ -58,4 +61,4 @@ function updateGradient()
     }
 }
 
-setInterval(updateGradient,10);
+setInterval(updateGradient,15);
