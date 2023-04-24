@@ -40,7 +40,7 @@ public class PostController {
     }
     @GetMapping("/discover")
     public String all(Model model) {
-        List<Post> posts = postDao.findAll();
+        List<Post> posts = postDao.findPostsNewToOld();
         User user;
         try{
             user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
@@ -58,7 +58,8 @@ public class PostController {
     }
     @GetMapping("/forYou")
     public String showForYou(Model model){
-        List<Post> posts = postDao.findAll();
+        User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        List<Post> posts = postDao.findPostsFromUserFollowsAndCommunities(user.getId());
         model.addAttribute("posts", posts);
         model.addAttribute("user", new User());
         return "posts/forYou";
