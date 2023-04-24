@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private UserDetailsLoader usersLoader;
+    private final UserDetailsLoader usersLoader;
 
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
@@ -77,7 +77,12 @@ public class SecurityConfiguration {
                         "/community/{communityId}", // only users can view specific communities
                         "/communities/discover", //only users can browse communities
                         "/find/user", // only users can find other users
-                        "/updateCheckbox" // only users can update their notification settings
+                        "/updateCheckbox", // only users can update their notification settings
+
+//                        verify redirects and authentications for email
+                        "/login" , // users needs to have verified authentication through email link
+                        "verify_success" // users has verified authentication through email link
+
                 )
                 .authenticated()
 
@@ -86,7 +91,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 
 
-                .requestMatchers("/", "/landing", "/posts","/forgot_password","/reset_password", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
+                .requestMatchers("/", "/verify","/landing", "/posts","/forgot_password","/reset_password", "/register", "/discover", "/about", "/resources", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, and sign up
 
 
 

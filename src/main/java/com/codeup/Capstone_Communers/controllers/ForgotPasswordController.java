@@ -26,10 +26,8 @@ public class ForgotPasswordController {
     @Autowired
     private JavaMailSender mailSender;
 
-
     @Autowired
     private UserService userService;
-
 
     @GetMapping("/forgot_password")
     public String showForgotPasswordForm() {
@@ -48,11 +46,9 @@ public class ForgotPasswordController {
             sendEmail(email, resetPasswordLink);
 
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
-
         }  catch (Exception e) {
             e.printStackTrace();
         }
-
         return "/users/forgotPasswordForm";
     }
 
@@ -61,7 +57,7 @@ public class ForgotPasswordController {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
-        helper.setFrom("ucommuners39@gmail.com", "commUnity");
+        helper.setFrom("ucommuners39@gmail.com", "CommUners");
         helper.setTo(recipientEmail);
 
         String subject = "Here's the link to your reset password";
@@ -81,7 +77,6 @@ public class ForgotPasswordController {
         mailSender.send(message);
     }
 
-
     @GetMapping("/reset_password")
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
         User user = userService.getByResetPasswordToken(token);
@@ -90,14 +85,11 @@ public class ForgotPasswordController {
         model.addAttribute("error", true);
         model.addAttribute("message", "Invalid Token");
         return "/users/resetPasswordForm";
-
     }
-
     @PostMapping("/reset_password")
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
-
         User user = userService.getByResetPasswordToken(token);
         model.addAttribute("title", "Reset your password");
 
@@ -106,10 +98,8 @@ public class ForgotPasswordController {
             return "/users/forgotPasswordForm";
         } else {
             userService.updatePassword(user, password);
-
             model.addAttribute("message", "You have successfully changed your password.");
         }
-
         return "/users/login";
     }
 }

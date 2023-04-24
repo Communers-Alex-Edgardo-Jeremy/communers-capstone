@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <th:block th:insert="~{partials/partials :: head}"></th:block>
+    <meta charset="UTF-8">
+    <title>Successful Verification</title>
+</head>
+<body>
+<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+  <div th:action="" class="container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+    <div class="container text-center" th:if="${verify_success}">
+      <h3>Congratulations, your account has been verified.</h3>
+      <h4><a th:href="@{/login}">Click here to Login</a></h4>
+    </div>
+  <div class="container text-center" th:if="${verify_fail}">
+    <h3>Sorry, we could not verify account. It maybe already verified,
+      or verification code is incorrect.</h3>
+  </div>
+</div>
+<footer th:replace="~{/partials/partials :: footer}"></footer>
+</body>
+</html>
+
