@@ -75,6 +75,7 @@ public class SecurityConfiguration {
                         "/follow", //only users can follow other users
                         "/communities", // only users can browse their communities
                         "/community/{communityId}", // only users can view specific communities
+                        "/community", // only users can follow communities
                         "/communities/discover", //only users can browse communities
                         "/find/user", // only users can find other users
                         "/updateCheckbox" // only users can update their notification settings
@@ -93,7 +94,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .and()
                 .csrf()
-                .ignoringRequestMatchers("/follow");
+                .ignoringRequestMatchers("/follow", "/community");
         return http.build();
     }
 
