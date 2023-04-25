@@ -2,51 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
+
     <title>Profile</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <div class="row align-content-center my-auto px-3 pb-3 g-3" sec:authorize="isAuthenticated()" th:object="${user}">
+    <h2 class="page-title mx-auto">Profile</h2>
+
+    <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="col-sm-12 col-lg-4"> user info</div>
-        <div class="col-sm-12 col-lg-4"  th:each="post : ${posts}">
-            <div class="d-flex flex-column"  th:each="post : ${posts}">
-                <div class="card profile-card h-100">
-                    <div class="card-bg opacity-25 flex-grow-1"></div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
-                        <div class="blog-menu small-title date" th:text="${post.time}"></div>
-                        <div class="blog-article">
-                            <p class="" th:text="${post.body}">(insert post body)</p>
-                        </div>
-                        <div>
-                            <a class="btn btn-sm me-auto mt-auto" th:href="@{|/post/${post.id}/edit|}">Edit</a>
-                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
-                        </div>
-                        <br>
-                        <h5 class="mt-auto">Comments</h5>
-                        <div th:each="comment : ${post.comments}">
-                            <div class="comments" th:if="${comment.post == post}">
-                                <div class="" th:text="${comment.date}">(insert post body)</div>
-                                <div class="" th:text="${comment.body}">(insert post body)</div>
-                                <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/comment/${comment.id}/delete|}">Delete Comment</a>
+<!--        <h2 class="d-flex justify-content-center page-title">Profile</h2>-->
+        <div class="col-sm-12 col-lg-3">user info</div>
+        <div class="col-sm-12 col-lg-6">
+            <div class="row align-content-center my-auto px-3 pb-3 g-3">
+                <div class="posts-container px-0" th:each="post : ${posts}">
+                    <div class="card post-card h-100">
+                        <div class="card-bg opacity-50 flex-grow-1"></div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex">
+                                <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
+                                <div class="blog-menu small-title date ms-3 me-auto my-auto" th:text="${post.time}"></div>
+                                <a class="btn btn-sm edit-btn my-auto " th:href="@{|/post/${post.id}/edit|}">Edit</a>
+                                <a class="btn btn-sm btn-outline-danger ms-3 my-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
                             </div>
-                        </div>
-                        <br>
-                        <div>
-                            <h6 class="">Add a comment:</h6>
-                            <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
+                            <div class="blog-article ms-3">
+                                <p class="" th:text="${post.body}">(insert post body)</p>
+                                <div class="ms-3 mt-auto">
+                                    <h6 class="">Comments</h6>
+                                    <div th:each="comment : ${post.comments}">
+                                        <div class="comments" th:if="${comment.post == post}">
+                                            <div class="" th:text="${comment.date}">(insert post body)</div>
+                                            <div class="" th:text="${comment.body}">(insert post body)</div>
+                                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/comment/${comment.id}/delete|}">Delete Comment</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div>
+                                <h6 class="">Add a comment:</h6>
+                                <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
 
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="3" placeholder="enter comment here"></textarea>
+                                    <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="3" placeholder="enter comment here"></textarea>
 
-                                <label class="pt-3" for="date-ip" hidden>Date:</label>
-                                <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
-                                <input type="hidden" th:field="*{id}">
+                                    <label class="pt-3" for="date-ip" hidden>Date:</label>
+                                    <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                                    <input type="hidden" th:field="*{id}">
 
-                                <button class="btn btn-sm add-commend-btn me-auto mt-auto" type="submit">Add Comment</button>
-                            </form>
+                                    <button class="btn btn-sm add-commend-btn me-auto mt-auto" type="submit">Add Comment</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
