@@ -8,14 +8,20 @@
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <h2 class="page-title mx-auto">Discover</h2>
+
     <div class="row">
-        <div class="d-lg-none col-sm-12" th:replace="~{/partials/partials :: chat-find-ppl}"></div>
+
         <div class="row" style="position: absolute;">
-            <div class="col-sm-12 col-lg-4" sec:authorize="isAuthenticated()">
-                <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
+
+            <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
+
+            <div class="col-sm-12 offset-lg-4 col-lg-4">
+                <a type="button" class="btn btn-sm px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
+                <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
             </div>
-            <div class="d-sm-none offset-lg-4 col-lg-4" th:replace="~{/partials/partials :: chat-find-ppl}"></div>
+
         </div>
+
         <div class="col-sm-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
             <th:block th:insert="~{/partials/partials :: posts}"></th:block>
         </div>
