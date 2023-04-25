@@ -176,6 +176,9 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     width: 100%;
     left: 0;
 }
+.navbar-nav > li.active {
+    font-weight: bold;
+}
 .offcanvas {
     width: auto !important;
     height: auto !important;
@@ -277,7 +280,7 @@ footer .item.social {
     }
 }
 .chat-popout {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     right: 0;
     z-index: 10;
