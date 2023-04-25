@@ -42,12 +42,14 @@ public class PostController {
     }
     @GetMapping("/discover")
     public String all(Model model) {
-        List<Post> posts = postDao.findAll();
+        List<Post> posts = postDao.findPostsNewToOld();
         User user;
         try{
             user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+            model.addAttribute("loggedInUser", user);
         } catch (ClassCastException e){
             model.addAttribute("posts", posts);
+            model.addAttribute("user", new User());
             return "posts/discover";
         }
         Questionnaire questionnaire = user.getQuestionnaire();
@@ -60,8 +62,10 @@ public class PostController {
     }
     @GetMapping("/forYou")
     public String showForYou(Model model){
-        List<Post> posts = postDao.findAll();
+        User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        List<Post> posts = postDao.findPostsFromUserFollowsAndCommunities(user.getId());
         model.addAttribute("posts", posts);
+        model.addAttribute("loggedInUser", user);
         model.addAttribute("user", new User());
         return "posts/forYou";
 
@@ -99,6 +103,11 @@ public class PostController {
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        if(user.getCommunities() == null){
+            model.addAttribute("communities", new ArrayList<Community>());
+            model.addAttribute("post", new Post());
+            return "/posts/create";
+        }
         model.addAttribute("communities", user.getCommunities());
         model.addAttribute("post", new Post());
         return "/posts/create";
@@ -137,9 +146,12 @@ public class PostController {
         System.out.println("Converted String: " + strDate);
 
         List<Community> communities = new ArrayList<>();
-        for (Community community : post.getCommunities()) {
-            communities.add(communityDao.getReferenceById(community.getId()));
+        if(post.getCommunities() != null){
+            for (Community community : post.getCommunities()) {
+                communities.add(communityDao.getReferenceById(community.getId()));
+            }
         }
+
 
         post.setCommunities(communities);
         post.setUser(user);

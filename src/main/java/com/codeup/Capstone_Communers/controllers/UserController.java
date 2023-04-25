@@ -9,6 +9,8 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
 import com.codeup.Capstone_Communers.models.Comment;
@@ -42,6 +44,8 @@ public class UserController {
     private final CommentRepository commentDao;
 
     private final QuestionnaireRepository questionnaireDao;
+
+    ObjectMapper mapper = new ObjectMapper();
 
     private ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -169,6 +173,56 @@ public class UserController {
         User chatUser = userDao.findById(loggedInUser.getId());
         System.out.println("chat user " + chatUser);
         return gson.toJson(loggedInUser);
+    }
+
+
+    @PostMapping("/follow")
+    @ResponseBody
+    public Map<String, Object> follow(@RequestBody User user) {
+        System.out.println(user.getId());
+        // check if the follower and followee ids are valid
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User follower = userDao.getReferenceById(loggedInUser.getId());
+        User followee = userDao.getReferenceById(user.getId());
+
+        Map<String, Object> response = new HashMap<>();
+
+        // check if the follower is already following the followee
+        boolean isFollowing = follower.getFollowee().contains(followee);
+
+
+        // update the follower-followee relationship in the database
+        if (!isFollowing) {
+            System.out.println("saving user");
+            follower.getFollowee().add(followee);
+//            followee.getFollowers().add(follower);
+            userDao.save(follower);
+//            userDao.save(followee);
+        }
+        if (isFollowing) {
+            System.out.println("unsaving user");
+            follower.getFollowee().remove(followee);
+//            followee.getFollowers().remove(follower);
+            userDao.save(follower);
+//            userDao.save(followee);
+        }
+
+
+        // return the updated follower-followee relationship
+        System.out.println("before isfollowing check" + isFollowing);
+        System.out.println(followee.getId());
+        System.out.println(follower.getId());
+        response.put("following", isFollowing);
+//        response.put("followers", followee.getFollowers());
+//        response.put("followees", follower.getFollowee());
+//        String json;
+//        try {
+//            json = mapper.writeValueAsString(response);
+//        } catch (JsonProcessingException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        return response;
     }
 
     @PostMapping("/follow/{userId}")
