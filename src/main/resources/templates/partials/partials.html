@@ -119,7 +119,7 @@
                         <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
                         <span class="ms-auto" th:text="${post.user.username}">(Users name here)</span>
                         <div class="d-inline" th:attr="dataset-id=${post.user.id}">
-                            <button type="button" class="btn btn-sm follow-btn px-1 py-0 followButton">Follow</button>
+                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn px-1 py-0 followButton">(Follow Button)</button>
                         </div>
 <!--                        <form class="ms-auto" th:action="@{|/follow/${post.user.id}|}" method="post">-->
 

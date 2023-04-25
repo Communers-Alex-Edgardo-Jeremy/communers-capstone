@@ -44,11 +44,11 @@ followButtons.forEach(function(button) {
 
             // update the follow/unfollow button text and class
             if (isFollowing) {
-                this.textContent = 'Unfollow';
+                this.textContent = 'Follow';
                 // this.classList.remove('followButton');
                 // this.classList.add('unfollowButton');
             } else {
-                this.textContent = 'Follow';
+                this.textContent = 'Unfollow';
                 // this.classList.remove('unfollowButton');
                 // this.classList.add('followButton');
             }

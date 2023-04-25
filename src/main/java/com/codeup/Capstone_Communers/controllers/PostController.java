@@ -44,8 +44,10 @@ public class PostController {
         User user;
         try{
             user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+            model.addAttribute("loggedInUser", user);
         } catch (ClassCastException e){
             model.addAttribute("posts", posts);
+            model.addAttribute("user", new User());
             return "posts/discover";
         }
         Questionnaire questionnaire = user.getQuestionnaire();
@@ -61,6 +63,7 @@ public class PostController {
         User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Post> posts = postDao.findPostsFromUserFollowsAndCommunities(user.getId());
         model.addAttribute("posts", posts);
+        model.addAttribute("loggedInUser", user);
         model.addAttribute("user", new User());
         return "posts/forYou";
 

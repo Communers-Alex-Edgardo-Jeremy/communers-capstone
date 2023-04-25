@@ -193,10 +193,18 @@ public class UserController {
 
         // update the follower-followee relationship in the database
         if (!isFollowing) {
+            System.out.println("saving user");
             follower.getFollowee().add(followee);
-            followee.getFollowers().add(follower);
+//            followee.getFollowers().add(follower);
             userDao.save(follower);
-            userDao.save(followee);
+//            userDao.save(followee);
+        }
+        if (isFollowing) {
+            System.out.println("unsaving user");
+            follower.getFollowee().remove(followee);
+//            followee.getFollowers().remove(follower);
+            userDao.save(follower);
+//            userDao.save(followee);
         }
 
 
@@ -204,9 +212,9 @@ public class UserController {
         System.out.println("before isfollowing check" + isFollowing);
         System.out.println(followee.getId());
         System.out.println(follower.getId());
-        response.put("following", !isFollowing);
-        response.put("followers", followee.getFollowers());
-        response.put("followees", follower.getFollowee());
+        response.put("following", isFollowing);
+//        response.put("followers", followee.getFollowers());
+//        response.put("followees", follower.getFollowee());
 //        String json;
 //        try {
 //            json = mapper.writeValueAsString(response);
