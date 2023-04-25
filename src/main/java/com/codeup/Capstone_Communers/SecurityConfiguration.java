@@ -72,7 +72,7 @@ public class SecurityConfiguration {
                         "/post/comment/{commentId}/delete", // only users can delete comments from their own posts
                         "/user/edit", // only users can edit their profiles
                         "/user/delete", //only users can delete their account
-                        "/follow/{userId}", //only users can follow other users
+                        "/follow", //only users can follow other users
                         "/communities", // only users can browse their communities
                         "/community/{communityId}", // only users can view specific communities
                         "/communities/discover", //only users can browse communities
@@ -90,7 +90,10 @@ public class SecurityConfiguration {
 
 
 
-                .permitAll();
+                .permitAll()
+                .and()
+                .csrf()
+                .ignoringRequestMatchers("/follow");
         return http.build();
     }
 
