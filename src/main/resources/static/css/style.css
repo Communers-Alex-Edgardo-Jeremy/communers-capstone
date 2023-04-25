@@ -939,7 +939,8 @@ footer {
     background-image: url(/static/img/hands.svg), linear-gradient(to bottom right, var(--bg-white), var(--purple));
     overflow-x: hidden;
     display: flex;
-    flex-direction: column-reverse;
+    padding: 61px 0 0;
+
 }
 #reviewsTitle{
     font-family: 'Hachi Maru Pop', cursive;
@@ -980,7 +981,7 @@ section {
     height: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: nowrap;
+    white-space: normal;
     position: inherit;
     animation: primary 60s linear infinite;
 }
@@ -999,7 +1000,7 @@ section {
 .card {
     display: inline-block;
     height: 100%;
-    width: 20em;
+    width: 15em;
 }
 .primary {
     left: -20%
@@ -1054,14 +1055,16 @@ section {
     display: flex;
     flex-wrap: wrap;
 }
-/*section II side panels*/
-.reviewsSidePanel1 {
+.section2 {
     display: flex;
-
+    flex-direction: column;
+    align-items: center;
 }
-.sidePanelsContainer {
-    border: red solid 20px;
-}
+/*section II side panels*/
+/*.reviewsSidePanel1 {*/
+/*    display: flex;*/
+/*    border: black solid;*/
+/*}*/
 #communersIntroOpening {
     display: flex;
 }
@@ -1080,3 +1083,41 @@ section {
 }
 
 /* End of Landing page test styling*/
+
+/*Scroll fade test*/
+
+.scrolling-wrapper-container {
+
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+
+}
+
+/*.scrolling-wrapper-container {*/
+/*    background:*/
+/*        !* Shadow Cover TOP *!*/
+/*            linear-gradient(*/
+/*                    white 30%,*/
+/*                    rgba(255, 255, 255, 0)*/
+/*            ) center top,*/
+
+/*                !* Shadow Cover BOTTOM *!*/
+/*            linear-gradient(*/
+/*                    rgba(255, 255, 255, 0),*/
+/*                    white 70%*/
+/*            ) center bottom,*/
+
+/*                !* Shadow TOP *!*/
+/*            radial-gradient(*/
+/*                    farthest-side at 50% 0,*/
+/*                    rgba(0, 0, 0, 0.2),*/
+/*                    rgba(0, 0, 0, 0)*/
+/*            ) center top,*/
+
+/*                !* Shadow BOTTOM *!*/
+/*            radial-gradient(*/
+/*                    farthest-side at 50% 100%,*/
+/*                    rgba(0, 0, 0, 0.2),*/
+/*                    rgba(0, 0, 0, 0)*/
+/*            ) center bottom;*/
+/*}*/
