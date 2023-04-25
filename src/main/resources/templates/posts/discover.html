@@ -11,13 +11,15 @@
 
     <div class="row">
 
-        <div class="row" style="position: absolute;">
+        <div class="row d-sm-none d-lg-flex" style="position: absolute;">
 
             <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
 
             <div class="col-sm-12 offset-lg-4 col-lg-4">
-                <a type="button" class="btn btn-sm px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
-                <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
+                <div class="d-flex flex-column">
+                    <a type="button" class="btn btn-sm px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
+                    <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
+                </div>
             </div>
 
         </div>
