@@ -117,10 +117,14 @@
                     <div class="card-bg opacity-25"></div>
                     <div class="d-flex">
                         <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
-                        <form class="ms-auto" th:action="@{|/follow/${post.user.id}|}" method="post">
-                            <span th:text="${post.user.username}">(Users name here)</span>
-                            <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>
-                        </form>
+                        <span class="ms-auto" th:text="${post.user.username}">(Users name here)</span>
+                        <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn px-1 py-0 followButton">(Follow Button)</button>
+                        </div>
+<!--                        <form class="ms-auto" th:action="@{|/follow/${post.user.id}|}" method="post">-->
+
+<!--                            <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>-->
+<!--                        </form>-->
                     </div>
                     <div class="blog-menu small-title date" th:text="${post.time}"></div>
                     <div class="blog-article py-1" th:text="${post.body}">(insert post body)</div>
@@ -140,6 +144,9 @@
             <div class="card card-community h-100" style="">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title pt-1" th:text="${community.name}">(insert post title)</h5>
+                    <div class="d-inline" th:attr="dataset-id=${community.id}">
+                        <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn px-1 py-0 followButton">(Follow Button)</button>
+                    </div>
                     <div class="blog-article">
                         <p class="" th:text="${community.bio}">(insert post body)</p>
                     </div>
