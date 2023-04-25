@@ -4,26 +4,81 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Journal</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <div class="d-flex ps-3">
-        <h2 class="my-auto">Journal Entries</h2>
-        <a class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" th:href="@{|/journal/addEntry|}">Add Entry</a>
-    </div>
-    <div class="row align-content-center my-auto px-3 pb-3 g-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 col-lg-4"  th:each="entry : ${entries}">
-            <div class="card journal-card h-100" style="">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title pt-1" th:text="${entry.title}">(insert post title)</h5>
-                    <div class="blog-menu small-title date" th:text="${entry.date}"></div>
-                    <div class="blog-article">
-                        <p class="" th:text="${entry.body}">(insert post body)</p>
+<!--    <div class="d-flex ps-3">-->
+<!--        <h2 class="my-auto">Journal Entries</h2>-->
+<!--    </div>-->
+    <div class="row align-content-center my-2 px-3 pb-3 g-3 h-100 flex-grow-1" sec:authorize="isAuthenticated()">
+        <div class="col-sm-12 col-lg-4 offset-lg-2 h-100">
+            <div class="card journal-card flex-grow-1 h-100">
+
+                <div class="card-body ruled-paper d-flex flex-column align-content-center" id="your-entries">
+
+                    <div class="d-flex flex-column h-100" role="main">
+                        <div class="ruled-paper-header">
+                            <div class="d-flex">
+                                <h5 class="my-auto ps-2">Your Entries</h5>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column ruled-paper-body h-100">
+                            <div th:each="entry : ${entries}">
+                                    <div class="d-flex single-entry">
+                                        <div class="pe-3 blog-menu small-title date" th:text="${entry.date}"></div>
+                                        <a class="post-link" th:href="@{|/journal/${entry.id}/edit|}">
+                                            <p class="pt-0" th:text="${entry.title}">(insert post title)</p>
+                                        </a>
+                                        <a th:href="@{|/journal/${entry.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
-                    <a class="btn btn-sm me-auto mt-auto" th:href="@{|/journal/${entry.id}/edit|}">Read more...</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-4">
+            <div class="card journal-card h-100">
+
+                <div class="card-body ruled-paper d-flex flex-column align-content-center" id="create-entry">
+
+                    <div class="d-flex flex-column h-100" role="main">
+                        <div class="ruled-paper-header">
+                            <div class="d-flex">
+                                <h5 class="my-auto ps-2">Create Entry</h5>
+                                <br>
+                            </div>
+                        </div>
+
+                        <form class="d-flex flex-column ruled-paper-body h-100" th:action="@{|/journal/addEntry|}" th:object="${entry}" method="post">
+
+                            <div class="d-flex add-entry">
+<!--                                <label class="my-auto" for="entryTitle">Title:</label>-->
+                                <input class="border border-0 bg-transparent" id="entryTitle" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}" placeholder="Title goes here"/>
+<!--                                <br>-->
+                            </div>
+
+                            <div class="d-flex add-entry flex-grow-1">
+<!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="field border border-0 bg-transparent flex-grow-1" placeholder="what's on your mind?">
+                            </textarea>
+                            </div>
+                            <input type="hidden" th:field="*{date}" />
+                            <input type="hidden" th:field="*{id}">
+
+                            <div class="journal-btn-container">
+                                <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Entry</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/background.js"></script>
 </body>
 </html>

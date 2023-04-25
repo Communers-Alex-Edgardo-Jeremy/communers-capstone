@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Chat</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <div id="id" th:value="${user.id}" hidden></div>
 <div id="username" th:value="${user.username}" hidden></div>
@@ -18,11 +18,12 @@
 </script>
 
 <!-- container element in which TalkJS will display a chat UI -->
-<div id="talkjs-container" style="border: solid #000000 2px ;width: 90%; margin: 30px; height: 500px">
+<div class="border border-0" id="talkjs-container" style="border: solid #000000 2px ;width: 90%; margin: 30px; height: 500px">
     <i>Loading chat...</i>
 </div>
 <script src="/js/keys.js"></script>
 <script src="/js/talkJS.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/background.js"></script>
 </body>
 </html>

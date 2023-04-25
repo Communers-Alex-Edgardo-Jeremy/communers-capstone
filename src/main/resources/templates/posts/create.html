@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>New Post</title>
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="gradient">
 
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
@@ -16,7 +16,7 @@
                 <div class="card create-card h-100">
                     <div class="card-body d-flex flex-column">
                         <h5>Create Post</h5>
-                        <form class="d-flex flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
+                        <form id="form" class="d-flex flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
                             <label for="entryTitle">Title</label>
                             <input id="entryTitle" name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
@@ -34,20 +34,21 @@
                                     <label th:for="${community.name}" th:text="${community.name}">(Community name)</label>
                                 </label><br>
                             </div>
-                            <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
+                            <button id="submit-button" class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
                         </form>
                     </div>
-
+                    <div id="mod-msg" class="text-center text-danger"></div>
                 </div>
-                <div id="mod-msg" class="text-center text-danger"></div>
             </div>
         </div>
     </div>
 
-<!--<script src="/js/keys.js"></script>-->
-<!--<th:block th:insert="~{/partials/partials :: chat_mod_script}"></th:block>-->
+<script src="/js/keys.js"></script>
+<th:block th:insert="~{/partials/partials :: chat_mod_script}"></th:block>
 
 
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<!--<script th:replace="chat_mod_script"></script>-->
+<script src="/js/background.js"></script>
 </body>
 </html>

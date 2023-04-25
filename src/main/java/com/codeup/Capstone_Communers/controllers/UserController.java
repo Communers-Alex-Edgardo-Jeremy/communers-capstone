@@ -9,25 +9,29 @@ package com.codeup.Capstone_Communers.controllers;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.PostMapping;
 
-import com.codeup.Capstone_Communers.SecurityConfiguration;
 import com.codeup.Capstone_Communers.models.*;
 import com.codeup.Capstone_Communers.repositories.*;
 import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
-import com.mysql.cj.PreparedQuery;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -38,6 +42,13 @@ public class UserController {
     private final CommentRepository commentDao;
 
     private final QuestionnaireRepository questionnaireDao;
+
+    private ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.addDialect(new Java8TimeDialect());
+        engine.setTemplateResolver(templateResolver);
+        return engine;
+    }
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PostRepository postDao, CommentRepository commentDao, EntryRepository entryDao, QuestionnaireRepository questionnaireDao) {
         this.userDao = userDao;
@@ -100,10 +111,17 @@ public class UserController {
     public String postEntry(@ModelAttribute Entry entry, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("entry", new Entry());
+
         Date date = new Date();
         String stringDate = date.toString();
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+        String strDate = dateFormat.format(date);
+        System.out.println("Converted String: " + strDate);
+
+
         entry.setUser(user);
-        entry.setDate(stringDate);
+        entry.setDate(strDate);
         System.out.println(entry);
         entryDao.save(entry);
         return "redirect:/journal";
