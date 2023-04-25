@@ -15,6 +15,8 @@ import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -138,6 +140,11 @@ public class PostController {
     public String postCreatePost(@ModelAttribute Post post) {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Date date = new Date();
+
+        DateFormat dateFormat = new SimpleDateFormat("(MM/dd/yy, HH:mm)");
+        String strDate = dateFormat.format(date);
+        System.out.println("Converted String: " + strDate);
+
         List<Community> communities = new ArrayList<>();
         if(post.getCommunities() != null){
             for (Community community : post.getCommunities()) {
@@ -148,7 +155,7 @@ public class PostController {
 
         post.setCommunities(communities);
         post.setUser(user);
-        post.setTime(date.toString());
+        post.setTime(strDate);
         postDao.save(post);
         return "redirect:/profile";
     }
