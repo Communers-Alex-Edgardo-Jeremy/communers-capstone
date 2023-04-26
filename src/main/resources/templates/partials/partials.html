@@ -90,7 +90,10 @@
             <div class="collapse collapse-horizontal card chat-card card-body h-100" id="collapseWidthExample">
                 <div class="card-bg opacity-50"></div>
                 <div class="d-flex flex-column">
-                    <div sec:authorize="isAuthenticated()">
+                    <th:block th:if="${friendList.size() == 0}">
+                        <span>Nothing here yet! Click on find people!</span>
+                    </th:block>
+                    <th:block th:if="${friendList.size() > 0}">
                         <h2 class="ms-auto mb-2">Friends:</h2>
                         <ul style="list-style:none; padding:0;">
                             <li class="fs-5" th:each="user : ${friendList}">
@@ -99,7 +102,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </th:block>
 <!--                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.-->
                 </div>
             </div>
@@ -129,7 +132,7 @@
                         <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
                         <div class="blog-menu small-title date me-auto ps-2 my-auto" th:text="${post.time}"></div>
                         <span class="ms-auto" th:text="${post.user.username}">(Users name here)</span>
-                        <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                        <div sec:authorize="isAuthenticated()" class="d-inline" th:attr="dataset-id=${post.user.id}">
                             <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0 followButton">(Follow Button)</button>
                         </div>
                     </div>
