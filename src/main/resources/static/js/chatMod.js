@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function addClickEvent(button){
         button.addEventListener('click', async function (e) {
             e.preventDefault()
-            let title = this.closest('form').querySelector('input[name="title"]').value;
-            let body = this.closest('form').querySelector('textarea[name="body"]').value;
             let form = this.closest('form')
-            let msg = this.closest('form').querySelector('.mod-msg')
+            let title = form.querySelector('input[name="title"]');
+            let body = form.querySelector('textarea[name="body"]').value;
+            let msg = form.querySelector('.mod-msg')
             let content = body;
             if (title !== null) {
-                content = title + " " + body;
+                content = title.value + " " + body;
             }
             const data = new FormData();
             data.append('text', content);
