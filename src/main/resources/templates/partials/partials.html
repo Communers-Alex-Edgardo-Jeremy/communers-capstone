@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
-                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0 " th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
                     <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
                 </div>
             </div>
@@ -153,18 +153,18 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4"  th:each="community : ${communities}">
-            <div class="card card-community h-100" style="">
+        <div th:each="community : ${communities}">
+            <div class="card post-card h-100">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title pt-1" th:text="${community.name}">(insert post title)</h5>
-                    <div class="d-inline" th:attr="dataset-id=${community.id}">
-                        <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn px-1 py-0 followButton">(Follow Button)</button>
+                    <div class="d-flex flex-column">
+                        <h5 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h5>
+                        <div class="d-inline" th:attr="dataset-id=${community.id}">
+                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
+                        </div>
+                        <div class="blog-article py-1 ms-2" th:text="${community.bio}">(insert post body)</div>
+                        <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                     </div>
-                    <div class="blog-article">
-                        <p class="" th:text="${community.bio}">(insert post body)</p>
-                    </div>
-                    <a class="btn btn-sm read-more-btn me-auto mt-auto" th:href="@{|/community/${community.id}|}">Read more...</a>
                 </div>
             </div>
         </div>
