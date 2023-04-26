@@ -54,11 +54,20 @@ followButtons.forEach(function(button) {
             const isFollowing = json.following;
             console.log(isFollowing)
 
-// landing page scroll grab
-
-new ScrollBooster({
-    viewport: document.querySelector('.section2'),
-    content: document.querySelector('.scrolling-wrapper-container'),
-    scrollMode: 'native',
-    direction: 'horizontal'
+            // update the follow/unfollow button text and class
+            if (isFollowing) {
+                this.textContent = 'Follow';
+                // this.classList.remove('followButton');
+                // this.classList.add('unfollowButton');
+            } else {
+                this.textContent = 'Unfollow';
+                // this.classList.remove('unfollowButton');
+                // this.classList.add('followButton');
+            }
+            // update the followers and followees lists on the page
+            // based on the response from the server
+        }).catch(error => {
+            console.log("error" + error)
+        });
+    });
 });
