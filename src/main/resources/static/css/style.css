@@ -476,7 +476,9 @@ textarea, input {
     transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1682436932 svg {
+.
+
+svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
@@ -1093,9 +1095,6 @@ section {
     justify-content: space-between;
 }
 
-.ed {
-
-}
 /* End of Landing page test styling*/
 
 /*Scroll fade test*/
