@@ -26,9 +26,14 @@
                 <input id="username" name="username" type="text" value="jeremy"/>
                 <label class="pt-3" for="password">Password</label>
                 <input id="password" name="password" type="password"/>
-                <input class="mt-auto btn btn-sm me-auto" type="submit" value="Log In"/>
+                <input class="my-auto btn btn-sm me-auto pt-0" type="submit" value="Log In"/>
             </form>
             <a th:href="@{/forgot_password}" class="forgot-pw mt-2">Forgot your password?</a>
+
+            <div class="d-flex flex-column mt-4">
+                <p class="my-auto">New to commUNITY?</p>
+                <a class="btn btn-sm login-btn me-auto mt-2 py-0" th:href="@{|/register|}">Register Now!</a>
+            </div>
         </div>
     </div>
 </div>

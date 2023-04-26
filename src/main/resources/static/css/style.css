@@ -121,14 +121,12 @@ nav, footer {
 /*    display: none;*/
 /*}*/
 
-
 nav {
-    border-bottom: var(--grey) solid .125rem;
+    /*border-bottom: var(--grey) solid .125rem;*/
     background-color: var(--bg-white);
-
 }
 footer {
-    border-top: var(--grey) solid .125rem;
+    /*border-top: var(--grey) solid .125rem;*/
     background-color: var(--bg-white);
 }
 nav a, nav .logout {
@@ -309,18 +307,18 @@ footer .copyright {
     font-size:13px;
     margin-bottom:0;
 }
-input.btn, .follow-btn, .search-btn, .read-more-btn, .edit-btn {
+input.btn, .follow-btn, .search-btn, .read-more-btn, .edit-btn, .login-btn {
     border: var(--dark-green) solid .125rem !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }
-input.btn:hover, .follow-btn:hover, .search-btn:hover, .read-more-btn:hover, .edit-btn:hover {
+input.btn:hover, .follow-btn:hover, .search-btn:hover, .read-more-btn:hover, .edit-btn:hover, .login-btn:hover {
     color: var(--dark-green) !important;
     box-shadow: .25rem .25rem var(--pink) !important;
     -webkit-box-shadow: .25rem .25rem var(--pink) !important;
     -moz-box-shadow: .25rem .25rem var(--pink) !important;
 }
-input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active, .edit-btn:active {
+input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active, .edit-btn:active, .login-btn:active {
     background-color: var(--light-green) !important;
     box-shadow: .25rem .25rem var(--purple) !important;
     -webkit-box-shadow: .25rem .25rem var(--purple) !important;
@@ -447,6 +445,13 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
     border: var(--dark-green) solid .125rem !important;
     background-color: transparent !important;
 }
+input#username, input#password {
+    border: var(--dark-green) solid .125rem !important;
+}
+input#username:active, input#password:active, input#username:hover, input#password:hover {
+    box-shadow: .25rem .25rem var(--pink);
+    -webkit-box-shadow: .25rem .25rem var(--pink);
+    -moz-box-shadow: .25rem .25rem var(--pink);}
 
 textarea, input {
     background-color: transparent !important;

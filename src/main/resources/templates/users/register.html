@@ -31,8 +31,12 @@
                 <label for="psw">Password</label>
                 <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" required>
 
-                <input class="mt-3 btn me-auto" value="Sign me up!" type="submit" />
+                <input class="mt-3 btn btn-sm me-auto" value="Sign me up!" type="submit" />
             </form>
+            <div class="d-flex mt-2">
+                <p class="my-auto">Already a member?</p>
+                <a class="btn btn-sm login-btn ms-2 me-auto mt-auto py-0" th:href="@{|/login|}">Log In</a>
+            </div>
         </div>
     </div>
     <div class="password-validation mt-3 mb-5 p-3" id="message">
