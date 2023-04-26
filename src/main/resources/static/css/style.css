@@ -963,12 +963,16 @@ section {
 .scrolling-wrapper-container {
     position: relative;
     height: 15rem;
-    overflow-x: hidden;
+    /*testing mouse click to drag, hidden is default*/
+    /*overflow-x: hidden;*/
+    overflow: auto;
     transition: all 0.2s;
     transform: scale(0.98);
     will-change: transform;
-    user-select: none;
-    cursor: pointer;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    cursor: grab;
+    user-select: auto;
 }
 .scrolling-wrapper-container:hover div {
     animation-play-state: paused;
@@ -981,7 +985,7 @@ section {
     height: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: normal;
+    white-space: nowrap;
     position: inherit;
     animation: primary 60s linear infinite;
 }
@@ -1001,6 +1005,8 @@ section {
     display: inline-block;
     height: 100%;
     width: 15em;
+    border-style: none;
+    opacity: 80%;
 }
 .primary {
     left: -20%
@@ -1085,39 +1091,3 @@ section {
 /* End of Landing page test styling*/
 
 /*Scroll fade test*/
-
-.scrolling-wrapper-container {
-
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-
-}
-
-/*.scrolling-wrapper-container {*/
-/*    background:*/
-/*        !* Shadow Cover TOP *!*/
-/*            linear-gradient(*/
-/*                    white 30%,*/
-/*                    rgba(255, 255, 255, 0)*/
-/*            ) center top,*/
-
-/*                !* Shadow Cover BOTTOM *!*/
-/*            linear-gradient(*/
-/*                    rgba(255, 255, 255, 0),*/
-/*                    white 70%*/
-/*            ) center bottom,*/
-
-/*                !* Shadow TOP *!*/
-/*            radial-gradient(*/
-/*                    farthest-side at 50% 0,*/
-/*                    rgba(0, 0, 0, 0.2),*/
-/*                    rgba(0, 0, 0, 0)*/
-/*            ) center top,*/
-
-/*                !* Shadow BOTTOM *!*/
-/*            radial-gradient(*/
-/*                    farthest-side at 50% 100%,*/
-/*                    rgba(0, 0, 0, 0.2),*/
-/*                    rgba(0, 0, 0, 0)*/
-/*            ) center bottom;*/
-/*}*/
