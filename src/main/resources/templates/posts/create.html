@@ -17,19 +17,19 @@
                     <div class="card-bg opacity-50 flex-grow-1"></div>
                     <div class="card-body d-flex flex-column">
                         <h5>Create Post</h5>
-                        <form id="form" class="d-flex flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
+                        <form class="d-flex form flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
                             <label>
                                 Title
-                                <input name="entryTitle" type="text" value="entry title" th:field="*{title}"/>
+                                <input name="title" id="entryTitle" type="text" value="entry title" th:field="*{title}"/>
                             </label>
 
                             <label>
                                 Body:
-                                <textarea name="body" th:field="*{body}" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
+                                <textarea name="body" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="what's on your mind?"></textarea>
                             </label>
 
                             <input type="hidden" th:field="*{time}" />
-                            <input type="hidden" th:field="*{id}">
+                            <input type="hidden" th:field="*{id}" />
                             <span>Communities:</span><br>
                             <div th:each="community : ${communities}">
                                 <label>
@@ -38,18 +38,19 @@
                                 </label><br>
                             </div>
                             <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
+                            <div class="mod-msg text-center text-danger"></div>
                         </form>
                     </div>
-                    <div id="mod-msg" class="text-center text-danger"></div>
                 </div>
             </div>
         </div>
     </div>
 
-<script src="/js/keys.js"></script>
-<script src="/js/chatMod.js"></script>
+
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <!--<script th:replace="chat_mod_script"></script>-->
 <script src="/js/background.js"></script>
+<script src="/js/keys.js"></script>
+<script src="/js/chatMod.js"></script>
 </body>
 </html>

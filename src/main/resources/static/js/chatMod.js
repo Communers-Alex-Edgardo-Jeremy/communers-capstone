@@ -2,13 +2,17 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    let checkButtons = document.getElementsByClassName("submit-btn");
-    checkButtons.forEach(function(button){
+    function addClickEvent(button){
         button.addEventListener('click', async function (e) {
             e.preventDefault()
-            let title = document.getElementById("entryTitle").value;
-            let body = document.getElementById("body-ip").value
-            let content = title + " " + body
+            let title = this.closest('form').querySelector('input[name="title"]').value;
+            let body = this.closest('form').querySelector('textarea[name="body"]').value;
+            let form = this.closest('form')
+            let msg = this.closest('form').querySelector('.mod-msg')
+            let content = body;
+            if (title !== null) {
+                content = title + " " + body;
+            }
             const data = new FormData();
             data.append('text', content);
             data.append('lang', 'en');
@@ -34,14 +38,23 @@ document.addEventListener("DOMContentLoaded", function() {
                         returnMsg += "Profanity\n"
                     }
                     if(returnMsg === "") {
-                        document.getElementById("form").submit();
+                        form.submit();
                     } else{
                         returnMsg = "Please remove:\n" + returnMsg
-                        document.getElementById("mod-msg").innerText = returnMsg
+                        msg.innerText = returnMsg
                     }
                     console.log(returnMsg)
                 })
                 .catch(error => console.error(error));
         });
-    });
+    }
+    let checkButtons = document.getElementsByClassName("submit-btn");
+
+    if(checkButtons.length > 1){
+        checkButtons.forEach(function(button){
+            addClickEvent(button)
+        });
+    } else {
+        addClickEvent(checkButtons[0])
+    }
 });
