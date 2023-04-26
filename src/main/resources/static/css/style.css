@@ -949,8 +949,8 @@ svg {
 
 }
 #reviewsTitle{
-    font-family: 'Hachi Maru Pop', cursive;
     display: flex;
+    flex-direction: column;
 }
 #signUp {
     color: var(--black);
@@ -958,6 +958,7 @@ svg {
     background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
     overflow-x: hidden;
     min-height: 500px;
+    padding-top: 120px;
 }
 section {
     position: relative;
@@ -1108,9 +1109,6 @@ section {
 #paragraphI {
     /*font-family: 'Gamja Flower', cursive;*/
     font-size: large;
-}
-#signUp {
-    font-family: 'Kranky', cursive;
 }
 /*<!-- End of Landing page  -->*/
 #communersIntroOpening {
