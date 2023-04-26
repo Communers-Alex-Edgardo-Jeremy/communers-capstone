@@ -14,7 +14,23 @@
             Something bad happened!
         </div>
 <!--        <h2 class="d-flex justify-content-center page-title">Profile</h2>-->
-        <div class="col-sm-12 col-lg-3">user info</div>
+        <div class="col-sm-12 col-lg-3 mt-3">
+            <div class="d-flex flex-column">
+                <h6 class="mb-3">
+                    User information:
+                </h6>
+                <p class="my-0 ms-2">
+                    Username: <span class="ps-2" th:text="${#authentication.principal.username}"/>
+                </p>
+                <p class="my-0 ms-2">
+                    Full name: <span class="ps-2" th:text="${#authentication.principal.first_name}"/> <span class="ps-2" th:text="${#authentication.principal.last_name}"/>
+                </p>
+                <p class="my-0 ms-2">
+                    Email: <span class="ps-2" th:text="${#authentication.principal.email}"/> <span class="ps-2"/>
+                </p>
+            </div>
+
+        </div>
         <div class="col-sm-12 col-lg-6">
             <div class="row align-content-center my-auto px-3 pb-3 g-3">
                 <div class="posts-container px-0" th:each="post : ${posts}">
@@ -30,7 +46,7 @@
                             <div class="blog-article ms-3">
                                 <p class="" th:text="${post.body}">(insert post body)</p>
                                 <div class="ms-3 mt-auto">
-                                    <h6 class="">Comments</h6>
+                                    <h6 class="">Comments:</h6>
                                     <div th:each="comment : ${post.comments}">
                                         <div class="comments" th:if="${comment.post == post}">
                                             <div class="" th:text="${comment.date}">(insert post body)</div>
