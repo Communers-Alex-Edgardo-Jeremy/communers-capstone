@@ -6,20 +6,27 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="d-flex">
-    <h2 class="page-title ps-3">
-        Find User
-    </h2>
-    <!--<label for="community-search">search</label>-->
-    <div class="d-flex flex-column ms-auto">
-
-        <input class="my-auto" id="search-input" type="text" placeholder="Search user...">
-        <div class="pt-2 bg-transparent" id="suggestions"></div>
+    <div class="row align-content-center px-3">
+        <div class="col-sm-12 col-lg-3 mt-3">
+            <div class="d-flex">
+                <div class="d-flex flex-column my-auto">
+                    <input class="my-auto" id="search-input" type="text" placeholder="Search user...">
+                    <div class="pt-2 bg-transparent" id="suggestions"></div>
+                </div>
+                <button class="btn btn-sm mx-3 my-auto search-btn py-0" type="button" id="search-btn">Search</button>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            <div class="d-flex">
+                <h1 class="page-title mx-auto mt-4" style="font-weight: bold">Find Users</h1>
+            </div>
+        </div>
     </div>
-    <button class="btn btn-sm mx-3 my-auto search-btn" type="button" id="search-btn">Search</button>
 
-<!--    <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>-->
-</div>
+<!--<div>-->
+
+<!--&lt;!&ndash;    <button class="btn btn-sm follow-btn px-1 py-0" type="submit">Follow</button>&ndash;&gt;-->
+<!--</div>-->
     <th:block th:insert="~{/partials/partials :: users}"></th:block>
 <script src="/js/communities.js"></script>
 <script src="/js/background.js"></script>

@@ -2,22 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
-
     <title>Profile</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <h2 class="page-title mx-auto">Profile</h2>
+    <h1 class="page-title mx-auto mt-4">Profile</h1>
 
     <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
 <!--        <h2 class="d-flex justify-content-center page-title">Profile</h2>-->
-        <div class="col-sm-12 col-lg-3">user info</div>
+        <div class="col-sm-12 col-lg-3 mt-3">
+            <div class="card settings-card" sec:authorize="isAuthenticated()">
+                <div class="card-bg opacity-50 flex-grow-1"></div>
+                <div class="card-body d-flex flex-column">
+                    <h5>User information</h5>
+                    <div th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
+                    <div class="settings" sec:authorize="isAuthenticated()">
+                        <form class="d-flex flex-column" th:action="@{/user/edit}" th:object="${user}" method="post">
+
+                            <label for="username">Username</label>
+                            <input id="username" th:field="*{username}" required/>
+
+                            <label for="first_name">First Name</label>
+                            <input id="first_name" th:field="*{first_name}" required/>
+
+                            <label for="last_name">Last Name</label>
+                            <input id="last_name" th:field="*{last_name}" required/>
+
+                            <label for="email">Email</label>
+                            <input id="email" th:field="*{email}" required/>
+
+                            <label for="psw">Password</label>
+                            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" th:value="*{null}" required>
+
+                            <input class="btn btn-sm mt-3 me-auto py-0" value="Submit" type="submit" />
+                        </form>
+                        <form th:action="@{/user/delete}" method="post">
+                            <button class="btn btn-sm btn-outline-danger me-auto mt-3 py-0" type="submit">Delete Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div class="col-sm-12 col-lg-6">
             <div class="row align-content-center my-auto px-3 pb-3 g-3">
-                <div class="posts-container px-0" th:each="post : ${posts}">
+                <div class="post-container px-0" th:each="post : ${posts}">
                     <div class="card post-card h-100">
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body d-flex flex-column">
@@ -30,12 +64,12 @@
                             <div class="blog-article ms-3">
                                 <p class="" th:text="${post.body}">(insert post body)</p>
                                 <div class="ms-3 mt-auto">
-                                    <h6 class="">Comments</h6>
+                                    <h6 class="">Comments:</h6>
                                     <div th:each="comment : ${post.comments}">
                                         <div class="comments" th:if="${comment.post == post}">
                                             <div class="" th:text="${comment.date}">(insert post body)</div>
                                             <div class="" th:text="${comment.body}">(insert post body)</div>
-                                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto" th:href="@{|/post/comment/${comment.id}/delete|}">Delete Comment</a>
+                                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto py-0" th:href="@{|/post/comment/${comment.id}/delete|}">Delete Comment</a>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +86,7 @@
                                     <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
                                     <input type="hidden" th:field="*{id}">
 
-                                    <button class="btn btn-sm add-commend-btn me-auto mt-auto" type="submit">Add Comment</button>
+                                    <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
                                 </form>
                             </div>
                         </div>
