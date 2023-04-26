@@ -24,14 +24,8 @@ public class Community {
     @Column(length=255, nullable = false)
     private String bio;
 
-    @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name="post_community",
-            joinColumns={@JoinColumn(name="community_id")},
-            inverseJoinColumns={@JoinColumn(name="post_id")}
-    )
-    private List <Post> posts;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "communities")
+    private List<Post> posts;
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
