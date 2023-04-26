@@ -309,37 +309,37 @@ footer .copyright {
     font-size:13px;
     margin-bottom:0;
 }
-input.btn, form .follow-btn, .search-btn, .read-more-btn, .edit-btn {
+input.btn, .follow-btn, .search-btn, .read-more-btn, .edit-btn {
     border: var(--dark-green) solid .125rem !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }
-input.btn:hover, form .follow-btn:hover, .search-btn:hover, .read-more-btn:hover, .edit-btn:hover {
+input.btn:hover, .follow-btn:hover, .search-btn:hover, .read-more-btn:hover, .edit-btn:hover {
     color: var(--dark-green) !important;
     box-shadow: .25rem .25rem var(--pink) !important;
     -webkit-box-shadow: .25rem .25rem var(--pink) !important;
     -moz-box-shadow: .25rem .25rem var(--pink) !important;
 }
-input.btn:active, form .follow-btn:active, .search-btn:active, .read-more-btn:active, .edit-btn:active {
+input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active, .edit-btn:active {
     background-color: var(--light-green) !important;
     box-shadow: .25rem .25rem var(--purple) !important;
     -webkit-box-shadow: .25rem .25rem var(--purple) !important;
     -moz-box-shadow: .25rem .25rem var(--purple) !important;
 }
 
-.add-commend-btn, .submit-btn {
+.add-comment-btn, .submit-btn {
     border: var(--dark-green) solid .125rem !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }
-.add-commend-btn:hover, .submit-btn:hover {
+.add-comment-btn:hover, .submit-btn:hover {
     color: var(--dark-green) !important;
     box-shadow: .25rem .25rem var(--pink) !important;
     -webkit-box-shadow: .25rem .25rem var(--pink);
     -moz-box-shadow: .25rem .25rem var(--pink);
 
 }
-.add-commend-btn:active, .submit-btn:active {
+.add-comment-btn:active, .submit-btn:active {
     background-color: var(--light-green) !important;
     box-shadow: .25rem .25rem var(--purple);
     -webkit-box-shadow: .25rem .25rem var(--purple);
