@@ -6,6 +6,8 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<h1 class="page-title mx-auto mt-4">Log In</h1>
+
 <div class="container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
     <div class="card login-card mt-3 mb-5">
         <div class="card-bg opacity-50 flex-grow-1"></div>
@@ -13,7 +15,6 @@
             <div class="alert alert-danger" th:if="${errMsg}">
                 Something bad happened!
             </div>
-            <h1>Log In</h1>
             <div th:if="${param.error}">
                 Invalid Username and Password.
             </div>
@@ -26,9 +27,14 @@
                 <input id="username" name="username" type="text" value="jeremy"/>
                 <label class="pt-3" for="password">Password</label>
                 <input id="password" name="password" type="password"/>
-                <input class="mt-auto btn btn-sm me-auto" type="submit" value="Log In"/>
+                <input class="btn btn-sm me-auto mt-3 py-0" type="submit" value="Log In"/>
             </form>
             <a th:href="@{/forgot_password}" class="forgot-pw mt-2">Forgot your password?</a>
+
+            <div class="d-flex flex-column mt-4">
+                <p class="my-auto">New to commUNITY?</p>
+                <a class="btn btn-sm login-btn me-auto mt-2 py-0" th:href="@{|/register|}">Register Now!</a>
+            </div>
         </div>
     </div>
 </div>

@@ -43,7 +43,6 @@
                     <!--                <li class="px-2" sec:authorize="isAuthenticated()"><a href="/chats">Chat</a></li>-->
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()"><a href="/post/create">Create Post</a></li>
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()"><a href="/journal">My Journal</a></li>
-                    <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()"><a href="/settings">Settings</a></li>
                 </ul>
                 <ul class="my-auto d-flex navbar-nav">
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()">
@@ -65,7 +64,7 @@
         <div class="d-flex flex-column">
             <div class="d-flex">
                 <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
-                    Welcome back, <span class="page-title fw-bold" th:text="${#authentication.principal.username}"/>.
+                    Welcome back, <span class="page-title" th:text="${#authentication.principal.username}"/>.
                 </h2>
             </div>
             <div th:choose>
@@ -76,6 +75,15 @@
 <!--            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">-->
 <!--                Discover more from our community.-->
 <!--            </h2>-->
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="chat-pane" th:object="${user}">
+    <div class="col-sm-12 col-lg-3" sec:authorize="isAuthenticated()">
+        <div class="d-flex flex-column pe-3">
+            <a type="button" class="btn btn-sm find-ppl-btn px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
+            <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
         </div>
     </div>
 </th:block>
@@ -124,20 +132,23 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div id="posts-container" class="" th:each="post : ${posts}">
+        <div id="post-container" class="" th:each="post : ${posts}">
             <div class="card post-card h-100">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
+
                         <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
                         <div class="blog-menu small-title date me-auto ps-2 my-auto" th:text="${post.time}"></div>
-                        <span class="ms-auto" th:text="${post.user.username}">(Users name here)</span>
+                        <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
                         <div sec:authorize="isAuthenticated()" class="d-inline" th:attr="dataset-id=${post.user.id}">
-                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0 followButton">(Follow Button)</button>
+                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0   ms-2 my-auto followButton">(Follow Button)</button>
+
                         </div>
                     </div>
-                    <div class="blog-article py-1" th:text="${post.body}">(insert post body)</div>
-                    <a class="btn btn-sm read-more-btn me-auto mt-auto " th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
+                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
                 </div>
             </div>
         </div>
@@ -149,18 +160,18 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4"  th:each="community : ${communities}">
-            <div class="card card-community h-100" style="">
+        <div th:each="community : ${communities}">
+            <div class="card post-card h-100">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title pt-1" th:text="${community.name}">(insert post title)</h5>
-                    <div class="d-inline" th:attr="dataset-id=${community.id}">
-                        <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn px-1 py-0 followButton">(Follow Button)</button>
+                    <div class="d-flex flex-column">
+                        <h5 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h5>
+                        <div class="d-inline" th:attr="dataset-id=${community.id}">
+                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
+                        </div>
+                        <div class="blog-article py-1 ms-2" th:text="${community.bio}">(insert post body)</div>
+                        <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                     </div>
-                    <div class="blog-article">
-                        <p class="" th:text="${community.bio}">(insert post body)</p>
-                    </div>
-                    <a class="btn btn-sm read-more-btn me-auto mt-auto" th:href="@{|/community/${community.id}|}">Read more...</a>
                 </div>
             </div>
         </div>
@@ -168,18 +179,22 @@
 </th:block>
 
 <th:block th:fragment="users">
-    <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">
-        <div class="alert alert-danger" th:if="${errMsg}">
-            Something bad happened!
-        </div>
-        <div class="d-flex p-2"  th:each="user : ${users}">
-            <div class="card card-community h-100" style="">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="card-body p-2">
-                    <form class="d-flex" th:action="@{|/follow/${user.id}|}" method="post">
-                        <h5 class="card-title my-auto" th:text="${user.username}">(Users name here)</h5>
-                        <button class="btn btn-sm follow-btn px-1 py-0 my-auto ms-2" type="submit">Follow</button>
-                    </form>
+    <div class="row my-auto">
+        <div class="col-sm-12 col-lg-6 offset-lg-3">
+            <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">
+                <div class="alert alert-danger" th:if="${errMsg}">
+                    Something bad happened!
+                </div>
+                <div class="d-flex p-2"  th:each="user : ${users}">
+                    <div class="card card-community h-100" style="">
+                        <div class="card-bg opacity-50 flex-grow-1"></div>
+                        <div class="card-body p-2">
+                            <form class="d-flex" th:action="@{|/follow/${user.id}|}" method="post">
+                                <h5 class="card-title my-auto" th:text="${user.username}">(Users name here)</h5>
+                                <button class="btn btn-sm follow-btn px-1 py-0 my-auto ms-2" type="submit">Follow</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

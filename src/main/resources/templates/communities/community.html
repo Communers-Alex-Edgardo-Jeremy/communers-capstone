@@ -7,11 +7,11 @@
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <form class="d-flex flex-column ps-3" th:action="@{|/community/${community.id}|}" method="post">
-    <div class="d-flex">
-        <h2 class="my-auto" th:text="${community.name}">(insert community name)</h2>
+    <h1 class="page-title mx-auto mt-4" th:text="${community.name}">(insert community name)</h1>
+    <div class="d-flex mx-auto">
+        <div class="blog-menu small-title" th:text="${community.bio}"></div>
         <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>
     </div>
-    <div class="blog-menu small-title" th:text="${community.bio}"></div>
 
 </form>
 <div class="row align-content-center my-auto px-3 pb-3 g-3">
