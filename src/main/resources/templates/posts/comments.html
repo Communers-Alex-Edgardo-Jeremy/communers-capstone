@@ -6,6 +6,8 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+    <h1 class="page-title mx-auto mt-4" style="font-weight: bold">Comments</h1>
+
     <div class="container d-flex flex-column flex-grow-1">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
@@ -38,7 +40,7 @@
                                 <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
                                 <input type="hidden" th:field="*{id}">
 
-                                <button class="btn btn-sm add-comment-btn me-auto mt-auto" type="submit">Add Comment</button>
+                                <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
                             </form>
                         </div>
                     </div>
