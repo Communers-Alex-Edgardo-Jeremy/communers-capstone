@@ -57,13 +57,13 @@
 
                             <div class="d-flex add-entry">
 <!--                                <label class="my-auto" for="entryTitle">Title:</label>-->
-                                <input class="border border-0 bg-transparent" id="entryTitle" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}" placeholder="Title goes here"/>
+                                <input class="border border-0 bg-transparent"  name="entryTitleEdited" type="text" value="entry title" th:field="*{title}" placeholder="Title goes here"/>
 <!--                                <br>-->
                             </div>
 
                             <div class="d-flex add-entry flex-grow-1">
 <!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field border border-0 bg-transparent flex-grow-1" placeholder="what's on your mind?">
+                                <textarea type="text" th:field="*{body}" class="field border border-0 bg-transparent flex-grow-1" placeholder="what's on your mind?">
                             </textarea>
                             </div>
                             <input type="hidden" th:field="*{date}" />

@@ -6,7 +6,7 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <h2 class="page-title mx-auto">Profile</h2>
+    <h1 class="page-title mx-auto mt-4">Profile</h1>
 
     <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">

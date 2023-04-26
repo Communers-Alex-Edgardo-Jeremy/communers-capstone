@@ -33,13 +33,13 @@
 <!--                                <label class="my-auto" for="entryTitleEdited">Title:</label>-->
                                 <div class="pe-3 blog-menu small-title date" th:text="${entry.date}"></div>
 
-                                <input class="border border-0 bg-transparent" id="entryTitleEdited" name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
+                                <input class="border border-0 bg-transparent"  name="entryTitleEdited" type="text" value="entry title" th:field="*{title}"/>
                                 <br>
                             </div>
 
                             <div class="d-flex edit-entry-line flex-grow-1">
 <!--                                <label class="entry-body-title" for="body-ip">Body:</label>-->
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
+                                <textarea type="text" th:field="*{body}" class="field border border-0 bg-transparent py-0 flex-grow-1" placeholder="what's on your mind?">
                             </textarea>
                             </div>
                             <input type="hidden" th:field="*{date}" />

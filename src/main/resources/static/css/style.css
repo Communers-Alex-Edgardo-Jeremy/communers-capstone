@@ -49,6 +49,12 @@ nav, footer {
     background-color: var(--bg-white) !important;
 }
 
+.btn {
+    outline: none !important;
+}
+.btn:active, .btn:hover {
+    outline: none !important;
+}
 .hamburger, .chat-btn {
     font-size: 2rem  !important;
 }
@@ -445,13 +451,17 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
     border: var(--dark-green) solid .125rem !important;
     background-color: transparent !important;
 }
-input#username, input#password {
+input#username, input#password, input#first_name, input#last_name, input#email, input#psw, input#entryTitle, #body-ip  {
     border: var(--dark-green) solid .125rem !important;
+    outline: none !important;
 }
-input#username:active, input#password:active, input#username:hover, input#password:hover {
+input#username:active, input#password:active, input#username:hover, input#password:hover, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active,  input#first_name:hover, input#last_name:hover, input#email:hover, input#psw:hover, input#entryTitle:hover, #body-ip:hover{
+    border: var(--dark-green) solid .125rem !important;
+    outline: none !important;
     box-shadow: .25rem .25rem var(--pink);
     -webkit-box-shadow: .25rem .25rem var(--pink);
-    -moz-box-shadow: .25rem .25rem var(--pink);}
+    -moz-box-shadow: .25rem .25rem var(--pink);
+}
 
 textarea, input {
     background-color: transparent !important;
