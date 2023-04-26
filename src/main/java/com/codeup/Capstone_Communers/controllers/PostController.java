@@ -128,6 +128,7 @@ public class PostController {
     }
     @GetMapping("/post/{postId}/delete")
     public String deletePost(@PathVariable long postId){
+        System.out.println("post title here: " + postDao.getReferenceById(postId).getTitle());
         postDao.delete(postDao.getReferenceById(postId));
         return "redirect:/profile";
     }

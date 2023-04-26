@@ -34,7 +34,7 @@ public class Post {
     private User user;
 
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinTable(
             name="post_community",
             joinColumns={@JoinColumn(name="post_id")},
