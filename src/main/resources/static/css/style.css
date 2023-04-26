@@ -992,13 +992,17 @@ section {
     flex-wrap: wrap;
 }
 .section2 {
-    padding-top: 30px;
-    /*display: flex;*/
+    min-height: 558px;
+    padding-top: 61px;
+    display: flex;
     /*align-items: center;*/
 }
 .section2Rev {
-    /*padding-right: 0;*/
-    /*padding-left: 0;*/
+    padding-right: 0;
+    padding-left: 0;
+    border-left-width: 29px;
+    border-right-width: 29px;
+    width: 1179px;
 }
 .scrolling-wrapper-container{
     width: 100%;
@@ -1014,7 +1018,7 @@ section {
 .scrolling-wrapper-container:before{
     content: '';
     height: 89%;
-    width: 50px;
+    width: 78px;
     background: linear-gradient(90deg, rgba(231,225,241,4) 31%, rgba(242,238,255,0) 100%);
     position: absolute;
     top:15px;
@@ -1024,7 +1028,7 @@ section {
 .scrolling-wrapper-container:after{
     content:'';
     height: 90%;
-    width:50px;
+    width:78px;
     background:linear-gradient(-90deg, rgba(190,188,236,95) 28%, rgba(255,224,255,0) 100%);
     position: absolute;
     top:15px;
@@ -1053,7 +1057,7 @@ section {
     white-space: nowrap;
     /*position: inherit;*/
     position: absolute;
-    animation: primary 120s linear infinite;
+    animation: primary 60s linear infinite;
 }
 .scrolling-wrapperII {
     display: flex;
@@ -1070,7 +1074,8 @@ section {
     animation-delay: 150s;
 }
 .cardReviews {
-    padding: 6px 16px;
+
+    padding: 27px 16px;
     cursor:pointer;
     /*border: 3px solid #3d3d3d;*/
     color: #3d3d3d;
@@ -1081,9 +1086,14 @@ section {
     display: inline-block;
     flex-shrink: 0;
     height: 100%;
-    width: 15em;
     border-style: none;
     opacity: 80%;
+}
+.card-body-quote {
+    padding-top: 15px;
+}
+.blockquote > p {
+    height: 100px;
 }
 .primary {
     left: -20%
