@@ -21,10 +21,3 @@ if(notification.textContent.trim().length !== 0){
 }
 
 // landing page scroll grab
-
-new ScrollBooster({
-    viewport: document.querySelector('.section2'),
-    content: document.querySelector('.scrolling-wrapper-container'),
-    scrollMode: 'native',
-    direction: 'horizontal'
-});

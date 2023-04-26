@@ -449,12 +449,6 @@ input.btn:active, a.btn:active, form .follow-btn:active, .search-btn:active {
 }
 
 /*Landing Page*/
-.navbar {
-    border-bottom-style: none;
-}
-footer {
-    border-top-style: none;
-}
 .custom-shape-divider-bottom-1682436932 {
     position: absolute;
     bottom: 0;
@@ -917,12 +911,6 @@ footer {
     }
 }
 
-.text {
-    flex: auto;
-    font: inherit;
-    font-family: 'Hachi Maru Pop', cursive;
-    color: #000000;
-}
 #intro {
     display: flex;
     height: 15em;
@@ -969,10 +957,10 @@ section {
     transition: all 0.2s;
     transform: scale(0.98);
     will-change: transform;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    cursor: grab;
-    user-select: auto;
+    /*-webkit-overflow-scrolling: touch;*/
+    /*overflow-scrolling: touch;*/
+    /*cursor: grab;*/
+    /*user-select: auto;*/
 }
 .scrolling-wrapper-container:hover div {
     animation-play-state: paused;
@@ -1001,7 +989,7 @@ section {
     animation: secondary 60s linear infinite;
     animation-delay: 86ms;
 }
-.card {
+.cardReviews {
     display: inline-block;
     height: 100%;
     width: 15em;
