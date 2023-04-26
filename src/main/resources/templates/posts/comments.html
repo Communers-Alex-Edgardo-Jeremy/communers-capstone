@@ -34,13 +34,14 @@
                         <div>
                             <h6 class="">Add a comment:</h6>
                             <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
-                                <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
+                                <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
 
                                 <label class="pt-3" for="date-ip" hidden>Date:</label>
                                 <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
                                 <input type="hidden" th:field="*{id}">
 
-                                <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
+                                <button class="btn btn-sm add-commend-btn me-auto mt-auto py-0 submit-btn" type="submit">Add Comment</button>
+                                <div class="mod-msg text-center text-danger"></div>
                             </form>
                         </div>
                     </div>
@@ -49,6 +50,9 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/keys.js"></script>
+<script src="/js/chatMod.js"></script>
 <script src="/js/background.js"></script>
+
 </body>
 </html>
