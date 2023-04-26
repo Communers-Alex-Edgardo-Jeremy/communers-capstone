@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,7 @@ public class Post {
     @Column(nullable = false)
     private String time;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;

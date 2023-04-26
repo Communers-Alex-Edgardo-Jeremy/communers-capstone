@@ -15,6 +15,8 @@ import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -44,8 +46,10 @@ public class PostController {
         User user;
         try{
             user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+            model.addAttribute("loggedInUser", user);
         } catch (ClassCastException e){
             model.addAttribute("posts", posts);
+            model.addAttribute("user", new User());
             return "posts/discover";
         }
         Questionnaire questionnaire = user.getQuestionnaire();
@@ -61,6 +65,7 @@ public class PostController {
         User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Post> posts = postDao.findPostsFromUserFollowsAndCommunities(user.getId());
         model.addAttribute("posts", posts);
+        model.addAttribute("loggedInUser", user);
         model.addAttribute("user", new User());
         return "posts/forYou";
 
@@ -135,6 +140,11 @@ public class PostController {
     public String postCreatePost(@ModelAttribute Post post) {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Date date = new Date();
+
+        DateFormat dateFormat = new SimpleDateFormat("(MM/dd/yy, HH:mm)");
+        String strDate = dateFormat.format(date);
+        System.out.println("Converted String: " + strDate);
+
         List<Community> communities = new ArrayList<>();
         if(post.getCommunities() != null){
             for (Community community : post.getCommunities()) {
@@ -145,7 +155,7 @@ public class PostController {
 
         post.setCommunities(communities);
         post.setUser(user);
-        post.setTime(date.toString());
+        post.setTime(strDate);
         postDao.save(post);
         return "redirect:/profile";
     }
