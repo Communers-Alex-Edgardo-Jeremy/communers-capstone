@@ -7,24 +7,23 @@
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <h2 class="page-title mx-auto">Discover</h2>
-    <div class="row">
-        <div class="row d-sm-none d-lg-flex mt-3" style="position: absolute;">
+    <div class="row d-sm-none d-lg-flex mt-3">
 
-            <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
+        <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
 
-            <div class="col-sm-12 offset-lg-6 col-lg-3">
-                <div class="d-flex flex-column">
-                    <a type="button" class="btn btn-sm px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
-                    <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-sm-12 offset-lg-3 col-lg-6">
+        <div class="col-sm-12 col-lg-6">
             <th:block th:insert="~{/partials/partials :: posts}"></th:block>
         </div>
+
+        <div class="d-sm-none col-lg-3">
+            <div class="d-flex flex-column">
+                <a type="button" class="btn btn-sm px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
+                <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
+            </div>
+        </div>
+
     </div>
+
 
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
