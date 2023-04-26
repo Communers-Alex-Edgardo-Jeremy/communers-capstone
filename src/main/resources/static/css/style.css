@@ -938,6 +938,7 @@ svg {
     overflow-x: hidden;
     padding: 0;
     justify-content: center;
+    min-height: 420px;
 }
 #reviews {
     color: var(--black);
@@ -957,8 +958,11 @@ svg {
     position: relative;
     background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
     overflow-x: hidden;
-    min-height: 500px;
+    min-height: 349px;
     padding-top: 120px;
+}
+.bi {
+    height: 0;
 }
 section {
     position: relative;
