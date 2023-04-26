@@ -289,7 +289,7 @@ footer .item.social {
     left: 0;
     z-index: 10;
 }
-footer .item.social > a {
+footer .item.social > a, .fa-linkedin, .fa-github {
     font-size:20px;
     width:36px;
     height:36px;
@@ -302,7 +302,7 @@ footer .item.social > a {
     color: var(--dark-green);
 }
 
-footer .item.social > a:hover {
+footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover {
     text-shadow: .125rem .125rem var(--pink);
 }
 
