@@ -1,6 +1,9 @@
 package com.codeup.Capstone_Communers.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import java.util.List;
 
@@ -10,6 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="users")
 public class User {
     @Id
@@ -34,17 +38,21 @@ public class User {
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Questionnaire questionnaire;
 
+    @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    @JsonIgnore
     @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private List<Comment> comments;
 
+    @JsonIgnore
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
@@ -54,6 +62,7 @@ public class User {
     )
     private List <Community> communities;
 
+    @JsonIgnore
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
@@ -63,6 +72,7 @@ public class User {
     )
     private List <User> followers;
 
+    @JsonIgnore
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(

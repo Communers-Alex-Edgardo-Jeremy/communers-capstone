@@ -1,5 +1,6 @@
 package com.codeup.Capstone_Communers.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,6 +33,7 @@ public class Questionnaire {
 
   
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 }
