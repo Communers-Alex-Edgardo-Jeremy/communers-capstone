@@ -5,70 +5,74 @@
     <title>About</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="container d-flex flex-column flex-grow-1">
-    <div class="alert alert-danger" th:if="${errMsg}">
-        Something bad happened!
-    </div>
-    <h1>About Us</h1>
-    <p class="lead">
-        Communers, Inc. is a lean three-person development team located in San Antonio, Texas.
-        <br>
-        We aspire to improve the digital platforms we occupy by leveraging emerging technologies and open source tools.
-        <br><br>
-        Meet our team:
-    </p>
-    <div class="d-flex my-auto">
-        <div class="col-sm-12 col-md-4">
-            <div class="card about-card mb-3">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/img/alexschmerber.jpg" class="img-fluid rounded-start" alt="portrait">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title mt-auto">Alex Schmerber</h5>
-                            <p>alex.g.schmerber@gmail.com</p>
-                            <a href="https://www.linkedin.com/in/alex-schmerber-41462225a/"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="https://github.com/AlexSchmerber"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+    <h1 class="page-title mx-auto mt-4">About Us</h1>
+    <div class="row">
+        <div class="alert alert-danger" th:if="${errMsg}">
+            Something bad happened!
         </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card about-card mb-3">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/img/edgardoortizjr.jpg" class="img-fluid rounded-start" alt="portrait">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Edgardo Ortiz, Jr.</h5>
-                            <p>edgardo.ortiz.jr11@gmail.com</p>
-                            <a href="https://www.linkedin.com/in/edgardo-ortiz-jr-56830120a/"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="https://github.com/gardoJr873"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card about-card mb-3">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="/img/jeremymwood.jpg" class="img-fluid rounded-start" alt="portrait">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Jeremy Wood</h5>
-                            <p>jeremy.mason.wood@gmail.com</p>
-                            <a href="https://www.linkedin.com/in/jeremy-mason-wood/"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="https://github.com/jeremymwood"><i class="fa-brands fa-github"></i></a>
 
+        <div class="col-sm-12 col-lg-3 mt-3">
+            <h5 class="ps-3">
+                Meet our team:
+            </h5>
+            <p class="ps-3">
+                Communers, Inc. is a lean three-person development team located in San Antonio, Texas.
+                <br>
+                We aspire to improve the digital platforms we occupy by leveraging emerging technologies and open source tools.
+            </p>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 mt-3">
+            <div class="d-flex flex-column my-auto mx-3">
+                <div class="card about-card mb-3">
+                    <div class="card-bg opacity-50 flex-grow-1"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/img/alexschmerber.jpg" class="img-fluid" alt="portrait">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title mt-auto">Alex Schmerber</h5>
+                                <p>alex.g.schmerber@gmail.com</p>
+                                <a href="https://www.linkedin.com/in/alex-schmerber-41462225a/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://github.com/AlexSchmerber"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://alumni.codeup.com/"><i class="fa-solid fa-code"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card about-card mb-3">
+                    <div class="card-bg opacity-50 flex-grow-1"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/img/edgardoortizjr.jpg" class="img-fluid" alt="portrait">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Edgardo Ortiz, Jr.</h5>
+                                <p>edgardo.ortiz.jr11@gmail.com</p>
+                                <a href="https://www.linkedin.com/in/edgardo-ortiz-jr-56830120a/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://github.com/gardoJr873"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://alumni.codeup.com/"><i class="fa-solid fa-code"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card about-card mb-3">
+                    <div class="card-bg opacity-50 flex-grow-1"></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/img/jeremymwood.jpg" class="img-fluid" alt="portrait">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Jeremy Wood</h5>
+                                <p>jeremy.mason.wood@gmail.com</p>
+                                <a href="https://www.linkedin.com/in/jeremy-mason-wood/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://github.com/jeremymwood"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://alumni.codeup.com/"><i class="fa-solid fa-code"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
