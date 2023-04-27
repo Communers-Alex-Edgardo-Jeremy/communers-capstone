@@ -64,6 +64,10 @@ public class PostController {
     public String showForYou(Model model){
         User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Post> posts = postDao.findPostsFromUserFollowsAndCommunities(user.getId());
+        if(posts == null){
+            posts = new ArrayList<>();
+        }
+        model.addAttribute("friendList", Utility.getFriends(user));
         model.addAttribute("posts", posts);
         model.addAttribute("loggedInUser", user);
         model.addAttribute("user", new User());
