@@ -25,19 +25,19 @@
                         <form class="d-flex flex-column" th:action="@{/user/edit}" th:object="${user}" method="post">
 
                             <label for="username">Username</label>
-                            <input id="username" th:field="*{username}" required/>
+                            <input class="ps-2" id="username" th:field="*{username}" required/>
 
                             <label for="first_name">First Name</label>
-                            <input id="first_name" th:field="*{first_name}" required/>
+                            <input class="ps-2" id="first_name" th:field="*{first_name}" required/>
 
                             <label for="last_name">Last Name</label>
-                            <input id="last_name" th:field="*{last_name}" required/>
+                            <input class="ps-2" id="last_name" th:field="*{last_name}" required/>
 
                             <label for="email">Email</label>
-                            <input id="email" th:field="*{email}" required/>
+                            <input class="ps-2" id="email" th:field="*{email}" required/>
 
                             <label for="psw">Password</label>
-                            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" th:value="*{null}" required>
+                            <input class="ps-2" type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" th:value="*{null}" required>
 
                             <input class="btn btn-sm mt-3 me-auto py-0" value="Submit" type="submit" />
                         </form>
