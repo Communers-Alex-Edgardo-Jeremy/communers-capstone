@@ -17,7 +17,9 @@
             <div class="card settings-card" sec:authorize="isAuthenticated()">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <h5>User information</h5>
+                    <h5 th:text="${'Logged in as ' + user.username}">
+                        {User information}
+                    </h5>
                     <div th:if="${param.error}">
                         Invalid Username and Password.
                     </div>

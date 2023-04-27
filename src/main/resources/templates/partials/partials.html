@@ -169,6 +169,7 @@
                             <div class="ms-auto" th:attr="dataset-id=${community.id}">
                                 <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
                             </div>
+
                         </div>
                         <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
                         <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
@@ -214,10 +215,10 @@
                     <div class="card card-community h-100" style="">
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
-                            <form class="d-flex" th:action="@{|/follow/${user.id}|}" method="post">
-                                <h5 class="card-title my-auto" th:text="${user.username}">(Users name here)</h5>
-                                <button class="btn btn-sm follow-btn px-1 py-0 my-auto ms-2" type="submit">Follow</button>
-                            </form>
+                            <div sec:authorize="isAuthenticated()" class="flex" th:attr="dataset-id=${user.id}">
+                                <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
+                                <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0   ms-2 my-auto followButton">(Follow Button)</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,23 +238,23 @@
 
 <footer class="100vw" th:fragment="footer">
     <div class="row py-3 m-0 w-100">
-        <div class="col-sm-6 col-md-2 item">
-            <h3 class="mb-2">Services</h3>
+        <div class="col-sm-1w col-md-3 text-center item">
+            <h3 class="mb-2">Company and Services</h3>
             <ul class="ps-0">
+                <li><a href="/about">About us</a></li>
                 <li><a href="/resources">Resources</a></li>
 <!--                <li><a href="#">Outreach</a></li>-->
 <!--                <li><a href="#">Legal/Terms</a></li>-->
 <!--                <li><a href="#">F.A.Q.</a></li>-->
             </ul>
         </div>
-        <div class="col-sm-6 col-md-2 item">
-            <h3 class="mb-2">Company</h3>
-            <ul class="ps-0">
-                <li><a href="/about">About us</a></li>
-<!--                <li><a href="#">Careers</a></li>-->
-<!--                <li><a href="#">Consulting</a></li>-->
-            </ul>
-        </div>
+<!--        <div class="col-sm-6 col-md-2 item">-->
+<!--            <h3 class="mb-2"></h3>-->
+<!--            <ul class="ps-0">-->
+<!--&lt;!&ndash;                <li><a href="#">Careers</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#">Consulting</a></li>&ndash;&gt;-->
+<!--            </ul>-->
+<!--        </div>-->
         <div class="col-sm-12 col-md-6 item text">
             <h3 class="mb-2">Communers, Inc.</h3>
             <p>Communers, Inc. is a lean three-person development team located in San Antonio, Texas.  We aspire to improve the digital platforms we occupy by leveraging emerging technologies and open source tools.</p>
