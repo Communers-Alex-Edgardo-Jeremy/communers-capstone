@@ -571,17 +571,6 @@ svg {
         height: 28px;
     }
 }
-/*.custom-shape-divider-top-1681840061 svg {*/
-/*    position: relative;*/
-/*    display: block;*/
-/*    width: calc(100% + 1.3px);*/
-/*    height: 94px;*/
-/*}*/
-/*!*Section 1*!*/
-/*!*Shape divider app*!*/
-/*.custom-shape-divider-top-1681840061 .shape-fill {*/
-/*    fill: #FFFFFF;*/
-/*}*/
 /*Section 2*/
 /*Shape divider app*/
 .custom-shape-divider-bottom-1681840988 {
@@ -932,10 +921,107 @@ svg {
 @media (max-width: 767px) {
     .custom-shape-divider-bottom-1682316857 svg {
         width: calc(100% + 1.3px);
-        height: 37px;
+        padding-bottom: 80px;
+    }
+}
+.landingNav {
+    position: inherit;
+}
+.landingNav_2 {
+    display: flex;
+    justify-content: space-around;
+    font-size: large;
+    width: inherit;
+}
+.landingNavSignUp {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.navLanLink {
+    color: #000000;
+}
+.signUpNav {
+    height: 0;
+}
+/*landing nav style*/
+.custom-shape-divider-bottom-1682605985 {
+    /*position: absolute;*/
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    margin-top: 0;
+    top: 0;
+    bottom: 0;
+    height: 0px;
+}
+
+.custom-shape-divider-bottom-1682605985 svg {
+    position: absolute;
+    display: block;
+    width: calc(115% + 1.3px);
+    height: 34px;
+}
+
+.custom-shape-divider-bottom-1682605985 .shape-fill {
+    fill: #EBD5FF;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682605985 svg {
+        width: calc(115% + 1.3px);
+        height: 42px;
     }
 }
 
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682605985 svg {
+        width: calc(115% + 1.3px);
+        height: 15px;
+    }
+}
+.custom-shape-divider-bottom-1682607590 {
+    /*position: relative;*/
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    bottom: 273px;
+    top: 0;
+    height: 32px;
+}
+
+.custom-shape-divider-bottom-1682607590 svg {
+    position: relative;
+    display: block;
+    width: calc(115% + 1.3px);
+
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1682607590 .shape-fill {
+    fill: #C5ACF2;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1682607590 svg {
+        width: calc(115% + 1.3px);
+        height: 9px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1682607590 svg {
+        width: calc(100% + 1.3px);
+        height: 12px;
+    }
+}
 #intro {
     display: flex;
     height: 15em;
@@ -945,7 +1031,7 @@ svg {
     overflow-x: hidden;
     padding: 0;
     justify-content: center;
-    min-height: 420px;
+    min-height: 500px;
 }
 #reviews {
     color: var(--black);

@@ -4,12 +4,23 @@
   <th:block th:insert="~{partials/partials :: head}"></th:block>
   <link rel="stylesheet" href="/css/style.css">
 
-  <title>Discover</title>
+  <title>Landing</title>
 </head>
 <body class="d-flex flex-column">
-<nav class="pb-3 landingNav" th:replace="~{/partials/partials :: navbar}"></nav>
 <section id="intro" class="pink text-center">
+
   <div class="section1">
+    <div class="landingNav">
+      <div class=" landingNav landingNav_2" style="font-size: large">
+        <p class="community-title"><a href="/discover"><img src="/img/icons8-sign-language-c-96.png" alt="sign language C" th:action="@{/discover}"></a><a class="p-0" >ommUNITY</a></p>
+          <div>
+            <ul class="landingNavSignUp">
+              <a class="px-2 my-auto nav-item navLanLink" href="/login">Login</a>
+              <a class="px-2 my-auto nav-item navLanLink" href="/register">Sign Up!</a>
+            </ul>
+          </div>
+      </div>
+    </div>
     <div class="section1_2 container-fluid">
 
       <div class="section1_3 container-fluid">
