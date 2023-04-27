@@ -22,7 +22,7 @@
                         Invalid Username and Password.
                     </div>
                     <div class="settings" sec:authorize="isAuthenticated()">
-                        <form class="d-flex flex-column" th:action="@{/user/edit}" th:object="${user}" method="post">
+                        <form class="d-flex flex-column" th:action="@{/profile}" th:object="${user}" method="post">
 
                             <label for="username">Username</label>
                             <input class="ps-2" id="username" th:field="*{username}" required/>
@@ -80,7 +80,7 @@
                                 <h6 class="">Add a comment:</h6>
                                 <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
 
-                                    <textarea type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="3" placeholder="enter comment here"></textarea>
+                                    <textarea type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
 
                                     <label class="pt-3" for="date-ip" hidden>Date:</label>
                                     <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>

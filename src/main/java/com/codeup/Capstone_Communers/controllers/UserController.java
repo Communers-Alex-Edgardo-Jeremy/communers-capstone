@@ -241,7 +241,7 @@ public class UserController {
         return "redirect:/forYou";
     }
 
-    @PostMapping("/user/edit")
+    @PostMapping("/profile")
     public String editUser(Model model, @ModelAttribute User user) {
         User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User wholeUser = userDao.findById(oldUserDetails.getId());
@@ -256,7 +256,7 @@ public class UserController {
         }
         userDao.save(wholeUser);
         model.addAttribute("user", wholeUser);
-        return "/settings";
+        return "redirect:/profile";
     }
     
     @PostMapping("/user/delete")
