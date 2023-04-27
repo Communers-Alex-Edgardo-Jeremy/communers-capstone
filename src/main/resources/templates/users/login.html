@@ -24,9 +24,9 @@
 
             <form class="login d-flex flex-column h-100" th:action="@{/login}" method="post">
                 <label for="username">Username</label>
-                <input id="username" name="username" type="text" value="jeremy"/>
+                <input class="ps-2" id="username" name="username" type="text" value="jeremy"/>
                 <label class="pt-3" for="password">Password</label>
-                <input id="password" name="password" type="password"/>
+                <input class="ps-2" id="password" name="password" type="password"/>
                 <input class="btn btn-sm me-auto mt-3 py-0" type="submit" value="Log In"/>
             </form>
             <a th:href="@{/forgot_password}" class="forgot-pw mt-2">Forgot your password?</a>

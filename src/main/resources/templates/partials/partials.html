@@ -138,15 +138,13 @@
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
 
-                        <h5 class="card-title pt-1" th:text="${post.title}">(insert post title)</h5>
-                        <div class="blog-menu small-title date me-auto ps-2 my-auto" th:text="${post.time}"></div>
+                        <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
                         <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
                         <div sec:authorize="isAuthenticated()" class="d-inline" th:attr="dataset-id=${post.user.id}">
-                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0   ms-2 my-auto followButton">(Follow Button)</button>
-
+                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
                         </div>
                     </div>
-                    <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
+                    <div class="blog-article py-1 ms-2 mt-2" th:text="${post.body}">(insert post body)</div>
                     <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
                     <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
                 </div>
@@ -156,6 +154,7 @@
 </th:block>
 
 <th:block th:fragment="communities">
+
     <div class="row align-content-center my-auto px-3 pb-3 g-3">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
@@ -165,17 +164,44 @@
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex flex-column">
-                        <h5 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h5>
-                        <div class="d-inline" th:attr="dataset-id=${community.id}">
-                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+                        <div class="d-flex">
+                            <h5 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h5>
+                            <div class="ms-auto" th:attr="dataset-id=${community.id}">
+                                <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+                            </div>
+
                         </div>
-                        <div class="blog-article py-1 ms-2" th:text="${community.bio}">(insert post body)</div>
+                        <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
                         <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+<!--    <div class="row align-content-center my-auto px-3 pb-3 g-3">-->
+<!--        <div class="alert alert-danger" th:if="${errMsg}">-->
+<!--            Something bad happened!-->
+<!--        </div>-->
+<!--        <div th:each="community : ${communities}">-->
+<!--            <div class="card post-card h-100">-->
+<!--                <div class="card-bg opacity-50 flex-grow-1"></div>-->
+<!--                <div class="card-body d-flex flex-column">-->
+<!--&lt;!&ndash;                    <div class="d-flex flex-column">&ndash;&gt;-->
+<!--                    <div class="d-flex" th:attr="dataset-id=${community.id}">-->
+<!--                        <h5 class="card-title pt-1" th:text="${community.name}">(insert post title)</h5>-->
+
+<!--                        <div class="d-inline" th:attr="dataset-id=${post.user.id}">-->
+<!--                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto followButton">(Follow Button)</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="blog-article py-1 ms-2" th:text="${community.bio}">(insert post body)</div>-->
+<!--                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </th:block>
 
 <th:block th:fragment="users">

@@ -443,11 +443,11 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
     padding-left: 0;
 }
 
-input#username, input#password, input#first_name, input#last_name, input#email, input#psw, input#entryTitle, #body-ip, #search-input {
+input#username, input#password, input#confirm-password,  input#first_name, input#last_name, input#email, input#psw, input#entryTitle, #body-ip, #search-input {
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
 }
-input#username:active, input#password:active, input#username:hover, input#password:hover, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active,  input#first_name:hover, input#last_name:hover, input#email:hover, input#psw:hover, input#entryTitle:hover, #body-ip:hover, #search-input:hover{
+input#username:active, input#password:active, input#username:hover, input#password:hover, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active, input#confirm-password:active, input#first_name:hover, input#last_name:hover, input#email:hover, input#psw:hover, input#entryTitle:hover, #body-ip:hover, #search-input:hover,input#confirm-password:hover {
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
     box-shadow: .25rem .25rem var(--pink);
