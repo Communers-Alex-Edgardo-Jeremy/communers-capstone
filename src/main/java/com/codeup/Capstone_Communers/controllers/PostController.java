@@ -90,7 +90,11 @@ public class PostController {
         Date date = new Date();
         comment.setPost(post);
         comment.setUser(user);
-        comment.setDate(date.toString());
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy, HH:mm");
+        String strDate = dateFormat.format(date);
+
+        comment.setDate(strDate);
         commentDao.save(comment);
         model.addAttribute("post", post);
         List<Comment> comments = commentDao.findAllByPost(post);

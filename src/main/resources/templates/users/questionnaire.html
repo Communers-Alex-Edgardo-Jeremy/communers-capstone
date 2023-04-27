@@ -5,31 +5,32 @@
     <title>Questionnaire</title>
 </head>
 <body class="d-flex flex-column" id="gradient">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-<div class="container d-flex flex-column flex-grow-1" th:object="${user}">
-    <!--  append community bio into p element   -->
-    <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-        <div class="col-sm-12 col-md-6 g-3">
-            <div class="card shadow h-100" style="">
+    <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
+    <h1 class="page-title mx-auto mt-4">Questionnaire</h1>
+
+    <div class="row align-content-center my-auto px-3 pb-3 g-3" th:object="${user}">
+        <div class="col-sm-12 offset-lg-3 col-lg-6 g-3" sec:authorize="isAuthenticated()">
+            <div class="card post-card h-100" style="">
+                <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <h2>Questionnaire</h2>
-                    <br>
-                        <form class="d-flex flex-column" th:action="@{|/questionnaire|}" method="post" th:object="${questionnaire}">
+                    <form class="d-flex flex-column" th:action="@{|/questionnaire|}" method="post" th:object="${questionnaire}">
                         <div class="form-check d-flex flex-column">
                             <h5>
                                 Would you say that the weather has an impact on your mood?
                             </h5>
-                            <div>
-                                <input class="form-check-input" value="Y" type="radio" name="weather" id="weatherY" th:field="*{answer_1}">
-                                <label class="form-check-label" for="weatherY">
-                                    Yes
-                                </label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" value="N" type="radio" name="weather" id="weatherN" th:field="*{answer_1}">
-                                <label class="form-check-label" for="weatherN">
-                                    No
-                                </label>
+                            <div class="d-flex flex-column ms-4">
+                                <div>
+                                    <input class="form-check-input" value="Y" type="radio" name="weather" id="weatherY" th:field="*{answer_1}">
+                                    <label class="form-check-label" for="weatherY">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" value="N" type="radio" name="weather" id="weatherN" th:field="*{answer_1}">
+                                    <label class="form-check-label" for="weatherN">
+                                        No
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -39,17 +40,19 @@
                             <h5>
                                 Do you get seasonal depression?
                             </h5>
-                            <div>
-                                <input class="form-check-input" value="Y" type="radio" name="seasonalDepression" id="seasonalDepressionY" th:field="*{answer_2}">
-                                <label class="form-check-label" for="weatherY">
-                                    Yes
-                                </label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" value="N" type="radio" name="seasonalDepression" id="seasonalDepressionN" th:field="*{answer_2}">
-                                <label class="form-check-label" for="weatherN">
-                                    No
-                                </label>
+                            <div class="d-flex flex-column ms-4">
+                                <div>
+                                    <input class="form-check-input" value="Y" type="radio" name="seasonalDepression" id="seasonalDepressionY" th:field="*{answer_2}">
+                                    <label class="form-check-label" for="weatherY">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" value="N" type="radio" name="seasonalDepression" id="seasonalDepressionN" th:field="*{answer_2}">
+                                    <label class="form-check-label" for="weatherN">
+                                        No
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -59,24 +62,30 @@
                             <h5>
                                 Would you say you are open to change?
                             </h5>
-                            <div>
-                                <input class="form-check-input" value="Y" type="radio" name="familialDepression" id="familialDepressionY" th:field="*{answer_3}">
-                                <label class="form-check-label" for="weatherY">
-                                    Yes
-                                </label>
-                            </div>
-                            <div>
-                                <input class="form-check-input" value="N" type="radio" name="familialDepression" id="familialDepressionN" th:field="*{answer_3}">
-                                <label class="form-check-label" for="weatherN">
-                                    No
-                                </label>
+                            <div class="d-flex flex-column ms-4">
+                                <div>
+                                    <input class="form-check-input" value="Y" type="radio" name="familialDepression" id="familialDepressionY" th:field="*{answer_3}">
+                                    <label class="form-check-label" for="weatherY">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" value="N" type="radio" name="familialDepression" id="familialDepressionN" th:field="*{answer_3}">
+                                    <label class="form-check-label" for="weatherN">
+                                        No
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <br>
-                            <div class="form-check d-flex flex-column">
-                                <h5>
-                                    Would you like to receive morale boosting notifications?
-                                </h5>
+                        <hr>
+                        <br>
+                        <div class="form-check d-flex flex-column">
+                            <h5>
+                                Would you like to receive morale boosting notifications?
+                            </h5>
+                            <div class="d-flex flex-column ms-4">
+
                                 <div>
                                     <input class="form-check-input" value="Y" type="radio" name="notifications" id="notificationsY" th:field="*{notifications}">
                                     <label class="form-check-label" for="weatherY">
@@ -90,16 +99,13 @@
                                     </label>
                                 </div>
                             </div>
-
-                        <!--                        <input type="hidden" th:field="*{time}" />-->
-<!--                        <input type="hidden" th:field="*{id}">-->
-                        <button class="btn btn-outline-secondary me-auto mt-auto" type="submit">Submit Post</button>
+                        </div>
+                        <button class="btn btn-sm submit-btn me-auto mt-3 py-0" type="submit">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>
 </body>

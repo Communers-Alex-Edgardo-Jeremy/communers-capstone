@@ -289,20 +289,20 @@ footer .item.social {
     left: 0;
     z-index: 10;
 }
-footer .item.social > a {
-    font-size:20px;
+footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
+    font-size:24px;
     width:36px;
     height:36px;
     line-height:36px;
     display:inline-block;
-    text-align:center;
+    /*text-align:center;*/
     /*border-radius:50%;*/
     /*box-shadow:0 0 0 1px rgba(255,255,255,0.4);*/
     /*margin:0 8px;*/
     color: var(--dark-green);
 }
 
-footer .item.social > a:hover {
+footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
     text-shadow: .125rem .125rem var(--pink);
 }
 
