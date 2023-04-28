@@ -58,21 +58,31 @@
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex">
-                                <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
-                                <div class="blog-menu small-title date ms-3 me-auto my-auto" th:text="${post.time}"></div>
-                                <a class="btn btn-sm edit-btn my-auto py-0" th:href="@{|/post/${post.id}/edit|}">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger ms-3 my-auto py-0" th:href="@{|/post/${post.id}/delete|}">Delete</a>
+                                <h3 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
+                                <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
                             </div>
-                            <div class="blog-article ms-3">
-                                <p class="" th:text="${post.body}">(insert post body)</p>
-                                <div class="ms-3 mt-auto">
-                                    <h6 class="">Comments:</h6>
-                                    <div th:each="comment : ${post.comments}">
-                                        <div class="comments" th:if="${comment.post == post}">
-                                            <div class="" th:text="${comment.date}">(insert post body)</div>
+                            <div class="blog-article ms-2">
+                                <div class="" th:text="${post.body}">(insert post body)</div>
+                                <div class="d-flex">
+                                    <div class="blog-menu small-title date mt-2" th:text="${post.time}"></div>
+                                    <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
+                                    <a class="btn btn-sm edit-btn my-auto ms-2 py-0" th:href="@{|/post/${post.id}/edit|}">Edit</a>
+                                </div>
+                                <div class="mt-3 ms-2">
+                                    <h5 class="mb-0">Comments</h5>
+                                    <div class="comments ms-2 mt-2" th:each="comment : ${post.comments}" th:if="${comment.post == post}">
+                                        <div class="d-flex">
                                             <div class="" th:text="${comment.body}">(insert post body)</div>
-                                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto py-0" th:href="@{|/post/comment/${comment.id}/delete|}">Delete Comment</a>
+                                            <a th:href="@{|/post/comment/${comment.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
                                         </div>
+                                        <div class="d-flex">
+                                            <div class="" th:text="${comment.date}">(insert post body)</div>
+                                            <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
+                                            <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                                                <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
+                                            </div>
+                                        </div>
+                                        <hr>
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +99,7 @@
                                     <input type="hidden" th:field="*{id}">
 
                                     <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
+                                    <div class="mod-msg text-center text-danger"></div>
                                 </form>
                             </div>
                         </div>
@@ -98,6 +109,7 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/chatMod.js"></script>
 <script src="/js/background.js"></script>
 </body>
 </html>
