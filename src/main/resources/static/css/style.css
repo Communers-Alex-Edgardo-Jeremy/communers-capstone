@@ -936,6 +936,7 @@ svg {
 .landingNavSignUp {
     display: flex;
     flex-direction: row-reverse;
+    padding-top: 18px;
 }
 .navLanLink {
     color: #000000;
@@ -1022,6 +1023,14 @@ svg {
         height: 12px;
     }
 }
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 640px;
+    padding: 100px 20vw;
+}
 #intro {
     display: flex;
     height: 15em;
@@ -1031,7 +1040,6 @@ svg {
     overflow-x: hidden;
     padding: 0;
     justify-content: center;
-    min-height: 500px;
 }
 #reviews {
     color: var(--black);
@@ -1039,8 +1047,7 @@ svg {
     background-image: url(/static/img/hands.svg), linear-gradient(to bottom right, var(--bg-white), var(--purple));
     /*overflow-x: hidden;*/
     /*display: flex;*/
-    padding: 65px 0 91px 0;
-
+    padding: 4px 0 91px 0;
 }
 #reviewsTitle{
     display: flex;
@@ -1057,14 +1064,6 @@ svg {
 .bi {
     height: 0;
 }
-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 600px;
-    padding: 100px 20vw;
-}
 .section1 {
     display: flex;
     padding: 0;
@@ -1079,21 +1078,14 @@ section {
 }
 .section2 {
     min-height: 558px;
-    padding-top: 61px;
+    padding-top: 30px;
     display: flex;
     /*align-items: center;*/
-}
-.section2Rev {
-    padding-right: 0;
-    padding-left: 0;
-    border-left-width: 29px;
-    border-right-width: 29px;
-    width: 1179px;
 }
 .scrolling-wrapper-container{
     width: 100%;
     /*testing mouse click to drag, hidden is default*/
-    overflow:hidden;
+    overflow:scroll;
     /*overflow: auto;*/
     position:relative;
     height: 300px;
@@ -1145,22 +1137,21 @@ section {
     position: absolute;
     animation: primary 60s linear infinite;
 }
-.scrolling-wrapperII {
-    display: flex;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 40px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    position: absolute;
-    animation: secondary 120s linear infinite;
-    animation-delay: 150s;
-}
+/*.scrolling-wrapperII {*/
+/*    display: flex;*/
+/*    top: 0;*/
+/*    left: 100%;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    padding-bottom: 40px;*/
+/*    overflow-x: scroll;*/
+/*    overflow-y: hidden;*/
+/*    white-space: nowrap;*/
+/*    position: absolute;*/
+/*    animation: secondary 120s linear infinite;*/
+/*    animation-delay: 150s;*/
+/*}*/
 .cardReviews {
-
     padding: 27px 16px;
     cursor:pointer;
     /*border: 3px solid #3d3d3d;*/
@@ -1204,15 +1195,6 @@ section {
         left: 0;
     }
 }
-.pink {
-    background-color: #F2B3D6;
-}
-.purple {
-    background-color: #B7AEF2;
-}
-.green {
-    background-color: #2BD999;
-}
 #paragraphI {
     /*font-family: 'Gamja Flower', cursive;*/
     font-size: large;
@@ -1229,12 +1211,32 @@ section {
     padding-left: 800px;
 }
 .awards {
-    padding-right: 365px;
-    padding-left: 365px;
+    padding: 20px 100px 0 100px;
     display: flex;
     justify-content: space-between;
 }
 
 /* End of Landing page test styling*/
 
+/*.blink {*/
+/*    animation: blink 10s infinite;*/
+/*}*/
+
+/*@keyframes blink {*/
+/*    0% {*/
+/*        opacity: 1;*/
+/*    }*/
+/*    50% {*/
+/*        opacity: 0;*/
+/*        transform: scale(2);*/
+/*    }*/
+/*    51% {*/
+/*        opacity: 0;*/
+/*        transform: scale(0);*/
+/*    }*/
+/*    100% {*/
+/*        transform: scale(1);*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
 /*Landing test*/
