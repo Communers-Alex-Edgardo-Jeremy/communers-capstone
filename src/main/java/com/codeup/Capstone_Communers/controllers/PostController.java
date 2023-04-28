@@ -106,7 +106,13 @@ public class PostController {
         model.addAttribute("comments", comments);
         model.addAttribute("comment", new Comment());
 
-        return "/posts/comments";
+        List<Post> userPosts = postDao.findAllByUser(user);
+
+        if (userPosts.contains(post)) {
+            return "redirect:/profile";
+        } else {
+            return "/posts/comments";
+        }
     }
     @GetMapping("/post/create")
     public String getCreatePost(Model model) {

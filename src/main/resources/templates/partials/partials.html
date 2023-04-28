@@ -94,16 +94,16 @@
             <button class="btn chat-btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
             </button>
         </p>
-        <div class="ms-auto me-2" style="min-height: 120px;">
+        <div class="ms-auto me-2">
             <div class="collapse collapse-horizontal card chat-card card-body h-100" id="collapseWidthExample">
-                <div class="card-bg opacity-50"></div>
+                <div class="card-bg opacity-50" style="top: 0;right:0"></div>
                 <div class="d-flex flex-column">
                     <th:block th:if="${friendList.size() == 0}">
                         <span>Nothing here yet! Click on find people!</span>
                     </th:block>
                     <th:block th:if="${friendList.size() > 0}">
-                        <h2 class="ms-auto mb-2">Friends:</h2>
-                        <ul style="list-style:none; padding:0;">
+                        <h2 class="me-auto mb-2">Friends:</h2>
+                        <ul>
                             <li class="fs-5" th:each="user : ${friendList}">
                                 <a class="ms-auto" th:href="@{/chat/{userId}(userId=${user.id})}">
                                     <image style="height:40px; width:40px;" class="rounded-circle" th:src="${user.image}"></image>
@@ -138,16 +138,21 @@
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
+
                         <image style="height:60px; width:60px;" class="rounded-circle" th:src="${post.user.image}"></image>
-                        <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
+                        <h3 class="card-title my-auto" th:text="${post.title}">(insert post title)</h3>
+
                         <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
-                        <div sec:authorize="isAuthenticated()" class="d-inline" th:attr="dataset-id=${post.user.id}">
+                        <div sec:authorize="isAuthenticated()" class="d-inline my-auto" th:attr="dataset-id=${post.user.id}">
                             <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
                         </div>
                     </div>
                     <div class="blog-article py-1 ms-2 mt-2" th:text="${post.body}">(insert post body)</div>
-                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
-                    <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
+
+                    <div class="d-flex">
+                        <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
+                        <a class="btn btn-sm read-more-btn ms-auto mt-2 py-0" th:href="@{|/post/${post.id}/comments|}">Read more...</a>
+                    </div>
                 </div>
             </div>
         </div>

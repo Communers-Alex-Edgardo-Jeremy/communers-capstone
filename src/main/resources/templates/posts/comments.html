@@ -17,37 +17,42 @@
                 <div class="card comment-card h-100">
                     <div class="card-bg opacity-50"></div>
                     <div class="card-body d-flex flex-column">
+                        <h3 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
+                        <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
                         <div class="d-flex">
-                            <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
+                            <div class="blog-menu small-title date ms-2 mt-2" th:text="${post.time}"></div>
                             <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
-                            <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                            <div th:attr="dataset-id=${post.user.id}">
                                 <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
                             </div>
                         </div>
-                        <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
-                        <div class="blog-menu small-title date ms-2 me-auto mt-2" th:text="${post.time}"></div>
-                    </div>
-                    <div class="card-body d-flex flex-column ms-3">
-                        <h5 class="mt-auto">Comments</h5>
-                        <div class="comments" th:each="comment : ${comments}">
-                            <div>
-                                <span class="" th:text="${comment.user.username}">(insert post body)</span>
-                                <span class="" th:text="${comment.date}">(insert post body)</span>
+                        <div class="mt-3 ms-3">
+                            <h5 class="mb-0">Comments</h5>
+                            <div class="comments ms-2 mt-2" th:each="comment : ${comments}">
+                                <div class="" th:text="${comment.body}">(insert post body)</div>
+                                <div class="d-flex">
+                                    <div class="" th:text="${comment.date}">(insert post body)</div>
+                                    <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
+                                    <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                                        <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
+                                    </div>
+                                </div>
+                                <hr>
                             </div>
-                            <div class="" th:text="${comment.body}">(insert post body)</div>
-                            <br>
-                        </div>
-                        <div>
-                            <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
-                                <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="field mb-3" rows="6" placeholder="enter comment here"></textarea>
+                            </div>
+                            <div>
+                                <h6 class="">Add a comment:</h6>
+                                <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form">
+                                    <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
 
-                                <label class="pt-3" for="date-ip" hidden>Date:</label>
-                                <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
-                                <input type="hidden" th:field="*{id}">
+                                    <label class="pt-3" for="date-ip" hidden>Date:</label>
+                                    <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                                    <input type="hidden" th:field="*{id}">
 
-                                <button class="btn btn-sm add-commend-btn me-auto mt-auto py-0 submit-btn" type="submit">Add Comment</button>
-                                <div class="mod-msg text-center text-danger"></div>
-                            </form>
+                                    <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
+                                    <div class="mod-msg text-center text-danger"></div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
