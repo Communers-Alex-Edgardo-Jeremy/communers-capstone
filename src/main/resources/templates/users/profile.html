@@ -60,8 +60,8 @@
                             <div class="d-flex">
                                 <h5 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h5>
                                 <div class="blog-menu small-title date ms-3 me-auto my-auto" th:text="${post.time}"></div>
-                                <a class="btn btn-sm edit-btn my-auto " th:href="@{|/post/${post.id}/edit|}">Edit</a>
-                                <a class="btn btn-sm btn-outline-danger ms-3 my-auto" th:href="@{|/post/${post.id}/delete|}">Delete</a>
+                                <a class="btn btn-sm edit-btn my-auto py-0" th:href="@{|/post/${post.id}/edit|}">Edit</a>
+                                <a class="btn btn-sm btn-outline-danger ms-3 my-auto py-0" th:href="@{|/post/${post.id}/delete|}">Delete</a>
                             </div>
                             <div class="blog-article ms-3">
                                 <p class="" th:text="${post.body}">(insert post body)</p>
