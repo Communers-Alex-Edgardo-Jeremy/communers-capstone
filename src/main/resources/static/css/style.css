@@ -372,10 +372,6 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
     border: none !important;
 }
 
-#message p {
-    /*padding: 10px 35px;*/
-    /*font-size: 18px;*/
-}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
