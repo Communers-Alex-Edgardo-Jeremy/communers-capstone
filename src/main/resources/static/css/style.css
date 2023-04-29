@@ -471,6 +471,9 @@ textarea, input {
 .fa-arrow-left {
     position: absolute;
 }
+.abs-follow {
+    position: absolute;
+}
 
 /*Landing Page*/
 .custom-shape-divider-bottom-1682436932 {
