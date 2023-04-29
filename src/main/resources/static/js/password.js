@@ -7,16 +7,32 @@ let capital = document.getElementById("capital");
 let number = document.getElementById("number");
 let length = document.getElementById("length");
 
-document.getElementById("message").style.visibility = "hidden";
+if ($('#message').length) {
+    document.getElementById("message").style.visibility = "hidden";
+};
+
+if ($('#profile-pw-validation').length) {
+    $('#profile-pw-validation').addClass('d-none');
+};
 
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function () {
-    document.getElementById("message").style.visibility = "visible";
+    if ($('#message').length) {
+        document.getElementById("message").style.visibility = "visible";
+    }
+    if ($('#profile-pw-validation').length) {
+        $('#profile-pw-validation').removeClass('d-none');
+    }
 }
 
 // When the user clicks outside of the password field, hide the message box
 myInput.onblur = function () {
-    document.getElementById("message").style.visibility = "hidden";
+    if ($('#message').length) {
+        document.getElementById("message").style.visibility = "hidden";
+    }
+    if ($('#profile-pw-validation').length) {
+        $('#profile-pw-validation').addClass('d-none');
+    }
 }
 
 // When the user starts to type something inside the password field
