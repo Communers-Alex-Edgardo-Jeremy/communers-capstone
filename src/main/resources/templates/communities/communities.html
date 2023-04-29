@@ -11,8 +11,10 @@
         <h1 class="page-title mx-auto mt-4">Your Communities</h1>
     </div>
     <a class="btn btn-sm mx-auto my-3 community-btn py-0" th:href="@{|/communities/discover|}">Explore Communities</a>
-    <div class="col-sm-12 offset-lg-3 col-lg-6">
-        <th:block th:insert="~{/partials/partials :: communities}"></th:block>
+    <div class="row">
+        <div class="col-sm-12 offset-lg-3 col-lg-6">
+            <th:block th:insert="~{/partials/partials :: communities}"></th:block>
+        </div>
     </div>
 <footer class="mt-auto" th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>

@@ -17,8 +17,10 @@
         </div>
         <button class="btn btn-sm mx-3 my-auto search-btn py-0" type="button" id="search-btn">Search</button>
     </div>
-    <div class="col-sm-12 offset-lg-3 col-lg-6">
-        <th:block th:insert="~{/partials/partials :: communities}"></th:block>
+    <div class="row">
+        <div class="col-sm-12 offset-lg-3 col-lg-6">
+            <th:block th:insert="~{/partials/partials :: communities}"></th:block>
+        </div>
     </div>
 <footer class="mt-auto" th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/communities.js"></script>
