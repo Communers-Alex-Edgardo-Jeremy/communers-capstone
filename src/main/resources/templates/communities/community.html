@@ -8,36 +8,24 @@
 
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 
-<!--    <form class="d-flex flex-column ps-3" th:action="@{|/community/${community.id}|}" method="post">-->
-<!--        <div class="d-flex">-->
-<!--            <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>-->
-<!--            <h1 class="page-title mx-auto mt-4" th:text="${community.name}" style="font-weight: bold">(insert community name)</h1>-->
-<!--            <div class="row abs-follow w-100 me-0">-->
-<!--                <div class="col-sm-12 offset-lg-3 col-lg-6">-->
-<!--                    <button class="btn btn-sm follow-btn me-0 mt-3 px-1 py-0" style="position:absolute;top:0;right:0" type="submit">Follow</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            <div class="col-sm-12 offset-lg-3 col-lg-6">-->
-<!--                <div class="d-flex flex-column">-->
-<!--                    <div class="blog-menu small-title" th:text="${community.bio}"></div>-->
-<!--&lt;!&ndash;                    <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>&ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-
     <form class="d-flex flex-column ps-3" th:action="@{|/community/${community.id}|}" method="post">
-        <h1 class="page-title mx-auto mt-4" th:text="${community.name}" style="font-weight: bold">(insert community name)</h1>
-        <div class="d-flex mx-auto">
-            <div class="blog-menu small-title" th:text="${community.bio}"></div>
-<!--            <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>-->
-            <div class="ms-auto" th:attr="dataset-id=${community.id}">
-                <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+        <div class="d-flex">
+            <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+            <h1 class="page-title mx-auto mt-4" th:text="${community.name}" style="font-weight: bold">(insert community name)</h1>
+            <div class="row abs-follow w-100 me-0">
+                <div class="col-sm-12 offset-lg-3 col-lg-6">
+                    <button class="btn btn-sm follow-btn me-0 mt-3 px-1 py-0" style="position:absolute;top:0;right:0" type="submit">Follow</button>
+                </div>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-sm-12 offset-lg-3 col-lg-6">
+                <div class="d-flex flex-column">
+                    <div class="blog-menu small-title" th:text="${community.bio}"></div>
+<!--                    <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>-->
+                </div>
+            </div>
+        </div>
     </form>
 
     <div class="row mb-auto mt-3 px-3 pb-3 g-3">
