@@ -468,6 +468,10 @@ textarea, input {
     padding-left: 5.5rem;
 }
 
+.fa-arrow-left {
+    position: absolute;
+}
+
 /*Landing Page*/
 .custom-shape-divider-bottom-1682436932 {
     position: absolute;

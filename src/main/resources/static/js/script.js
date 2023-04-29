@@ -1,4 +1,5 @@
 "use strict";
+
 // Get the notification div element
 
 // Get the message from the model attribute
@@ -8,6 +9,7 @@
 // notification.innerHTML = message;
 
 // Show the notification div
+
 let notification = document.getElementById("notification");
 if(notification != null){
     if(notification.textContent.trim().length !== 0){
@@ -70,5 +72,13 @@ followButtons.forEach(function(button) {
             console.log("error" + error)
         });
     });
+});
+
+//back button
+$(document).ready(function(){
+    $('i.fa-arrow-left').click(function(){
+        parent.history.back();
+        return false;
+    })
 });
 

@@ -15,14 +15,13 @@
     <div class="row align-content-center h-100 px-3 pb-3 g-3 my-2" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-lg-4 offset-lg-2 h-100">
             <div class="card journal-card h-100" style="">
+                <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body ruled-paper d-flex flex-column align-content-center" id="edit-entry">
-
                     <div class="d-flex flex-column h-100" role="main">
                         <div class="ruled-paper-header">
                             <div class="d-flex">
                                 <h5 class="my-auto ps-2">Edit Journal Entry</h5>
-                                <a th:href="@{|/journal|}" class="ms-auto mb-auto"><i class="backButton fa-solid fa-arrow-left"></i></a>
                                 <br>
                             </div>
                         </div>
@@ -56,6 +55,7 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/script.js"></script>
 <script src="/js/background.js"></script>
 </body>
 </html>
