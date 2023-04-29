@@ -17,9 +17,6 @@
             <div class="card-bg opacity-50 flex-grow-1"></div>
             <div class="card-body d-flex flex-column">
                 <form class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
-                    <input type="file" th:field="image" id="file-upload">
-                    <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>
-
                     <label class="mt-1 mb-0" for="username">Username</label>
                     <input class="ps-2" id="username" th:field="*{username}" required/>
 
