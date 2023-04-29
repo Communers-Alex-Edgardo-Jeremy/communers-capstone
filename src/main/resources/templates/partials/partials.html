@@ -106,6 +106,7 @@
                         <ul>
                             <li class="fs-5" th:each="user : ${friendList}">
                                 <a class="ms-auto" th:href="@{/chat/{userId}(userId=${user.id})}">
+                                    <image style="height:40px; width:40px;" class="rounded-circle" th:src="${user.image}"></image>
                                     <span th:text="${user.username}"></span>
                                 </a>
                             </li>
@@ -138,7 +139,9 @@
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
 
+                        <image style="height:60px; width:60px;" class="rounded-circle" th:src="${post.user.image}"></image>
                         <h3 class="card-title my-auto" th:text="${post.title}">(insert post title)</h3>
+
                         <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
                         <div sec:authorize="isAuthenticated()" class="d-inline my-auto" th:attr="dataset-id=${post.user.id}">
                             <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
@@ -219,6 +222,7 @@
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
                             <div sec:authorize="isAuthenticated()" class="flex" th:attr="dataset-id=${user.id}">
+                                <image style="height:60px; width:60px;" class="rounded-circle" th:src="${user.image}"></image>
                                 <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
                                 <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0   ms-2 my-auto followButton">(Follow Button)</button>
                             </div>

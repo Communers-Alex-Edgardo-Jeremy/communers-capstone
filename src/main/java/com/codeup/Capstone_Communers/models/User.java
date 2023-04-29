@@ -29,6 +29,9 @@ public class User {
     @Column(length=255, nullable = false)
     private String username;
 
+    @Column(length=255, nullable = true)
+    private String image;
+
     @Column(length=255, nullable = false)
     private String email;
 
@@ -89,6 +92,7 @@ public class User {
         last_name = copy.last_name;
         username = copy.username;
         password = copy.password;
+        image = copy.image;
     }
 
 }
