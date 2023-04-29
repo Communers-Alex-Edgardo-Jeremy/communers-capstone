@@ -6,7 +6,10 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <h1 class="page-title mx-auto mt-4">Discover</h1>
+    <div class="d-flex">
+        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+        <h1 class="page-title mx-auto mt-4">Discover</h1>
+    </div>
     <div class="row">
         <th:block th:insert="~{/partials/partials :: greeting}"></th:block>
         <div class="col-sm-12 col-lg-6">
