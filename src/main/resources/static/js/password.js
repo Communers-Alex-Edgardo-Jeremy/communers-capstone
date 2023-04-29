@@ -2,12 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
-
     let myInput = document.getElementById("psw");
     let letter = document.getElementById("letter");
     let capital = document.getElementById("capital");
     let number = document.getElementById("number");
     const length = document.getElementById("length");
+    
     const button = document.getElementById("pic-button");
     const imageInput = document.getElementById("file-upload");
     const imageDisplay = document.getElementById("image-display");
@@ -24,19 +24,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
             client.picker(options).open();
         })
     }
+    
+    if ($('#message').length) {
+        document.getElementById("message").style.visibility = "hidden";
+    };
 
+    if ($('#profile-pw-validation').length) {
+        $('#profile-pw-validation').addClass('d-none');
+    };
 
-    document.getElementById("message").style.visibility = "hidden";
-
-// When the user clicks on the password field, show the message box
+    // When the user clicks on the password field, show the message box
     myInput.onfocus = function () {
-        document.getElementById("message").style.visibility = "visible";
+        if ($('#message').length) {
+            document.getElementById("message").style.visibility = "visible";
+        }
+        if ($('#profile-pw-validation').length) {
+            $('#profile-pw-validation').removeClass('d-none');
+        }
     }
 
 // When the user clicks outside of the password field, hide the message box
-    myInput.onblur = function () {
+myInput.onblur = function () {
+    if ($('#message').length) {
         document.getElementById("message").style.visibility = "hidden";
     }
+    if ($('#profile-pw-validation').length) {
+        $('#profile-pw-validation').addClass('d-none');
+    }
+}
 
 // When the user starts to type something inside the password field
     myInput.onkeyup = function () {
