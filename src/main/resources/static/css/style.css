@@ -1153,7 +1153,7 @@ section {
 #reviews {
     color: var(--black);
     padding: 4px 0 91px 0;
-    min-height: 715px;
+    min-height: 638px;
     background-image: url(/static/img/hands.svg), linear-gradient(to bottom right, var(--bg-white), var(--purple));
     /*position: relative;*/
     /*overflow-x: hidden;*/
@@ -1197,6 +1197,13 @@ section {
     /*padding-top: 30px;*/
     /*align-items: center;*/
 }
+.reviewsContainer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 100px;
+}
 .scrolling-wrapper-container:hover div {
     animation-play-state: paused;
     /*transition-delay:4s;*/
@@ -1225,7 +1232,7 @@ section {
     overflow-x: scroll;
     height: 100%;
     animation: primary 60s linear infinite;
-    /*margin: 50px 0 20px 0;*/
+    margin: 10px 0 20px 0;
     /*padding-bottom: 40px;*/
     /*overflow-x: auto;*/
     /*white-space: nowrap;*/
@@ -1241,13 +1248,13 @@ section {
     display: inline-block;
     flex-shrink: 0;
     opacity: 128%;
-    height: 364px;
-    width: 225px;
-    background: linear-gradient(93deg, rgb(230 226 236) 2%, rgb(228 223 237) 2%, rgb(223 217 237) 4% ,rgb(215 209 238) 9%, rgba(236,230,255,0) 100%);
+    height: 332px;
+    width: 82px;
+    background: linear-gradient(91deg, rgb(230 226 236) 2%, rgb(228 223 237) 2%, rgb(223 217 237) 4% ,rgb(215 209 238) 9%, rgba(236,230,255,0) 81%);
     position: absolute;
     z-index: 1;
-    left: 24px;
-    /*top: 1px;*/
+    left: 115px;
+    top: 108px;
     /*left: -84px;*/
     /*cursor: pointer; */
     /*border: 3px solid #3d3d3d; */
@@ -1256,14 +1263,16 @@ section {
     /*border-style: none; */
 }
 .section2:after{
-    content:'';
-    height: 79%;
-    width:145px;
-    background:linear-gradient(-90deg, rgb(230 226 236) 2%, rgb(228 223 237) 2%, rgb(223 217 237) 4% ,rgb(197 189 238) 2%, rgba(255,224,255,0) 93%);
+    content: '';
+    opacity: 103%;
+    height: 348px;
+    top: 112px;
+    width: 163px;
+    background: linear-gradient(-93deg, rgb(207 201 239) 0%, rgb(196 187 246) 10%, rgb(195 186 240) 12% ,rgb(193 184 241) 10%, rgba(232,224,93,0) 81%);
     position: absolute;
-    top:20px;
-    right:-5px;
-    z-index:1;
+    left: 852px;
+    /* border-radius: 0px; */
+    z-index: 1;
 }
 .cardReviews {
     opacity: 94%;
@@ -1285,6 +1294,16 @@ section {
 }
 .blockquote-footer {
     display: flex;
+    position: relative;
+    margin-top: 1rem;
+}
+.blockquote {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+    flex-direction: column-reverse;
 }
 /*.primary {*/
 /*    left: -20%*/
