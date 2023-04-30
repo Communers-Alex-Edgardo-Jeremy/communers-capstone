@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }).slice(0, 5); // add this line to limit to first 5 elements
         const suggestionsHTML = matches
             .map(function(match) {
-                return `<div class="px-2 suggestion bg-light border border-2">${match.textContent}</div>`;
+                return `<div class="px-2 suggestion">${match.textContent}</div>`;
             })
             .join("");
         suggestions.innerHTML = suggestionsHTML;

@@ -181,22 +181,27 @@
 <th:block th:fragment="users">
     <div class="row my-auto">
         <div class="col-sm-12 col-lg-6 offset-lg-3">
-            <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">
+            <div class="row">
+<!--            <div class="">-->
                 <div class="alert alert-danger" th:if="${errMsg}">
                     Something bad happened!
                 </div>
-                <div class="d-flex p-2"  th:each="user : ${users}">
+                <div class="col-sm-12 col-lg-4 p-2"  th:each="user : ${users}">
                     <div class="card card-community h-100" style="">
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
                             <div sec:authorize="isAuthenticated()" class="d-flex" th:attr="dataset-id=${user.id}">
                                 <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
-                                <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn ps-2 py-0 ms-2 my-auto followButton">(Follow Button)</button>
+                                <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn ps-2 py-0 ms-auto me-2 my-auto followButton">(Follow Button)</button>
                             </div>
                         </div>
                     </div>
                 </div>
+<!--            </div>-->
+
             </div>
+
+<!--            <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">-->
         </div>
     </div>
 </th:block>
@@ -235,10 +240,10 @@
         </div>
         <div class="col-sm-12 col-md-2 item social">
 
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></i></a>
-            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone"><i class="fa-brands fa-github"></i></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-twitter"></i></i></a>
+            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone" target=”_blank”><i class="fa-brands fa-github"></i></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-linkedin"></i></a>
             <p class="copyright pt-4">Communers, Inc. © 2023</p>
         </div>
     </div>
