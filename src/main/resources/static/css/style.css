@@ -294,15 +294,22 @@ footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
     /*margin:0 8px;*/
     color: var(--dark-green);
 }
+.codeup-icon {
+    position:absolute;
+    height: 24px;
+    width:24px;
+}
 
 footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
     text-shadow: .125rem .125rem var(--pink);
 }
 
+.codeup-icon:hover {
+    text-shadow: .125rem .125rem var(--pink);
+}
+
 footer .copyright {
     text-align:center;
-    /*padding-top:24px;*/
-    /*opacity:0.3;*/
     font-size:13px;
     margin-bottom:0;
 }
