@@ -6,6 +6,10 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+<div class="d-flex">
+    <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+    <h1 class="page-title mx-auto mt-4">Chat</h1>
+</div>
 <div id="id" th:value="${user.id}" hidden></div>
 <div id="username" th:value="${user.username}" hidden></div>
 
@@ -21,6 +25,7 @@
 <div class="border border-0 mb-auto" id="talkjs-container" style="border: solid #000000 2px ;width: 90%; margin: 30px; height: 500px">
     <i>Loading chat...</i>
 </div>
+<script src="/js/script.js"></script>
 <script src="/js/keys.js"></script>
 <script src="/js/talkJS.js"></script>
 <footer th:replace="~{/partials/partials :: footer}"></footer>

@@ -10,42 +10,38 @@
         <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
         <h1 class="page-title mx-auto mt-4">Create Post</h1>
     </div>
-    <div class="container d-flex flex-column flex-grow-1" th:object="${user}">
+    <div class="row h-100 d-flex mt-3 pb-3" th:object="${user}" sec:authorize="isAuthenticated()">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div class="row h-100 d-flex justify-content-center align-items-center my-auto pb-3" sec:authorize="isAuthenticated()">
-            <div class="col-sm-12 col-lg-6 px-0">
-                <div class="card create-card h-100">
-                    <div class="card-bg opacity-50 flex-grow-1"></div>
-                    <div class="card-body d-flex flex-column">
-                        <form id="form" class="d-flex form flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
-                            <label for="entryTitle">Title</label>
-                            <input class="ps-2" name="title" id="entryTitle" type="text" value="entry title" th:field="*{title}" placeholder="Give your post a title."/>
+        <div class="col-sm-12 offset-lg-3 col-lg-6">
+            <div class="card create-card h-100">
+                <div class="card-bg opacity-50 flex-grow-1"></div>
+                <div class="card-body d-flex flex-column">
+                    <form id="form" class="d-flex form flex-column" th:action="@{/post/create}" th:object="${post}"  method="post">
+                        <label for="entryTitle">Title</label>
+                        <input class="ps-2" name="title" id="entryTitle" type="text" value="entry title" th:field="*{title}" placeholder="Give your post a title."/>
 
 
-                            <label class="mt-2" for="body-ip">Body</label>
-                            <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3 mt-2" rows="6" placeholder="What's on your mind?"></textarea>
+                        <label class="mt-2" for="body-ip">Body</label>
+                        <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3 mt-2" rows="6" placeholder="What's on your mind?"></textarea>
 
-                            <input type="hidden" th:field="*{time}" />
-                            <input type="hidden" th:field="*{id}" />
-                            <span>Communities:</span><br>
-                            <div th:each="community : ${communities}">
-                                <label>
-                                    <input th:name="${community.name}" type="checkbox" th:field="*{communities}" th:value="${community.id}"/>
-                                    <label th:for="${community.name}" th:text="${community.name}">(Community name)</label>
-                                </label><br>
-                            </div>
-                            <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
-                            <div class="mod-msg text-center text-danger"></div>
-                        </form>
-                    </div>
+                        <input type="hidden" th:field="*{time}" />
+                        <input type="hidden" th:field="*{id}" />
+                        <span>Communities:</span><br>
+                        <div th:each="community : ${communities}">
+                            <label>
+                                <input th:name="${community.name}" type="checkbox" th:field="*{communities}" th:value="${community.id}"/>
+                                <label th:for="${community.name}" th:text="${community.name}">(Community name)</label>
+                            </label><br>
+                        </div>
+                        <button class="btn btn-sm submit-btn me-auto mt-auto" type="submit">Submit Post</button>
+                        <div class="mod-msg text-center text-danger"></div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <!--<script th:replace="chat_mod_script"></script>-->
 <script src="/js/background.js"></script>
