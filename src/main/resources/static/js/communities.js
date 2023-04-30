@@ -34,12 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // }
     }
 
-    // Listen for input events
-    // input.addEventListener("input", function() {
-    //     generateSuggestions();
-    //     suggestions.classList.add("show");
-    // });
-
     // Listen for click events on suggestions
     suggestions.addEventListener("click", function(event) {
         if (event.target.classList.contains("suggestion")) {
@@ -63,9 +57,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const myInput = new RegExp(input.value, "i");
         elements.forEach(function(element) {
             if (!element.textContent.match(myInput)) {
-                element.parentElement.parentElement.parentElement.classList.add("d-none");
+                element.parentElement.parentElement.parentElement.parentElement.classList.add("d-none");
             } else {
-                element.parentElement.parentElement.parentElement.classList.remove("d-none");
+                element.parentElement.parentElement.parentElement.parentElement.classList.remove("d-none");
             }
         });
     };

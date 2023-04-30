@@ -208,7 +208,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: transparent !important;
 }
-.login-card, .sign-up-card, #message, .settings-card {
+.login-card, .sign-up-card, #message {
     width: 300px;
     min-height: 400px;
 }

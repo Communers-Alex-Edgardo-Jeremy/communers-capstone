@@ -12,7 +12,6 @@
     </div>
 
     <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
-    <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
