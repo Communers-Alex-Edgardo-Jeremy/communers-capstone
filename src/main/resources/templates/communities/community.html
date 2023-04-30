@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Community</title>
 </head>
-<body class="d-flex flex-column" id="gradient">
+<body class="d-flex flex-column" id="gradient" data-page="communities">
 
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 
@@ -12,9 +12,10 @@
         <h1 class="page-title mx-auto mt-4" th:text="${community.name}" style="font-weight: bold">(insert community name)</h1>
         <div class="d-flex mx-auto">
             <div class="blog-menu small-title" th:text="${community.bio}"></div>
-            <button class="btn btn-sm follow-btn ms-3 px-1 py-0 my-auto" type="submit">Follow</button>
+            <div class="ms-auto" th:attr="dataset-id=${community.id}">
+                <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+            </div>
         </div>
-
     </form>
 
     <div class="row mb-auto mt-3 px-3 pb-3 g-3">
@@ -30,7 +31,9 @@
                             <h3 class="card-title pt-1" th:text="${post.title}">(insert post title)</h3>
                             <form class="ms-auto ms-2" th:action="@{|/follow/${post.getId()}|}" method="post">
                                 <span class="ms-auto my-auto" th:text="${post.user.username}">(Post user here)</span>
-                                <button class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton" type="submit">Follow</button>
+                                <div sec:authorize="isAuthenticated()" class="d-inline my-auto" th:attr="dataset-id=${post.user.id}">
+                                    <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
+                                </div>
                             </form>
                         </div>
                         <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
@@ -46,6 +49,7 @@
     </div>
 <!--comment-->
 <footer class="mt-auto" th:replace="~{/partials/partials :: footer}"></footer>
-<script src="/js/background.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/background.js"></script>
 </body>
 </html>
