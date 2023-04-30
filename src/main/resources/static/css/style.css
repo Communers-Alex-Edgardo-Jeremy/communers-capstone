@@ -1165,16 +1165,16 @@ section {
 }
 #signUp {
     color: var(--black);
+    min-height: 432px;
     position: relative;
-    background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));
+    background-image: url(/static/img/hands.svg), linear-gradient(to bottom right, var(--purple), var(--bg-white));
     overflow-x: hidden;
-    min-height: 349px;
-    padding-top: 120px;
+    padding-top: 0;
     display: flex;
     justify-content: center;
-    align-content: center;
     flex-wrap: wrap;
-    flex-direction: column-reverse;
+    align-content: space-around;
+    flex-direction: column;
 }
 .bi {
     height: 0;
@@ -1253,7 +1253,7 @@ section {
     background: linear-gradient(91deg, rgb(230 226 236) 2%, rgb(228 223 237) 2%, rgb(223 217 237) 4% ,rgb(215 209 238) 9%, rgba(236,230,255,0) 81%);
     position: absolute;
     z-index: 1;
-    left: 115px;
+    left: 133px;
     top: 108px;
     /*left: -84px;*/
     /*cursor: pointer; */
@@ -1270,7 +1270,7 @@ section {
     width: 163px;
     background: linear-gradient(-93deg, rgb(207 201 239) 0%, rgb(196 187 246) 10%, rgb(195 186 240) 12% ,rgb(193 184 241) 10%, rgba(232,224,93,0) 81%);
     position: absolute;
-    left: 852px;
+    left: 865px;
     /* border-radius: 0px; */
     z-index: 1;
 }
@@ -1338,10 +1338,6 @@ section {
 }
 #paragraph1Container {
     display: flex;
-}
-#communersIntroSignOff {
-    display: flex;
-    padding-left: 800px;
 }
 .awards {
     padding: 20px 100px 0 100px;
