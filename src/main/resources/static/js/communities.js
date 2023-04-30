@@ -1,23 +1,5 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     const communities = Array.from(document.getElementsByClassName("card-title"));
-//     const input = document.getElementById("community-search");
-//     input.onkeyup = function() {
-//         const myInput = new RegExp(input.value, "i");
-//         communities.forEach(function(community) {
-//             if (!community.textContent.match(myInput)) {
-//                 community.parentElement.parentElement.parentElement.classList.add("d-none");
-//             } else {
-//                 community.parentElement.parentElement.parentElement.classList.remove("d-none");
-//             }
-//         });
-//     };
-// });
-// document.addEventListener("DOMContentLoaded", function() {
-//     const communities = Array.from(document.getElementsByClassName("card-title"));
-//     const btn = document.getElementById("search-btn");
-//     const input = document.getElementById("community-search");
-//
-// });
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function() {
     const elements = Array.from(document.getElementsByClassName("card-title"));
     const input = document.getElementById("search-input");
@@ -39,25 +21,41 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    // Listen for input events
-    input.addEventListener("input", function() {
+    //jeremy d-none attempt
+
+    if ($('#suggestions').length) {
+        $('#suggestions').addClass('d-none');
+    };
+
+    input.onfocus = function () {
+        // if ($('#profile-pw-validation').length) {
         generateSuggestions();
-        suggestions.classList.add("show");
-    });
+        $('#suggestions').removeClass('d-none');
+        // }
+    }
+
+    // Listen for input events
+    // input.addEventListener("input", function() {
+    //     generateSuggestions();
+    //     suggestions.classList.add("show");
+    // });
 
     // Listen for click events on suggestions
     suggestions.addEventListener("click", function(event) {
         if (event.target.classList.contains("suggestion")) {
             input.value = event.target.textContent;
-            suggestions.classList.remove("show");
-            btn.click();
+            // suggestions.classList.remove("show");
+            $('#suggestions').addClass('d-none');
+            // btn.click();
         }
     });
 
     // Hide suggestions on document click
     document.addEventListener("click", function(event) {
         if (!event.target.matches("#search-input, #suggestions *")) {
-            suggestions.classList.remove("show");
+            $('#suggestions').addClass('d-none');
+
+            // suggestions.classList.remove("show");
         }
     });
 
