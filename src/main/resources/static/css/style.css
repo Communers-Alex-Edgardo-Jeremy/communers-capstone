@@ -119,13 +119,6 @@ nav, footer {
     40%,60% {opacity: 1}
 }
 
-/*.notification.show {*/
-/*    !*top: 100px;*!*/
-/*}*/
-
-/*.notification.hidden {*/
-/*    display: none;*/
-/*}*/
 
 nav {
     /*border-bottom: var(--grey) solid .125rem;*/
@@ -284,8 +277,8 @@ footer .item.social {
     }
 }
 .chat-popout {
-    position: relative;
-    top: 0;
+    position: sticky;
+    bottom: 0;
     left: 0;
     z-index: 10;
 }
@@ -315,6 +308,7 @@ footer .copyright {
 }
 input.btn, .follow-btn, .search-btn, .read-more-btn, .edit-btn, .login-btn, .find-ppl-btn, .community-btn {
     border: var(--dark-green) solid .125rem !important;
+    color: var(--dark-green) !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }

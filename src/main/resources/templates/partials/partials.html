@@ -63,13 +63,13 @@
 
         <div class="d-flex flex-column">
             <div class="d-flex">
-                <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+                <h2 class="greeting page-title ps-3 ps-lg-5" sec:authorize="isAuthenticated()" >
                     Welcome back, <span class="page-title" th:text="${#authentication.principal.username}"/>.
                 </h2>
             </div>
             <div th:choose>
                 <div th:when="${message != null}">
-                    <div id="notification" th:text="${message}"  class="notification greeting page-title ps-3 me-5 mt-3"></div>
+                    <div id="notification" th:text="${message}"  class="notification greeting page-title ps-3 ps-lg-5 me-5 mt-3"></div>
                 </div>
             </div>
 <!--            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">-->
@@ -79,22 +79,13 @@
     </div>
 </th:block>
 
-<th:block th:fragment="chat-pane" th:object="${user}">
-    <div class="col-sm-12 col-lg-3" sec:authorize="isAuthenticated()">
-        <div class="d-flex flex-column pe-3">
-            <a type="button" class="btn btn-sm find-ppl-btn px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
-            <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
-        </div>
-    </div>
-</th:block>
-
-<th:block th:fragment="chat-bubble">
-    <div class="chat-popout">
+<th:block th:fragment="chat-bubble" th:object="${user}" sec:authorize="isAuthenticated()">
+    <div class="chat-popout me-auto">
         <p class="d-flex">
-            <button class="btn chat-btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
+            <button class="btn chat-btn me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
             </button>
         </p>
-        <div class="ms-auto me-2">
+        <div class="me-auto ms-2 mb-3">
             <div class="collapse collapse-horizontal card chat-card card-body h-100" id="collapseWidthExample">
                 <div class="card-bg opacity-50" style="top: 0;right:0"></div>
                 <div class="d-flex flex-column">
@@ -111,7 +102,6 @@
                             </li>
                         </ul>
                     </th:block>
-<!--                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.-->
                 </div>
             </div>
         </div>

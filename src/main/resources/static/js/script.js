@@ -13,13 +13,13 @@
 let notification = document.getElementById("notification");
 if(notification != null){
     if(notification.textContent.trim().length !== 0){
-        notification.classList.remove("opacity-0");
+        notification.classList.remove("d-none");
         // notification.classList.add("show");
 
 // Hide the notification div after 5 seconds
         setTimeout(function() {
             // notification.classList.remove("show");
-            notification.classList.add("opacity-0");
+            notification.classList.add("d-none");
         }, 15000);
     }
 }
