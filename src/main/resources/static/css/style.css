@@ -193,8 +193,16 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
         margin-top: 40px;
     }
 }
+.card-header {
+    /*margin: auto 0;*/
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+    /*padding: 0;*/
+    border-bottom-width: 0;
+    position: relative;
+}
 .card-bg {
-    background-color: white;
+    background: rgba(130, 158, 143, 0.1);
     position: absolute;
     height: 100%;
     width: 100%;
@@ -1275,30 +1283,41 @@ section {
     z-index: 1;
 }
 .cardReviews {
-    opacity: 94%;
+    background: rgb(238 233 236);
     color: #3d3d3d;
-    position: relative;
-    margin: 0 0 0 13px;
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    position: relative;
+    border-radius: 188px;
+    font: status-bar;
     text-align: center;
-    border: 1px solid #ddd7ee;
+
+    margin-right: 0;
+    margin-left: 0;
+    height: 342px;
+}
+    /* margin: 0 0 0 54px; */
+    /* border: 32px #d1cbef; */
     /* flex-shrink: 0; */
     /* cursor: pointer; */
     /* padding: 27px 0px; */
     /* border-radius: 25px; */
     /* height: 100%; */
-    /* border-style: none;*/
-}
-.card-body-quote {
-    /*padding-top: 15px;*/
+    /* border-style: none; */
+/*}*/
+.card-body {
+    flex: 1 1 auto;
+    padding: 35px;
 }
 .blockquote-footer {
     display: flex;
     position: relative;
-    margin-top: 1rem;
+    margin-top: auto;
 }
 .blockquote {
     display: flex;
+    position: relative;
     flex-wrap: nowrap;
     justify-content: center;
     align-content: center;
