@@ -3,8 +3,28 @@
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Profile</title>
+    <style>
+        #file-upload {
+            display: none;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-button:hover {
+            background-color: #0069d9;
+        }
+
+    </style>
 </head>
 <body class="d-flex flex-column" id="gradient">
+
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
     <div class="d-flex">
         <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
@@ -27,7 +47,14 @@
                         Invalid Username and Password.
                     </div>
                     <div class="settings" sec:authorize="isAuthenticated()">
-                        <form class="d-flex flex-column" th:action="@{/profile}" th:object="${user}" method="post">
+                        <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
+
+                            <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
+                            <button type="button" id="pic-button" class="upload-button">
+                                Upload Profile Picture
+                                <image id="image-display" style="height:100px; width:100px;" class="rounded-circle" th:src="*{image}"></image>
+                            </button>
+<!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
 
                             <label for="username">Username</label>
                             <input class="ps-2" id="username" th:field="*{username}" required/>
@@ -50,8 +77,18 @@
                             <button class="btn btn-sm btn-outline-danger me-auto mt-3 py-0" type="submit">Delete Account</button>
                         </form>
                     </div>
+                    <div class="password-validation mt-3 mb-5 p-3" id="message">
+                        <div class="d-flex flex-column">
+                            <h4>Password must contain the following:</h4>
+                            <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
+                            <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
+                            <p id="number" class="invalid fs-5">A <b>number</b></p>
+                            <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
         <div class="col-sm-12 col-lg-6">
             <div class="row align-content-center my-auto px-3 pb-3 g-3">
@@ -109,20 +146,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-lg-3 password-validation mt-3 mb-5 p-3" id="profile-pw-validation">
-            <div class="d-flex flex-column">
-                <h4>Password must contain the following:</h4>
-                <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
-                <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
-                <p id="number" class="invalid fs-5">A <b>number</b></p>
-                <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
-            </div>
-        </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
+<script src="/js/keys.js"></script>
 <script src="/js/password.js"></script>
+<script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="/js/chatMod.js"></script>
+
 <script src="/js/background.js"></script>
 </body>
 </html>
