@@ -23,7 +23,7 @@
                         <div class="d-flex">
                             <div class="blog-menu small-title date ms-2 mt-2" th:text="${post.time}"></div>
                             <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
-                            <div th:if="${post.user.getId() != loggedInUser.getId()}">
+                            <div th:if="${post.user.id != loggedInUser.id}">
                                 <div th:attr="dataset-id=${post.user.id}">
                                     <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
                                 </div>
@@ -36,7 +36,7 @@
                                 <div class="d-flex">
                                     <div class="" th:text="${comment.date}">(insert post body)</div>
                                     <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
-                                    <div th:if="${comment.user.getId() != loggedInUser.getId()}">
+                                    <div th:if="${comment.user.id != loggedInUser.id}">
                                         <div class="d-inline" th:attr="dataset-id=${post.user.id}">
                                             <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
                                         </div>

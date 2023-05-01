@@ -182,7 +182,7 @@ public class UserController {
 
     @PostMapping("/follow")
     @ResponseBody
-    public Map<String, Object> follow(@RequestBody User user) {
+    public Map<String, Object> follow(@RequestBody User user, Model model) {
         System.out.println(user.getId());
         // check if the follower and followee ids are valid
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -213,7 +213,7 @@ public class UserController {
 
 
         // return the updated follower-followee relationship
-        System.out.println("before isfollowing check" + isFollowing);
+        System.out.println("before is following check" + isFollowing);
         System.out.println(followee.getId());
         System.out.println(follower.getId());
         response.put("following", isFollowing);
@@ -225,7 +225,7 @@ public class UserController {
 //        } catch (JsonProcessingException e) {
 //            throw new RuntimeException(e);
 //        }
-
+        model.addAttribute("loggedInUser", follower);
         return response;
     }
 
