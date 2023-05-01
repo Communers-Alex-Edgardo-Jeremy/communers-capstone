@@ -7,40 +7,38 @@
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 <div class="d-flex">
-    <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
     <h1 class="page-title mx-auto mt-4">Log In</h1>
 </div>
-
 <div class="container d-flex flex-column flex-grow-1 justify-content-center align-items-center">
-    <div class="card login-card mt-3 mb-5">
-        <div class="card-bg opacity-50 flex-grow-1"></div>
-        <div class="card-body d-flex flex-column">
-            <div class="alert alert-danger" th:if="${errMsg}">
-                Something bad happened!
-            </div>
-            <div th:if="${param.error}">
-                Invalid Username and Password.
-            </div>
-            <div th:if="${param.logout}">
-                You have been logged out.
-            </div>
+        <div class="card login-card mt-3 mb-5">
+            <div class="card-bg opacity-50 flex-grow-1"></div>
+            <div class="card-body d-flex flex-column">
+                <div class="alert alert-danger" th:if="${errMsg}">
+                    Something bad happened!
+                </div>
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
 
-            <form class="login d-flex flex-column h-100" th:action="@{/login}" method="post">
-                <label for="username">Username</label>
-                <input class="ps-2" id="username" name="username" type="text" value="jeremy"/>
-                <label class="pt-3" for="password">Password</label>
-                <input class="ps-2" id="password" name="password" type="password"/>
-                <input class="btn btn-sm me-auto mt-3 py-0" type="submit" value="Log In"/>
-            </form>
-            <a th:href="@{/forgot_password}" class="forgot-pw mt-2">Forgot your password?</a>
+                <form class="login d-flex flex-column h-100" th:action="@{/login}" method="post">
+                    <label for="username">Username</label>
+                    <input class="ps-2" id="username" name="username" type="text" value="jeremy"/>
+                    <label class="pt-3" for="password">Password</label>
+                    <input class="ps-2" id="password" name="password" type="password"/>
+                    <input class="btn btn-sm me-auto mt-3 py-0" type="submit" value="Log In"/>
+                </form>
+                <a th:href="@{/forgot_password}" class="forgot-pw mt-2">Forgot your password?</a>
 
-            <div class="d-flex flex-column mt-4">
-                <p class="my-auto">New to commUNITY?</p>
-                <a class="btn btn-sm login-btn me-auto mt-2 py-0" th:href="@{|/register|}">Register Now!</a>
+                <div class="d-flex flex-column mt-4">
+                    <p class="my-auto">New to commUNITY?</p>
+                    <a class="btn btn-sm login-btn me-auto mt-2 py-0" th:href="@{|/register|}">Register Now!</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>
 <script src="/js/script.js"></script>
