@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const length = document.getElementById("length");
     const button = document.getElementById("pic-button");
     const imageInput = document.getElementById("file-upload");
-    const imageDisplay = document.getElementById("image-display");
-    if (imageDisplay != null) {
+    let imageDisplay = document.getElementById("image-display");
+    console.log(button)
+    if (button != null) {
+        console.log("Image here");
         const client = filestack.init(FILESTACK_KEY);
         const options = {
             onFileUploadFinished(file) {
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         }
         button.addEventListener("click", function (event) {
+            console.log("In picker")
             client.picker(options).open();
         })
     }

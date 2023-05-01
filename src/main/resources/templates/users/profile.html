@@ -51,8 +51,8 @@
 
                             <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
                             <button type="button" id="pic-button" class="upload-button text-black bg-transparent border border-0">
-                                Upload Profile Picture
-                                <img id="image-display" style="height:100px; width:100px;" class="rounded-circle border border-4 border-dark" src="https://cdn.filestackcontent.com/6bqstbIcTCC7hlLNsmPq">
+                                <span>Upload Profile Picture</span>
+                                <img id=“image-display” style="height:100px; width:100px;" class=“rounded-circle” th:src="${user.image}" alt="" src="">
                             </button>
 <!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
 
@@ -153,8 +153,8 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
-<script src="/js/script.js"></script>
 <script src="/js/keys.js"></script>
+<script src="/js/script.js"></script>
 <script src="/js/password.js"></script>
 <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="/js/chatMod.js"></script>
