@@ -6,10 +6,13 @@
 </head>
 
 <body class="d-flex flex-column" id="gradient">
-<nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <h1 class="page-title mx-auto mt-4">Edit Post</h1>
+    <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
+    <div class="d-flex">
+        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+        <h1 class="page-title mx-auto mt-4">Edit Post</h1>
+    </div>
 
-    <div class="row mt-3 mb-auto" th:object="${user}" sec:authorize="isAuthenticated()">
+    <div class="row h-100 d-flex mt-3 pb-3" th:object="${user}" sec:authorize="isAuthenticated()">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
@@ -17,15 +20,18 @@
             <div class="card edit-card h-100">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <form id="form" class="d-flex form flex-column" th:action="@{|/post/${post.id}/edit|}" th:object="${post}"  method="post">
-                        <label for="entryTitle">Title</label>
+                    <form id="form" class="d-flex form flex-column h-100" th:action="@{|/post/${post.id}/edit|}" th:object="${post}"  method="post">
+                        <div class="d-flex">
+                            <label for="entryTitle">Title</label>
+                            <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                        </div>
                         <input class="ps-2" name="entryTitle" id="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 
                         <label class="mt-2" for="body-ip">Body</label>
                         <textarea name="body" type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3 mt-2" rows="6"></textarea>
 
                         <input type="hidden" th:field="*{time}" />
-                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{id}" />
                         <span>Communities:</span><br>
                         <div th:each="community : ${communities}">
                             <label>
@@ -33,18 +39,17 @@
                                 <label th:for="${community.name}" th:text="${community.name}">(Community name)</label>
                             </label><br>
                         </div>
-                        <div>
-                            <button class="btn btn-sm submit-btn me-auto mt-auto py-0" type="submit">Save Changes</button>
-                            <a class="btn btn-sm btn-outline-danger me-auto mt-auto py-0" th:href="@{|/post/${post.id}/delete|}">Delete</a>
-                        </div>
+                        <button class="btn btn-sm submit-btn me-auto mt-auto py-0" type="submit">Save Changes</button>
                         <div class="mod-msg text-center text-danger"></div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/keys.js"></script>
+<script src="/js/script.js"></script>
 <script src="/js/chatMod.js"></script>
 <script src="/js/background.js"></script>
 </body>
