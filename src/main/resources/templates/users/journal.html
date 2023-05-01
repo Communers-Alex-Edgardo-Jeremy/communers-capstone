@@ -6,12 +6,10 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-<!--    <div class="d-flex ps-3">-->
-<!--        <h2 class="my-auto">Journal Entries</h2>-->
-<!--    </div>-->
     <div class="row align-content-center my-2 px-3 pb-3 g-3 h-100 flex-grow-1" sec:authorize="isAuthenticated()">
         <div class="col-sm-12 col-lg-4 offset-lg-2 h-100">
             <div class="card journal-card flex-grow-1 h-100">
+                <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body ruled-paper d-flex flex-column align-content-center" id="your-entries">
 
@@ -79,6 +77,7 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/script.js"></script>
 <script src="/js/background.js"></script>
 </body>
 </html>

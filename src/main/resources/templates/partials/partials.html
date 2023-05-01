@@ -63,13 +63,13 @@
 
         <div class="d-flex flex-column">
             <div class="d-flex">
-                <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()" >
+                <h2 class="greeting page-title ps-3 ps-lg-5" sec:authorize="isAuthenticated()" >
                     Welcome back, <span class="page-title" th:text="${#authentication.principal.username}"/>.
                 </h2>
             </div>
             <div th:choose>
                 <div th:when="${message != null}">
-                    <div id="notification" th:text="${message}"  class="notification greeting page-title ps-3 me-5 mt-3"></div>
+                    <div id="notification" th:text="${message}"  class="notification greeting page-title ps-3 ps-lg-5 me-5 mt-3"></div>
                 </div>
             </div>
 <!--            <h2 class="greeting page-title ps-3" sec:authorize="isAuthenticated()">-->
@@ -79,22 +79,13 @@
     </div>
 </th:block>
 
-<th:block th:fragment="chat-pane" th:object="${user}">
-    <div class="col-sm-12 col-lg-3" sec:authorize="isAuthenticated()">
-        <div class="d-flex flex-column pe-3">
-            <a type="button" class="btn btn-sm find-ppl-btn px-1 py-0 ms-auto my-auto" id="search-btn" th:href="@{|/find/user|}">Find People</a>
-            <th:block th:insert="~{/partials/partials :: chat-bubble}"></th:block>
-        </div>
-    </div>
-</th:block>
-
-<th:block th:fragment="chat-bubble">
-    <div class="chat-popout">
+<th:block th:fragment="chat-bubble" th:object="${user}" sec:authorize="isAuthenticated()">
+    <div class="chat-popout me-auto">
         <p class="d-flex">
-            <button class="btn chat-btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
+            <button class="btn chat-btn me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa-solid fa-comment"></i>
             </button>
         </p>
-        <div class="ms-auto me-2">
+        <div class="me-auto ms-2 mb-3">
             <div class="collapse collapse-horizontal card chat-card card-body h-100" id="collapseWidthExample">
                 <div class="card-bg opacity-50" style="top: 0;right:0"></div>
                 <div class="d-flex flex-column">
@@ -112,7 +103,6 @@
                             </li>
                         </ul>
                     </th:block>
-<!--                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.-->
                 </div>
             </div>
         </div>
@@ -139,6 +129,7 @@
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
 
+
                         <image style="height:60px; width:60px;" class="rounded-circle" th:src="${post.user.image}"></image>
                         <h3 class="card-title my-auto" th:text="${post.title}">(insert post title)</h3>
 
@@ -160,7 +151,6 @@
 </th:block>
 
 <th:block th:fragment="communities">
-
     <div class="row align-content-center my-auto px-3 pb-3 g-3">
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
@@ -169,67 +159,45 @@
             <div class="card post-card h-100">
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex">
-                            <h5 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h5>
-                            <div class="ms-auto" th:attr="dataset-id=${community.id}">
-                                <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
-                            </div>
-
+                    <div class="d-flex">
+                        <h3 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h3>
+                        <div class="ms-auto" th:attr="dataset-id=${community.id}">
+                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
                         </div>
-                        <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
-                        <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                     </div>
+                    <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
+                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                 </div>
             </div>
         </div>
     </div>
-
-<!--    <div class="row align-content-center my-auto px-3 pb-3 g-3">-->
-<!--        <div class="alert alert-danger" th:if="${errMsg}">-->
-<!--            Something bad happened!-->
-<!--        </div>-->
-<!--        <div th:each="community : ${communities}">-->
-<!--            <div class="card post-card h-100">-->
-<!--                <div class="card-bg opacity-50 flex-grow-1"></div>-->
-<!--                <div class="card-body d-flex flex-column">-->
-<!--&lt;!&ndash;                    <div class="d-flex flex-column">&ndash;&gt;-->
-<!--                    <div class="d-flex" th:attr="dataset-id=${community.id}">-->
-<!--                        <h5 class="card-title pt-1" th:text="${community.name}">(insert post title)</h5>-->
-
-<!--                        <div class="d-inline" th:attr="dataset-id=${post.user.id}">-->
-<!--                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto followButton">(Follow Button)</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="blog-article py-1 ms-2" th:text="${community.bio}">(insert post body)</div>-->
-<!--                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 </th:block>
 
 <th:block th:fragment="users">
     <div class="row my-auto">
         <div class="col-sm-12 col-lg-6 offset-lg-3">
-            <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">
+            <div class="row">
+<!--            <div class="">-->
                 <div class="alert alert-danger" th:if="${errMsg}">
                     Something bad happened!
                 </div>
-                <div class="d-flex p-2"  th:each="user : ${users}">
+                <div class="col-sm-12 col-lg-4 p-2"  th:each="user : ${users}">
                     <div class="card card-community h-100" style="">
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
-                            <div sec:authorize="isAuthenticated()" class="flex" th:attr="dataset-id=${user.id}">
+                            <div sec:authorize="isAuthenticated()" class="d-flex" th:attr="dataset-id=${user.id}">
                                 <image style="height:60px; width:60px;" class="rounded-circle" th:src="${user.image}"></image>
                                 <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
-                                <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn p2-2 py-0   ms-2 my-auto followButton">(Follow Button)</button>
+                                <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn ps-2 py-0 ms-auto me-2 my-auto followButton">(Follow Button)</button>
                             </div>
                         </div>
                     </div>
                 </div>
+<!--            </div>-->
+
             </div>
+
+<!--            <div class="d-flex flex-wrap justify-content-center align-content-center my-auto px-1">-->
         </div>
     </div>
 </th:block>
@@ -243,7 +211,7 @@
     })
 </script>
 
-<footer class="100vw" th:fragment="footer">
+<footer class="100vw mt-auto" th:fragment="footer">
     <div class="row py-3 m-0 w-100">
         <div class="col-sm-1w col-md-3 text-center item">
             <h3 class="mb-2">Company and Services</h3>
@@ -268,10 +236,10 @@
         </div>
         <div class="col-sm-12 col-md-2 item social">
 
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></i></a>
-            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone"><i class="fa-brands fa-github"></i></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-twitter"></i></i></a>
+            <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone" target=”_blank”><i class="fa-brands fa-github"></i></i></a>
+            <a href="#" target=”_blank”><i class="fa-brands fa-linkedin"></i></a>
             <p class="copyright pt-4">Communers, Inc. © 2023</p>
         </div>
     </div>

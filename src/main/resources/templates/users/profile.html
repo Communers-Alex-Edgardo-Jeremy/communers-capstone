@@ -26,7 +26,10 @@
 <body class="d-flex flex-column" id="gradient">
 
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <h1 class="page-title mx-auto mt-4">Profile</h1>
+    <div class="d-flex">
+        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+        <h1 class="page-title mx-auto mt-4">Profile</h1>
+    </div>
 
     <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
         <div class="alert alert-danger" th:if="${errMsg}">
@@ -145,6 +148,7 @@
         </div>
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
+<script src="/js/script.js"></script>
 <script src="/js/keys.js"></script>
 <script src="/js/password.js"></script>
 <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>

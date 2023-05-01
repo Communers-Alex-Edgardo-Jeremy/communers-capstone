@@ -119,13 +119,6 @@ nav, footer {
     40%,60% {opacity: 1}
 }
 
-/*.notification.show {*/
-/*    !*top: 100px;*!*/
-/*}*/
-
-/*.notification.hidden {*/
-/*    display: none;*/
-/*}*/
 
 nav {
     /*border-bottom: var(--grey) solid .125rem;*/
@@ -208,7 +201,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     border: var(--dark-green) solid .125rem !important;
     background-color: transparent !important;
 }
-.login-card, .sign-up-card, #message, .settings-card {
+.login-card, .sign-up-card, #message {
     width: 300px;
     min-height: 400px;
 }
@@ -284,8 +277,8 @@ footer .item.social {
     }
 }
 .chat-popout {
-    position: relative;
-    top: 0;
+    position: sticky;
+    bottom: 0;
     left: 0;
     z-index: 10;
 }
@@ -301,20 +294,28 @@ footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
     /*margin:0 8px;*/
     color: var(--dark-green);
 }
+.codeup-icon {
+    position:absolute;
+    height: 24px;
+    width:24px;
+}
 
 footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
     text-shadow: .125rem .125rem var(--pink);
 }
 
+.codeup-icon:hover {
+    text-shadow: .125rem .125rem var(--pink);
+}
+
 footer .copyright {
     text-align:center;
-    /*padding-top:24px;*/
-    /*opacity:0.3;*/
     font-size:13px;
     margin-bottom:0;
 }
 input.btn, .follow-btn, .search-btn, .read-more-btn, .edit-btn, .login-btn, .find-ppl-btn, .community-btn {
     border: var(--dark-green) solid .125rem !important;
+    color: var(--dark-green) !important;
     color: var(--dark-green) !important;
     background-color: var(--bg-white) !important;
 }
@@ -470,6 +471,13 @@ textarea, input {
 
 .journal-btn-container, .add-entry, .edit-entry-line {
     padding-left: 5.5rem;
+}
+
+.fa-arrow-left {
+    position: absolute;
+}
+.abs-follow {
+    position: absolute;
 }
 
 /*Landing Page*/
