@@ -367,9 +367,13 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
 }
 
 /* The message box is shown when the user clicks on the password field */
-#message {
+.password-validation {
     position: absolute;
     translate: 300px;
+    border: none !important;
+}
+
+.profile-password-validation {
     border: none !important;
 }
 
