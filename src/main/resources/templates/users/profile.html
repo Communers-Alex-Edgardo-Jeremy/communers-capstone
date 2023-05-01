@@ -26,132 +26,129 @@
 <body class="d-flex flex-column" id="gradient">
 
 <nav class="pb-3" th:replace="~{/partials/partials :: navbar}"></nav>
-    <div class="d-flex">
-        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
-        <h1 class="page-title mx-auto mt-4">Profile</h1>
+
+
+<!--jmw-->
+<div class="d-flex">
+    <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+    <h1 class="page-title mx-auto mt-4">Profile</h1>
+</div>
+
+<div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
+    <div class="alert alert-danger" th:if="${errMsg}">
+        Something bad happened!
     </div>
+    <!--        <h2 class="d-flex justify-content-center page-title">Profile</h2>-->
+    <div class="col-sm-12 col-lg-3 mt-3">
+        <div class="card settings-card" sec:authorize="isAuthenticated()">
+            <div class="card-bg opacity-50 flex-grow-1"></div>
+            <div class="card-body d-flex flex-column">
+                <h5 th:text="${'Logged in as ' + user.username}">
+                    {User information}
+                </h5>
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+                <div class="settings" sec:authorize="isAuthenticated()">
+                    <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
 
-    <div class="row align-content-center my-auto px-3 pb-3" sec:authorize="isAuthenticated()" th:object="${user}">
-        <div class="alert alert-danger" th:if="${errMsg}">
-            Something bad happened!
-        </div>
-<!--        <h2 class="d-flex justify-content-center page-title">Profile</h2>-->
-        <div class="col-sm-12 col-lg-3 mt-3">
-            <div class="card settings-card" sec:authorize="isAuthenticated()">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="card-body d-flex flex-column">
-                    <h5 th:text="${'Logged in as ' + user.username}">
-                        {User information}
-                    </h5>
-                    <div th:if="${param.error}">
-                        Invalid Username and Password.
-                    </div>
-                    <div class="settings" sec:authorize="isAuthenticated()">
-                        <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
+                        <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
+                        <button type="button" id="pic-button" class="upload-button">
+                            Upload Profile Picture
+                            <image id="image-display" style="height:100px; width:100px;" class="rounded-circle" th:src="*{image}"></image>
+                        </button>
 
-                            <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
-                            <button type="button" id="pic-button" class="upload-button text-black bg-transparent border border-0">
-                                Upload Profile Picture
-                                <img id="image-display" style="height:100px; width:100px;" class="rounded-circle border border-4 border-dark" src="https://cdn.filestackcontent.com/6bqstbIcTCC7hlLNsmPq">
-                            </button>
-<!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
+                        <label for="username">Username</label>
+                        <input class="ps-2" id="username" th:field="*{username}" required/>
 
-                            <label for="username">Username</label>
-                            <input class="ps-2" id="username" th:field="*{username}" required/>
+                        <label for="first_name">First Name</label>
+                        <input class="ps-2" id="first_name" th:field="*{first_name}" required/>
 
-                            <label for="first_name">First Name</label>
-                            <input class="ps-2" id="first_name" th:field="*{first_name}" required/>
+                        <label for="last_name">Last Name</label>
+                        <input class="ps-2" id="last_name" th:field="*{last_name}" required/>
 
-                            <label for="last_name">Last Name</label>
-                            <input class="ps-2" id="last_name" th:field="*{last_name}" required/>
+                        <label for="email">Email</label>
+                        <input class="ps-2" id="email" th:field="*{email}" required/>
 
-                            <label for="email">Email</label>
-                            <input class="ps-2" id="email" th:field="*{email}" required/>
+                        <label for="psw">Password</label>
+                        <input class="ps-2" type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" th:value="*{null}" required>
 
-                            <label for="psw">Password</label>
-                            <input class="ps-2" type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" th:field="*{password}" th:value="*{null}" required>
-
-                            <input class="btn btn-sm mt-3 me-auto py-0" value="Submit" type="submit" />
-                        </form>
-                        <form th:action="@{/user/delete}" method="post">
-                            <button class="btn btn-sm btn-outline-danger me-auto mt-3 py-0" type="submit">Delete Account</button>
-                        </form>
-                    </div>
-                    <div class="password-validation mt-3 mb-5 p-3" id="message">
-                        <div class="d-flex flex-column">
-                            <h4>Password must contain the following:</h4>
-                            <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid fs-5">A <b>number</b></p>
-                            <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
-                        </div>
+                        <input class="btn btn-sm mt-3 me-auto py-0" value="Submit" type="submit" />
+                    </form>
+                    <form th:action="@{/user/delete}" method="post">
+                        <button class="btn btn-sm btn-outline-danger me-auto mt-3 py-0" type="submit">Delete Account</button>
+                    </form>
+                </div>
+                <div class="password-validation mt-3 mb-5 p-3" id="message">
+                    <div class="d-flex flex-column">
+                        <h4>Password must contain the following:</h4>
+                        <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
+                        <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
+                        <p id="number" class="invalid fs-5">A <b>number</b></p>
+                        <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="col-sm-12 col-lg-6">
-            <div class="row align-content-center my-auto px-3 pb-3 g-3">
-                <div class="post-container px-0" th:each="post : ${posts}">
-                    <div class="card post-card h-100">
-                        <div class="card-bg opacity-50 flex-grow-1"></div>
-                        <div class="card-body d-flex flex-column">
+
+    </div>
+    <div class="col-sm-12 col-lg-6">
+        <div class="row align-content-center my-auto px-3 pb-3 g-3">
+            <div class="post-container px-0" th:each="post : ${posts}">
+                <div class="card post-card h-100">
+                    <div class="card-bg opacity-50 flex-grow-1"></div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex">
+                            <h3 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
+                            <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                        </div>
+                        <div class="blog-article ms-2">
+                            <div class="" th:text="${post.body}">(insert post body)</div>
                             <div class="d-flex">
-                                <h3 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
-                                <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                                <div class="blog-menu small-title date mt-2" th:text="${post.time}"></div>
+                                <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
+                                <a class="btn btn-sm edit-btn my-auto ms-2 py-0" th:href="@{|/post/${post.id}/edit|}">Edit</a>
                             </div>
-                            <div class="blog-article ms-2">
-                                <div class="" th:text="${post.body}">(insert post body)</div>
-                                <div class="d-flex">
-                                    <div class="blog-menu small-title date mt-2" th:text="${post.time}"></div>
-                                    <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
-                                    <a class="btn btn-sm edit-btn my-auto ms-2 py-0" th:href="@{|/post/${post.id}/edit|}">Edit</a>
-                                </div>
-                                <div class="mt-3 ms-2">
-                                    <h5 class="mb-0">Comments</h5>
-                                    <div class="comments ms-2 mt-2" th:each="comment : ${post.comments}" th:if="${comment.post == post}">
-                                        <div class="d-flex">
-                                            <div class="" th:text="${comment.body}">(insert post body)</div>
-                                            <a th:href="@{|/post/comment/${comment.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="" th:text="${comment.date}">(insert post body)</div>
-                                            <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
-                                            <div th:if="${comment.user.getId() != user.getId()}">
-                                                <div class="d-inline" th:attr="dataset-id=${post.user.id}">
-                                                    <button type="button" th:text="${post.user.followers.contains(user) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
-                                                </div>
-                                            </div>
-<!--                                            <div class="d-inline" th:attr="dataset-id=${post.user.id}">-->
-<!--                                                <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>-->
-<!--                                            </div>-->
-                                        </div>
-                                        <hr>
+                            <div class="mt-3 ms-2">
+                                <h5 class="mb-0">Comments</h5>
+                                <div class="comments ms-2 mt-2" th:each="comment : ${post.comments}" th:if="${comment.post == post}">
+                                    <div class="d-flex">
+                                        <div class="" th:text="${comment.body}">(insert post body)</div>
+                                        <a th:href="@{|/post/comment/${comment.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
                                     </div>
+                                    <div class="d-flex" th:if="${comment.user.getId() != user.getId()}">
+                                        <div class="" th:text="${comment.date}">(insert post body)</div>
+                                        <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
+                                        <div class="d-inline" th:attr="dataset-id=${post.user.id}">
+                                            <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn py-0 ms-2 my-auto">(Follow Button)</button>
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
-                            <br>
-                            <br>
-                            <div>
-                                <h6 class="">Add a comment:</h6>
-                                <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
+                        </div>
+                        <br>
+                        <br>
+                        <div>
+                            <h6 class="">Add a comment:</h6>
+                            <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
 
-                                    <textarea type="text" th:field="*{body}" name="body" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
+                                <textarea type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
 
-                                    <label class="pt-3" for="date-ip" hidden>Date:</label>
-                                    <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
-                                    <input type="hidden" th:field="*{id}">
+                                <label class="pt-3" for="date-ip" hidden>Date:</label>
+                                <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
+                                <input type="hidden" th:field="*{id}">
 
-                                    <button class="btn submit-btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
-                                    <div class="mod-msg text-center text-danger"></div>
-                                </form>
-                            </div>
+                                <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
+                                <div class="mod-msg text-center text-danger"></div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 <script src="/js/keys.js"></script>
