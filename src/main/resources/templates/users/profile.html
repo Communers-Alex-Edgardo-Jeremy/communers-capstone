@@ -50,9 +50,9 @@
                         <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
 
                             <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
-                            <button type="button" id="pic-button" class="upload-button">
+                            <button type="button" id="pic-button" class="upload-button text-black bg-transparent border border-0">
                                 Upload Profile Picture
-                                <image id="image-display" style="height:100px; width:100px;" class="rounded-circle" th:src="*{image}"></image>
+                                <img id="image-display" style="height:100px; width:100px;" class="rounded-circle border border-4 border-dark" src="https://cdn.filestackcontent.com/6bqstbIcTCC7hlLNsmPq">
                             </button>
 <!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
 
@@ -117,9 +117,9 @@
                                         <div class="d-flex">
                                             <div class="" th:text="${comment.date}">(insert post body)</div>
                                             <div class="ms-auto" th:text="${comment.user.username}">(insert comment user)</div>
-                                            <div th:if="${comment.user.getId() != loggedInUser.getId()}">
+                                            <div th:if="${comment.user.getId() != user.getId()}">
                                                 <div class="d-inline" th:attr="dataset-id=${post.user.id}">
-                                                    <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+                                                    <button type="button" th:text="${post.user.followers.contains(user) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
                                                 </div>
                                             </div>
 <!--                                            <div class="d-inline" th:attr="dataset-id=${post.user.id}">-->
@@ -136,13 +136,13 @@
                                 <h6 class="">Add a comment:</h6>
                                 <form class="d-flex flex-column" th:action="@{|/post/${post.id}/comments|}" method="post" th:object="${comment}" th:fragment="form"  th:href="@{|/profile|}">
 
-                                    <textarea type="text" th:field="*{body}" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
+                                    <textarea type="text" th:field="*{body}" name="body" id="body-ip" class="ps-2 field mb-3" rows="3" placeholder="enter comment here"></textarea>
 
                                     <label class="pt-3" for="date-ip" hidden>Date:</label>
                                     <input type="text" th:field="*{date}" id="date-ip" class="field mb-3" hidden/>
                                     <input type="hidden" th:field="*{id}">
 
-                                    <button class="btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
+                                    <button class="btn submit-btn btn-sm add-comment-btn me-auto mt-auto py-0" type="submit">Add Comment</button>
                                     <div class="mod-msg text-center text-danger"></div>
                                 </form>
                             </div>
@@ -155,7 +155,6 @@
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/script.js"></script>
 <script src="/js/keys.js"></script>
-<script src="/js/script.js"></script>
 <script src="/js/password.js"></script>
 <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="/js/chatMod.js"></script>
