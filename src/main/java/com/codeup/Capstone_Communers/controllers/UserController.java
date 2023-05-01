@@ -89,6 +89,7 @@ public class UserController {
     @GetMapping("/profile")
     public String viewProfile(Model model, HttpServletResponse response) {
         User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        System.out.println(user.getImage());
         List<Post> userPosts = postDao.findAllByUser(user);
         List<Comment> allPostsComments = new ArrayList<>();
         for (Post userPost : userPosts) {
