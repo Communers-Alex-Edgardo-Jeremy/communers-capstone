@@ -17,6 +17,7 @@ import com.codeup.Capstone_Communers.models.Comment;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -71,7 +72,9 @@ public class UserController {
 
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user){
+//        user.setImage("")
         String hash = passwordEncoder.encode(user.getPassword());
+        user.setImage("https://cdn.filestackcontent.com/ZM6YfeLBSCWvRuU3wLFW");
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/questionnaire";
@@ -84,8 +87,8 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String viewProfile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String viewProfile(Model model, HttpServletResponse response) {
+        User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         List<Post> userPosts = postDao.findAllByUser(user);
         List<Comment> allPostsComments = new ArrayList<>();
         for (Post userPost : userPosts) {
@@ -95,6 +98,7 @@ public class UserController {
         model.addAttribute("allComments", allPostsComments);
         model.addAttribute("user", user);
         model.addAttribute("posts", userPosts);
+        response.setHeader("Cache-Control", "no-cache");
         return "/users/profile";
 }
     @GetMapping("/journal")
@@ -178,7 +182,7 @@ public class UserController {
 
     @PostMapping("/follow")
     @ResponseBody
-    public Map<String, Object> follow(@RequestBody User user) {
+    public Map<String, Object> follow(@RequestBody User user, Model model) {
         System.out.println(user.getId());
         // check if the follower and followee ids are valid
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -209,7 +213,7 @@ public class UserController {
 
 
         // return the updated follower-followee relationship
-        System.out.println("before isfollowing check" + isFollowing);
+        System.out.println("before is following check" + isFollowing);
         System.out.println(followee.getId());
         System.out.println(follower.getId());
         response.put("following", isFollowing);
@@ -221,7 +225,7 @@ public class UserController {
 //        } catch (JsonProcessingException e) {
 //            throw new RuntimeException(e);
 //        }
-
+        model.addAttribute("loggedInUser", follower);
         return response;
     }
 
@@ -242,7 +246,7 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    public String editUser(Model model, @ModelAttribute User user) {
+    public String editUser(Model model, @ModelAttribute User user, @RequestParam("photo-url") String photo, HttpServletResponse response) {
         User oldUserDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User wholeUser = userDao.findById(oldUserDetails.getId());
         try{
@@ -251,11 +255,14 @@ public class UserController {
             wholeUser.setEmail(user.getEmail());
             wholeUser.setUsername(user.getUsername());
             wholeUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            wholeUser.setImage(photo);
         } catch (NullPointerException e){
             System.out.println(e.getMessage());
         }
         userDao.save(wholeUser);
         model.addAttribute("user", wholeUser);
+        response.setHeader("Cache-Control", "no-cache");
+
         return "redirect:/profile";
     }
     

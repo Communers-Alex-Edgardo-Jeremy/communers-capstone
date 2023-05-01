@@ -7,7 +7,10 @@
 </head>
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <h1 class="page-title mx-auto mt-4">Register</h1>
+    <div class="d-flex">
+        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+        <h1 class="page-title mx-auto mt-4">Register</h1>
+    </div>
 
     <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
         <div class="alert alert-danger" th:if="${errMsg}">
@@ -52,6 +55,7 @@
     </div>
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/password.js"></script>
+<script src="/js/script.js"></script>
 <script src="/js/background.js"></script>
 </body>
 </html>

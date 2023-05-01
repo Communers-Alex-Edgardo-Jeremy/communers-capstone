@@ -34,7 +34,9 @@ public class CommunityController {
 
     @GetMapping("/community/{communityId}")
     public String showCommunity(@PathVariable long communityId, Model model){
+        User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Community community = communityDao.getReferenceById(communityId);
+        model.addAttribute("loggedInUser", user);
         model.addAttribute("communityPosts", community.getPosts());
         model.addAttribute("community", community);
         return "/communities/community";

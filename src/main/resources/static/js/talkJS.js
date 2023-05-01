@@ -24,10 +24,13 @@
 // Talk.ready.then(function () {
 let username = document.getElementById("username").getAttribute("value")
 let id = document.getElementById("id").getAttribute("value")
+let image = document.getElementById("image").getAttribute("value")
+
 const getOtherUser = async () => {
     let otherUser = new Talk.User({
         id: id,
-        name: username
+        name: username,
+        photoUrl: image
     });
     return otherUser;
 }
@@ -37,7 +40,8 @@ const getUser = async () => {
     console.log("dataset" + data)
     let user = new Talk.User({
         id: data.id,
-        name: data.username
+        name: data.username,
+        photoUrl: data.image
     });
     return user;
 }
