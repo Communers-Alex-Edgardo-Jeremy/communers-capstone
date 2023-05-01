@@ -107,7 +107,7 @@ public class PostController {
 
         model.addAttribute("comments", comments);
         model.addAttribute("comment", new Comment());
-
+        model.addAttribute("loggedInUser", user);
         List<Post> userPosts = postDao.findAllByUser(user);
 
         if (userPosts.contains(post)) {
