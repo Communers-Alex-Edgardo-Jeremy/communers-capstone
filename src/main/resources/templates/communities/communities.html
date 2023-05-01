@@ -6,9 +6,11 @@
 </head>
 <body class="d-flex flex-column" id="gradient" data-page="communities">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
-    <div class="d-flex">
-        <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
-        <h1 class="page-title mx-auto mt-4">Your Communities</h1>
+    <div th:if="${communities.size() != 0}">
+        <div class="d-flex">
+            <i class="backButton fa-solid fa-arrow-left fs-3 ms-4 mt-4"></i>
+            <h1 class="page-title mx-auto mt-4">Your Communities</h1>
+        </div>
     </div>
     <a class="btn btn-sm mx-auto my-3 community-btn py-0" th:href="@{|/communities/discover|}">Explore Communities</a>
     <div class="row">

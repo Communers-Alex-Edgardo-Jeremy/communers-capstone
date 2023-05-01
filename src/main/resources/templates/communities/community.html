@@ -4,7 +4,7 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Community</title>
 </head>
-<body class="d-flex flex-column" id="gradient">
+<body class="d-flex flex-column" id="gradient" data-page="communities">
 
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
 
@@ -14,7 +14,7 @@
             <h1 class="page-title mx-auto mt-4" th:text="${community.name}" style="font-weight: bold">(insert community name)</h1>
             <div class="row abs-follow w-100 me-0">
                 <div class="col-sm-12 offset-lg-3 col-lg-6">
-                    <button class="btn btn-sm follow-btn me-0 mt-3 px-1 py-0" style="position:absolute;top:0;right:0" type="submit">Follow</button>
+                    <button th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}"  class="btn btn-sm follow-btn followButton me-0 mt-3 px-1 py-0" style="position:absolute;top:0;right:0" type="button">Follow</button>
                 </div>
             </div>
         </div>
@@ -41,7 +41,9 @@
                             <h3 class="card-title pt-1" th:text="${post.title}">(insert post title)</h3>
                             <form class="ms-auto ms-2" th:action="@{|/follow/${post.getId()}|}" method="post">
                                 <span class="ms-auto my-auto" th:text="${post.user.username}">(Post user here)</span>
-                                <button class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton" type="submit">Follow</button>
+                                <div sec:authorize="isAuthenticated()" class="d-inline my-auto" th:attr="dataset-id=${post.user.id}">
+                                    <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
+                                </div>
                             </form>
                         </div>
                         <div class="blog-article py-1 ms-2" th:text="${post.body}">(insert post body)</div>
