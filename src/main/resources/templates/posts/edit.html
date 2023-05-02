@@ -23,7 +23,7 @@
                     <form id="form" class="d-flex form flex-column h-100" th:action="@{|/post/${post.id}/edit|}" th:object="${post}"  method="post">
                         <div class="d-flex">
                             <label for="entryTitle">Title</label>
-                            <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-xmark"></i></a>
+                            <a th:href="@{|/post/${post.id}/delete|}" class="ms-auto mb-auto"><i class="closeButton fa-solid fa-trash"></i></a>
                         </div>
                         <input class="ps-2" name="entryTitle" id="entryTitle" type="text" value="entry title" th:field="*{title}"/>
 

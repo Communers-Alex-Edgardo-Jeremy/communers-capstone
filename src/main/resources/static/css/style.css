@@ -55,8 +55,11 @@ nav, footer {
 .btn:active, .btn:hover {
     outline: none !important;
 }
-.hamburger, .chat-btn {
+.hamburger {
     font-size: 2rem  !important;
+}
+.chat-btn {
+    font-size: 3rem  !important;
 }
 
 .closeButton, .backButton {
@@ -444,7 +447,7 @@ input#username, input#password, input#confirm-password,  input#first_name, input
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
 }
-input#username:active, input#password:active, input#username:hover, input#password:hover, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active, input#confirm-password:active, input#first_name:hover, input#last_name:hover, input#email:hover, input#psw:hover, input#entryTitle:hover, #body-ip:hover, #search-input:hover,input#confirm-password:hover {
+input#username:active, input#password:active, input#username:focus, input#password:focus, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active, input#confirm-password:active, input#first_name:focus, input#last_name:focus, input#email:focus, input#psw:focus, input#entryTitle:focus, #body-ip:focus, #search-input:focus,input#confirm-password:focus {
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
     box-shadow: .25rem .25rem var(--pink);
