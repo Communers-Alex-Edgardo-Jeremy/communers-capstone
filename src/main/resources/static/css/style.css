@@ -55,8 +55,11 @@ nav, footer {
 .btn:active, .btn:hover {
     outline: none !important;
 }
-.hamburger, .chat-btn {
+.hamburger {
     font-size: 2rem  !important;
+}
+.chat-btn {
+    font-size: 3rem  !important;
 }
 
 .closeButton, .backButton {
@@ -84,23 +87,23 @@ nav, footer {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
 }
-.navbar-toggler:hover, .chat-btn:hover {
-    text-shadow: .25rem .25rem var(--pink) !important;
-}
+/*.navbar-toggler:hover, .chat-btn:hover {*/
+/*    text-shadow: .25rem .25rem var(--pink) !important;*/
+/*}*/
 .closeButton:hover {
     color: red;
-    text-shadow: .25rem .25rem var(--pink);
+    /*text-shadow: .25rem .25rem var(--pink);*/
 }
 .closeButton:active {
     color: red;
 }
 .backButton:hover {
     color: var(--dark-green);
-    text-shadow: .25rem .25rem var(--pink);
+    /*text-shadow: .25rem .25rem var(--pink);*/
 }
 .backButton:active {
     color: var(--light-green);
-    text-shadow: .25rem .25rem var(--purple);
+    /*text-shadow: .25rem .25rem var(--purple);*/
 }
 .notification {
     font-size: 1.8rem;
@@ -136,7 +139,7 @@ nav a, nav .logout {
 nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+    /*text-shadow: .125rem .125rem var(--pink);*/
     text-decoration: none;
 }
 .navbar-collapse ul {
@@ -169,7 +172,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     text-decoration: none;
     font-family: 'Raleway', sans-serif, bold;
     /*color: var(--pink);*/
-    text-shadow: .25rem .25rem var(--pink);
+    /*text-shadow: .25rem .25rem var(--pink);*/
     width: 100%;
     left: 0;
 }
@@ -224,7 +227,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
 .about-card a:hover, .resource-link:hover, .chat-card a:hover {
     /*font-weight: bold;*/
     color: var(--dark-green) !important;
-    text-shadow: .125rem .125rem var(--pink) !important;
+    /*text-shadow: .125rem .125rem var(--pink) !important;*/
     text-decoration: none !important;
 }
 footer h3 {
@@ -248,7 +251,7 @@ footer li a{
 footer li:hover, footer li a:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+    /*text-shadow: .125rem .125rem var(--pink);*/
     text-decoration: none;
 }
 @media (max-width:767px) {
@@ -308,12 +311,13 @@ footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
 }
 
 footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
-    text-shadow: .125rem .125rem var(--pink);
+    color: var(--light-green);
+    /*text-shadow: .125rem .125rem var(--pink);*/
 }
 
-.codeup-icon:hover {
-    text-shadow: .125rem .125rem var(--pink);
-}
+/*.codeup-icon:hover {*/
+/*    text-shadow: .125rem .125rem var(--pink);*/
+/*}*/
 
 footer .copyright {
     text-align:center;
@@ -459,7 +463,7 @@ input#username, input#password, input#confirm-password,  input#first_name, input
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
 }
-input#username:active, input#password:active, input#username:hover, input#password:hover, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active, input#confirm-password:active, input#first_name:hover, input#last_name:hover, input#email:hover, input#psw:hover, input#entryTitle:hover, #body-ip:hover, #search-input:hover,input#confirm-password:hover {
+input#username:active, input#password:active, input#username:focus, input#password:focus, input#first_name:active, input#last_name:active, input#email:active, input#psw:active,input#entryTitle:active, #body-ip:active, #search-input:active, input#confirm-password:active, input#first_name:focus, input#last_name:focus, input#email:focus, input#psw:focus, input#entryTitle:focus, #body-ip:focus, #search-input:focus,input#confirm-password:focus {
     border: var(--dark-green) solid .125rem !important;
     outline: none !important;
     box-shadow: .25rem .25rem var(--pink);

@@ -9,7 +9,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.PortMapperImpl;
+import org.springframework.security.web.PortResolverImpl;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -33,7 +38,20 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+            PortMapperImpl portMapper = new PortMapperImpl();
+            portMapper.setPortMappings(Collections.singletonMap("8080","8080"));
+            PortResolverImpl portResolver = new PortResolverImpl();
+            portResolver.setPortMapper(portMapper);
+            LoginUrlAuthenticationEntryPoint entryPoint = new LoginUrlAuthenticationEntryPoint(
+                    "/login");
+            entryPoint.setPortMapper(portMapper);
+            entryPoint.setPortResolver(portResolver);
+
+            http
+                    .exceptionHandling()
+                    .authenticationEntryPoint(entryPoint)
+                    .and()
+
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
