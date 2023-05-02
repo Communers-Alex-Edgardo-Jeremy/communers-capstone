@@ -457,7 +457,7 @@ input#username:active, input#password:active, input#username:focus, input#passwo
     -moz-box-shadow: .25rem .25rem var(--pink);
 }
 
-textarea, input {
+input#username, input#password, input#first_name, input#last_name, input#email, input#psw,input#entryTitle, #body-ip, #search-input, input#confirm-password {
     background-color: transparent !important;
 }
 .ruled-paper .ruled-paper-body textarea:active,

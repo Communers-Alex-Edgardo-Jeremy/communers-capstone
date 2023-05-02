@@ -97,7 +97,7 @@ public class PostController {
         comment.setPost(post);
         comment.setUser(user);
 
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy, HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy, hh:mm");
         String strDate = dateFormat.format(date);
 
         comment.setDate(strDate);
@@ -158,7 +158,7 @@ public class PostController {
         User user = userDao.findById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Date date = new Date();
 
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy, HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy, hh:mm");
         String strDate = dateFormat.format(date);
         System.out.println("Converted String: " + strDate);
 
