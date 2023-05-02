@@ -12,7 +12,7 @@ let step = 0;
 // current color right
 // next color right
 let colorIndices = [0,1,2,3];
-let opacity = 0.4;
+let opacity = 0.55;
 
 //transition speed
 let gradientSpeed = 0.005;
