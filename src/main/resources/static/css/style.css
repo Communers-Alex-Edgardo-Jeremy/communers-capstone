@@ -90,21 +90,21 @@ nav, footer {
 /*.navbar-toggler:hover, .chat-btn:hover {*/
 /*    text-shadow: .25rem .25rem var(--pink) !important;*/
 /*}*/
-/*.closeButton:hover {*/
-/*    color: red;*/
-/*    text-shadow: .25rem .25rem var(--pink);*/
-/*}*/
+.closeButton:hover {
+    color: red;
+    /*text-shadow: .25rem .25rem var(--pink);*/
+}
 .closeButton:active {
     color: red;
 }
-/*.backButton:hover {*/
-/*    color: var(--dark-green);*/
-/*    text-shadow: .25rem .25rem var(--pink);*/
-/*}*/
-/*.backButton:active {*/
-/*    color: var(--light-green);*/
-/*    text-shadow: .25rem .25rem var(--purple);*/
-/*}*/
+.backButton:hover {
+    color: var(--dark-green);
+    /*text-shadow: .25rem .25rem var(--pink);*/
+}
+.backButton:active {
+    color: var(--light-green);
+    /*text-shadow: .25rem .25rem var(--purple);*/
+}
 .notification {
     font-size: 1.8rem;
     width: 100%;
@@ -303,9 +303,10 @@ footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
     width:24px;
 }
 
-/*footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {*/
-/*    text-shadow: .125rem .125rem var(--pink);*/
-/*}*/
+footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
+    color: var(--light-green);
+    /*text-shadow: .125rem .125rem var(--pink);*/
+}
 
 /*.codeup-icon:hover {*/
 /*    text-shadow: .125rem .125rem var(--pink);*/
