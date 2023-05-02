@@ -50,9 +50,9 @@
                         <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
 
                             <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
-                            <button type="button" id="pic-button" class="upload-button text-black bg-transparent border border-0">
-                                <span>Upload Profile Picture</span>
-                                <img id=“image-display” style="height:100px; width:100px;" class=“rounded-circle” th:src="${user.image}" alt="" src="">
+                            <button type="button" id="pic-button" class="upload-button">
+                                Upload Profile Picture
+                                <image id="image-display" style="height:100px; width:100px;" class="rounded-circle" th:src="*{image}"></image>
                             </button>
 <!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
 
@@ -77,15 +77,15 @@
                             <button class="btn btn-sm btn-outline-danger me-auto mt-3 py-0" type="submit">Delete Account</button>
                         </form>
                     </div>
-                    <div class="password-validation mt-3 mb-5 p-3" id="message">
-                        <div class="d-flex flex-column">
-                            <h4>Password must contain the following:</h4>
-                            <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid fs-5">A <b>number</b></p>
-                            <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
-                        </div>
-                    </div>
+<!--                    <div class="password-validation mt-3 mb-5 p-3" id="message">-->
+<!--                        <div class="d-flex flex-column">-->
+<!--                            <h4>Password must contain the following:</h4>-->
+<!--                            <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>-->
+<!--                            <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>-->
+<!--                            <p id="number" class="invalid fs-5">A <b>number</b></p>-->
+<!--                            <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
 
@@ -148,6 +148,17 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <div class="profile-password-validation mt-3 mb-5 p-3" id="message">
+                <div class="d-flex flex-column">
+                    <h4>Password must contain the following:</h4>
+                    <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
+                    <p id="capital" class="invalid fs-5">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid fs-5">A <b>number</b></p>
+                    <p id="length" class="invalid fs-5">Minimum <b>8 characters</b></p>
                 </div>
             </div>
         </div>
