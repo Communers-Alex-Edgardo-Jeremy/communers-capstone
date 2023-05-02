@@ -87,24 +87,24 @@ nav, footer {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
 }
-.navbar-toggler:hover, .chat-btn:hover {
-    text-shadow: .25rem .25rem var(--pink) !important;
-}
-.closeButton:hover {
-    color: red;
-    text-shadow: .25rem .25rem var(--pink);
-}
+/*.navbar-toggler:hover, .chat-btn:hover {*/
+/*    text-shadow: .25rem .25rem var(--pink) !important;*/
+/*}*/
+/*.closeButton:hover {*/
+/*    color: red;*/
+/*    text-shadow: .25rem .25rem var(--pink);*/
+/*}*/
 .closeButton:active {
     color: red;
 }
-.backButton:hover {
-    color: var(--dark-green);
-    text-shadow: .25rem .25rem var(--pink);
-}
-.backButton:active {
-    color: var(--light-green);
-    text-shadow: .25rem .25rem var(--purple);
-}
+/*.backButton:hover {*/
+/*    color: var(--dark-green);*/
+/*    text-shadow: .25rem .25rem var(--pink);*/
+/*}*/
+/*.backButton:active {*/
+/*    color: var(--light-green);*/
+/*    text-shadow: .25rem .25rem var(--purple);*/
+/*}*/
 .notification {
     font-size: 1.8rem;
     width: 100%;
@@ -139,7 +139,7 @@ nav a, nav .logout {
 nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+    /*text-shadow: .125rem .125rem var(--pink);*/
     text-decoration: none;
 }
 .navbar-collapse ul {
@@ -172,7 +172,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
     text-decoration: none;
     font-family: 'Raleway', sans-serif, bold;
     /*color: var(--pink);*/
-    text-shadow: .25rem .25rem var(--pink);
+    /*text-shadow: .25rem .25rem var(--pink);*/
     width: 100%;
     left: 0;
 }
@@ -220,7 +220,7 @@ nav a:hover, nav .logout:hover, .forgot-pw:hover, .post-link:hover {
 .about-card a:hover, .resource-link:hover, .chat-card a:hover {
     /*font-weight: bold;*/
     color: var(--dark-green) !important;
-    text-shadow: .125rem .125rem var(--pink) !important;
+    /*text-shadow: .125rem .125rem var(--pink) !important;*/
     text-decoration: none !important;
 }
 footer h3 {
@@ -244,7 +244,7 @@ footer li a{
 footer li:hover, footer li a:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
-    text-shadow: .125rem .125rem var(--pink);
+    /*text-shadow: .125rem .125rem var(--pink);*/
     text-decoration: none;
 }
 @media (max-width:767px) {
@@ -303,13 +303,13 @@ footer .item.social > a, .fa-linkedin, .fa-github, .fa-code {
     width:24px;
 }
 
-footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {
-    text-shadow: .125rem .125rem var(--pink);
-}
+/*footer .item.social > a:hover, .fa-linkedin:hover, .fa-github:hover, .fa-code:hover {*/
+/*    text-shadow: .125rem .125rem var(--pink);*/
+/*}*/
 
-.codeup-icon:hover {
-    text-shadow: .125rem .125rem var(--pink);
-}
+/*.codeup-icon:hover {*/
+/*    text-shadow: .125rem .125rem var(--pink);*/
+/*}*/
 
 footer .copyright {
     text-align:center;
