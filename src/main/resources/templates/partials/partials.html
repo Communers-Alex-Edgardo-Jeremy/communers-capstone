@@ -188,13 +188,13 @@
                 <div class="alert alert-danger" th:if="${errMsg}">
                     Something bad happened!
                 </div>
-                <div class="col-sm-12 col-lg-4 p-2"  th:each="user : ${users}">
+                <div class="col-12 p-2"  th:each="user : ${users}">
                     <div class="card card-community h-100" style="">
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
                             <div sec:authorize="isAuthenticated()" class="d-flex" th:attr="dataset-id=${user.id}">
                                 <image style="height:60px; width:60px;" class="rounded-circle" th:src="${user.image}"></image>
-                                <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
+                                <h3 class="card-title ms-3 my-auto"  th:text="${user.username}">{Username}</h3>
                                 <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn ps-2 py-0 ms-auto me-2 my-auto followButton">(Follow Button)</button>
                             </div>
                         </div>
