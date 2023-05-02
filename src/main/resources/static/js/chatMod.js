@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
         checkButtons.forEach(function(button){
             addClickEvent(button)
         });
-    } else {
+    }
+    if(checkButtons.length === 1){
         addClickEvent(checkButtons[0])
     }
 });

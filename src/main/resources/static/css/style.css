@@ -371,12 +371,20 @@ input.btn:active, .follow-btn:active, .search-btn:active, .read-more-btn:active,
 }
 
 /* The message box is shown when the user clicks on the password field */
-#message {
+.password-validation {
     position: absolute;
     translate: 300px;
     border: none !important;
 }
 
+.profile-password-validation {
+    border: none !important;
+}
+
+#message p {
+    /*padding: 10px 35px;*/
+    /*font-size: 18px;*/
+}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
@@ -1222,6 +1230,37 @@ section {
     padding: 20px 100px 0 100px;
     display: flex;
     justify-content: space-between;
+}
+
+.section2:before {
+    content: '';
+    padding: 27px 0;
+    color: #3D3D3D;
+    border-radius: 4px;
+    text-align: center;
+    margin: 4px 0 0 9px;
+    display: inline-block;
+    flex-shrink: 0;
+    opacity: 128%;
+    height: 255px;
+    width: 82px;
+    background: linear-gradient(89deg, rgb(213 207 239) 2%, rgb(214 208 238) 0%, rgb(219 213 238) 5% ,rgb(230 225 237) 9%, rgba(236,230,255,0) 95%) top;
+    position: absolute;
+    z-index: 1;
+    left: 26px;
+    top: 228px;
+}
+.section2:after {
+    content: '';
+    opacity: 103%;
+    height: 265px;
+    top: 223px;
+    width: 165px;
+    background: linear-gradient(-93deg, rgb(204 198 240) 0%, rgb(195 186 240) 10%, rgb(195 186 240) 12% ,rgb(195 186 241) 10%, rgba(232,224,93,0) 81%);
+    position: absolute;
+    left: 936px;
+    border-radius: 0;
+    z-index: 1;
 }
 
 /* End of Landing page test styling*/

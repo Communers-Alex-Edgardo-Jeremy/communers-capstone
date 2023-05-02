@@ -76,10 +76,12 @@ public class PostController {
     }
     @GetMapping("/post/{id}/comments")
     public String showComments(@PathVariable long id, Model model){
+        User user = userDao.getReferenceById(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Post post = postDao.findById(id);
         List<Comment> comments = commentDao.findAllByPost(post);
         model.addAttribute("post", post);
         model.addAttribute("comments", comments);
+        model.addAttribute("loggedInUser", user);
         model.addAttribute("comment", new Comment());
         return "/posts/comments";
 
@@ -105,7 +107,7 @@ public class PostController {
 
         model.addAttribute("comments", comments);
         model.addAttribute("comment", new Comment());
-
+        model.addAttribute("loggedInUser", user);
         List<Post> userPosts = postDao.findAllByUser(user);
 
         if (userPosts.contains(post)) {

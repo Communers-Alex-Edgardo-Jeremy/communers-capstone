@@ -97,6 +97,7 @@
                         <ul>
                             <li class="fs-5" th:each="user : ${friendList}">
                                 <a class="ms-auto" th:href="@{/chat/{userId}(userId=${user.id})}">
+                                    <image style="height:40px; width:40px;" class="rounded-circle" th:src="${user.image}"></image>
                                     <span th:text="${user.username}"></span>
                                 </a>
                             </li>
@@ -127,7 +128,8 @@
                 <div class="card-bg opacity-50 flex-grow-1"></div>
                 <div class="card-body d-flex flex-column">
                     <div class="d-flex">
-                        <h3 class="card-title pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
+                        <image style="height:60px; width:60px;" class="rounded-circle" th:src="${post.user.image}"></image>
+                        <h3 class="card-title ms-4 pt-1 my-auto" th:text="${post.title}">(insert post title)</h3>
                         <span class="ms-auto my-auto" th:text="${post.user.username}">(Users name here)</span>
                         <div sec:authorize="isAuthenticated()" class="d-inline my-auto" th:attr="dataset-id=${post.user.id}">
                             <button type="button" th:text="${post.user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn my-auto py-0  ms-2 my-auto followButton">(Follow Button)</button>
@@ -150,19 +152,29 @@
         <div class="alert alert-danger" th:if="${errMsg}">
             Something bad happened!
         </div>
-        <div th:each="community : ${communities}">
-            <div class="card post-card h-100">
-                <div class="card-bg opacity-50 flex-grow-1"></div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex">
-                        <h3 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h3>
-                        <div class="ms-auto" th:attr="dataset-id=${community.id}">
-                            <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+        <div th:if="${communities.size() != 0}">
+            <div th:each="community : ${communities}">
+                <div class="card post-card h-100">
+                    <div class="card-bg opacity-50 flex-grow-1"></div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex">
+                                <h3 class="card-title pt-1 my-auto" th:text="${community.name}">(insert post title)</h3>
+                                <div class="ms-auto" th:attr="dataset-id=${community.id}">
+                                    <button type="button" th:text="${community.users.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn followButton py-0 ms-2 my-auto">(Follow Button)</button>
+                                </div>
+                            </div>
+                            <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
+                            <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                         </div>
                     </div>
-                    <div class="blog-article py-1 ms-2 mt-2" th:text="${community.bio}">(insert post body)</div>
-                    <a class="btn btn-sm read-more-btn ms-2 me-auto mt-2 py-0" th:href="@{|/community/${community.id}|}">Read more...</a>
                 </div>
+            </div>
+        </div>
+        <div th:if="${communities.size() == 0}">
+            <div class="d-flex flex-column my-auto">
+                <span class="btn btn-sm mx-3 my-auto fs-3 py-5">Currently not following any communities</span>
+                <a class="btn btn-sm mx-3 my-auto community-btn fs-3 py-0" th:href="@{|/communities/discover|}">Find Communities Here</a>
             </div>
         </div>
     </div>
@@ -181,6 +193,7 @@
                         <div class="card-bg opacity-50 flex-grow-1"></div>
                         <div class="card-body p-2">
                             <div sec:authorize="isAuthenticated()" class="d-flex" th:attr="dataset-id=${user.id}">
+                                <image style="height:60px; width:60px;" class="rounded-circle" th:src="${user.image}"></image>
                                 <h5 class="card-title my-auto"  th:text="${user.username}">{Username}</h5>
                                 <button type="button" th:text="${user.followers.contains(loggedInUser) ? 'Unfollow' : 'Follow'}" class="btn btn-sm follow-btn ps-2 py-0 ms-auto me-2 my-auto followButton">(Follow Button)</button>
                             </div>
@@ -229,13 +242,13 @@
             <p>Communers, Inc. is a lean three-person development team located in San Antonio, Texas.  We aspire to improve the digital platforms we occupy by leveraging emerging technologies and open source tools.</p>
         </div>
         <div class="col-sm-12 col-md-2 item social">
-
-            <a href="#" target=”_blank”><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" target=”_blank”><i class="fa-brands fa-twitter"></i></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100092404597192" target=”_blank”><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/home" target=”_blank”><i class="fa-brands fa-twitter"></i></i></a>
             <a href="https://github.com/Communers-Alex-Edgardo-Jeremy/communers-capstone" target=”_blank”><i class="fa-brands fa-github"></i></i></a>
-            <a href="#" target=”_blank”><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/cmmunty/" target=”_blank”><i class="fa-brands fa-instagram"></i></a>
             <p class="copyright pt-4">Communers, Inc. © 2023</p>
         </div>
+    </div>
     </div>
 <!--    comment-->
 </footer>
