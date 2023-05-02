@@ -34,7 +34,6 @@ body {
     position: relative;
     /*background-image: url("/static/img/hands.svg"), linear-gradient(to bottom right, var(--purple), var(--bg-white));*/
     overflow-x: hidden;
-
 }
 nav, footer {
     color: var(--dark-green) !important;

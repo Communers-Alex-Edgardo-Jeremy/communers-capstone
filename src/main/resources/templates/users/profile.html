@@ -48,12 +48,13 @@
                     </div>
                     <div class="settings" sec:authorize="isAuthenticated()">
                         <form class="d-flex flex-column" id="user-form" th:action="@{/profile}" th:object="${user}" method="post">
-
                             <input th:value="*{image}" th:name="photo-url" id="file-upload" hidden>
-                            <button type="button" id="pic-button" class="upload-button">
-                                Upload Profile Picture
-                                <image id="image-display" style="height:100px; width:100px;" class="rounded-circle" th:src="*{image}"></image>
-                            </button>
+                            <div class="d-flex">
+                                <button type="button" id="pic-button" class="d-flex flex-column upload-button bg-transparent border border-0 me-auto text-black ps-0">
+                                    <p>Upload Profile Picture</p>
+                                    <image id="image-display" style="height:100px; width:100px;" class="rounded-circle ms-0" th:src="*{image}"></image>
+                                </button>
+                            </div>
 <!--                            <label class="mt-1 mb-0" for="file-upload">Upload Profile Pic</label>-->
 
                             <label for="username">Username</label>
