@@ -1,6 +1,7 @@
 "use strict";
+window.onload = function(){
 
-document.addEventListener("DOMContentLoaded", (event) => {
+// document.addEventListener("DOMContentLoaded", (event) => {
 
 
     let myInput = document.getElementById("psw");
@@ -10,24 +11,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const length = document.getElementById("length");
     const button = document.getElementById("pic-button");
     const imageInput = document.getElementById("file-upload");
-    let imageDisplay = document.getElementById("image-display");
-    console.log(button)
-    if (button != null) {
-        console.log("Image here");
+    const imageDisplay = document.getElementById("image-display");
+    if (imageDisplay != null) {
         const client = filestack.init(FILESTACK_KEY);
         const options = {
             onFileUploadFinished(file) {
                 console.log(file);
                 imageInput.value = file.url;
-                imageDisplay.src = file.url;
+                imageDisplay.setAttribute("src", file.url);
             }
         }
         button.addEventListener("click", function (event) {
-            console.log("In picker")
             client.picker(options).open();
         })
     }
-
 
     document.getElementById("message").style.visibility = "hidden";
 
@@ -83,4 +80,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 
-});
+}
