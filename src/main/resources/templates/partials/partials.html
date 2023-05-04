@@ -64,7 +64,7 @@
         <div class="d-flex flex-column">
             <div class="d-flex">
                 <h2 class="greeting page-title ps-3 ps-lg-5" sec:authorize="isAuthenticated()" >
-                    Welcome back, <span class="page-title" th:text="${#authentication.principal.username}"/>.
+                    Welcome back, <span class="page-title" th:text="${loggedInUser.username}"/>.
                 </h2>
             </div>
             <div th:choose>
