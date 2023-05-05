@@ -1,9 +1,19 @@
+const hexToRgb = hex =>
+    hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+        ,(m, r, g, b) => '#' + r + r + g + g + b + b)
+        .substring(1).match(/.{2}/g)
+        .map(x => parseInt(x, 16))
+
+let darkBlue = getComputedStyle(document.documentElement).getPropertyValue("--dark-blue");
+let greyBlue= getComputedStyle(document.documentElement).getPropertyValue("--grey-blue");
+let darkTeal= getComputedStyle(document.documentElement).getPropertyValue("--dark-teal");
+let lightTeal= getComputedStyle(document.documentElement).getPropertyValue("--light-teal");
 
 let colors = new Array(
-    [242, 179, 214],
-    [183, 174, 242],
-    [35, 140, 110],
-    [43, 217, 153]);
+    hexToRgb(darkBlue.trim()),
+    hexToRgb(greyBlue.trim()),
+    hexToRgb(darkTeal.trim()),
+    hexToRgb(lightTeal.trim()));
 
 let step = 0;
 //color table indices for:
