@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Login</title>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="password-validation mt-3 mb-5 p-3" id="message" style="visibility: hidden;">
+        <div class="password-validation mt-3 mb-5 p-3" id="message">
             <div class="d-flex flex-column">
                 <h4>Password must contain the following:</h4>
                 <p id="letter" class="invalid fs-5">A <b>lowercase</b> letter</p>
