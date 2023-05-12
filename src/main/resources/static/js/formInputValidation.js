@@ -12,11 +12,12 @@ myForm.addEventListener('submit', (event) => {
     // Validate the name input
     const usernameValue = userName.value.trim();
     const nameRegex = /^[a-zA-Z]+$/;
+    let returnValue = false;
     if (usernameValue.length > 50 || !nameRegex.test(usernameValue)) {
         userName.value = '';
-        userName.title = 'Please enter a valid username (letters only, up to 50 characters)';
+        userName.placeholder = 'Please enter a valid username (letters only, up to 50 characters)';
         userName.focus();
-        return;
+        returnValue = true;
     }
 
     const firstNameValue = firstName.value.trim();
@@ -24,7 +25,7 @@ myForm.addEventListener('submit', (event) => {
         firstName.value = '';
         firstName.title = 'Please enter a valid first name (letters only, up to 50 characters)';
         firstName.focus();
-        return;
+        returnValue = true;
     }
 
     const lastNameValue = lastName.value.trim();
@@ -32,7 +33,7 @@ myForm.addEventListener('submit', (event) => {
         lastName.value = '';
         lastName.title = 'Please enter a valid last name (letters only, up to 50 characters)';
         lastName.focus();
-        return;
+        returnValue = true;
     }
 
     // Validate the email input
@@ -42,9 +43,11 @@ myForm.addEventListener('submit', (event) => {
         emailInput.value = '';
         emailInput.title = 'Please enter a valid email address (up to 100 characters)';
         emailInput.focus();
+        returnValue = true;
+    }
+    if(returnValue){
         return;
     }
-
     // If all input is valid, submit the form
     myForm.submit();
 });
