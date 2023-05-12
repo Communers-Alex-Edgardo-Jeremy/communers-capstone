@@ -4,6 +4,20 @@
     <th:block th:insert="~{partials/partials :: head}"></th:block>
     <title>Login</title>
 <!--    <link rel="stylesheet" href="/css/password.css">-->
+<!--    <style>-->
+<!--        input:invalid {-->
+<!--            border: 2px solid red;-->
+<!--        }-->
+
+<!--        input:invalid:after {-->
+<!--            content: attr(title);-->
+<!--            color: red;-->
+<!--            display: block;-->
+<!--            font-size: 12px;-->
+<!--            margin-top: 4px;-->
+<!--        }-->
+
+<!--    </style>-->
 </head>
 <body class="d-flex flex-column" id="gradient">
     <nav class="pb-3" th:replace="~{/partials/partials :: navbar}" ></nav>
@@ -15,7 +29,7 @@
         <div class="card sign-up-card mt-3 mb-5">
             <div class="card-bg opacity-50 flex-grow-1"></div>
             <div class="card-body d-flex flex-column">
-                <form class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
+                <form id="form" class="d-flex flex-column" th:action="@{/register}" method="POST" th:object="${user}">
                     <label class="mt-1 mb-0" for="username">Username</label>
                     <input class="ps-2" id="username" th:field="*{username}" required/>
 
@@ -49,9 +63,10 @@
             </div>
         </div>
     </div>
-<footer th:replace="~{/partials/partials :: footer}"></footer>
-<script src="/js/password.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/background.js"></script>
+    <footer th:replace="~{/partials/partials :: footer}"></footer>
+    <script src="/js/formInputValidation.js"></script>
+    <script src="/js/password.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/background.js"></script>
 </body>
 </html>
