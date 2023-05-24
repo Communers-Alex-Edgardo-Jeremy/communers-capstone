@@ -228,13 +228,13 @@ footer li, footer p{
     text-decoration: none;
 }
 
-footer li a{
+nav li a, footer li a{
     text-decoration: none;
     font-size: 1rem;
     color: var(--black);
     text-transform: uppercase;
 }
-footer li:hover, footer li a:hover {
+nav li:hover, nav li a:hover, footer li:hover, footer li a:hover {
     /*font-weight: bold;*/
     color: var(--dark-green);
     /*text-shadow: .125rem .125rem var(--pink);*/
