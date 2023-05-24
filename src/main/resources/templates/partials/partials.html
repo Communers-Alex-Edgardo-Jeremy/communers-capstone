@@ -47,10 +47,10 @@
                 <ul class="my-auto d-flex navbar-nav">
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn logout my-auto p-0" style="margin-top: 8px">Logout</button>
+                            <button class="btn-link btn logout my-auto p-0" style="margin-top: 8px">Log Out</button>
                         </form>
                     </li>
-                    <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+                    <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/login">Log In</a></li>
                     <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/register">Sign Up!</a></li>
                 </ul>
             </div>

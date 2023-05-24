@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <th:block th:insert="~{partials/partials :: head}"></th:block>
   <title>Landing</title>
@@ -284,6 +284,27 @@
 <!--  </div>-->
 
 <!--</section>-->
+<nav class="navbar navbar-landing navbar-expand-lg" th:fragment="navbar">
+  <div class="container-fluid">
+    <p class="my-auto me-auto community-title"><a class="p-0" href="/landing">commUNITY</a></p>
+    <a class="btn login-btn mt-2 py-0" th:href="@{|/login|}">Sign In</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="row align-content-center my-auto px-3 pb-3 g-3">
+    <div class="col-sm-12 offset-lg-3 col-lg-6">
+      <h1>Where your <strong>journey</strong> begins...</h1>
+      <h3>Here at commUnity, we aim to supplement your journey towards betterment by providing a platform to connect like-minded individuals who share the same goals as yourself. Our curated commUNITY groups allow for ease of connectivity and sharing through posts and comments to foster an environment of growth. With commUNITY, we're better together.</h3>
+    </div>
+  </div>
+
+  <h1>Why our members are thrilled:</h1>
+
+
+</main>
+
 <footer th:replace="~{/partials/partials :: footer}"></footer>
 <script src="/js/background.js"></script>
 <script src="/js/script.js"></script>
