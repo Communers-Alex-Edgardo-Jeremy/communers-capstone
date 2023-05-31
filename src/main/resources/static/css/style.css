@@ -525,6 +525,18 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
     left: 0;
     opacity: 25%;
 }
+.wave-04 {
+    position: relative;
+    background-image: url("/img/wave04.svg");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+    height: 200px;
+    z-index: -3;
+    /*top: -300px;*/
+    left: 0;
+    opacity: 25%;
+}
 main {
     top: -225px;
     position: relative;
