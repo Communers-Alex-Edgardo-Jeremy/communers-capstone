@@ -67,7 +67,6 @@ nav, footer {
 /*    -moz-box-shadow: none !important;*/
 /*}*/
 .navbar-landing {
-    position: absolute;
     background-color: transparent;
 }
 .navbar-toggler,
@@ -482,78 +481,4 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
 }
 .abs-follow {
     position: absolute;
-}
-
-/*Landing Page*/
-.background {
-    position: relative;
-    height: 300px;
-}
-.wave-01 {
-    position: relative;
-    background-image: url("/img/wave01.svg");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
-    height: 100px;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    opacity: 75%;
-}
-.wave-02 {
-    position: relative;
-    background-image: url("/img/wave02.svg");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
-    height: 200px;
-    z-index: -2;
-    top: -100px;
-    right: 0;
-    opacity: 50%;
-}
-.wave-03 {
-    position: relative;
-    background-image: url("/img/wave03.svg");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
-    height: 300px;
-    z-index: -3;
-    top: -300px;
-    left: 0;
-    opacity: 25%;
-}
-.wave-04 {
-    position: relative;
-    background-image: url("/img/wave04.svg");
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
-    height: 200px;
-    z-index: -3;
-    /*top: -300px;*/
-    left: 0;
-    opacity: 25%;
-}
-main {
-    top: -225px;
-    position: relative;
-}
-main h1 {
-    margin-top: .25em;
-}
-main h3 {
-    margin-top: 100px;
-    position: relative;
-}
-@media (max-width: 1115px) {
-    main h1 {
-        margin-top: 1em;
-        font-size: 1.75em;
-    }
-    main h3 {
-        margin-top: 155px;
-    }
 }
