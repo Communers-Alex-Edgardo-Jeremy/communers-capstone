@@ -482,3 +482,10 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
 .abs-follow {
     position: absolute;
 }
+.wave {
+    width: 1512px;
+}
+.wave-sm {
+    width: 1512px;
+}
+
