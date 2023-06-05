@@ -68,6 +68,7 @@ nav, footer {
 /*}*/
 .navbar-landing {
     background-color: transparent;
+    position: absolute;
 }
 .navbar-toggler,
 .navbar-toggler:focus,
@@ -488,4 +489,20 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
 .wave-sm {
     width: 1512px;
 }
-
+.wave-top {
+    transform: translateY(-50%);
+    z-index: -1;
+}
+.wave-bottom {
+    transform: translateY(50%);
+    z-index: -1;
+}
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
