@@ -23,7 +23,7 @@
 </th:block>
 <body class="d-flex flex-column" id="gradient">
 
-<nav class="navbar navbar-light navbar-expand-lg" th:fragment="navbar">
+<nav class="navbar navbar-light navbar-expand-lg w-100" th:fragment="navbar">
     <div class="container-fluid">
         <p class="my-auto me-auto community-title"><a class="p-0" href="/landing">commUNITY</a></p>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -47,10 +47,10 @@
                 <ul class="my-auto d-flex navbar-nav">
                     <li class="px-2 my-auto nav-item" sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn logout my-auto p-0" style="margin-top: 8px">Logout</button>
+                            <button class="btn-link btn logout my-auto p-0" style="margin-top: 8px">Log Out</button>
                         </form>
                     </li>
-                    <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+                    <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/login">Log In</a></li>
                     <li class="px-2 my-auto nav-item" sec:authorize="!isAuthenticated()"><a href="/register">Sign Up!</a></li>
                 </ul>
             </div>
@@ -221,24 +221,14 @@
 <footer class="100vw mt-auto" th:fragment="footer">
     <div class="row py-3 m-0 w-100">
         <div class="col-sm-1w col-md-3 text-center item">
-            <h3 class="mb-2">Company and Services</h3>
+            <h3 class="mb-2 mt-0">Company and Services</h3>
             <ul class="ps-0">
                 <li><a href="/about">About us</a></li>
                 <li><a href="/resources">Resources</a></li>
-<!--                <li><a href="#">Outreach</a></li>-->
-<!--                <li><a href="#">Legal/Terms</a></li>-->
-<!--                <li><a href="#">F.A.Q.</a></li>-->
             </ul>
         </div>
-<!--        <div class="col-sm-6 col-md-2 item">-->
-<!--            <h3 class="mb-2"></h3>-->
-<!--            <ul class="ps-0">-->
-<!--&lt;!&ndash;                <li><a href="#">Careers</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li><a href="#">Consulting</a></li>&ndash;&gt;-->
-<!--            </ul>-->
-<!--        </div>-->
         <div class="col-sm-12 col-md-6 item text">
-            <h3 class="mb-2">The Communers</h3>
+            <h3 class="mb-2 mt-0">The Communers</h3>
             <p>The Communers are a lean three-person development team located in San Antonio, Texas.  We aspire to improve the digital platforms we occupy by leveraging emerging technologies and open source tools.</p>
         </div>
         <div class="col-sm-12 col-md-2 item social">
