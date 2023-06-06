@@ -485,12 +485,12 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
 }
 
 .wave {
+    height: 200px;
     min-width: 1512px;
     max-width: 100vw;
-}
-
-.imgContainer {
-    /*min-width: 1512px;*/
+    /*max-width: 100%;*/
+    /*height: 100%;*/
+    object-fit: cover;
 }
 
 .wave-top {
@@ -509,4 +509,21 @@ main {
 section {
     height: 100vh;
     scroll-snap-align: start;
+}
+@media only screen and (max-width: 600px)  {
+    h1 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    h4, .card-header {
+        font-size: 1em;
+    }
+    p, .blockquote-footer {
+        font-size: 0.6em;
+    }
+}
+.carousel-indicators button{
+    background-color: black !important;
 }
