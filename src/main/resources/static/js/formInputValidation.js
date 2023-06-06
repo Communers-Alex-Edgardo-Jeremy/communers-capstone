@@ -4,6 +4,7 @@ const userName = document.getElementById('username');
 const firstName = document.getElementById('first_name');
 const lastName = document.getElementById('last_name');
 const emailInput = document.getElementById('email');
+const feedback = document.getElementById('feedback')
 
 myForm.addEventListener('submit', (event) => {
     // Prevent the form from submitting
@@ -11,29 +12,28 @@ myForm.addEventListener('submit', (event) => {
 
     // Validate the name input
     const usernameValue = userName.value.trim();
-    const nameRegex = /^[a-zA-Z]+$/;
-    let returnValue = false;
+    const nameRegex = /^[a-zA-Z]{2,}$/;
     if (usernameValue.length > 50 || !nameRegex.test(usernameValue)) {
         userName.value = '';
-        userName.placeholder = 'Please enter a valid username (letters only, up to 50 characters)';
+        feedback.innerText = 'Username must contain only characters between 2 and 50 characters in length';
         userName.focus();
-        returnValue = true;
+        return;
     }
 
     const firstNameValue = firstName.value.trim();
     if (firstNameValue.length > 50 || !nameRegex.test(firstNameValue)) {
         firstName.value = '';
-        firstName.title = 'Please enter a valid first name (letters only, up to 50 characters)';
+        feedback.innerText = 'First name must contain only characters and be between 2 and 50 characters in length';
         firstName.focus();
-        returnValue = true;
+        return;
     }
 
     const lastNameValue = lastName.value.trim();
     if (lastNameValue.length > 50 || !nameRegex.test(lastNameValue)) {
         lastName.value = '';
-        lastName.title = 'Please enter a valid last name (letters only, up to 50 characters)';
+        feedback.innerText = 'Last name must contain only characters and be between 2 and 50 characters in length';
         lastName.focus();
-        returnValue = true;
+        return;
     }
 
     // Validate the email input
@@ -41,11 +41,8 @@ myForm.addEventListener('submit', (event) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailValue.length > 100 || !emailRegex.test(emailValue)) {
         emailInput.value = '';
-        emailInput.title = 'Please enter a valid email address (up to 100 characters)';
+        feedback.innerText = 'Please enter a valid email address';
         emailInput.focus();
-        returnValue = true;
-    }
-    if(returnValue){
         return;
     }
     // If all input is valid, submit the form
