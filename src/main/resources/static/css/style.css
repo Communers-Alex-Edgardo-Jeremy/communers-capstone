@@ -483,12 +483,16 @@ input#username, input#password, input#first_name, input#last_name, input#email, 
 .abs-follow {
     position: absolute;
 }
+
 .wave {
-    width: 1512px;
+    min-width: 1512px;
+    max-width: 100vw;
 }
-.wave-sm {
-    width: 1512px;
+
+.imgContainer {
+    /*min-width: 1512px;*/
 }
+
 .wave-top {
     transform: translateY(-50%);
     z-index: -1;
